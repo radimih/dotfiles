@@ -20,9 +20,9 @@
 
 1. Добавить открытый ключ в GitHub
 
-   1. Перейти на страницу [Профиль → Settings → SSH and GPG keys → New SSH key](https://github.com/settings/ssh/new)
-   1. **Title**: `radimir-work`
-   1. **Key**: _вставить из буфера обмена_
+   На странице [Профиль → Settings → SSH and GPG keys → New SSH key](https://github.com/settings/ssh/new):
+   * **Title**: `radimir-work`
+   * **Key**: _вставить из буфера обмена_
 
 1. Проверить SSH-доступ и добавить GitHub в доверенные хосты
 
