@@ -13,8 +13,8 @@
 1. Настроить глобальную идентификацию пользователя в git:
 
    ```bash
-   git config --global user.email "radimir.com@gmail.com"
-   git config --global user.name "Radimir Mikhailov"
+   $ git config --global user.email "radimir.com@gmail.com"
+   $ git config --global user.name "Radimir Mikhailov"
    ```
 
 1. Сгенерировать пару ключей SSH и скопировать открытый ключ в буфер обмена:
