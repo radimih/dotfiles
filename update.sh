@@ -9,23 +9,19 @@ title() {
     printf "\n${color}$1${nc}\n"
 }
 
-title "[i] Ask for sudo password"
-sudo -v
-
 case "$(uname -s)" in
-
     Linux)
         if [ -f /etc/os-release ]
         then
             source /etc/os-release
-
             case "$ID_LIKE" in
-
                 debian | ubuntu)
-                    title "[i] Install Ansible"
-                    sudo apt-get install -y ansible
+                    if [[ ! -x /usr/bin/ansible ]]
+                    then
+                        title "[i] Install Ansible"
+                        sudo apt-get install -y ansible
+                    fi
                     ;;
-
                 *)
                     title "[!] Unsupported Linux Distribution: $ID (like $ID_LIKE)"
                     exit 1
@@ -36,7 +32,6 @@ case "$(uname -s)" in
             exit 1
         fi
         ;;
-
     *)
         title "[!] Unsupported OS"
         exit 1
