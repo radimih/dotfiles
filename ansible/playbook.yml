@@ -1,0 +1,6 @@
+---
+- name: Настройка моего стандартного Linux-окружения
+  hosts: localhost
+
+  roles:
+    - {role: packages, tags: ['packages']}

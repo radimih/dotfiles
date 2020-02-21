@@ -1,0 +1,10 @@
+---
+- name: Установить минимальный набор пакетов
+  become: yes
+  apt:
+    name:
+      - curl
+      - git
+      - inetutils-traceroute
+      - xclip
+    state: latest

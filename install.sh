@@ -43,7 +43,11 @@ case "$(uname -s)" in
         ;;
 esac
 
+path_current=`pwd`
+cd $(dirname $0)/ansible
+
 title "[i] Run Playbook"
-#ansible-playbook $HOME/dotfiles/ansible/dotfiles.yml --ask-become-pass
+ansible-playbook playbook.yml --ask-become-pass
+cd $path_current
 
 title "[i] Done."
