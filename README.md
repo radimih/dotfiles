@@ -20,13 +20,13 @@
    $ xclip -sel clip < ~/.ssh/id_rsa.pub
    ```
 
-1. Добавить открытый ключ в GitHub:
+1. Добавить открытый ключ в GitHub-аккаунт:
 
    На странице [Профиль → Settings → SSH and GPG keys → New SSH key](https://github.com/settings/ssh/new):
    * **Title**: `radimir-work`
    * **Key**: _вставить из буфера обмена_
 
-1. Проверить SSH-доступ и добавить GitHub в доверенные хосты:
+1. Проверить SSH-доступ и добавить хост GitHub в доверенные хосты:
 
    ```bash
    $ ssh -T git@github.com
