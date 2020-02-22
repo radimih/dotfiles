@@ -4,17 +4,12 @@
 
 ## Первоначальная установка на новую систему
 
+#### Привязка к GitHub-аккаунту
+
 1. Установить минимальный набор пакетов:
 
    ```bash
    $ sudo apt install -y xclip git
-   ```
-
-1. Настроить глобальную идентификацию пользователя в git:
-
-   ```bash
-   $ git config --global user.email "radimir.com@gmail.com"
-   $ git config --global user.name "Radimir Mikhailov"
    ```
 
 1. Сгенерировать пару ключей SSH и скопировать открытый ключ в буфер обмена:
@@ -37,10 +32,28 @@
    $ ssh -T git@github.com
    ```
 
-1. Запустить конфигурирование системы:
+#### Клонирование и настройка GitHub-репозитория
+
+1. Склонировать репозиторий:
 
    ```bash
    $ cd ~
    $ git clone git@github.com:radimih/dotfiles.git
-   $ ./dotfiles/install.sh
+   $ cd dotfiles
    ```
+
+1. Настроить идентификацию пользователя в репозитории (для внесения изменений в будущем):
+
+   ```bash
+   $ git config user.email "radimir.com@gmail.com"
+   $ git config user.name "Radimir Mikhailov"
+   ```
+   
+   Желательно не устанавливать глобальную идентификацию  в git (ключ `--global`), чтобы
+   случайно не смешать рабочие и личные идентификации в git.
+
+## Установка / актуализация конфигурации системы
+
+```bash
+$ ~/dotfiles/update.sh
+```
