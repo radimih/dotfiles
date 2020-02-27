@@ -6,5 +6,6 @@
       - curl
       - git
       - inetutils-traceroute
+      - neovim
       - xclip
     state: latest
