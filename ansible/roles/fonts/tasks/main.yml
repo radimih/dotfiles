@@ -1,0 +1,6 @@
+---
+- name: Установить утилиту fc-cache
+  become: yes
+  apt:
+    name: fontconfig
+    state: present
