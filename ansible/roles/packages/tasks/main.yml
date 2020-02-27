@@ -9,3 +9,5 @@
       - neovim
       - xclip
     state: latest
+    update_cache: yes
+    cache_valid_time: 7200  # apt update если кэш не обновлялся более 2 часов
