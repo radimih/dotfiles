@@ -3,4 +3,4 @@
   hosts: localhost
 
   roles:
-    - {role: packages, tags: ['packages']}
+    - {role: minipack, tags: ['minipack']}
