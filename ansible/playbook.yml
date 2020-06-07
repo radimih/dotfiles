@@ -4,3 +4,4 @@
 
   roles:
     - {role: minipack, tags: ['minipack']}
+    - {role: remmina, tags: ['remmina']}
