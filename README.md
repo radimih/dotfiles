@@ -9,7 +9,7 @@
 1. Установить минимальный набор пакетов:
 
    ```bash
-   $ sudo apt install -y xclip git
+   $ sudo apt install -y xclip git ansible
    ```
 
 1. Сгенерировать пару ключей SSH и скопировать открытый ключ в буфер обмена:
