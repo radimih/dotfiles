@@ -2,6 +2,15 @@
 
 Конфигурация моих локальных Linux-систем.
 
+## Состав
+
+#### Ansible-роли
+
+Роль | Назначение | Тэги
+---- | ---------- | ----
+[minipack](ansible/roles/minipack) | Установка минимального набор пакетов | `minipack`
+[remmina](ansible/roles/minipack) | Установка [Remmina](https://remmina.org/) для доступа к хостам через SSH и RDP | `remmina`
+
 ## Первоначальная установка на новую систему
 
 #### Привязка к GitHub-аккаунту
