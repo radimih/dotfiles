@@ -4,3 +4,13 @@
   apt:
     name: fontconfig
     state: present
+
+- name: Скопировать шрифты в {{ path_fonts }}
+  become: yes
+  copy:
+    src: files/
+    dest: "{{ path_fonts }}"
+    owner: root
+    group: root
+    mode: "644"
+  notify: rebuild-fonts-cache
