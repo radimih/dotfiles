@@ -11,6 +11,7 @@
 [fonts](ansible/roles/fonts) | Установка шрифтов | `fonts`
 [minipack](ansible/roles/minipack) | Установка минимального набор пакетов | `minipack`
 [remmina](ansible/roles/minipack) | Установка [Remmina](https://remmina.org/) для доступа к хостам через SSH и RDP | `remmina`
+[zsh](ansible/roles/zsh) | Установка shell-оболочки [Zsh](https://www.zsh.org/) и настройка окружения | `zsh`
 
 ## Установка / актуализация конфигурации системы
 

@@ -6,3 +6,4 @@
     - {role: minipack, tags: ['minipack']}
     - {role: fonts, tags: ['fonts']}
     - {role: remmina, tags: ['remmina']}
+    - {role: zsh, tags: ['zsh']}
