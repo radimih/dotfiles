@@ -8,6 +8,7 @@
 
 Роль | Назначение | Тэги
 ---- | ---------- | ----
+[fonts](ansible/roles/fonts) | Установка шрифтов | `fonts`
 [minipack](ansible/roles/minipack) | Установка минимального набор пакетов | `minipack`
 [remmina](ansible/roles/minipack) | Установка [Remmina](https://remmina.org/) для доступа к хостам через SSH и RDP | `remmina`
 
