@@ -16,3 +16,8 @@
     name: "{{ ansible_env.USER }}"
     shell: "{{ which_result.stdout }}"
   when: which_result.rc == 0
+
+- name: Сгенерировать .zshrc
+  template:
+    src: .zshrc.j2
+    dest: "{{ ansible_env.HOME }}/.zshrc"
