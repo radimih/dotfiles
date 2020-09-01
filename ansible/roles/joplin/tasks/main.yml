@@ -1,0 +1,9 @@
+---
+# - name: Обновить приложение
+#   include_tasks: update_app.yml
+
+- name: Обновить иконку приложения
+  include_tasks: update_icon.yml
+
+# - name: Обновить ярлык запуска приложения
+#   include_tasks: update_launcher.yml

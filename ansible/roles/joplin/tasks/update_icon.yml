@@ -1,0 +1,28 @@
+---
+- name: Создать каталог для иконки приложения {{ icons_path }}
+  become: yes
+  file:
+    path: "{{ icons_path }}"
+    state: directory
+
+- name: Создать временный каталог
+  tempfile:
+    state: directory
+    suffix: _joplin_icon
+  register: temp_icon_dir
+
+- name: Скачать иконку во временный каталог
+  get_url:
+    url: http://localhost:8000/icon_server.txt
+    dest: "{{ temp_icon_dir.path }}"
+
+- name: Обновить иконку приложения
+  copy:
+    src: "{{ temp_icon_dir.path }}/icon_server.txt"
+    dest: /tmp/icon.txt
+
+- name: Удалить временныый каталог
+  file:
+    path: "{{ temp_icon_dir.path }}"
+    state: absent
+  when: temp_icon_dir.path is defined

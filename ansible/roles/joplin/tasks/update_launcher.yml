@@ -1,0 +1,6 @@
+---
+- name: Создать каталог для ярлыка приложения {{ launcher_path }}
+  become: yes
+  file:
+    path: "{{ launcher_path }}"
+    state: directory

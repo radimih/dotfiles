@@ -1,0 +1,36 @@
+---
+- name: Создать каталог приложения {{ joplin_path }}
+  become: yes
+  file:
+    path: "{{ joplin_path }}"
+    state: directory
+
+- name: Получить информацию о приложении из GitHub'а
+  uri:
+    url: https://api.github.com/repos/laurent22/joplin/releases/latest
+  register: github_joplin
+
+- name: Определить последнюю версию приложения на GitHub'е
+  set_fact:
+    # В том числе убрать из имени тэга первый символ 'v'
+    joplin_latest_version: "{{ github_joplin.json.tag_name[1:] }}"
+
+- name: Определить, установлена ли последняя версия приложения ({{ joplin_latest_version }})
+  stat:
+    path: "{{ joplin_path }}/Joplin-{{ joplin_latest_version }}.AppImage"
+  register: joplin_bin
+
+- name: Скачать последнюю версию приложения, если она еще не закачена
+  become: yes
+  get_url:
+    url: https://github.com/laurent22/joplin/releases/download/v{{ joplin_latest_version }}/Joplin-{{ joplin_latest_version }}.AppImage
+    dest: "{{ joplin_path }}/"
+    mode: "0755"
+  when: not joplin_bin.stat.exists
+
+- name: Установить символическую ссылку на последнюю версию приложения
+  become: yes
+  file:
+    src: "Joplin-{{ joplin_latest_version }}.AppImage"
+    dest: "{{ joplin_path }}/Joplin.AppImage"
+    state: link
