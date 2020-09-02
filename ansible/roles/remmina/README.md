@@ -1,7 +1,7 @@
 # Remmina
 
-Установка приложения [Remmina](https://remmina.org/) для доступа на
-удаленные хосты через SSH и RDP.
+Установка desktop-приложения [Remmina](https://remmina.org/) для
+доступа на удаленные хосты через SSH и RDP.
 
 ## Особенность установки
 

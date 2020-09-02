@@ -5,4 +5,5 @@
   roles:
     - {role: minipack, tags: ['minipack']}
     - {role: fonts, tags: ['fonts']}
+    - {role: joplin, tags: ['joplin']}
     - {role: remmina, tags: ['remmina']}
