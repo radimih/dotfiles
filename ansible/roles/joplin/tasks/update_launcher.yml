@@ -1,6 +1,13 @@
 ---
-- name: Создать каталог для ярлыка приложения {{ launcher_path }}
+- name: "Создать каталог для ярлыка приложения: {{ launcher_dir }}"
   become: yes
   file:
-    path: "{{ launcher_path }}"
+    path: "{{ launcher_dir }}"
     state: directory
+
+- name: Сконфигурировать ярлык приложения
+  become: yes
+  template:
+    src: app.desktop.j2
+    dest: "{{ launcher_dir }}/{{ app_name }}.desktop"
+  notify: update-desktop-database

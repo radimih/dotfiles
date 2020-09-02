@@ -1,36 +1,40 @@
 ---
-- name: Создать каталог приложения {{ joplin_path }}
+- name: "Создать каталог приложения: {{ app_dir }}"
   become: yes
   file:
-    path: "{{ joplin_path }}"
+    path: "{{ app_dir }}"
     state: directory
 
 - name: Получить информацию о приложении из GitHub'а
   uri:
-    url: https://api.github.com/repos/laurent22/joplin/releases/latest
-  register: github_joplin
+    url: https://api.github.com/repos/{{ app_github }}/releases/latest
+  register: app_github_info
 
 - name: Определить последнюю версию приложения на GitHub'е
   set_fact:
     # В том числе убрать из имени тэга первый символ 'v'
-    joplin_latest_version: "{{ github_joplin.json.tag_name[1:] }}"
+    app_latest_version: "{{ app_github_info.json.tag_name[1:] }}"
 
-- name: Определить, установлена ли последняя версия приложения ({{ joplin_latest_version }})
+- name: Определить название бинарника последней версии на GitHub'е
+  set_fact:
+    app_latest_bin: "Joplin-{{ app_latest_version }}.AppImage"
+
+- name: Определить, установлена ли последняя версия приложения ({{ app_latest_version }})
   stat:
-    path: "{{ joplin_path }}/Joplin-{{ joplin_latest_version }}.AppImage"
-  register: joplin_bin
+    path: "{{ app_dir }}/{{ app_latest_bin }}"
+  register: current_app_bin
 
-- name: Скачать последнюю версию приложения, если она еще не закачена
+- name: Скачать последнюю версию приложения из GitHub'а, если она еще не закачена
   become: yes
   get_url:
-    url: https://github.com/laurent22/joplin/releases/download/v{{ joplin_latest_version }}/Joplin-{{ joplin_latest_version }}.AppImage
-    dest: "{{ joplin_path }}/"
+    url: https://github.com/{{ app_github }}/releases/download/v{{ app_latest_version }}/{{ app_latest_bin }}
+    dest: "{{ app_dir }}/"
     mode: "0755"
-  when: not joplin_bin.stat.exists
+  when: not current_app_bin.stat.exists
 
 - name: Установить символическую ссылку на последнюю версию приложения
   become: yes
   file:
-    src: "Joplin-{{ joplin_latest_version }}.AppImage"
-    dest: "{{ joplin_path }}/Joplin.AppImage"
+    src: "{{ app_latest_bin }}"
+    dest: "{{ app_exec }}"
     state: link
