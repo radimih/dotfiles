@@ -9,8 +9,9 @@
 Роль | Назначение | Тэги
 ---- | ---------- | ----
 [fonts](ansible/roles/fonts) | Установка шрифтов | `fonts`
+[joplin](ansible/roles/joplin) | Установка приложения [Joplin](https://joplinapp.org/) для ведения заметок | `joplin`
 [minipack](ansible/roles/minipack) | Установка минимального набор пакетов | `minipack`
-[remmina](ansible/roles/remmina) | Установка [Remmina](https://remmina.org/) для доступа к хостам через SSH и RDP | `remmina`
+[remmina](ansible/roles/remmina) | Установка приложения [Remmina](https://remmina.org/) для доступа к хостам через SSH и RDP | `remmina`
 
 ## Установка / актуализация конфигурации системы
 
