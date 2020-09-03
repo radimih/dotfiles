@@ -6,12 +6,12 @@
 
 #### Ansible-роли
 
-Роль | Назначение | Тэги
----- | ---------- | ----
-[fonts](ansible/roles/fonts) | Установка шрифтов | `fonts`
-[joplin](ansible/roles/joplin) | Установка приложения [Joplin](https://joplinapp.org/) для ведения заметок | `joplin`
-[minipack](ansible/roles/minipack) | Установка минимального набор пакетов | `minipack`
-[remmina](ansible/roles/remmina) | Установка приложения [Remmina](https://remmina.org/) для доступа к хостам через SSH и RDP | `remmina`
+Роль | Назначение | Ручная донастройка? | Тэги
+---- | ---------- | :-----------------: | ----
+[fonts](ansible/roles/fonts) | Установка шрифтов | нет | `fonts`
+[joplin](ansible/roles/joplin) | Установка приложения [Joplin](https://joplinapp.org/) для ведения заметок | [да](ansible/roles/joplin#после-установки) | `joplin`
+[minipack](ansible/roles/minipack) | Установка минимального набор пакетов | нет | `minipack`
+[remmina](ansible/roles/remmina) | Установка приложения [Remmina](https://remmina.org/) для доступа к хостам через SSH и RDP | [да](ansible/roles/remmina#после-установки) | `remmina`
 
 ## Установка / актуализация конфигурации системы
 
