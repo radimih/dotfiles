@@ -11,13 +11,13 @@
   block:
     - name: Создать каталог установки zinit
       file:
-        path: "{{ zinit_path_home }}"
+        path: "{{ zinit_home_dir }}"
         state: directory
 
     - name: Склонировать/обновить zinit
       git:
         repo: https://github.com/zdharma/zinit
-        dest: "{{ zinit_path_home }}"
+        dest: "{{ zinit_home_dir }}"
         force: yes
         update: yes
 
