@@ -5,11 +5,11 @@
     name: fontconfig
     state: present
 
-- name: Скопировать шрифты в {{ path_fonts }}
+- name: Скопировать шрифты в {{ fonts_dir }}
   become: yes
   copy:
     src: files/
-    dest: "{{ path_fonts }}"
+    dest: "{{ fonts_dir }}"
     owner: root
     group: root
     mode: "644"

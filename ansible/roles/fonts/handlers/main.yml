@@ -1,4 +1,4 @@
 ---
  - name: rebuild-fonts-cache
    become: yes
-   shell: "fc-cache --force {{ path_fonts }}"
+   shell: "fc-cache --force {{ fonts_dir }}"

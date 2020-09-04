@@ -1,2 +1,2 @@
 ---
-path_fonts: /usr/local/share/fonts
+fonts_dir: /usr/local/share/fonts
