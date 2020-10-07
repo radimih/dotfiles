@@ -10,36 +10,9 @@
     - role: zsh
       vars:
         zinit_plugins:
-          - name: plugin/test1
-            type: load
-            ices:
-              - lucid
-              - wait
-          - name: plugin/test2
-            type: load
-          - name: plugin/test3
+          - name: zsh-users/zsh-autosuggestions
             type: light
-            ices:
-              - lucid
-              - wait
-              - name: atinit
-                value: >-
-                  AAA=B;
-                  BBB=C
-          - name: plugin/test4
+          - name: zdharma/fast-syntax-highlighting
             type: light
-            ices:
-              - lucid
-              - wait
-              - name: atinit
-                value: DDD
-              - name: atinit
-                value: FFF
-              - name: atinit
-                value: GGG
-              - name: atinit
-                value: YYY
-          - name: plugin/test5
-            type: snippet
       tags:
         - zsh
