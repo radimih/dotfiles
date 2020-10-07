@@ -1,0 +1,23 @@
+---
+- name: Установить пакет zsh, если еще не установлен
+  become: yes
+  package:
+    name: zsh
+    state: present
+
+- name: Определить местонахождение бинарника zsh
+  command: which zsh
+  register: which_result
+  ignore_errors: yes
+
+- name: Установить zsh shell-оболочкой по-умолчанию
+  become: yes
+  user:
+    name: "{{ ansible_env.USER }}"
+    shell: "{{ which_result.stdout }}"
+  when: which_result.rc == 0
+
+- name: Сгенерировать .zshrc
+  template:
+    src: .zshrc.j2
+    dest: "{{ ansible_env.HOME }}/.zshrc"

@@ -1,0 +1,6 @@
+---
+- name: Установить zsh
+  import_tasks: install-zsh.yml
+
+- name: Установить zinit
+  import_tasks: install-zinit.yml

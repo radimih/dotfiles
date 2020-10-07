@@ -1,0 +1,30 @@
+# https://github.com/zdharma/zinit
+
+---
+- name: Установить git, если еще не установлен
+  become: yes
+  package:
+    name: git
+    state: present
+
+- name: Установить/обновить zinit
+  block:
+    - name: Создать каталог установки zinit
+      file:
+        path: "{{ zinit_home_dir }}"
+        state: directory
+        mode: "755"
+
+    - name: Склонировать/обновить zinit
+      git:
+        repo: https://github.com/zdharma/zinit
+        dest: "{{ zinit_home_dir }}/{{ zinit_bin_dirname }}"
+        force: yes
+        update: yes
+
+- name: Сгенерировать .zinitrc
+  template:
+    src: .zinitrc.j2
+    dest: "{{ ansible_env.HOME }}/.zinitrc"
+  tags:
+    - zinitrc

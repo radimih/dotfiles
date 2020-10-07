@@ -1,0 +1,3 @@
+---
+zinit_home_dir: "{{ ansible_env.HOME}}/.zinit"
+zinit_plugins: []

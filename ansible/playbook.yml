@@ -7,3 +7,12 @@
     - {role: fonts, tags: ['fonts']}
     - {role: joplin, tags: ['joplin']}
     - {role: remmina, tags: ['remmina']}
+    - role: zsh
+      vars:
+        zinit_plugins:
+          - name: zsh-users/zsh-autosuggestions
+            type: light
+          - name: zdharma/fast-syntax-highlighting
+            type: light
+      tags:
+        - zsh
