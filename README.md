@@ -11,6 +11,7 @@
 [fonts](ansible/roles/fonts) | Установка шрифтов | нет | `fonts`
 [joplin](ansible/roles/joplin) | Установка приложения [Joplin](https://joplinapp.org/) для ведения заметок | [да](ansible/roles/joplin#после-установки) | `joplin`
 [minipack](ansible/roles/minipack) | Установка минимального набор пакетов | нет | `minipack`
+[pipx](ansible/roles/pipx) | Установка утилиты [pipx](https://joplinapp.org/) для управления Python-приложениями | нет | `pipx`
 [remmina](ansible/roles/remmina) | Установка приложения [Remmina](https://remmina.org/) для доступа к хостам через SSH и RDP | [да](ansible/roles/remmina#после-установки) | `remmina`
 [zsh](ansible/roles/zsh) | Установка shell-оболочки [Zsh](https://www.zsh.org/) и настройка окружения | нет | `zsh`
 
