@@ -17,3 +17,4 @@
             type: light
       tags:
         - zsh
+    - {role: dev-python, tags: ['dev', 'python']}
