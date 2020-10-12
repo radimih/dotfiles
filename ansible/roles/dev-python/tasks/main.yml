@@ -1,0 +1,6 @@
+---
+- name: Установить pipenv
+  import_tasks: install-pipenv.yml
+
+- name: Установить pyenv
+  import_tasks: install-pyenv.yml

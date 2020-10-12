@@ -1,0 +1,2 @@
+---
+pyenv_home_dir: "{{ ansible_env.HOME }}/.pyenv"
