@@ -1,0 +1,4 @@
+---
+# TODO: проверить, чтобы ~/.local/bin был в PATH из роли zsh (.zprofile?)
+- name: Установить через pipx приложение pipenv
+  shell: pipx install pipenv

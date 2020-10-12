@@ -1,0 +1,4 @@
+# Данный скрипт должен выполняться последним из всех .zshrc-*.zsh скриптов
+export PYENV_ROOT="{{ pyenv_home_dir }}"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"

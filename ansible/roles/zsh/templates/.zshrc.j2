@@ -107,10 +107,10 @@ bindkey '`' forward-word
 # Цвет текста для автодополнения (по-умолчанию fg=8)
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=69'
 
-# Дополнительные скрипты .zshrc-*
-# ===============================
+# Дополнительные скрипты .zshrc-*.zsh
+# ===================================
 setopt +o nomatch
-for file in $HOME/.zshrc-*; do
+for file in $HOME/.zshrc-*.zsh; do
   [ -f "$file" ] || continue
   source "$file"
 done

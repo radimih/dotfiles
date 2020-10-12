@@ -1,0 +1,39 @@
+---
+  # https://github.com/pyenv/pyenv/wiki#suggested-build-environment
+- name: Установить пакеты, необходимые для сборки произвольных версий Python
+  become: yes
+  apt:
+    name:
+      - wget
+      - curl
+      - make
+      - llvm
+      - build-essential
+      - libssl-dev
+      - zlib1g-dev
+      - libbz2-dev
+      - libreadline-dev
+      - libsqlite3-dev
+      - libncurses5-dev
+      - xz-utils
+      - tk-dev
+      - libxml2-dev
+      - libxmlsec1-dev
+      - libffi-dev
+      - liblzma-dev
+    state: present
+    install_recommends: no
+    update_cache: yes
+    cache_valid_time: 7200  # apt update если кэш не обновлялся более 2 часов
+
+- name: Склонировать/обновить pyenv
+  git:
+    repo: https://github.com/pyenv/pyenv.git
+    dest: "{{ pyenv_home_dir }}"
+    force: yes
+    update: yes
+
+- name: Сгенерировать {{ pyenv_init_script }}
+  template:
+    src: "{{ pyenv_init_script }}.j2"
+    dest: "{{ ansible_env.HOME }}/{{ pyenv_init_script }}"
