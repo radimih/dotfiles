@@ -17,6 +17,11 @@
     shell: "{{ which_result.stdout }}"
   when: which_result.rc == 0
 
+- name: Сгенерировать .zshenv
+  template:
+    src: .zshenv.j2
+    dest: "{{ ansible_env.HOME }}/.zshenv"
+
 - name: Сгенерировать .zshrc
   template:
     src: .zshrc.j2
