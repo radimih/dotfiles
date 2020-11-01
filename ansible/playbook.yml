@@ -5,6 +5,7 @@
   roles:
     - {role: minipack, tags: ['minipack']}
     - {role: fonts, tags: ['fonts']}
+    - {role: docker, tags: ['docker']}
     - {role: joplin, tags: ['joplin']}
     - {role: pipx, tags: ['pipx']}
     - {role: remmina, tags: ['remmina']}

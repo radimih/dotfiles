@@ -1,0 +1,31 @@
+---
+- name: Добавить PGP-ключ репозитория
+  become: yes
+  apt_key:
+    id: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: Добавить официальный PPA
+  become: yes
+  apt_repository:
+    # TODO: проверить для Linux Mint - ansible_lsb.codename == focal (или ansible_distribution_release)
+    repo: 'deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_lsb.codename }} stable'
+    state: present
+
+- name: Установить последнюю версию
+  become: yes
+  apt:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+    state: latest
+    update_cache: yes
+
+- name: Добавить пользователя '{{ ansible_user_id }}' в группу 'docker'
+  become: yes
+  user:
+    name: '{{ ansible_user_id }}'
+    groups: docker
+    append: yes

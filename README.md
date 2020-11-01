@@ -9,6 +9,7 @@
 Роль | Назначение | Ручная донастройка? | Тэги
 ---- | ---------- | :-----------------: | ----
 [dev-python](ansible/roles/dev-python) | Настройка окружения для разработки на Python | нет | `dev` `python`
+[docker](ansible/roles/docker) | Установка [Docker](https://docs.docker.com/engine/) и [Docker Compose](https://docs.docker.com/compose/) | нет | `docker`
 [fonts](ansible/roles/fonts) | Установка шрифтов | нет | `fonts`
 [joplin](ansible/roles/joplin) | Установка приложения [Joplin](https://joplinapp.org/) для ведения заметок | [да](ansible/roles/joplin#после-установки) | `joplin`
 [minipack](ansible/roles/minipack) | Установка минимального набор пакетов | нет | `minipack`
