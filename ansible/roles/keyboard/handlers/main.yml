@@ -1,0 +1,6 @@
+---
+- name: restart-udevmon
+  become: yes
+  systemd:
+    name: udevmon
+    state: restarted

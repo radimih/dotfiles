@@ -1,0 +1,9 @@
+- JOB: "intercept -g $DEVNODE | space2meta | dual-function-keys -c {{ config_dir }}/dual-function.yaml | uinput -d $DEVNODE"
+  DEVICE:
+    EVENTS:
+      EV_KEY: [KEY_ENTER, KEY_SPACE]
+
+{# - JOB: "intercept -g $DEVNODE | space2meta | uinput -d $DEVNODE"
+  DEVICE:
+    EVENTS:
+      EV_KEY: [KEY_SPACE] #}
