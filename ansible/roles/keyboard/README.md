@@ -4,6 +4,9 @@
 
 ## [interception](https://gitlab.com/interception/linux/tools)
 
+Переопределить `Space` -> `Meta` не удаётся с помощью плагина `dual-function-keys`,
+так как почему-то одиночное нажатие на `Space` отрабатывается как `Meta`.
+
 ```bash
 $ cat <<EOF | docker build -t interception-builder -
 FROM ubuntu:18.04
