@@ -9,7 +9,7 @@
 
 ```bash
 $ cat <<EOF | docker build -t interception-builder -
-FROM ubuntu:18.04
+FROM ubuntu:latest
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -22,6 +22,11 @@ WORKDIR /src
 RUN git clone https://gitlab.com/interception/linux/tools
 RUN git clone https://gitlab.com/interception/linux/plugins/dual-function-keys
 RUN git clone https://gitlab.com/interception/linux/plugins/space2meta
+
+# Прилинковать библиотеку yaml-cpp статически, чтобы итоговые бинарники не зависили
+# от пакета libyaml-cpp-dev
+RUN sed -i 's/yaml-cpp/yaml-cpp.a/g' tools/CMakeLists.txt \
+ && sed -i '/LDFLAGS/s/-lyaml-cpp/-l:libyaml-cpp.a/g' dual-function-keys/config.mk
 
 WORKDIR tools/build
 RUN cmake .. && make

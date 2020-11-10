@@ -1,11 +1,4 @@
 ---
-- name: Установить необходимые пакеты
-  become: yes
-  apt:
-    name:
-      - libyaml-cpp-dev
-    state: present
-
 - name: Установить исполняемые файлы interception
   become: yes
   copy:
