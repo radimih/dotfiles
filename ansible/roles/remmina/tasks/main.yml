@@ -4,10 +4,3 @@
   snap:
     name: remmina
     state: present
-    classic: yes
-
-# - name: Убрать плагин сохранения паролей в Gnome Keyring
-#   become: yes
-#   apt:
-#     name: remmina-plugin-secret
-#     state: absent
