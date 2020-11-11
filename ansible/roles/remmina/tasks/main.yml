@@ -1,19 +1,6 @@
 ---
-- name: Добавить официальный PPA приложения
+- name: Установить Snap-пакет приложения
   become: yes
-  apt_repository:
-    repo: 'ppa:remmina-ppa-team/remmina-next'
-    state: present
-
-- name: Установить последнюю версию приложения
-  become: yes
-  apt:
+  snap:
     name: remmina
-    state: latest
-    update_cache: yes
-
-- name: Убрать плагин сохранения паролей в Gnome Keyring
-  become: yes
-  apt:
-    name: remmina-plugin-secret
-    state: absent
+    state: present
