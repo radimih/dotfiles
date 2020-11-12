@@ -4,3 +4,18 @@
   snap:
     name: remmina
     state: present
+
+- name: Запустить приложение, чтобы оно создало свои каталоги и файлы
+  shell: remmina --version
+  changed_when: no
+
+- name: Настроить приложение
+  ini_file:
+    path: '{{ ansible_env.HOME }}/snap/remmina/current/.config/remmina/remmina.pref'
+    no_extra_spaces: yes
+    section: remmina_pref
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+  with_items:
+    - { option: "prevent_snap_welcome_message", value: "true" }
+    - { option: "view_file_mode", value: "1" }
