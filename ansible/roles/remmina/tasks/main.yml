@@ -9,6 +9,15 @@
   shell: remmina --version
   changed_when: no
 
+- name: Установить secret приложения
+  ini_file:
+    path: '{{ ansible_env.HOME }}/snap/remmina/current/.config/remmina/remmina.pref'
+    no_extra_spaces: yes
+    section: remmina_pref
+    option: secret
+    value: "{{ remmina_secret }}"
+  when: remmina_secret is defined
+
 - name: Настроить приложение
   ini_file:
     path: '{{ ansible_env.HOME }}/snap/remmina/current/.config/remmina/remmina.pref'
