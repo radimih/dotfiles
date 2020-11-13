@@ -16,7 +16,7 @@
 - name: Настроить конфигурационный файл демона udevmon
   become: yes
   template:
-    src: templates/udevmon.yaml.j2
+    src: udevmon.yaml.j2
     dest: "{{ config_dir }}/udevmon.yaml"
   notify: restart-udevmon
 

@@ -12,3 +12,13 @@ MAPPINGS:
   - KEY: KEY_ENTER
     TAP: KEY_ENTER
     HOLD: KEY_RIGHTCTRL
+
+  # Для переключения на английский (см. templates/.xbindkeysrc.j2)
+  - KEY: KEY_LEFTSHIFT
+    TAP: [ KEY_LEFTALT, KEY_F11 ]
+    HOLD: KEY_LEFTSHIFT
+
+  # Для переключения на русский (см. templates/.xbindkeysrc.j2)
+  - KEY: KEY_RIGHTSHIFT
+    TAP: [ KEY_LEFTALT, KEY_F12 ]
+    HOLD: KEY_RIGHTSHIFT

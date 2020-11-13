@@ -1,3 +1,6 @@
 ---
 - name: Настроить Interception
   import_tasks: setup-interception.yml
+
+- name: Настроить переключение раскладок клавиатуры
+  import_tasks: setup-layouts.yml
