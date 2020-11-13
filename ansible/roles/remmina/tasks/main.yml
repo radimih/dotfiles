@@ -1,19 +1,30 @@
 ---
-- name: Добавить официальный PPA приложения
+- name: Установить Snap-пакет приложения
   become: yes
-  apt_repository:
-    repo: 'ppa:remmina-ppa-team/remmina-next'
+  snap:
+    name: remmina
     state: present
 
-- name: Установить последнюю версию приложения
-  become: yes
-  apt:
-    name: remmina
-    state: latest
-    update_cache: yes
+- name: Запустить приложение, чтобы оно создало свои каталоги и файлы
+  shell: remmina --version
+  changed_when: no
 
-- name: Убрать плагин сохранения паролей в Gnome Keyring
-  become: yes
-  apt:
-    name: remmina-plugin-secret
-    state: absent
+- name: Установить secret приложения
+  ini_file:
+    path: '{{ ansible_env.HOME }}/snap/remmina/current/.config/remmina/remmina.pref'
+    no_extra_spaces: yes
+    section: remmina_pref
+    option: secret
+    value: "{{ remmina_secret }}"
+  when: remmina_secret is defined
+
+- name: Настроить приложение
+  ini_file:
+    path: '{{ ansible_env.HOME }}/snap/remmina/current/.config/remmina/remmina.pref'
+    no_extra_spaces: yes
+    section: remmina_pref
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+  with_items:
+    - { option: "prevent_snap_welcome_message", value: "true" }
+    - { option: "view_file_mode", value: "1" }

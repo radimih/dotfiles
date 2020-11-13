@@ -3,13 +3,28 @@
   hosts: localhost
 
   roles:
+
     - {role: minipack, tags: ['minipack']}
     - {role: fonts, tags: ['fonts']}
     - {role: keyboard, tags: ['keyboard']}
     - {role: docker, tags: ['docker']}
     - {role: joplin, tags: ['joplin']}
     - {role: pipx, tags: ['pipx']}
-    - {role: remmina, tags: ['remmina']}
+    - {role: dev-python, tags: ['dev', 'python']}
+
+    - role: remmina
+      vars:
+        remmina_secret: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          36646335306633363036393562326663353732346366383638373231333236303939333263623265
+          3835623939643038313262623833363036653735343133310a353732613866363732396466383938
+          38353063386532653936316561303333343466653664346236393734626235303063393965613633
+          3563653662626537390a363230363238376538383936323837303139343632343535663363353266
+          35643639363662653161396465636664336664353165383139653430333837633963353633373363
+          6534376230643831383362346230383961613863633764323661
+      tags:
+        - remmina
+
     - role: zsh
       vars:
         zinit_plugins:
@@ -19,4 +34,3 @@
             type: light
       tags:
         - zsh
-    - {role: dev-python, tags: ['dev', 'python']}
