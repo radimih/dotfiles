@@ -19,3 +19,9 @@
     src: .xbindkeysrc.j2
     dest: "{{ ansible_env.HOME }}/.xbindkeysrc"
   notify: reload-xbindkeys-config
+
+- name: Сделать автоматическим запуск xbindkeys
+  copy:
+    src: files/.xprofile
+    dest: "{{ ansible_env.HOME }}/"
+    mode: "755"
