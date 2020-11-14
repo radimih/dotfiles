@@ -1,0 +1,9 @@
+---
+- name: restart-udevmon
+  become: yes
+  systemd:
+    name: udevmon
+    state: restarted
+
+- name: reload-xbindkeys-config
+  shell: xbindkeys -p
