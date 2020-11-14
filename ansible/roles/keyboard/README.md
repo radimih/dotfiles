@@ -3,12 +3,23 @@
 Настройка клавиатуры:
 
 * переопределение некоторых клавиш с помощью [interception](https://gitlab.com/interception/linux/tools) и его плагинов:
-* настройка переключателей раскладок клавиатуры с помощью [xbindkeys](https://wiki.archlinux.org/index.php/Xbindkeys_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9)):
+  * **CapsLock**: однократное нажатие - **ESC**, на удержании - **Left Ctrl**
+  * **Enter**: однократное нажатие - **Enter**, на удержании - **Right Ctrl**
+  * **Space**: однократное нажатие - **Space**, на удержании - **Left Meta**
+  * **Left Shift**: однократное нажатие - **Left Alt + F11** (для переключения раскладки), на удержании - **Left Shift**
+  * **Right Shift**: однократное нажатие - **Left Alt + F12** (для переключения раскладки), на удержании - **Right Shift**
+
+* определение _немодальных_ переключателей раскладок клавиатуры с помощью [xbindkeys](https://wiki.archlinux.org/index.php/Xbindkeys_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9)):
+  * **Left Shift** (**Left Alt + F11**) - на латиницу
+  * **Right Shift** (**Left Alt + F12**) - на кириллицу
 
 ## interception
 
-Переопределить `Space` -> `Meta` не удаётся с помощью плагина `dual-function-keys`,
-так как почему-то одиночное нажатие на `Space` отрабатывается как `Meta`.
+Переопределить **Space** → **Meta** с помощью плагина `dual-function-keys`  не удаётся,
+так как почему-то одиночное нажатие на **Space** отрабатывается как **Meta**.
+Поэтому для этого используется плагин `space2meta`.
+
+Собрать бинарные файлы:
 
 ```bash
 $ cat <<EOF | docker build -t interception-builder -
@@ -47,6 +58,6 @@ RUN echo "#!/bin/bash" > /to_target.sh \
 
 CMD /to_target.sh
 EOF 
-$ cd files
+$ cd files/bin
 $ docker run -t --rm -v `pwd`:/target interception-builder
 ```
