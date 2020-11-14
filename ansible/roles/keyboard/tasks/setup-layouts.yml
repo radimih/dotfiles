@@ -5,9 +5,6 @@
     name: xbindkeys
     state: latest
 
-- debug:
-    var: ansible_env.XDG_CURRENT_DESKTOP
-
 - name: Определить команды переключения раскладок для Gnome
   include_vars:
     file: vars/switch-commands-gnome.yaml
