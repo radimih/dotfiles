@@ -1,8 +1,11 @@
 # keyboard
 
-Настройка клавиатуры.
+Настройка клавиатуры:
 
-## [interception](https://gitlab.com/interception/linux/tools)
+* переопределение некоторых клавиш с помощью [interception](https://gitlab.com/interception/linux/tools) и его плагинов:
+* настройка переключателей раскладок клавиатуры с помощью [xbindkeys](https://wiki.archlinux.org/index.php/Xbindkeys_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9)):
+
+## interception
 
 Переопределить `Space` -> `Meta` не удаётся с помощью плагина `dual-function-keys`,
 так как почему-то одиночное нажатие на `Space` отрабатывается как `Meta`.
