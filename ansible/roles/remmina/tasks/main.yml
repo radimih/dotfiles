@@ -26,5 +26,6 @@
     option: "{{ item.option }}"
     value: "{{ item.value }}"
   with_items:
+    - { option: "disable_tray_icon", value: "true" }
     - { option: "prevent_snap_welcome_message", value: "true" }
     - { option: "view_file_mode", value: "1" }
