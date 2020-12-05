@@ -1,0 +1,7 @@
+---
+- name: Установить python-модули для работы ansible-модуля dconf
+  pip:
+    name: psutil
+
+- name: Настроить клавиатуру
+  import_tasks: setup-keyboard.yml

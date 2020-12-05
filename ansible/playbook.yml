@@ -6,6 +6,7 @@
 
     - {role: minipack, tags: ['minipack']}
     - {role: fonts, tags: ['fonts']}
+    - {role: gnome, tags: ['gnome']}
     - {role: keyboard, tags: ['keyboard']}
     - {role: docker, tags: ['docker']}
     - {role: joplin, tags: ['joplin']}
