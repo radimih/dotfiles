@@ -9,6 +9,7 @@
   command: which zsh
   register: which_result
   ignore_errors: yes
+  changed_when: false
 
 - name: Установить zsh shell-оболочкой по-умолчанию
   become: yes
