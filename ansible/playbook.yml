@@ -32,5 +32,10 @@
             type: light
           - name: zdharma/fast-syntax-highlighting
             type: light
+          - name: romkatv/powerlevel10k
+            type: light
+            ices:
+              - name: depth
+                value: "1"
       tags:
         - zsh
