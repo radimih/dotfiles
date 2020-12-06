@@ -18,12 +18,10 @@
     shell: "{{ which_result.stdout }}"
   when: which_result.rc == 0
 
-- name: Сгенерировать .zshenv
-  template:
-    src: .zshenv.j2
-    dest: "{{ ansible_env.HOME }}/.zshenv"
-
-- name: Сгенерировать .zshrc
-  template:
-    src: .zshrc.j2
-    dest: "{{ ansible_env.HOME }}/.zshrc"
+- name: Скопировать файлы настроек zsh
+  copy:
+    src: files/
+    dest: "{{ ansible_env.HOME }}"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
+    mode: "0644"

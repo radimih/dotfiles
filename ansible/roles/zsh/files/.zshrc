@@ -107,11 +107,11 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=69'
 # Дополнительные скрипты .zshrc-*.zsh
 # ===================================
 setopt +o nomatch
-for file in {{ ansible_env.HOME }}/.zshrc-*.zsh; do
+for file in $HOME/.zshrc-*.zsh; do
   [ -f "$file" ] || continue
   source "$file"
 done
 
 # zinit
 # =====
-[ -s {{ ansible_env.HOME }}/.zinitrc ] && source {{ ansible_env.HOME }}/.zinitrc
+[ -s $HOME/.zinitrc ] && source $HOME/.zinitrc
