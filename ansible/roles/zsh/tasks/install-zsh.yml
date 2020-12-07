@@ -9,6 +9,7 @@
   command: which zsh
   register: which_result
   ignore_errors: yes
+  changed_when: false
 
 - name: Установить zsh shell-оболочкой по-умолчанию
   become: yes
@@ -17,12 +18,13 @@
     shell: "{{ which_result.stdout }}"
   when: which_result.rc == 0
 
-- name: Сгенерировать .zshenv
-  template:
-    src: .zshenv.j2
-    dest: "{{ ansible_env.HOME }}/.zshenv"
-
-- name: Сгенерировать .zshrc
-  template:
-    src: .zshrc.j2
-    dest: "{{ ansible_env.HOME }}/.zshrc"
+- name: Скопировать файлы настроек zsh
+  copy:
+    src: "files/{{ item }}"
+    dest: "{{ ansible_env.HOME }}"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
+    mode: "0644"
+  loop:
+    - ".zshrc"
+    - ".zshenv"
