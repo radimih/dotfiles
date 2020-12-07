@@ -4,3 +4,7 @@
 
 - name: Установить zinit
   import_tasks: install-zinit.yml
+
+- name: Настроить Powerlevel10k
+  import_tasks: setup-p10k.yml
+  when: "'romkatv/powerlevel10k' in zinit_plugins|map(attribute='name')"
