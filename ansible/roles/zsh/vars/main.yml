@@ -1,2 +1,3 @@
 ---
 zinit_bin_dirname: "bin"
+zinit_home_dir: "{{ ansible_env.HOME}}/.zinit"
