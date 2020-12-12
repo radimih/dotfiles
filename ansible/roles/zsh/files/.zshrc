@@ -19,8 +19,8 @@ stty intr ^Q      # вместо Ctrl+C сделать Ctrl+Q
 # Алиасы
 # ======
 
-alias ll='ls -AlF --group-directories-first'
-alias la='ls -A --group-directories-first'
+alias ll='ls -h -AlF --group-directories-first'
+alias la='ls -h -A --group-directories-first'
 alias df='df -h'
 alias du='du -h'
 alias e='$EDITOR'
