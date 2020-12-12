@@ -6,7 +6,14 @@
 
     - {role: minipack, tags: ['minipack']}
     - {role: fonts, tags: ['fonts']}
-    - {role: gnome, tags: ['gnome']}
+
+    - role: gnome
+      vars:
+        gnome_extensions_ids:
+          - 3357  # Material Shell (https://extensions.gnome.org/extension/3357/material-shell/)
+      tags:
+        - gnome
+
     - {role: keyboard, tags: ['keyboard']}
     - {role: docker, tags: ['docker']}
     - {role: joplin, tags: ['joplin']}
