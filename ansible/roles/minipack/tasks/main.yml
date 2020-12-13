@@ -5,8 +5,12 @@
     name:
       - curl
       - git
+      - httpie
       - inetutils-traceroute
+      - jq
       - neovim
+      - net-tools
+      - tree
       - xsel
     state: latest
     update_cache: yes
