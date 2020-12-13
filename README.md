@@ -48,7 +48,7 @@ $ ansible-playbook playbook.yml --ask-become-pass --tags "{список тэго
 1. Установить минимальный набор пакетов:
 
    ```bash
-   $ sudo apt install -y xclip git
+   $ sudo apt install -y xsel git
    ```
 
 1. Сгенерировать пару ключей SSH и скопировать открытый ключ в буфер обмена:
@@ -56,7 +56,7 @@ $ ansible-playbook playbook.yml --ask-become-pass --tags "{список тэго
    ```bash
    $ ssh-keygen -t rsa -b 4096 -C "radimir.com@gmail.com"
    $ ssh-add
-   $ xclip -sel clip < ~/.ssh/id_rsa.pub
+   $ xsel --input --clipboard < ~/.ssh/id_rsa.pub
    ```
 
 1. Добавить открытый ключ в GitHub-аккаунт:
