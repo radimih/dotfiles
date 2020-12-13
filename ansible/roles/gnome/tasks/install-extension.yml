@@ -23,5 +23,6 @@
 
   - name: "Расширение {{ gnome_extension_info.name }} ({{ gnome_extension_info.pk }}) | Включить"
     shell: gnome-extensions enable "{{ r_gnome_extension_download.dest }}"
+    notify: restart-gnome-shell
 
   when: extension_version.website|int > extension_version.installed|int
