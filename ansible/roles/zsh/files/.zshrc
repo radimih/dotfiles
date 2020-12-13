@@ -19,8 +19,8 @@ stty intr ^Q      # вместо Ctrl+C сделать Ctrl+Q
 # Алиасы
 # ======
 
-alias ll='ls -AlF --group-directories-first'
-alias la='ls -A --group-directories-first'
+alias ll='ls -h -AlF --group-directories-first'
+alias la='ls -h -A --group-directories-first'
 alias df='df -h'
 alias du='du -h'
 alias e='$EDITOR'
@@ -107,11 +107,11 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=69'
 # Дополнительные скрипты .zshrc-*.zsh
 # ===================================
 setopt +o nomatch
-for file in {{ ansible_env.HOME }}/.zshrc-*.zsh; do
+for file in $HOME/.zshrc-*.zsh; do
   [ -f "$file" ] || continue
   source "$file"
 done
 
 # zinit
 # =====
-[ -s {{ ansible_env.HOME }}/.zinitrc ] && source {{ ansible_env.HOME }}/.zinitrc
+[ -s $HOME/.zinitrc ] && source $HOME/.zinitrc
