@@ -12,14 +12,14 @@
   uri:
     url: https://extensions.gnome.org/extension-info/?pk={{ item }}&shell_version={{ gnome_shell_version }}
     return_content: yes
-  loop: "{{ gnome_extensions_ids }}"
-  register: r_gnome_extensions_info
+  loop: "{{ extensions_ids }}"
+  register: r_extensions_info
 
 - name: Создать временный каталог для загрузки расширений
   tempfile:
     state: directory
-    suffix: ".gnome_extensions_download"
-  register: r_gnome_extensions_download_dir
+    suffix: ".extensions_download"
+  register: r_extensions_download_dir
   changed_when: no
 
 - block:
@@ -27,12 +27,12 @@
   - name: Установить расширения
     include_tasks: install-extension.yml
     vars:
-      gnome_extension_info: "{{ item.json }}"
-    loop: "{{ r_gnome_extensions_info.results }}"
+      extension_info: "{{ item.json }}"
+    loop: "{{ r_extensions_info.results }}"
 
   always:
     - name: Удалить временный каталог для загрузки расширений
       file:
-        path: "{{ r_gnome_extensions_download_dir.path }}"
+        path: "{{ r_extensions_download_dir.path }}"
         state: absent
       changed_when: no

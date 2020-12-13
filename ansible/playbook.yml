@@ -9,7 +9,7 @@
 
     - role: gnome
       vars:
-        gnome_extensions_ids:
+        extensions_ids:
           - 3357  # Material Shell (https://extensions.gnome.org/extension/3357/material-shell/)
       tags:
         - gnome
