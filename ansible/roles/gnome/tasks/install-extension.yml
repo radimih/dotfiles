@@ -1,44 +1,27 @@
 ---
-- name: Проверить, установлено ли расширение - {{ gnome_extension_info.name }}
-  stat:
-    path: "{{ ansible_user_dir }}/.local/share/gnome-shell/extensions/{{ gnome_extension_info.uuid }}/metadata.json"
-  register: r_gnome_extension_check_existing
-
-- name: Создать временный каталог для загрузки расширения
-  tempfile:
-    state: directory
-    suffix: ".gnome_extension_download"
-  register: r_gnome_extension_download_dir
+- name: "Расширение {{ gnome_extension_info.name }} ({{ gnome_extension_info.pk }}) | Определить уже установленную версию"
+  shell: gnome-extensions info "{{ gnome_extension_info.uuid }}" | sed -n '/Version:/s/[^0-9.]*\([0-9.]*\).*/\1/p'
+  register: r_gnome_extension_installed_version
   changed_when: no
-  when: r_gnome_extension_check_existing.stat.exists == False
+
+- name: "Расширение {{ gnome_extension_info.name }} ({{ gnome_extension_info.pk }}) | Версия установленного (0 - если не установлено): {{ r_gnome_extension_installed_version.stdout or 0 }}, на сайте: {{ gnome_extension_info.version }}"
+  set_fact:
+    extension_version:
+      installed: "{{ r_gnome_extension_installed_version.stdout or 0 }}"
+      website: "{{ gnome_extension_info.version }}"
 
 - block:
-    - name: Загрузить расширение - {{ gnome_extension_info.name }}
-      get_url:
-        url: https://extensions.gnome.org{{ gnome_extension_info.download_url }}
-        dest: "{{ r_gnome_extension_download_dir.path }}/{{ gnome_extension_info.uuid }}.zip"
-      register: r_gnome_extension_download
 
-    - name: Создать каталог для расширения - {{ gnome_extension_info.name }}
-      file:
-        path: "{{ ansible_user_dir }}/.local/share/gnome-shell/extensions/{{ gnome_extension_info.uuid }}"
-        state: directory
-        owner: "{{ ansible_user_id }}"
-        group: "{{ ansible_user_id }}"
-        mode: 0775
+  - name: "Расширение {{ gnome_extension_info.name }} ({{ gnome_extension_info.pk }}) | Загрузить с сайта"
+    get_url:
+      url: https://extensions.gnome.org{{ gnome_extension_info.download_url }}
+      dest: "{{ r_gnome_extensions_download_dir.path }}/{{ gnome_extension_info.uuid }}.zip"
+    register: r_gnome_extension_download
 
-    - name: Установить расширение - {{ gnome_extension_info.name }}
-      unarchive:
-        src: "{{ r_gnome_extension_download.dest }}"
-        dest: "{{ ansible_user_dir }}/.local/share/gnome-shell/extensions/{{ gnome_extension_info.uuid }}"
-        remote_src: yes
+  - name: "Расширение {{ gnome_extension_info.name }} ({{ gnome_extension_info.pk }}) | Установить/обновить"
+    shell: gnome-extensions install --force "{{ r_gnome_extension_download.dest }}"
 
-    - name: Включить расширение - {{ gnome_extension_info.name }}
-      command: gnome-shell-extension-tool --enable-extension {{ gnome_extension_info.uuid }}
-  always:
-    - name: Удалить временный каталог для загрузки расширения
-      file:
-        path: "{{ r_gnome_extension_download_dir.path }}"
-        state: absent
-      changed_when: no
-  when: r_gnome_extension_check_existing.stat.exists == False
+  - name: "Расширение {{ gnome_extension_info.name }} ({{ gnome_extension_info.pk }}) | Включить"
+    shell: gnome-extensions enable "{{ r_gnome_extension_download.dest }}"
+
+  when: extension_version.website|int > extension_version.installed|int

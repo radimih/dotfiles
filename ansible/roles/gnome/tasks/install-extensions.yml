@@ -1,4 +1,3 @@
-# Основано на https://github.com/jaredhocutt/ansible-gnome-extensions
 ---
 - name: Получить версию GNOME Shell
   shell: gnome-shell --version | sed 's/[^0-9.]*\([0-9.]*\).*/\1/'
@@ -16,8 +15,24 @@
   loop: "{{ gnome_extensions_ids }}"
   register: r_gnome_extensions_info
 
-- name: Установить расширения
-  include_tasks: install-extension.yml
-  vars:
-    gnome_extension_info: "{{ item.json }}"
-  loop: "{{ r_gnome_extensions_info.results }}"
+- name: Создать временный каталог для загрузки расширений
+  tempfile:
+    state: directory
+    suffix: ".gnome_extensions_download"
+  register: r_gnome_extensions_download_dir
+  changed_when: no
+
+- block:
+
+  - name: Установить расширения
+    include_tasks: install-extension.yml
+    vars:
+      gnome_extension_info: "{{ item.json }}"
+    loop: "{{ r_gnome_extensions_info.results }}"
+
+  always:
+    - name: Удалить временный каталог для загрузки расширений
+      file:
+        path: "{{ r_gnome_extensions_download_dir.path }}"
+        state: absent
+      changed_when: no
