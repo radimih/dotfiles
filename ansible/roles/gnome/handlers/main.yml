@@ -1,0 +1,3 @@
+---
+- name: restart-gnome-shell
+  shell: killall -SIGQUIT gnome-shell

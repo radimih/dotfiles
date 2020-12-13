@@ -11,6 +11,7 @@
 [dev-python](ansible/roles/dev-python) | Настройка окружения для разработки на Python | нет | `dev` `python`
 [docker](ansible/roles/docker) | Установка [Docker](https://docs.docker.com/engine/) и [Docker Compose](https://docs.docker.com/compose/) | нет | `docker`
 [fonts](ansible/roles/fonts) | Установка шрифтов | нет | `fonts`
+[gnome](ansible/roles/gnome) | Настройка DE [GNOME Shell](https://wiki.gnome.org/Projects/GnomeShell) и его расширений | нет | `gnome`
 [joplin](ansible/roles/joplin) | Установка приложения [Joplin](https://joplinapp.org/) для ведения заметок | [да](ansible/roles/joplin#после-установки) | `joplin`
 [keyboard](ansible/roles/keyboard) | Настройка клавиатуры (переопределение клавиш и переключение раскладок) | нет | `keyboard`
 [minipack](ansible/roles/minipack) | Установка минимального набор пакетов | нет | `minipack`

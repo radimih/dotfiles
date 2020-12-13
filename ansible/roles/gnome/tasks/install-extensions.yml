@@ -1,0 +1,38 @@
+---
+- name: Получить версию GNOME Shell
+  shell: gnome-shell --version | sed 's/[^0-9.]*\([0-9.]*\).*/\1/'
+  register: r_gnome_version
+  changed_when: no
+
+- name: "Версия GNOME Shell: {{ r_gnome_version.stdout }}"
+  set_fact:
+    gnome_shell_version: "{{ r_gnome_version.stdout }}"
+
+- name: Получить информацию по устанавливаемым расширениям
+  uri:
+    url: https://extensions.gnome.org/extension-info/?pk={{ item }}&shell_version={{ gnome_shell_version }}
+    return_content: yes
+  loop: "{{ extensions_ids }}"
+  register: r_extensions_info
+
+- name: Создать временный каталог для загрузки расширений
+  tempfile:
+    state: directory
+    suffix: ".extensions_download"
+  register: r_extensions_download_dir
+  changed_when: no
+
+- block:
+
+  - name: Установить расширения
+    include_tasks: install-extension.yml
+    vars:
+      extension_info: "{{ item.json }}"
+    loop: "{{ r_extensions_info.results }}"
+
+  always:
+    - name: Удалить временный каталог для загрузки расширений
+      file:
+        path: "{{ r_extensions_download_dir.path }}"
+        state: absent
+      changed_when: no
