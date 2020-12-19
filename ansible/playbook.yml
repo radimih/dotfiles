@@ -16,6 +16,7 @@
 
     - {role: keyboard, tags: ['keyboard']}
     - {role: docker, tags: ['docker']}
+    - {role: vim, tags: ['vim']}
     - {role: joplin, tags: ['joplin']}
     - {role: pipx, tags: ['pipx']}
     - {role: dev-python, tags: ['dev', 'python']}

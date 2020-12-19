@@ -1,0 +1,18 @@
+---
+- name: Установить последнюю версию VIM
+  become: yes
+  apt:
+    name: vim
+    state: latest
+    update_cache: yes
+    cache_valid_time: 7200  # apt update если кэш не обновлялся более 2 часов
+
+- name: Скопировать файл настроек VIM
+  copy:
+    src: files/.vimrc
+    dest: "{{ ansible_user_dir }}/"
+
+- name: Скопировать файл .editorconfig
+  copy:
+    src: files/.editorconfig
+    dest: "{{ ansible_user_dir }}/"

@@ -17,6 +17,7 @@
 [minipack](ansible/roles/minipack) | Установка минимального набор пакетов | нет | `minipack`
 [pipx](ansible/roles/pipx) | Установка утилиты [pipx](https://joplinapp.org/) для управления Python-приложениями | нет | `pipx`
 [remmina](ansible/roles/remmina) | Установка приложения [Remmina](https://remmina.org/) для доступа к хостам через SSH и RDP | [да](ansible/roles/remmina#после-установки) | `remmina`
+[vim](ansible/roles/vim) | Установка и настройка VIM | нет | `vim`
 [zsh](ansible/roles/zsh) | Установка shell-оболочки [Zsh](https://www.zsh.org/) и настройка окружения | нет | `zsh`
 
 ## Установка / актуализация конфигурации системы

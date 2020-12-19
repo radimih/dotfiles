@@ -8,7 +8,6 @@
       - httpie
       - inetutils-traceroute
       - jq
-      - neovim
       - net-tools
       - tree
       - xsel
