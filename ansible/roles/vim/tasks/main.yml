@@ -16,3 +16,18 @@
   copy:
     src: files/.editorconfig
     dest: "{{ ansible_user_dir }}/"
+
+- name: Получить путь к текущему редактору по-умолчанию
+  shell: update-alternatives --query editor | grep "Value" | cut -d" " -f2
+  register: r_default_editor
+  changed_when: no
+
+- name: "Путь к редактору по-умолчанию: {{ r_default_editor.stdout }}"
+  set_fact:
+    default_editor: "{{ r_default_editor.stdout }}"
+
+- name: Установить VIM редактором по-умолчанию
+  become: yes
+  shell: update-alternatives --set editor /usr/bin/vim.basic
+  changed_when: yes
+  when: default_editor != "/usr/bin/vim.basic"
