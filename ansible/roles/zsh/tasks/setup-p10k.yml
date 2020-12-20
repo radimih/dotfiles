@@ -13,7 +13,7 @@
   blockinfile:
     path: "{{ ansible_env.HOME }}/.zshrc"
     marker: "\n# {mark} ANSIBLE MANAGED BLOCK - Powerlevel10k (Instant Prompt mode)"
-    insertafter: "#!/usr/bin/env zsh"
+    insertafter: "# For Ansible: begin script marker"
     block: |
 
       # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
