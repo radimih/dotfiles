@@ -39,6 +39,8 @@
         zinit_plugins:
           - name: zsh-users/zsh-autosuggestions
             type: light
+          - name: marlonrichert/zsh-autocomplete
+            type: light
           - name: zdharma/fast-syntax-highlighting
             type: light
           - name: romkatv/powerlevel10k
