@@ -10,6 +10,7 @@
     - role: gnome
       vars:
         extensions_ids:
+          - 277   # Impatience (https://extensions.gnome.org/extension/277/impatience/)
           - 3357  # Material Shell (https://extensions.gnome.org/extension/3357/material-shell/)
       tags:
         - gnome
