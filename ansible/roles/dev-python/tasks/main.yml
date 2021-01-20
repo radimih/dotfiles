@@ -1,6 +1,9 @@
 ---
-- name: Установить pipenv
-  import_tasks: install-pipenv.yml
+- name: Установить приложение pipenv
+  become: yes
+  apt:
+    name: pipenv
+    state: present
 
-- name: Установить pyenv
+- name: Установить приложение pyenv
   import_tasks: install-pyenv.yml
