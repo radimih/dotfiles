@@ -9,6 +9,7 @@
       - inetutils-traceroute
       - jq
       - net-tools
+      - python3-pip
       - tree
       - xsel
     state: latest
