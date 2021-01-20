@@ -6,3 +6,4 @@
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 xbindkeys
+on-locking-desktop.sh &
