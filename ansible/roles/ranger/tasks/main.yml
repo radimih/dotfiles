@@ -1,0 +1,19 @@
+---
+- name: Установить apt-пакет приложения и рекомендуемые зависимости
+  become: yes
+  apt:
+    name:
+      - ranger
+      - file
+      - python3-chardet
+    state: latest
+    update_cache: yes
+    cache_valid_time: 7200  # apt update если кэш не обновлялся более 2 часов
+
+- name: Настроить приложение
+  copy:
+    content: |
+      set cd_tab_fuzzy true
+      set draw_borders both
+      set show_hidden true
+    dest: "{{ ansible_user_dir }}/.config/ranger/rc.conf"
