@@ -16,8 +16,16 @@
     update_cache: yes
     cache_valid_time: 7200  # apt update если кэш не обновлялся более 2 часов
 
-- name: Установить выбранную тему текущей
+  # GNOME Tweaks / Appearance / Themes / Applications
+- name: Установить выбранную тему текущей Applications-темой
   dconf:
     key: "/org/gnome/desktop/interface/gtk-theme"
+    value: "'Plata-Compact'"
+    state: present
+
+  # GNOME Tweaks / Appearance / Themes / Shell (требуется включенное расширение "User Themes")
+- name: Установить выбранную тему текущей Shell-темой
+  dconf:
+    key: "/org/gnome/shell/extensions/user-theme/name"
     value: "'Plata-Compact'"
     state: present

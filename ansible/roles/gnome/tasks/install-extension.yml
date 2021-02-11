@@ -26,4 +26,5 @@
 
 - name: "Расширение {{ extension_info.name }} ({{ extension_info.pk }}) | Включить"
   shell: gnome-extensions enable "{{ extension_info.uuid }}"
+  # TODO: changed_when = yes только когда фактически включается
 

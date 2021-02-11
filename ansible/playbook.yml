@@ -10,6 +10,7 @@
     - role: gnome
       vars:
         extensions_ids:
+          - 19    # User Themes (https://extensions.gnome.org/extension/19/user-themes/)
           - 277   # Impatience (https://extensions.gnome.org/extension/277/impatience/)
           - 779   # Clipboard Indicator (https://extensions.gnome.org/extension/779/clipboard-indicator/)
           - 3357  # Material Shell (https://extensions.gnome.org/extension/3357/material-shell/)
