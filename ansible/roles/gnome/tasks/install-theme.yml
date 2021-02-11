@@ -1,0 +1,20 @@
+---
+- name: Установить PPA-репозиторий темы
+  become: yes
+  apt_repository:
+    repo: ppa:tista/plata-theme
+    state: present
+
+- name: Установить apt-пакет темы
+  become: yes
+  apt:
+    name: plata-theme
+    state: latest
+    update_cache: yes
+    cache_valid_time: 7200  # apt update если кэш не обновлялся более 2 часов
+
+- name: Установить выбранную тему текущей
+  dconf:
+    key: "/org/gnome/desktop/interface/gtk-theme"
+    value: "'Plata-Compact'"
+    state: present

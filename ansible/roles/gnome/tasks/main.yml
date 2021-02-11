@@ -11,3 +11,6 @@
 
 - name: Установить расширения GNOME Shell
   import_tasks: install-extensions.yml
+
+- name: Установить тему GNOME Shell
+  import_tasks: install-theme.yml
