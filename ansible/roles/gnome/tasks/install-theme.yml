@@ -1,4 +1,7 @@
 ---
+# Тема "Plata" (https://gitlab.com/tista500/plata-theme) рекомендована автором
+# расширения Material Shell
+
 - name: Установить PPA-репозиторий темы
   become: yes
   apt_repository:
