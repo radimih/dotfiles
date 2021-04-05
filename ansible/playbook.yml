@@ -1,6 +1,7 @@
 ---
 - name: Настройка моего стандартного Linux-окружения
-  hosts: localhost
+  hosts: 127.0.0.1
+  connection: local
 
   roles:
 
