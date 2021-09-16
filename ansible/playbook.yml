@@ -3,9 +3,29 @@
   hosts: 127.0.0.1
   connection: local
 
+  pre_tasks:
+
+    - name: Установить/обновить минимальный набор пакетов
+      become: yes
+      apt:
+        name:
+          - curl
+          - git
+          - httpie
+          - inetutils-traceroute
+          - jq
+          - net-tools
+          - python3-pip
+          - tree
+          - xsel
+        state: latest
+        update_cache: yes
+        cache_valid_time: 7200  # apt update если кэш не обновлялся более 2 часов
+      tags:
+        - minipack
+
   roles:
 
-    - {role: minipack, tags: ['minipack']}
     - {role: fonts, tags: ['fonts']}
 
     - role: gnome
