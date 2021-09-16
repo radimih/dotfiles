@@ -16,6 +16,7 @@
           - jq
           - net-tools
           - python3-pip
+          - ripgrep
           - tree
           - xsel
         state: latest
