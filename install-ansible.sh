@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# Based on https://github.com/elnappo/dotfiles/blob/master/init/setup.sh
 
 set -e
 
@@ -9,17 +8,23 @@ title() {
     printf "\n${color}$1${nc}\n"
 }
 
+title "[i] Ask for sudo password"
+sudo -v
+
 case "$(uname -s)" in
     Linux)
         if [ -f /etc/os-release ]
         then
             source /etc/os-release
             case "$ID_LIKE" in
-                debian | ubuntu)
+                ubuntu)
                     if [[ ! -x /usr/bin/ansible ]]
                     then
                         title "[i] Install Ansible"
-                        sudo apt-get install -y ansible
+                        sudo apt update
+                        sudo apt install software-properties-common
+                        sudo add-apt-repository --yes --update ppa:ansible/ansible
+                        sudo apt install -y ansible
                     fi
                     ;;
                 *)
@@ -37,12 +42,5 @@ case "$(uname -s)" in
         exit 1
         ;;
 esac
-
-current_dir=`pwd`
-cd $(dirname $0)/ansible
-
-title "[i] Run Playbook"
-ansible-playbook playbook.yml --ask-become-pass
-cd $current_dir
 
 title "[i] Done."

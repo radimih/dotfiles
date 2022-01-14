@@ -12,34 +12,12 @@
 [flameshot](ansible/roles/flameshot) | Установка утилиты [flameshot](https://github.com/flameshot-org/flameshot) для создания скриншотов | нет | `flameshot`
 [gnome](ansible/roles/gnome) | Настройка DE [GNOME Shell](https://wiki.gnome.org/Projects/GnomeShell) и его расширений | нет | `gnome`
 [joplin](ansible/roles/joplin) | Установка приложения [Joplin](https://joplinapp.org/) для ведения заметок | [да](ansible/roles/joplin#после-установки) | `joplin`
-[keyboard](ansible/roles/keyboard) | Настройка клавиатуры (переопределение клавиш и переключение раскладок) | нет | `keyboard`
+[keyboard](ansible/roles/keyколлекциboard) | Настройка клавиатуры (переопределение клавиш и переключение раскладок) | нет | `keyboard`
 [pipx](ansible/roles/pipx) | Установка утилиты [pipx](https://pypa.github.io/pipx/) для управления Python-приложениями | нет | `pipx`
 [ranger](ansible/roles/ranger) | Установка консольного файлового менеджера [ranger](https://github.com/ranger/ranger) | нет | `ranger`
 [remmina](ansible/roles/remmina) | Установка приложения [Remmina](https://remmina.org/) для доступа к хостам через SSH и RDP | [да](ansible/roles/remmina#после-установки) | `remmina`
 [vim](ansible/roles/vim) | Установка и настройка VIM | нет | `vim`
 [zsh](ansible/roles/zsh) | Установка shell-оболочки [Zsh](https://www.zsh.org/) и настройка окружения | нет | `zsh`
-
-## Установка / актуализация конфигурации системы
-
-ВНИМАНИЕ! Перед первой установкой необходимо задать пароль для [Ansible Vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html)
-(см. [Настройка Ansible Vault](#настройка-ansible-vault)).
-
-Предполагается, что пароль хранится в файле `ansible/.vault-pass` и этот файл никаким образом не должен храниться в системе контроля версий!
-
-Имя этого файла определено в параметре `vault_password_file` в файле `ansible/ansible.cfg`.
-
-#### Полная установка / обновление
-
-```bash
-$ ~/dotfiles/update.sh
-```
-
-#### Частичное обновление
-
-```bash
-$ cd ~/dotfiles/ansible
-$ ansible-playbook playbook.yml --ask-become-pass --tags "{список тэгов через запятую}"
-```
 
 ## Первоначальная установка на новую систему
 
@@ -88,13 +66,38 @@ $ ansible-playbook playbook.yml --ask-become-pass --tags "{список тэго
    $ git config user.name "Radimir Mikhailov"
    ```
    
-   Желательно не устанавливать глобальную идентификацию  в git (ключ `--global`), чтобы
+   Желательно не устанавливать глобальную идентификацию в git (ключ `--global`), чтобы
    случайно не смешать рабочие и личные идентификации в git.
 
-#### Настройка Ansible Vault
+#### Настройка [Ansible Vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html)
 
 1. Задать пароль, с которым были зашифрованы все секреты:
 
    ```bash
    $ vim ansible/.vault-pass && chmod 600 ansible/.vault-pass
    ```
+
+   Файл `ansible/.vault-pass` не должен храниться в системе контроля версий.
+
+   Имя этого файла определено в параметре `vault_password_file` в файле `ansible/ansible.cfg`.
+
+#### Установка Ansible
+
+1.
+   ```bash
+   $ ./install-ansible.sh
+   ```
+
+   Устанавливается официальный **Ansible community package**, который включает в себя
+   **ansible-core** и стандартный набор [коллекций](https://docs.ansible.com/ansible/latest/collections/index.html).
+
+   Можно было бы установить только пакет `ansible-core` и далее с помощью команды `ansible-galaxy collection install`
+   установить только необходимые коллекции, но в этом случае пришлось бы обновлять эти коллекции вручную
+   (ключ `--upgrade` у вышеприведённой команды).
+
+## Установка / обновление компонент
+
+```bash
+$ cd ~/dotfiles/ansible
+$ ansible-playbook playbook.yml --ask-become-pass --tags "{список тэгов через запятую}"
+```
