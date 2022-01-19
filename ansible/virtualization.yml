@@ -1,0 +1,30 @@
+---
+- name: Добавить поддержку виртуализации
+  hosts: 127.0.0.1
+  connection: local
+
+  roles:
+
+    - name: apt_thirdparty_package
+      vars:
+        key_url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
+        repo_url: https://download.virtualbox.org/virtualbox/debian
+        repo_component: contrib
+        package_name: virtualbox-6.1
+      become: true
+      when:
+        - ansible_os_family == 'Debian'
+      tags:
+        - virtualbox
+
+    - name: apt_thirdparty_package
+      vars:
+        key_url: https://apt.releases.hashicorp.com/gpg
+        repo_url: https://apt.releases.hashicorp.com
+        repo_component: main
+        package_name: vagrant
+      become: true
+      when:
+        - ansible_os_family == 'Debian'
+      tags:
+        - vagrant
