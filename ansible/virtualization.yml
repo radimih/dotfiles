@@ -11,7 +11,6 @@
         repo_url: https://download.virtualbox.org/virtualbox/debian
         repo_component: contrib
         package_name: virtualbox-6.1
-      become: true
       when:
         - ansible_os_family == 'Debian'
       tags:
@@ -23,7 +22,6 @@
         repo_url: https://apt.releases.hashicorp.com
         repo_component: main
         package_name: vagrant
-      become: true
       when:
         - ansible_os_family == 'Debian'
       tags:
