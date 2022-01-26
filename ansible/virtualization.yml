@@ -5,7 +5,7 @@
 
   roles:
 
-    - name: apt_thirdparty_package
+    - role: apt_thirdparty_package
       vars:
         key_url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
         repo_url: https://download.virtualbox.org/virtualbox/debian
@@ -16,7 +16,7 @@
       tags:
         - virtualbox
 
-    - name: apt_thirdparty_package
+    - role: apt_thirdparty_package
       vars:
         key_url: https://apt.releases.hashicorp.com/gpg
         repo_url: https://apt.releases.hashicorp.com
