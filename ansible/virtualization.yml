@@ -27,6 +27,17 @@
       tags:
         - vagrant
 
+    - role: apt_thirdparty_package
+      vars:
+        key_url: https://apt.releases.hashicorp.com/gpg
+        repo_url: https://apt.releases.hashicorp.com
+        repo_component: main
+        package_name: packer
+      when:
+        - ansible_os_family == 'Debian'
+      tags:
+        - packer
+
   post_tasks:
 
     # Стандартная команда vagrant autocomplete install довольно топорно прописывает
