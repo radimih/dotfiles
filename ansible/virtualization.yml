@@ -61,6 +61,7 @@
               # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
               [[ -e {{ vagrant_completion_script_bash }} ]] && . {{ vagrant_completion_script_bash }}
             dest: '{{ bash_completion_dir }}/vagrant'
+            mode: 0644
           become: true
           tags:
             - bash
@@ -69,6 +70,7 @@
           ansible.builtin.copy:
             src: '{{ vagrant_completion_script_zsh }}'
             dest: '{{ zsh_completion_dir }}'
+            mode: 0644
           become: true
           tags:
             - zsh
