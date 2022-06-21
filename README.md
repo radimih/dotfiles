@@ -99,5 +99,7 @@
 
 ```bash
 $ cd ~/dotfiles/ansible
-$ ansible-playbook playbook.yml --ask-become-pass --tags "{список тэгов через запятую}"
+$ ansible-playbook playbook.yml --limit "desktop|{имена серверов через запятую}" --tags "{список тэгов через запятую}"
 ```
+
+Для серверов можно игнорировать запрос пароля `BECOME password:` и просто нажимать Enter.

@@ -1,26 +1,42 @@
 ---
 - name: Настройка моего стандартного Linux-окружения
-  hosts: 127.0.0.1
-  connection: local
-
-  pre_tasks:
+  hosts:
+    - desktop
+    - servers
+  tasks:
 
     - name: Установить/обновить минимальный набор пакетов
-      become: yes
+      become: true
       apt:
         name:
           - curl
+          - inetutils-traceroute
+          - net-tools
+          - tree
+        state: latest
+        update_cache: true
+        cache_valid_time: 7200  # apt update если кэш не обновлялся более 2 часов
+      tags:
+        - minipack
+
+- name: Настройка моего стандартного Desktop-окружения
+  hosts:
+    - desktop
+
+  pre_tasks:
+
+    - name: Установить/обновить минимальный набор пакетов для Desktop
+      become: true
+      apt:
+        name:
           - git
           - httpie
-          - inetutils-traceroute
           - jq
-          - net-tools
           - python3-pip
           - ripgrep
-          - tree
           - xsel
         state: latest
-        update_cache: yes
+        update_cache: true
         cache_valid_time: 7200  # apt update если кэш не обновлялся более 2 часов
       tags:
         - minipack
