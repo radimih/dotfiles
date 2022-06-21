@@ -3,6 +3,7 @@
   hosts:
     - desktop
     - servers
+
   tasks:
 
     - name: Установить/обновить минимальный набор пакетов
