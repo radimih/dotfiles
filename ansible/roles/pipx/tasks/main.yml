@@ -1,7 +1,7 @@
 ---
 - name: Установить pip3 и сопутствующие модули
-  become: yes
-  apt:
+  become: true
+  ansible.builtin.apt:
     name:
       - python3-venv
       - python3-dev
@@ -9,12 +9,13 @@
     state: present
 
 - name: Установить через pip3 приложение pipx
-  pip:
+  ansible.builtin.pip:
     name: pipx
     executable: pip3
     extra_args: --user
 
 - name: Настроить автодополнение
-  copy:
+  ansible.builtin.copy:
     src: files/.zshrc-pipx.zsh
-    dest: "{{ ansible_env.HOME }}"
+    dest: '{{ ansible_env.HOME }}'
+    mode: 0644
