@@ -6,3 +6,6 @@ meta/.galaxy_install_info
 
 # Ansible Vault password file
 .vault-pass
+
+# Vagrant files
+.vagrant/

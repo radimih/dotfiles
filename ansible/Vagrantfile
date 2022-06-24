@@ -1,0 +1,29 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+
+  config.vm.define "vm-desktop"
+
+  config.vm.box = "ubuntu-20.04-desktop"
+  config.vm.box_url = "file://#{Dir.home()}/workspace/virtual-machines/boxes/ubuntu-20.04-desktop.json"
+
+  config.vm.provider "virtualbox" do |v|
+    v.name = "ubuntu-20.04-desktop"
+    v.gui = true
+    v.memory = 4096
+    v.customize ["setextradata", :id, "CustomVideoMode1", "1920x1080x32"]
+    v.customize ["setextradata", :id, "GUI/Fullscreen", "on"]
+    v.customize ["setextradata", :id, "GUI/MiniToolBarAlignment", "top"]
+  end
+
+  config.vm.provision "ansible" do |ansible|
+    ansible.groups = {
+      "desktop" => ["vm-desktop"]
+    }
+    ansible.playbook = "playbook.yml"
+    ansible.tags = ["minipack"]
+    ansible.verbose = false  # возможные значения: false, true (эквивалентно опции -v), "vvv", "vvvv"
+  end
+
+end
