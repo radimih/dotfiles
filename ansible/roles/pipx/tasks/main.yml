@@ -4,9 +4,10 @@
   ansible.builtin.apt:
     name:
       - python3-venv
-      - python3-dev
       - python3-pip
     state: present
+    update_cache: true
+    cache_valid_time: 7200  # apt update если кэш не обновлялся более 2 часов
 
 - name: Установить через pip3 приложение pipx
   ansible.builtin.pip:
