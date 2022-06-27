@@ -33,6 +33,7 @@
           - git
           - httpie
           - jq
+          - pipx
           - python3-pip
           - ripgrep
           - xsel
