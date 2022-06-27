@@ -34,7 +34,6 @@
           - httpie
           - jq
           - pipx
-          - python3-pip
           - ripgrep
           - xsel
         state: latest
@@ -63,7 +62,6 @@
     - {role: flameshot, tags: ['flameshot']}
     - {role: ranger, tags: ['ranger']}
     - {role: joplin, tags: ['joplin']}
-    - {role: pipx, tags: ['pipx']}
     - {role: dev-python, tags: ['dev', 'python']}
 
     - role: remmina
