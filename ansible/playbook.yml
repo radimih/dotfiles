@@ -44,6 +44,8 @@
 
   roles:
 
+    - {role: gnome_extension_layout_switcher, tags: ['qqq']}
+
     - {role: fonts, tags: ['fonts']}
 
     - role: gnome

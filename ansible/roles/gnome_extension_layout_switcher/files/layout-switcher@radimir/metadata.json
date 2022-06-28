@@ -1,0 +1,10 @@
+{
+  "name": "LayoutSwitcher",
+  "description": "Switch keyboard layout through DBus",
+  "uuid": "layout-switcher@radimir",
+  "shell-version": [
+    "41",
+    "42"
+  ],
+  "url": ""
+}
