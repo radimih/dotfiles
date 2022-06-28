@@ -6,4 +6,4 @@
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 xbindkeys
-on-locking-desktop.sh &
+watch-locking-desktop.sh &

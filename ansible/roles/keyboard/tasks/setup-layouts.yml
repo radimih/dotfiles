@@ -17,14 +17,14 @@
     dest: "{{ ansible_user_dir }}/.xbindkeysrc"
   notify: reload-xbindkeys-config
 
-- name: Настроить скрипт on-locking-desktop.sh
+- name: Настроить скрипт watch-locking-desktop.sh
   become: yes
   template:
-    src: on-locking-desktop.sh
+    src: watch-locking-desktop.sh
     dest: /usr/local/bin
     mode: "755"
 
-- name: Сделать автоматическим запуск xbindkeys и on-locking-desktop.sh
+- name: Сделать автоматическим запуск xbindkeys и watch-locking-desktop.sh
   copy:
     src: files/.xprofile
     dest: "{{ ansible_user_dir }}/"
