@@ -1,5 +1,4 @@
-/* Based on:
- *   - https://github.com/ramottamado/eval-gjs/blob/main/eval-gjs%40ramottamado.dev/extension.js
+/* Based on: https://github.com/ramottamado/eval-gjs/blob/main/eval-gjs%40ramottamado.dev/extension.js
  */
 
 'use strict';
@@ -13,36 +12,41 @@ const ExtensionInterface =
     '<node>' +
     '   <interface name="org.gnome.Shell.LayoutSwitcher">' +
     '       <method name="Switch">' +
-    '           <arg type="i" direction="in" name="layout" />' +
+    '           <arg type="s" direction="in" name="layout_id" />' +
     '           <arg type="b" direction="out" name="success"/>' +
-    '           <arg type="s" direction="out" name="returnValue"/>' +
     '       </method>' +
     '   </interface>' +
     '</node>';
 
-class LayoutSwitcher {
+class Extension {
 
     constructor() {
         this._dbusImpl = Gio.DBusExportedObject.wrapJSObject(ExtensionInterface, this);
     }
 
-    Switch(layout) {
-        let returnValue;
+    Switch(layout_id) {
+        let inputSources;
         let success;
 
         try {
-            returnValue = JSON.stringify(inputSourceManager.inputSources[layout].activate());
-            returnValue = returnValue == undefined
-                ? ''
-                : returnValue;
-
+            inputSources = inputSourceManager.inputSources;
+            inputSources[this.layout_index_by_id(inputSources, layout_id)].activate();
             success = true;
         }
         catch (e) {
             success = false;
         }
 
-        return [success, returnValue];
+        return success;
+    }
+
+    layout_index_by_id(inputSources, layout_id) {
+       for (const layout_index in inputSources) {
+          let layout = inputSources[layout_index];
+          if (layout.type === 'xkb' && layout.id === layout_id)
+              return layout_index;
+       }
+       return null;
     }
 
     enable() {
@@ -55,5 +59,5 @@ class LayoutSwitcher {
 }
 
 function init() {
-    return new LayoutSwitcher();
+    return new Extension();
 }
