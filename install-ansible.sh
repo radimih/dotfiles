@@ -17,7 +17,7 @@ case "$(uname -s)" in
         then
             source /etc/os-release
             case "$ID_LIKE" in
-                ubuntu)
+                debian | ubuntu)
                     if [[ ! -x /usr/bin/ansible ]]
                     then
                         title "[i] Install Ansible"
