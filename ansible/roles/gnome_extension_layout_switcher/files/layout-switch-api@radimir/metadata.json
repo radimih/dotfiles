@@ -1,9 +1,12 @@
 {
-  "name": "LayoutSwitcher",
+  "name": "LayoutSwitchAPI",
   "description": "Switch keyboard layout through DBus",
-  "uuid": "layout-switcher@radimir",
+  "uuid": "layout-switch-api@radimir",
   "version": 1,
   "shell-version": [
+    "3.36",
+    "3.38",
+    "40",
     "41",
     "42"
   ],

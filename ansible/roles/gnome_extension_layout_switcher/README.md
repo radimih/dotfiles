@@ -1,10 +1,12 @@
-# LayoutSwitcher GNOME extension 
+# LayoutSwitchAPI GNOME extension 
+
+Расширение используется для реализации немодального переключения раскладок клавиатуры в GNOME Shell.
 
 До GNOME 41 раскладку клавиатуры можно было переключать программно командой:
 
 ```bash
-gdbus call 
-  --session 
+gdbus call \
+  --session \
   --dest org.gnome.Shell \
   --object-path /org/gnome/Shell \
   --method org.gnome.Shell.Eval \
@@ -14,18 +16,18 @@ gdbus call
 Начиная с версии GNOME 41 метод `org.gnome.Shell.Eval` был отключен по причинам безопасности.
 
 Чтобы по-прежнему иметь возможность переключать раскладку клавиатуры с помощью `gdbus`,
-устанавливается самописное GNOME-расширение `LayoutSwitcher`, с помощью которого раскладки
-переключаются командой:
+устанавливается самописное GNOME-расширение `LayoutSwitchAPI`, с помощью которого раскладки
+можно переключать командой:
 
 ```bash
 gdbus call \
   --session \
   --dest org.gnome.Shell \
-  --object-path /org/gnome/Shell/LayoutSwitcher \
-  --method org.gnome.Shell.LayoutSwitcher.Switch <буквенный идентификатор раскладки>
+  --object-path /org/gnome/Shell/LayoutSwitchAPI \
+  --method org.gnome.Shell.LayoutSwitchAPI.Switch <буквенный идентификатор раскладки (например, us)>
 ```
 
-Идентификаторы установленных раскладок клавиатуры можно посмотреть командой:
+Идентификаторы установленных раскладок клавиатуры можно получить командой:
 
 ```bash
 gsettings get org.gnome.desktop.input-sources sources

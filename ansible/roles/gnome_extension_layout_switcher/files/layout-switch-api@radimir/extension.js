@@ -10,7 +10,7 @@ const inputSourceManager = imports.ui.status.keyboard.getInputSourceManager();
 
 const ExtensionInterface =
     '<node>' +
-    '   <interface name="org.gnome.Shell.LayoutSwitcher">' +
+    '   <interface name="org.gnome.Shell.LayoutSwitchAPI">' +
     '       <method name="Switch">' +
     '           <arg type="s" direction="in" name="layout_id" />' +
     '           <arg type="b" direction="out" name="success"/>' +
@@ -50,7 +50,7 @@ class Extension {
     }
 
     enable() {
-        this._dbusImpl.export(Gio.DBus.session, '/org/gnome/Shell/LayoutSwitcher');
+        this._dbusImpl.export(Gio.DBus.session, '/org/gnome/Shell/LayoutSwitchAPI');
     }
 
     disable() {
