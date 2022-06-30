@@ -62,7 +62,6 @@
     - {role: vim, tags: ['vim']}
     - {role: flameshot, tags: ['flameshot']}
     - {role: ranger, tags: ['ranger']}
-    - {role: joplin, tags: ['joplin']}
     - {role: dev-python, tags: ['dev', 'python']}
 
     - role: remmina
