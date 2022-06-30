@@ -1,0 +1,21 @@
+---
+- name: Установить пакет для работы с GNONE-расширениями
+  become: true
+  ansible.builtin.apt:
+    name: gnome-shell-extensions
+    state: present
+
+- name: Скопировать/обновить файлы расширения
+  ansible.builtin.copy:
+    src: files/layout-switch-api@radimir
+    dest: '{{ ansible_user_dir }}/.local/share/gnome-shell/extensions/'
+    mode: 0644
+  register: r__extension_files
+
+# - name: Перезапустить GNOME Shell
+#   ansible.builtin.command: killall -SIGQUIT gnome-shell
+#   when: r__extension_files.changed
+
+# - name: Включить расширение
+#   ansible.builtin.command: gnome-extensions enable layout-switch-api@radimir
+#   changed_when: false
