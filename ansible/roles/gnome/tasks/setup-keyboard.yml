@@ -1,12 +1,12 @@
 ---
 - name: Установить раскладки клавиатуры us,ru
-  dconf:
+  community.general.dconf:
     key: "/org/gnome/desktop/input-sources/sources"
     value: "[('xkb', 'us'), ('xkb', 'ru')]"
     state: present
 
 - name: Установить циклический переключатель раскладок клавиатуры в Shift-RightCtrl
-  dconf:
+  community.general.dconf:
     key: "/org/gnome/desktop/wm/keybindings/switch-input-source"
     value: "['<Shift>Control_R']"
     state: present

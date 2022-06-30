@@ -20,11 +20,11 @@
 
   - name: "Расширение {{ extension_info.name }} ({{ extension_info.pk }}) | Установить/обновить"
     shell: gnome-extensions install --force "{{ r_extension_download.dest }}"
-    notify: restart-gnome-shell
+    # notify: restart-gnome-shell
 
   when: extension_version.website|int > extension_version.installed|int
 
-- name: "Расширение {{ extension_info.name }} ({{ extension_info.pk }}) | Включить"
-  shell: gnome-extensions enable "{{ extension_info.uuid }}"
-  # TODO: changed_when = yes только когда фактически включается
+# - name: "Расширение {{ extension_info.name }} ({{ extension_info.pk }}) | Включить"
+#   shell: gnome-extensions enable "{{ extension_info.uuid }}"
+#   # TODO: changed_when = yes только когда фактически включается
 
