@@ -1,0 +1,28 @@
+---
+- name: Установить исполняемый файл keyd
+  ansible.builtin.copy:
+    src: files/bin/keyd
+    dest: /usr/local/bin
+    mode: 0755
+  become: true
+
+- name: Скопировать конфигурационный файл keyd
+  ansible.builtin.copy:
+    src: files/etc/default.conf
+    dest: /etc/keyd/
+  become: true
+  notify: restart-keyd
+
+- name: Настроить systemd unit-файл демона keyd
+  ansible.builtin.copy:
+    src: files/keyd.service
+    dest: /etc/systemd/system/
+    mode: 0644
+  become: true
+
+- name: Настроить запуск демона keyd через systemd
+  ansible.builtin.systemd:
+    service: keyd
+    enabled: true
+    state: started
+  become: true

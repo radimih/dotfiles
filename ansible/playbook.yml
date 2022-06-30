@@ -58,7 +58,7 @@
       tags:
         - gnome
 
-    - {role: keyboard, tags: ['keyboard']}
+    - {role: keyd, tags: ['keyboard']}
     - {role: docker, tags: ['docker']}
     - {role: vim, tags: ['vim']}
     - {role: flameshot, tags: ['flameshot']}

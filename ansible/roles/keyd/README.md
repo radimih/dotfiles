@@ -1,0 +1,40 @@
+# keyd
+
+Настройка клавиатуры:
+
+* переопределение некоторых клавиш с помощью [keyd](https://github.com/rvaiya/keyd):
+  * **CapsLock**: однократное нажатие - **ESC**, на удержании - **Left Ctrl**
+  * **Enter**: однократное нажатие - **Enter**, на удержании - **Right Ctrl**
+  * **Space**: однократное нажатие - **Space**, на удержании - **Left Meta**
+  * **Left Shift**: однократное нажатие - **Left Alt + F11** (для переключения раскладки), на удержании - **Left Shift**
+  * **Right Shift**: однократное нажатие - **Left Alt + F12** (для переключения раскладки), на удержании - **Right Shift**
+
+## Сборка keyd
+
+Собрать бинарные файлы:
+
+```bash
+$ cat <<EOF | docker build -t keyd-builder -
+FROM ubuntu:latest
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update \
+ && apt-get install -y git build-essential \
+ && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /src
+
+RUN git clone https://github.com/rvaiya/keyd .
+
+RUN make
+
+RUN echo "#!/bin/bash" > /to_target.sh \
+ && echo "cp bin/keyd /target" >> /to_target.sh \
+ && chmod 755 /to_target.sh
+
+CMD /to_target.sh
+EOF 
+$ cd files/bin
+$ docker run -t --rm -v `pwd`:/target keyd-builder
+```
