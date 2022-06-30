@@ -25,15 +25,15 @@
 1. Установить минимальный набор пакетов:
 
    ```bash
-   $ sudo apt install -y xsel git
+   sudo apt update && sudo apt install -y git xsel
    ```
 
 1. Сгенерировать пару ключей SSH и скопировать открытый ключ в буфер обмена:
 
    ```bash
-   $ ssh-keygen -t rsa -b 4096 -C "radimir.com@gmail.com"
-   $ ssh-add
-   $ xsel --input --clipboard < ~/.ssh/id_rsa.pub
+   ssh-keygen -t rsa -b 4096 -C "radimir.com@gmail.com" && \
+   ssh-add  && \
+   xsel --input --clipboard < ~/.ssh/id_rsa.pub
    ```
 
 1. Добавить открытый ключ в GitHub-аккаунт:
@@ -45,7 +45,7 @@
 1. Проверить SSH-доступ и добавить хост GitHub в доверенные хосты:
 
    ```bash
-   $ ssh -T git@github.com
+   ssh -T git@github.com
    ```
 
 #### Клонирование и настройка GitHub-репозитория
@@ -53,16 +53,14 @@
 1. Склонировать репозиторий:
 
    ```bash
-   $ cd ~
-   $ git clone git@github.com:radimih/dotfiles.git
-   $ cd dotfiles
+   cd ~ && git clone git@github.com:radimih/dotfiles.git && cd dotfiles
    ```
 
 1. Настроить идентификацию пользователя в репозитории (для внесения изменений в будущем):
 
    ```bash
-   $ git config user.email "radimir.com@gmail.com"
-   $ git config user.name "Radimir Mikhailov"
+   git config user.email "radimir.com@gmail.com" && \
+   git config user.name "Radimir Mikhailov"
    ```
    
    Желательно не устанавливать глобальную идентификацию в git (ключ `--global`), чтобы
@@ -73,7 +71,7 @@
 1. Задать пароль, с которым были зашифрованы все секреты:
 
    ```bash
-   $ vim ansible/.vault-pass && chmod 600 ansible/.vault-pass
+   vi ansible/.vault-pass && chmod 600 ansible/.vault-pass
    ```
 
    Файл `ansible/.vault-pass` не должен храниться в системе контроля версий.
@@ -84,7 +82,7 @@
 
 1.
    ```bash
-   $ ./install-ansible.sh
+   ./install-ansible.sh
    ```
 
    Устанавливается официальный **Ansible community package**, который включает в себя
@@ -97,8 +95,8 @@
 ## Установка / обновление компонент
 
 ```bash
-$ cd ~/dotfiles/ansible
-$ ansible-playbook playbook.yml --limit "desktop|{имена серверов через запятую}" --tags "{список тэгов через запятую}"
+cd ~/dotfiles/ansible
+ansible-playbook playbook.yml --limit "desktop|{имена серверов через запятую}" --tags "{список тэгов через запятую}"
 ```
 
 Для серверов можно игнорировать запрос пароля `BECOME password:` и просто нажимать Enter.
