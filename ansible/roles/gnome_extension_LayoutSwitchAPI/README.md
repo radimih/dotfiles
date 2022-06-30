@@ -33,6 +33,16 @@ gdbus call \
 gsettings get org.gnome.desktop.input-sources sources
 ```
 
+## Установка
+
+ВНИМАНИЕ! В GNOME Shell расширение появится только после перезапуска GNOME Shell. Необходимо
+выйти (`Log Out`) и зайти в GNOME Shell заново. После этого включить расширение **LayoutSwitchAPI**
+в GUI-приложении `Extensions` или выполнить команду:
+
+```bash
+gnome-extensions enable layout-switch-api@radimir
+```
+
 ## Переменные Ansible-роли
 
 #### Обязательные
