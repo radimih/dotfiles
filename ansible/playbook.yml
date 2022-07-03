@@ -58,6 +58,7 @@
       tags:
         - gnome
 
+    - {role: gnome_extension_LayoutSwitchAPI, tags: ['qqq']}
     - {role: keyd, tags: ['keyboard']}
     - {role: docker, tags: ['docker']}
     - {role: vim, tags: ['vim']}
