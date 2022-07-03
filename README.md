@@ -12,7 +12,7 @@
 [flameshot](ansible/roles/flameshot) | Установка утилиты [flameshot](https://github.com/flameshot-org/flameshot) для создания скриншотов | нет | `flameshot`
 [gnome](ansible/roles/gnome) | Настройка DE [GNOME Shell](https://wiki.gnome.org/Projects/GnomeShell) и его расширений | нет | `gnome`
 [joplin](ansible/roles/joplin) | Установка приложения [Joplin](https://joplinapp.org/) для ведения заметок | [да](ansible/roles/joplin#после-установки) | `joplin`
-[keyboard](ansible/roles/keyколлекциboard) | Настройка клавиатуры (переопределение клавиш и переключение раскладок) | нет | `keyboard`
+[keyd](ansible/roles/keyd) | Настройка клавиатуры (переопределение поведения клавиш) | нет | `keyboard`
 [ranger](ansible/roles/ranger) | Установка консольного файлового менеджера [ranger](https://github.com/ranger/ranger) | нет | `ranger`
 [remmina](ansible/roles/remmina) | Установка приложения [Remmina](https://remmina.org/) для доступа к хостам через SSH и RDP | [да](ansible/roles/remmina#после-установки) | `remmina`
 [vim](ansible/roles/vim) | Установка и настройка VIM | нет | `vim`
