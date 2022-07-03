@@ -7,16 +7,9 @@
 | **CapsLock** | **ESC** | **Left Ctrl**
 | **Enter** | **Enter** | **Right Ctrl**
 | **Space** | **Space** | **Meta**
-| **Tab** | **Tab** | _Vim-mode_ (клавиши **h**, **j**, **k**, **l** действуют как стрелки)
-| **Left Shift** | **Left Alt + F11** (для переключения раскладки) | **Left Shift**
-| **Right Shift** | **Left Alt + F12** (для переключения раскладки) | **Right Shift**
-
-  * **CapsLock**: однократное нажатие — **ESC**, на удержании — **Left Ctrl**
-  * **Enter**: однократное нажатие — **Enter**, на удержании — **Right Ctrl**
-  * **Space**: однократное нажатие — **Space**, на удержании — **Meta**
-  * **Tab**: однократное нажатие — **Tab**, на удержании — _Vim-mode_ (клавиши **h**, **j**, **k**, **l** действуют как стрелки)
-  * **Left Shift**: однократное нажатие — **Left Alt + F11** (для переключения раскладки), на удержании — **Left Shift**
-  * **Right Shift**: однократное нажатие — **Left Alt + F12** (для переключения раскладки), на удержании — **Right Shift**
+| **Tab** | **Tab** | _Vim-mode_ (клавиши **h**, **j**, **k**, **l**</br>действуют как стрелки)
+| **Left Shift** | **Left Alt + F11** | **Left Shift**
+| **Right Shift** | **Left Alt + F12** | **Right Shift**
 
 ## Сборка keyd
 
