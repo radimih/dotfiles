@@ -45,6 +45,7 @@
 
   roles:
 
+    - {role: keyd, tags: ['keyboard']}
     - {role: fonts, tags: ['fonts']}
 
     - role: gnome
@@ -58,7 +59,7 @@
       tags:
         - gnome
 
-    - {role: keyboard, tags: ['keyboard']}
+    - {role: gnome_extension_LayoutSwitchAPI, tags: ['qqq']}
     - {role: docker, tags: ['docker']}
     - {role: vim, tags: ['vim']}
     - {role: flameshot, tags: ['flameshot']}
