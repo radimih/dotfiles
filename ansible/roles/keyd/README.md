@@ -4,12 +4,12 @@
 
 | Клавиша | Однократное нажатие | На удержании |
 |---------|---------------------|--------------|
-| **CapsLock** | **ESC** | **Left Ctrl**
-| **Enter** | **Enter** | **Right Ctrl**
-| **Space** | **Space** | **Meta**
-| **Tab** | **Tab** | _Vim-mode_ (клавиши **h**, **j**, **k**, **l**</br>действуют как стрелки)
-| **Left Shift** | **Left Alt + F11** | **Left Shift**
-| **Right Shift** | **Left Alt + F12** | **Right Shift**
+| `CapsLock` | `ESC` | `Left Ctrl`
+| `Enter` | `Enter` | `Right Ctrl`
+| `Space` | `Space` | `Meta`
+| `Tab` | `Tab` | _Vim-mode_ (клавиши `h`, `j`, `k`, `l`</br>действуют как стрелки)
+| `Left Shift` | `Left Alt + F11` | `Left Shift`
+| `Right Shift` | `Left Alt + F12` | `Right Shift`
 
 ## Сборка keyd
 
