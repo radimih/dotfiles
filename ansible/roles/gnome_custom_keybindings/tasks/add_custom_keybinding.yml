@@ -1,0 +1,15 @@
+---
+- name: Set custom{{ custom_index }} keybinding | name = {{ item.name }}
+  community.general.dconf:
+    key: '{{ _dconf_key }}/custom{{ custom_index }}/name'
+    value: '"{{ item.name }}"'
+
+- name: Set custom{{ custom_index }} keybinding | binding = {{ item.binding }}
+  community.general.dconf:
+    key: '{{ _dconf_key }}/custom{{ custom_index }}/binding'
+    value: '"{{ item.binding }}"'
+
+- name: Set custom{{ custom_index }} keybinding | command = {{ item.command }}
+  community.general.dconf:
+    key: '{{ _dconf_key }}/custom{{ custom_index }}/command'
+    value: '"{{ item.command }}"'
