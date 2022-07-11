@@ -1,0 +1,19 @@
+---
+- name: Установить python-модуль psutil для работы ansible-модуля community.general.dconf
+  ansible.builtin.apt:
+    name: python3-psutil
+    state: present
+  become: true
+
+- name: Назначить кастомные клавиатурные привязки
+  ansible.builtin.include_tasks: add_custom_keybinding.yml
+  loop: '{{ key_bindings }}'
+  loop_control:
+    index_var: custom_index
+
+  # Включаются только перечисленные в key_bindings привязки
+- name: Включить назначенные кастомные клавиатурные привязки
+  community.general.dconf:
+    key: '{{ _dconf_key }}'
+    value: "{{ range(key_bindings | length) | map('regex_replace', '^(.*)$', _dconf_key+'/custom\\1/') | to_json }}"
+  
