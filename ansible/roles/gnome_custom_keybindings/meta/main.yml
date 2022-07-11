@@ -17,3 +17,25 @@ galaxy_info:
   galaxy_tags: []
 
 dependencies: []
+
+argument_specs:
+  main:
+    options:
+      key_bindings:
+        description: Список клавиатурных привязок
+        required: true
+        type: list
+        elements: dict
+        options:
+          name:
+            description: Название привязки
+            required: true
+            type: str
+          binding:
+            description: Комбинация клавиш
+            required: true
+            type: str
+          command:
+            description: shell-команда
+            required: true
+            type: str
