@@ -17,13 +17,22 @@ Vagrant.configure("2") do |config|
     v.customize ["setextradata", :id, "GUI/MiniToolBarAlignment", "top"]
   end
 
-  config.vm.provision "ansible" do |ansible|
+  config.vm.provision "general", type: "ansible" do |ansible|
     ENV['ANSIBLE_BECOME_ASK_PASS'] = "false"
     ansible.groups = {
       "desktop" => ["vm-desktop"]
     }
-    ansible.playbook = "playbook.yml"
-    ansible.tags = ["keyboard"] #["minipack", "ranger", "gnome"]
+    ansible.playbook = "general.yml"
+    ansible.tags = ["minipack", "keyboard", "ranger"]
+    ansible.verbose = false  # возможные значения: false, true (эквивалентно опции -v), "vvv", "vvvv"
+  end
+
+  config.vm.provision "gnome", type: "ansible" do |ansible|
+    ENV['ANSIBLE_BECOME_ASK_PASS'] = "false"
+    ansible.groups = {
+      "desktop" => ["vm-desktop"]
+    }
+    ansible.playbook = "gnome.yml"
     ansible.verbose = false  # возможные значения: false, true (эквивалентно опции -v), "vvv", "vvvv"
   end
 
