@@ -1,0 +1,99 @@
+---
+- name: Настройка GNOME Shell
+  hosts:
+    - desktop
+
+  pre_tasks:
+
+    - name: Установить python-модуль psutil для работы ansible-модуля community.general.dconf
+      ansible.builtin.apt:
+        name: python3-psutil
+        state: present
+      become: true
+
+    - name: Установить Gnome Tweaks
+      ansible.builtin.apt:
+        name: gnome-tweaks
+        state: present
+      become: true
+
+    - name: Установить следование фокуса окна за мышью
+      community.general.dconf:
+        key: /org/gnome/desktop/wm/preferences/focus-mode
+        value: "'sloppy'"
+        state: present
+
+    - name: Установить раскладки клавиатуры us,ru
+      community.general.dconf:
+        key: /org/gnome/desktop/input-sources/sources
+        value: "[('xkb', 'us'), ('xkb', 'ru')]"
+        state: present
+
+    - name: Установить циклический переключатель раскладок клавиатуры в Shift-RightCtrl
+      community.general.dconf:
+        key: /org/gnome/desktop/wm/keybindings/switch-input-source
+        value: "['<Shift>Control_R']"
+        state: present
+
+    # # Тема "Plata" (https://gitlab.com/tista500/plata-theme) рекомендована автором
+    # # расширения Material Shell
+
+    # - name: Установить PPA-репозиторий темы
+    #   ansible.builtin.apt_repository:
+    #     repo: ppa:tista/plata-theme
+    #     state: present
+    #   become: true
+
+    # - name: Установить apt-пакет темы
+    #   ansible.builtin.apt:
+    #     name: plata-theme
+    #     state: latest
+    #     update_cache: true
+    #     cache_valid_time: 7200  # apt update если кэш не обновлялся более 2 часов
+    #   become: true
+
+    #   # GNOME Tweaks / Appearance / Themes / Applications
+    # - name: Установить выбранную тему текущей Applications-темой
+    #   community.general.dconf:
+    #     key: /org/gnome/desktop/interface/gtk-theme
+    #     value: "'Plata-Compact'"
+    #     state: present
+
+    #   # GNOME Tweaks / Appearance / Themes / Shell (требуется включенное расширение "User Themes")
+    # - name: Установить выбранную тему текущей Shell-темой
+    #   community.general.dconf:
+    #     key: /org/gnome/shell/extensions/user-theme/name
+    #     value: "'Plata-Compact'"
+    #     state: present
+
+  roles:
+
+    - name: Установить GNOME-расширение для переключения раскладок клавиатуры с помощью программы gdbus
+      role: gnome_extension_LayoutSwitchAPI
+      tags:
+        - layout_extension
+
+    - name: Определить кастомные клавиатурные привязки (все предыдущие удаляются)
+      role: gnome_custom_keybindings
+      vars:
+        key_bindings:
+          - name: Layout English
+            binding: '<Alt>F11'
+            command: gdbus call --session --dest org.gnome.Shell --object-path /org/gnome/Shell/LayoutSwitchAPI --method org.gnome.Shell.LayoutSwitchAPI.Switch us
+          - name: Layout Russian
+            binding: '<Alt>F12'
+            command: gdbus call --session --dest org.gnome.Shell --object-path /org/gnome/Shell/LayoutSwitchAPI --method org.gnome.Shell.LayoutSwitchAPI.Switch ru
+      tags:
+        - keybindings
+
+    - name: Установить расширения с сайта https://extensions.gnome.org/
+      role: gnome_extensions
+      vars:
+        ids:
+          - 19    # User Themes (https://extensions.gnome.org/extension/19/user-themes/)
+          - 277   # Impatience (https://extensions.gnome.org/extension/277/impatience/)
+          - 779   # Clipboard Indicator (https://extensions.gnome.org/extension/779/clipboard-indicator/)
+          - 3357  # Material Shell (https://extensions.gnome.org/extension/3357/material-shell/)
+          - 4727  # Primary Input on LockScreen (https://extensions.gnome.org/extension/4727/primary-input-on-lockscreen/)
+      tags:
+        - extensions

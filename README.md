@@ -96,7 +96,7 @@
 
 ```bash
 cd ~/dotfiles/ansible
-ansible-playbook playbook.yml --limit "desktop|{имена серверов через запятую}" --tags "{список тэгов через запятую}"
+ansible-playbook general.yml --limit "desktop|{имена серверов через запятую}" --tags "{список тэгов через запятую}"
 ```
 
 Для серверов можно игнорировать запрос пароля `BECOME password:` и просто нажимать Enter.

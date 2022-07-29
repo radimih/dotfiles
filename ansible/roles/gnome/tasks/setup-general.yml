@@ -1,7 +1,0 @@
----
-- name: Установить следование фокуса окна за мышью
-  community.general.dconf:
-    key: "/org/gnome/desktop/wm/preferences/focus-mode"
-    value: "'sloppy'"
-    state: present
-
