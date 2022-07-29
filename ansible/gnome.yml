@@ -68,11 +68,13 @@
 
   roles:
 
-    - role: gnome_extension_LayoutSwitchAPI
+    - name: Установить GNOME-расширение для переключения раскладок клавиатуры с помощью программы gdbus
+      role: gnome_extension_LayoutSwitchAPI
       tags:
         - layout_extension
 
-    - role: gnome_custom_keybindings
+    - name: Определить кастомные клавиатурные привязки (все предыдущие удаляются)
+      role: gnome_custom_keybindings
       vars:
         key_bindings:
           - name: Layout English
@@ -84,7 +86,8 @@
       tags:
         - keybindings
 
-    - role: gnome_extensions
+    - name: Установить расширения с сайта https://extensions.gnome.org/
+      role: gnome_extensions
       vars:
         ids:
           - 19    # User Themes (https://extensions.gnome.org/extension/19/user-themes/)

@@ -1,5 +1,5 @@
 ---
-- name: Настройка моего стандартного Linux-окружения
+- name: Настройка Linux-окружения
   hosts:
     - desktop
     - servers
@@ -20,7 +20,7 @@
       tags:
         - minipack
 
-- name: Настройка моего стандартного Desktop-окружения
+- name: Настройка Desktop-окружения
   hosts:
     - desktop
 
