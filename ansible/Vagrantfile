@@ -17,8 +17,9 @@ Vagrant.configure("2") do |config|
     v.customize ["setextradata", :id, "GUI/MiniToolBarAlignment", "top"]
   end
 
-  config.vm.provision "general", type: "ansible" do |ansible|
-    ENV['ANSIBLE_BECOME_ASK_PASS'] = "false"
+  config.vm.synced_folder "../", "/home/vagrant/dotfiles"
+
+  config.vm.provision "general", type: "ansible_local" do |ansible|
     ansible.groups = {
       "desktop" => ["vm-desktop"]
     }
@@ -27,8 +28,7 @@ Vagrant.configure("2") do |config|
     ansible.verbose = false  # возможные значения: false, true (эквивалентно опции -v), "vvv", "vvvv"
   end
 
-  config.vm.provision "gnome", type: "ansible" do |ansible|
-    ENV['ANSIBLE_BECOME_ASK_PASS'] = "false"
+  config.vm.provision "gnome", type: "ansible_local" do |ansible|
     ansible.groups = {
       "desktop" => ["vm-desktop"]
     }

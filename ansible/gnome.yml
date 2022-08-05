@@ -1,3 +1,9 @@
+# Внимание! При использовании модуля community.general.dconf необходимо соблюдать следующие правила:
+#
+#  * Все строковые значения должны обязательно обрамляться в кавычки, иначе будет выводиться ошибка.
+#  * Кавычки для строковых значений должны обязательно быть ОДИНАРНЫМИ, иначе таска всегда будет
+#    иметь статус changed == true, даже если значение фактически не поменялось.
+
 ---
 - name: Настройка GNOME Shell
   hosts:
@@ -34,6 +40,20 @@
         key: /org/gnome/desktop/wm/keybindings/switch-input-source
         value: "['<Shift>Control_R']"
         state: present
+
+    - name: Установить wallpaper
+      community.general.dconf:
+        key: /org/gnome/desktop/background/{{ item.key }}
+        value: "'{{ item.value | string }}'"
+        state: present
+      loop:
+        - { key: color-shading-type, value: solid }
+        - { key: picture-options, value: zoom }
+        - { key: picture-uri, value: 'file://{{ ansible_user_dir }}/dotfiles/wallpapers/cold-coast.jpg' }
+        - { key: primary-color, value: '#000000' }
+        - { key: secondary-color, value: '#000000' }
+      tags:
+        - wallpaper
 
     # # Тема "Plata" (https://gitlab.com/tista500/plata-theme) рекомендована автором
     # # расширения Material Shell
