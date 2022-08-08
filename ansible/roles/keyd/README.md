@@ -11,10 +11,22 @@
 | `Left Shift` | `Left Alt + F11` | `Left Shift`
 | `Right Shift` | `Left Alt + F12` | `Right Shift`
 
+## Переменные Ansible-роли
+
+#### Обязательные
+
+| Переменная | Описание |
+| --- | --- |  
+
+#### Необязательные
+
+| Переменная | Описание | Значение по-умолчанию |
+| --- | --- | --- |
+
 ## Сборка keyd
 
 ```bash
-$ cat <<EOF | docker build -t keyd-builder -
+cat <<EOF | docker build -t keyd-builder -
 FROM ubuntu:latest
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -35,6 +47,7 @@ RUN echo "#!/bin/bash" > /to_target.sh \
 
 CMD /to_target.sh
 EOF 
-$ cd files/bin
-$ docker run -t --rm -v `pwd`:/target keyd-builder
+
+cd files/bin
+docker run -t --rm -v `pwd`:/target keyd-builder
 ```

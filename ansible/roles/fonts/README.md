@@ -8,3 +8,15 @@
     ```bash
     ls *.ttf | grep -v -E "Iosevka Term( (Bold|Extralight|Light))? Nerd Font Complete Mono.ttf" | xargs -d '\n' rm
     ```
+
+## Переменные Ansible-роли
+
+#### Обязательные
+
+| Переменная | Описание |
+| --- | --- |  
+
+#### Необязательные
+
+| Переменная | Описание | Значение по-умолчанию |
+| --- | --- | --- |
