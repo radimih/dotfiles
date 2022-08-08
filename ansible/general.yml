@@ -55,7 +55,11 @@
 
     - role: remmina
       vars:
-        remmina_secret: !vault |
+        options:
+          disable_tray_icon: 'true'
+          prevent_snap_welcome_message: 'true'
+          view_file_mode: 1
+        secret: !vault |
           $ANSIBLE_VAULT;1.1;AES256
           36646335306633363036393562326663353732346366383638373231333236303939333263623265
           3835623939643038313262623833363036653735343133310a353732613866363732396466383938

@@ -14,24 +14,28 @@
     path: '{{ _connections_dir }}'
     state: directory
 
-- name: Установить secret приложения
+- name: Установить в параметрах приложения каталог для профилей соединений в '{{ _connections_dir }}'
+  ansible.builtin.ini_file:
+    path: '{{ ansible_user_dir }}/snap/remmina/current/.config/remmina/remmina.pref'
+    no_extra_spaces: true
+    section: remmina_pref
+    option: datadir_path
+    value: '{{ _connections_dir }}'
+
+- name: Установить в параметрах приложения secret приложения
   ansible.builtin.ini_file:
     path: '{{ ansible_user_dir }}/snap/remmina/current/.config/remmina/remmina.pref'
     no_extra_spaces: true
     section: remmina_pref
     option: secret
-    value: '{{ remmina_secret }}'
-  when: remmina_secret is defined
+    value: '{{ secret }}'
+  when: secret is defined
 
-- name: Настроить приложение
+- name: Установить параметры приложения
   ansible.builtin.ini_file:
     path: '{{ ansible_user_dir }}/snap/remmina/current/.config/remmina/remmina.pref'
     no_extra_spaces: true
     section: remmina_pref
-    option: '{{ item.option }}'
-    value: '{{ item.value }}'
-  loop:
-    - { option: datadir_path, value: '{{ _connections_dir }}' }
-    - { option: disable_tray_icon, value: 'true' }
-    - { option: prevent_snap_welcome_message, value: 'true' }
-    - { option: view_file_mode, value: '1' }
+    option: '{{ item.key }}'
+    value: '{{ item.value | string }}'
+  loop: '{{ options | dict2items }}'

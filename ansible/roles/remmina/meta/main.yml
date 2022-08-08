@@ -17,3 +17,15 @@ galaxy_info:
   galaxy_tags: []
 
 dependencies: []
+
+argument_specs:
+  main:
+    options:
+      options:
+        description: Словарь устанавливаемых параметров Remmina в секции `[remmina_pref]`
+        required: false
+        type: dict
+      secret:
+        description: Секрет приложения для шифрования паролей в файлах-профилей соединений
+        required: false
+        type: str
