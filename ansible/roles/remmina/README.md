@@ -1,7 +1,6 @@
 # Remmina
 
-Установка desktop-приложения [Remmina](https://remmina.org/) для
-доступа на удаленные хосты через SSH и RDP.
+Установка desktop-приложения [Remmina](https://remmina.org/) для доступа на удаленные хосты через SSH и RDP.
 
 Для Ubuntu, начиная с версии **1.4.8**, прекращена поддержка официального PPA-репозитория
 приложения ([PPA is kill](https://remmina.org/oh-flatpak/)). Поэтому используется **Snap**-пакет.
@@ -38,13 +37,13 @@
 1. Создать файл с паролем, если его еще нет (не должен храниться в git):
 
    ```bash
-   $ vim .vault-pass && chmod 600 .vault-pass
+   vim .vault-pass && chmod 600 .vault-pass
    ```
 
 1. Зашифровать секрет (без сохранения секретов в истории команд оболочки):
 
    ```bash
-   $ ansible-vault encrypt_string --stdin-name secret
+   ansible-vault encrypt_string --stdin-name secret
    ```
 
    Параметр `--vault-password-file` указывать не надо, так как файл с паролем `.vault-pass` уже указан в `ansible.cfg`.
