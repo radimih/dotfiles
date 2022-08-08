@@ -1,37 +1,41 @@
 ---
 - name: Установить Snap-пакет приложения
-  become: yes
-  snap:
+  community.general.snap:
     name: remmina
     state: present
+  become: true
 
 - name: Запустить приложение, чтобы оно создало свои каталоги и файлы
-  shell: remmina --version
-  changed_when: no
+  ansible.builtin.command: remmina --version
+  changed_when: false
 
 - name: Создать каталог для хранения файлов-профилей соединений Remmina
-  file:
-    path: '{{ _connections_dir }}'
+  ansible.builtin.file:
+    path: '{{ connections_dir }}'
     state: directory
 
-- name: Установить secret приложения
-  ini_file:
-    path: '{{ ansible_env.HOME }}/snap/remmina/current/.config/remmina/remmina.pref'
-    no_extra_spaces: yes
-    section: remmina_pref
-    option: secret
-    value: '{{ remmina_secret }}'
-  when: remmina_secret is defined
+- name: Установить в параметрах приложения каталог для профилей соединений в '{{ _connections_dir }}'
+  ansible.builtin.ini_file:
+    path: '{{ _config_file }}'
+    no_extra_spaces: true
+    section: '{{ _config_section }}'
+    option: datadir_path
+    value: '{{ connections_dir }}'
 
-- name: Настроить приложение
-  ini_file:
-    path: '{{ ansible_user_dir }}/snap/remmina/current/.config/remmina/remmina.pref'
-    no_extra_spaces: yes
-    section: remmina_pref
-    option: '{{ item.option }}'
-    value: '{{ item.value }}'
-  loop:
-    - { option: 'datadir_path', value: '{{ _connections_dir }}' }
-    - { option: 'disable_tray_icon', value: 'true' }
-    - { option: 'prevent_snap_welcome_message', value: 'true' }
-    - { option: 'view_file_mode', value: '1' }
+- name: Установить в параметрах приложения secret приложения
+  ansible.builtin.ini_file:
+    path: '{{ _config_file }}'
+    no_extra_spaces: true
+    section: '{{ _config_section }}'
+    option: secret
+    value: '{{ secret }}'
+  when: secret is defined
+
+- name: Установить параметры приложения
+  ansible.builtin.ini_file:
+    path: '{{ _config_file }}'
+    no_extra_spaces: true
+    section: '{{ _config_section }}'
+    option: '{{ item.key }}'
+    value: '{{ item.value | string }}'
+  loop: '{{ options | dict2items }}'
