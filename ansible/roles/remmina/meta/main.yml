@@ -21,6 +21,10 @@ dependencies: []
 argument_specs:
   main:
     options:
+      connections_dir:
+        description: Каталог, где хранятся файлы-профили соединений
+        required: true
+        type: str
       options:
         description: Словарь устанавливаемых параметров Remmina в секции `[remmina_pref]`
         required: false
