@@ -16,26 +16,26 @@
 
 - name: Установить в параметрах приложения каталог для профилей соединений в '{{ _connections_dir }}'
   ansible.builtin.ini_file:
-    path: '{{ ansible_user_dir }}/snap/remmina/current/.config/remmina/remmina.pref'
+    path: '{{ _config_file }}'
     no_extra_spaces: true
-    section: remmina_pref
+    section: '{{ _config_section }}'
     option: datadir_path
     value: '{{ _connections_dir }}'
 
 - name: Установить в параметрах приложения secret приложения
   ansible.builtin.ini_file:
-    path: '{{ ansible_user_dir }}/snap/remmina/current/.config/remmina/remmina.pref'
+    path: '{{ _config_file }}'
     no_extra_spaces: true
-    section: remmina_pref
+    section: '{{ _config_section }}'
     option: secret
     value: '{{ secret }}'
   when: secret is defined
 
 - name: Установить параметры приложения
   ansible.builtin.ini_file:
-    path: '{{ ansible_user_dir }}/snap/remmina/current/.config/remmina/remmina.pref'
+    path: '{{ _config_file }}'
     no_extra_spaces: true
-    section: remmina_pref
+    section: '{{ _config_section }}'
     option: '{{ item.key }}'
     value: '{{ item.value | string }}'
   loop: '{{ options | dict2items }}'
