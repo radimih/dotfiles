@@ -1,30 +1,30 @@
 ---
 - name: Установить пакет zsh, если еще не установлен
-  become: yes
-  package:
+  ansible.builtin.package:
     name: zsh
     state: present
+  become: true
 
 - name: Определить местонахождение бинарника zsh
-  command: which zsh
-  register: which_result
-  ignore_errors: yes
+  ansible.builtin.command: which zsh
+  register: r__which_result
+  ignore_errors: true
   changed_when: false
 
 - name: Установить zsh shell-оболочкой по-умолчанию
-  become: yes
-  user:
-    name: "{{ ansible_env.USER }}"
-    shell: "{{ which_result.stdout }}"
-  when: which_result.rc == 0
+  ansible.builtin.user:
+    name: '{{ ansible_user_id }}'
+    shell: '{{ r__which_result.stdout }}'
+  become: true
+  when: r__which_result.rc == 0
 
 - name: Скопировать файлы настроек zsh
-  copy:
-    src: "files/{{ item }}"
-    dest: "{{ ansible_env.HOME }}"
-    owner: "{{ ansible_env.USER }}"
-    group: "{{ ansible_env.USER }}"
-    mode: "0644"
+  ansible.builtin.copy:
+    src: files/{{ item }}
+    dest: '{{ ansible_user_dir }}'
+    owner: '{{ ansible_user_id }}'
+    group: '{{ ansible_user_id }}'
+    mode: 0644
   loop:
-    - ".zshrc"
-    - ".zshenv"
+    - .zshrc
+    - .zshenv

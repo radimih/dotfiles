@@ -1,7 +1,7 @@
 ---
 - name: Сгенерировать .zirc
-  template:
+  ansible.builtin.template:
     src: .zirc.j2
-    dest: "{{ ansible_env.HOME }}/.zirc"
+    dest: '{{ ansible_user_dir }}/.zirc'
   tags:
     - zirc

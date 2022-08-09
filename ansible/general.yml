@@ -88,6 +88,6 @@
             type: light
             ices:
               - name: depth
-                value: "1"
+                value: 1
       tags:
         - zsh

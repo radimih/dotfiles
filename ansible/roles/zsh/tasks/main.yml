@@ -13,4 +13,4 @@
 
 - name: Настроить Powerlevel10k
   import_tasks: setup-p10k.yml
-  when: "'romkatv/powerlevel10k' in plugins|map(attribute='name')"
+  when: "'romkatv/powerlevel10k' in plugins | map(attribute='name')"
