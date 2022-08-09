@@ -1,10 +1,10 @@
 # Zsh и плагины
 
-Используется очень быстрый менеджер плагинов [Zinit](https://github.com/zdharma/zinit).
+Используется очень быстрый менеджер плагинов [zi](https://github.com/z-shell/zi) (бывший [Zinit](https://github.com/zdharma/zinit)).
 
 Конфигурирование плагинов сделано по мотивам Ansible-роли [ansible-zplugin](https://github.com/Townk/ansible-zplugin).
 
-В качестве shell prompt используется [Powerklevel10k](https://github.com/romkatv/powerlevel10k). Устанавливается как Zinit-плагин.
+В качестве shell prompt используется [Powerklevel10k](https://github.com/romkatv/powerlevel10k). Устанавливается как zi-плагин.
 
 ## Переменные Ansible-роли
 

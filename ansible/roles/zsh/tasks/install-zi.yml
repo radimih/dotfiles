@@ -1,4 +1,4 @@
-# https://github.com/zdharma/zinit
+# https://github.com/z-shell/zi
 
 ---
 - name: Установить git, если еще не установлен
@@ -7,15 +7,15 @@
     name: git
     state: present
 
-- name: Создать каталог установки zinit
+- name: Создать каталог установки zi
   file:
     path: "{{ zinit_home_dir }}"
     state: directory
     mode: "755"
 
-- name: Склонировать/обновить zinit
+- name: Склонировать/обновить zi
   git:
-    repo: https://github.com/zdharma/zinit
+    repo: https://github.com/z-shell/zi
     dest: "{{ zinit_home_dir }}/{{ zinit_bin_dirname }}"
     force: yes
     update: yes
