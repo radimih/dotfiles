@@ -114,6 +114,6 @@ for file in $HOME/.zshrc-*.zsh; do
   source "$file"
 done
 
-# zinit
-# =====
-[ -s $HOME/.zinitrc ] && source $HOME/.zinitrc
+# zi
+# ==
+[ -s $HOME/.zirc ] && source $HOME/.zirc

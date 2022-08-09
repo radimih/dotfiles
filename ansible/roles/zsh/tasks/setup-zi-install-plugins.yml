@@ -1,7 +1,7 @@
 ---
-- name: Сгенерировать .zinitrc
+- name: Сгенерировать .zirc
   template:
-    src: .zinitrc.j2
-    dest: "{{ ansible_env.HOME }}/.zinitrc"
+    src: .zirc.j2
+    dest: "{{ ansible_env.HOME }}/.zirc"
   tags:
-    - zinitrc
+    - zirc
