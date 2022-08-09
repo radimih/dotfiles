@@ -20,3 +20,36 @@ galaxy_info:
   galaxy_tags: []
 
 dependencies: []
+
+argument_specs:
+  main:
+    options:
+      zinit_plagins:
+        description: Список zsh-плагинов
+        required: false
+        type: list
+        elements: dict
+        options:
+          name:
+            description: имя плагина в виде <repo>/<plugin>
+            required: true
+            type: str
+          type:
+            description: тип загрузки плагина
+            required: true
+            type: str
+            choices: [light, load]
+          ices:
+            description: необязательный список опций плагина
+            required: false
+            type: list
+            elements: dict
+            options:
+              name:
+                description: имя опции
+                required: true
+                type: str
+              value:
+                description: значение опции
+                required: true
+                type: str
