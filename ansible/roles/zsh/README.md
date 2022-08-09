@@ -4,7 +4,34 @@
 
 Конфигурирование плагинов сделано по мотивам Ansible-роли [ansible-zplugin](https://github.com/Townk/ansible-zplugin).
 
-В качестве shell prompt используется [Powerklevel10k](https://github.com/romkatv/powerlevel10k). Устанавливается как zi-плагин.
+В качестве shell prompt используется [Powerlevel10k](https://github.com/romkatv/powerlevel10k). Устанавливается как zi-плагин.
+Иногда после крупного обновления необходимо заново формировать конфигурационный файл:
+
+```bash
+p10k configure
+```
+
+Рекомендуемые параметры:
+
+1. Prompt Style: `(3) Rainbow`
+1. Character Set: `(1) Unicode`
+1. Show current time? `(1) No`
+1. Prompt Separators: `(2) Vertical`
+1. Prompt Heads: `(4) Round`
+1. Prompt Tails: `(1) Flat`
+1. Prompt Height: `(2) Two lines`
+1. Prompt Connection: `(2) Dotted`
+1. Prompt Frame: `(1) No frame`
+1. Connection Color: `(4) Darkest`
+1. Prompt Spacing: `(2) Sparse`
+1. Icons: `(1) Few icons`
+1. Prompt Flow: `(1) Concise`
+1. Enable Transient Prompt? `(y) Yes`
+1. Instant Prompt Mode: `(2) Quiet`
+
+```bash
+cp ~/.p10k.zsh ~/dotfiles/ansible/roles/zsh/files/
+```
 
 ## Переменные Ansible-роли
 
@@ -33,7 +60,7 @@
 <tbody>
 <td valign="top">
 
-`zinit_plugins` 
+`plugins` 
 
 </td>
 <td valign="top">
@@ -64,7 +91,7 @@
 ```yaml
 - role: zsh
   vars:
-    zinit_plugins:
+    plugins:
       - name: zsh-users/zsh-autosuggestions
         type: light
       - name: marlonrichert/zsh-autocomplete

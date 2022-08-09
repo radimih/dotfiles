@@ -10,9 +10,9 @@ source "{{ zinit_home_dir }}/{{ zinit_bin_dirname }}/zi.zsh"
 autoload -Uz _zi
 (( ${+_comps} )) && _comps[zi]=_zi
 
-# From zinit_plugins Ansible varialbe:
+# From plugins Ansible variable:
 
-{% for plugin in zinit_plugins -%}
+{% for plugin in plugins -%}
     {% if "ices" in plugin -%}
         zinit ice
         {%- for ice in plugin.ices %}

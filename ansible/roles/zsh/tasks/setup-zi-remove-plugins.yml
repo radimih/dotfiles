@@ -1,7 +1,7 @@
 ---
 - name: Получить список плагинов, указанных в конфигурации
   set_fact:
-    config_plugin_list: "{{ zinit_plugins|map(attribute='name')|map('replace', '/', '---')|list }}"
+    config_plugin_list: "{{ plugins|map(attribute='name')|map('replace', '/', '---')|list }}"
 
 - name: Получить список установленных плагинов
   find:

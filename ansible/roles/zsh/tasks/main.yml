@@ -5,12 +5,12 @@
 - name: Установить менеджер плагинов zi
   import_tasks: install-zi.yml
 
-- name: Установить плагины, указанные в параметре zinit_plugins
+- name: Установить плагины, указанные в параметре plugins
   import_tasks: setup-zi-install-plugins.yml
 
-- name: Удалить плагины, не указанные в параметре zinit_plugins
+- name: Удалить плагины, не указанные в параметре plugins
   import_tasks: setup-zi-remove-plugins.yml
 
 - name: Настроить Powerlevel10k
   import_tasks: setup-p10k.yml
-  when: "'romkatv/powerlevel10k' in zinit_plugins|map(attribute='name')"
+  when: "'romkatv/powerlevel10k' in plugins|map(attribute='name')"
