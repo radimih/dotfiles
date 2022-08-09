@@ -9,6 +9,7 @@
 
 ```bash
 p10k configure
+cp ~/.p10k.zsh ~/dotfiles/ansible/roles/zsh/files/
 ```
 
 Рекомендуемые параметры:
@@ -28,10 +29,6 @@ p10k configure
 1. Prompt Flow: `(1) Concise`
 1. Enable Transient Prompt? `(y) Yes`
 1. Instant Prompt Mode: `(2) Quiet`
-
-```bash
-cp ~/.p10k.zsh ~/dotfiles/ansible/roles/zsh/files/
-```
 
 ## Переменные Ansible-роли
 
