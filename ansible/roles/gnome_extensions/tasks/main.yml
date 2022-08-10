@@ -15,25 +15,25 @@
 
 - name: Получить версию GNOME Shell
   ansible.builtin.shell: gnome-shell --version | sed 's/[^0-9.]*\([0-9.]*\).*/\1/'
-  register: r_gnome_version
+  register: r__gnome_version
   changed_when: false
 
-- name: 'Версия GNOME Shell: {{ r_gnome_version.stdout }}'
+- name: 'Версия GNOME Shell: {{ r__gnome_version.stdout }}'
   ansible.builtin.set_fact:
-    gnome_shell_version: '{{ r_gnome_version.stdout }}'
+    gnome_shell_version: '{{ r__gnome_version.stdout }}'
 
 - name: Получить информацию по устанавливаемым расширениям
   ansible.builtin.uri:
     url: https://extensions.gnome.org/extension-info/?pk={{ item }}&shell_version={{ gnome_shell_version }}
     return_content: true
   loop: '{{ ids }}'
-  register: r_extensions_info
+  register: r__extensions_info
 
 - name: Создать временный каталог для загрузки расширений
   ansible.builtin.tempfile:
     state: directory
     suffix: .extensions_download
-  register: r_extensions_download_dir
+  register: r__extensions_download_dir
   changed_when: false
 
 - block:
@@ -42,11 +42,11 @@
     include_tasks: install-extension.yml
     vars:
       extension_info: '{{ item.json }}'
-    loop: '{{ r_extensions_info.results }}'
+    loop: '{{ r__extensions_info.results }}'
 
   always:
     - name: Удалить временный каталог для загрузки расширений
       ansible.builtin.file:
-        path: '{{ r_extensions_download_dir.path }}'
+        path: '{{ r__extensions_download_dir.path }}'
         state: absent
       changed_when: false

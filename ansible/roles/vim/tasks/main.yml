@@ -19,12 +19,12 @@
 
 - name: Получить путь к текущему редактору по-умолчанию
   shell: update-alternatives --query editor | grep "Value" | cut -d" " -f2
-  register: r_default_editor
+  register: r__default_editor
   changed_when: no
 
-- name: "Путь к редактору по-умолчанию: {{ r_default_editor.stdout }}"
+- name: "Путь к редактору по-умолчанию: {{ r__default_editor.stdout }}"
   set_fact:
-    default_editor: "{{ r_default_editor.stdout }}"
+    default_editor: "{{ r__default_editor.stdout }}"
 
 - name: Установить VIM редактором по-умолчанию
   become: yes

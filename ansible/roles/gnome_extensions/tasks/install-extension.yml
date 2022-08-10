@@ -1,13 +1,13 @@
 ---
 - name: "Расширение {{ extension_info.name }} ({{ extension_info.pk }}) | Определить уже установленную версию"
   shell: gnome-extensions info "{{ extension_info.uuid }}" | sed -n '/Version:/s/[^0-9.]*\([0-9.]*\).*/\1/p'
-  register: r_extension_installed_version
+  register: r__extension_installed_version
   changed_when: no
 
-- name: "Расширение {{ extension_info.name }} ({{ extension_info.pk }}) | Версия установленного (0 - если не установлено): {{ r_extension_installed_version.stdout or 0 }}, на сайте: {{ extension_info.version }}"
+- name: "Расширение {{ extension_info.name }} ({{ extension_info.pk }}) | Версия установленного (0 - если не установлено): {{ r__extension_installed_version.stdout or 0 }}, на сайте: {{ extension_info.version }}"
   set_fact:
     extension_version:
-      installed: "{{ r_extension_installed_version.stdout or 0 }}"
+      installed: "{{ r__extension_installed_version.stdout or 0 }}"
       website: "{{ extension_info.version }}"
 
 - block:
@@ -15,11 +15,11 @@
   - name: "Расширение {{ extension_info.name }} ({{ extension_info.pk }}) | Загрузить с сайта"
     get_url:
       url: https://extensions.gnome.org{{ extension_info.download_url }}
-      dest: "{{ r_extensions_download_dir.path }}/{{ extension_info.uuid }}.zip"
-    register: r_extension_download
+      dest: "{{ r__extensions_download_dir.path }}/{{ extension_info.uuid }}.zip"
+    register: r__extension_download
 
   - name: "Расширение {{ extension_info.name }} ({{ extension_info.pk }}) | Установить/обновить"
-    shell: gnome-extensions install --force "{{ r_extension_download.dest }}"
+    shell: gnome-extensions install --force "{{ r__extension_download.dest }}"
     # notify: restart-gnome-shell
 
   when: extension_version.website|int > extension_version.installed|int
