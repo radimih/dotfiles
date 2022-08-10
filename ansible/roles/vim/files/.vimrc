@@ -140,7 +140,7 @@ endif
 set confirm
 set fencs=utf-8,cp1251,latin1
 
-set spelllang=ru_ru,ru_yo,en_us
+set spelllang=ru,en
 set spell
 
 " Сохранять swapfile каждые 2 секунды бездействия
@@ -234,9 +234,10 @@ nnoremap <C-S-Tab> :tabprevious<CR>
 " Autocommands {{{
 " ==============================================================================
 
-" Форма курсора в зависимости от режима редактирования.
-" Источник: https://vim.fandom.com/wiki/Change_cursor_shape_in_different_modes
 if has("autocmd")
+
+  " Форма курсора в зависимости от режима редактирования.
+  " Источник: https://vim.fandom.com/wiki/Change_cursor_shape_in_different_modes
   au VimEnter,InsertLeave * silent execute '!echo -ne "\e[1 q"' | redraw!
   au InsertEnter,InsertChange *
     \ if v:insertmode == 'i' |
@@ -245,6 +246,14 @@ if has("autocmd")
     \   silent execute '!echo -ne "\e[3 q"' | redraw! |
     \ endif
   au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
+
+  " В первый обычный запуск Vim принудительно выполнить команду set spell, чтобы
+  " Vim закачал словарь для ru. Автоматически это делается только для en.
+  " Интерактивно будет задано несколько вопросов.
+  if !v:vim_did_enter
+      autocmd VimEnter * ++once ++nested set spell spelllang=ru,en
+  endif
+
 endif
 
 " }}}
