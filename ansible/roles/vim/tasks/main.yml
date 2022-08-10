@@ -12,11 +12,6 @@
     src: files/.vimrc
     dest: '{{ ansible_user_dir }}/'
 
-- name: Скопировать файл .editorconfig
-  ansible.builtin.copy:
-    src: files/.editorconfig
-    dest: '{{ ansible_user_dir }}/'
-
 - name: Получить путь к текущему редактору по-умолчанию
   ansible.builtin.shell: update-alternatives --query editor | grep "Value" | cut -d" " -f2
   register: r__default_editor

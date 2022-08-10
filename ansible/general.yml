@@ -20,6 +20,13 @@
       tags:
         - minipack
 
+    - name: Скопировать файл .editorconfig
+      ansible.builtin.copy:
+        src: files/.editorconfig
+        dest: '{{ ansible_user_dir }}/'
+      tags:
+        - files
+
 - name: Настройка Desktop-окружения
   hosts:
     - desktop
