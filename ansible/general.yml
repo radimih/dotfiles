@@ -45,7 +45,7 @@
 
   roles:
 
-    - { role: keyd, tags: [keyboard] }
+    - { role: keyd, tags: [keyd] }
     - { role: fonts, tags: [fonts] }
     - { role: docker, tags: [docker] }
     - { role: vim, tags: [vim] }
