@@ -1,33 +1,33 @@
 ---
 - name: Установить последнюю версию Vim
-  become: yes
-  apt:
+  ansible.builtin.apt:
     name: vim
     state: latest
-    update_cache: yes
+    update_cache: true
     cache_valid_time: 7200  # apt update если кэш не обновлялся более 2 часов
+  become: true
 
 - name: Скопировать файл настроек Vim
-  copy:
+  ansible.builtin.copy:
     src: files/.vimrc
-    dest: "{{ ansible_user_dir }}/"
+    dest: '{{ ansible_user_dir }}/'
 
 - name: Скопировать файл .editorconfig
-  copy:
+  ansible.builtin.copy:
     src: files/.editorconfig
-    dest: "{{ ansible_user_dir }}/"
+    dest: '{{ ansible_user_dir }}/'
 
 - name: Получить путь к текущему редактору по-умолчанию
-  shell: update-alternatives --query editor | grep "Value" | cut -d" " -f2
+  ansible.builtin.shell: update-alternatives --query editor | grep "Value" | cut -d" " -f2
   register: r__default_editor
-  changed_when: no
+  changed_when: false
 
-- name: "Путь к редактору по-умолчанию: {{ r__default_editor.stdout }}"
-  set_fact:
-    default_editor: "{{ r__default_editor.stdout }}"
+- name: 'Путь к редактору по-умолчанию: {{ r__default_editor.stdout }}'
+  ansible.builtin.set_fact:
+    default_editor: '{{ r__default_editor.stdout }}'
 
 - name: Установить Vim редактором по-умолчанию
-  become: yes
-  shell: update-alternatives --set editor /usr/bin/vim.basic
-  changed_when: yes
-  when: default_editor != "/usr/bin/vim.basic"
+  ansible.builtin.command: update-alternatives --set editor /usr/bin/vim.basic
+  become: true
+  changed_when: true
+  when: default_editor != '/usr/bin/vim.basic'
