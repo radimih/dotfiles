@@ -15,7 +15,7 @@
 [keyd](ansible/roles/keyd) | Настройка клавиатуры (переопределение поведения клавиш) | нет | `keyd`
 [ranger](ansible/roles/ranger) | Установка консольного файлового менеджера [ranger](https://github.com/ranger/ranger) | нет | `ranger`
 [remmina](ansible/roles/remmina) | Установка приложения [Remmina](https://remmina.org/) для доступа к хостам через SSH и RDP | [да](ansible/roles/remmina#после-установки) | `remmina`
-[vim](ansible/roles/vim) | Установка и настройка VIM | нет | `vim`
+[vim](ansible/roles/vim) | Установка и настройка Vim | нет | `vim`
 [zsh](ansible/roles/zsh) | Установка shell-оболочки [Zsh](https://www.zsh.org/) и настройка окружения | нет | `zsh`
 
 ## Первоначальная установка на новую систему
