@@ -1,5 +1,5 @@
 ---
-- name: Установить последнюю версию VIM
+- name: Установить последнюю версию Vim
   become: yes
   apt:
     name: vim
@@ -7,7 +7,7 @@
     update_cache: yes
     cache_valid_time: 7200  # apt update если кэш не обновлялся более 2 часов
 
-- name: Скопировать файл настроек VIM
+- name: Скопировать файл настроек Vim
   copy:
     src: files/.vimrc
     dest: "{{ ansible_user_dir }}/"
@@ -26,7 +26,7 @@
   set_fact:
     default_editor: "{{ r__default_editor.stdout }}"
 
-- name: Установить VIM редактором по-умолчанию
+- name: Установить Vim редактором по-умолчанию
   become: yes
   shell: update-alternatives --set editor /usr/bin/vim.basic
   changed_when: yes

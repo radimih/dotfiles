@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: Radimir Mikhailov
-  description: Install and configure VIM
+  description: Install and configure Vim
   license: MIT
 
   min_ansible_version: 2.7
