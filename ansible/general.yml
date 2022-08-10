@@ -45,13 +45,13 @@
 
   roles:
 
-    - {role: keyd, tags: ['keyboard']}
-    - {role: fonts, tags: ['fonts']}
-    - {role: docker, tags: ['docker']}
-    - {role: vim, tags: ['vim']}
-    - {role: flameshot, tags: ['flameshot']}
-    - {role: ranger, tags: ['ranger']}
-    - {role: dev-python, tags: ['dev', 'python']}
+    - { role: keyd, tags: [keyboard] }
+    - { role: fonts, tags: [fonts] }
+    - { role: docker, tags: [docker] }
+    - { role: vim, tags: [vim] }
+    - { role: flameshot, tags: [flameshot] }
+    - { role: ranger, tags: [ranger] }
+    - { role: dev-python, tags: [dev, python] }
 
     - role: remmina
       vars:
