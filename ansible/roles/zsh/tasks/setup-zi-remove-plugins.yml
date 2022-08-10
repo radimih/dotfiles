@@ -1,0 +1,26 @@
+---
+- name: Получить список плагинов, указанных в конфигурации
+  ansible.builtin.set_fact:
+    config_plugin_list: "{{ plugins | map(attribute='name') | map('replace', '/', '---') | list }}"
+
+- name: Получить список установленных плагинов
+  ansible.builtin.find:
+    paths: '{{ _zi_home_dir }}/plugins'
+    file_type: directory
+    recurse: no
+  register: r__installed_plugins
+
+- name: Получить нормализованный список установленных плагинов
+  ansible.builtin.set_fact:
+    installed_plugin_list: "{{ r__installed_plugins.files | map(attribute='path') | map('basename') | select('match', '^(?!_local).*$') | list }}"
+
+- name: Получить список плагинов для удаления
+  ansible.builtin.set_fact:
+    remove_plugin_list: '{{ installed_plugin_list | difference(config_plugin_list) }}'
+
+- name: Удалить плагины, не представленные в конфигурации
+  ansible.builtin.file:
+    path: '{{ _zi_home_dir }}/plugins/{{ item }}'
+    state: absent
+  loop: '{{ remove_plugin_list }}'
+  when: remove_plugin_list | length > 0

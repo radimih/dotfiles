@@ -1,7 +1,0 @@
----
-- name: Сгенерировать .zinitrc
-  template:
-    src: .zinitrc.j2
-    dest: "{{ ansible_env.HOME }}/.zinitrc"
-  tags:
-    - zinitrc

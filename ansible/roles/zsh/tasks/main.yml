@@ -2,15 +2,15 @@
 - name: Установить zsh
   import_tasks: install-zsh.yml
 
-- name: Установить zinit
-  import_tasks: install-zinit.yml
+- name: Установить менеджер плагинов zi
+  import_tasks: install-zi.yml
 
-- name: Установить zinit-плагины, указанные в параметре zinit_plugins
-  import_tasks: setup-zinit-install-plugins.yml
+- name: Установить плагины, указанные в параметре plugins
+  import_tasks: setup-zi-install-plugins.yml
 
-- name: Удалить zinit-плагины, не указанные в параметре zinit_plugins
-  import_tasks: setup-zinit-remove-plugins.yml
+- name: Удалить плагины, не указанные в параметре plugins
+  import_tasks: setup-zi-remove-plugins.yml
 
 - name: Настроить Powerlevel10k
   import_tasks: setup-p10k.yml
-  when: "'romkatv/powerlevel10k' in zinit_plugins|map(attribute='name')"
+  when: "'romkatv/powerlevel10k' in plugins | map(attribute='name')"

@@ -1,0 +1,21 @@
+# https://github.com/z-shell/zi
+
+---
+- name: Установить git, если еще не установлен
+  ansible.builtin.package:
+    name: git
+    state: present
+  become: true
+
+- name: Создать каталог установки zi
+  ansible.builtin.file:
+    path: '{{ _zi_home_dir }}'
+    state: directory
+    mode: 0755
+
+- name: Склонировать/обновить zi
+  ansible.builtin.git:
+    repo: https://github.com/z-shell/zi
+    dest: '{{ _zi_home_dir }}/{{ _zi_bin_dirname }}'
+    force: true
+    update: true

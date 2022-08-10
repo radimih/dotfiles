@@ -77,7 +77,7 @@
 
     - role: zsh
       vars:
-        zinit_plugins:
+        plugins:
           - name: zsh-users/zsh-autosuggestions
             type: light
           - name: marlonrichert/zsh-autocomplete
@@ -88,6 +88,6 @@
             type: light
             ices:
               - name: depth
-                value: "1"
+                value: 1
       tags:
         - zsh

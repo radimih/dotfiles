@@ -24,7 +24,7 @@ dependencies: []
 argument_specs:
   main:
     options:
-      zinit_plagins:
+      plugins:
         description: Список zsh-плагинов
         required: false
         type: list

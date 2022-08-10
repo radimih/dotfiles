@@ -2,20 +2,18 @@
 # https://github.com/romkatv/powerlevel10k
 
 - name: Скопировать файл настроек Powerlevel10k
-  copy:
+  ansible.builtin.copy:
     src: files/.p10k.zsh
-    dest: "{{ ansible_env.HOME }}"
-    owner: "{{ ansible_env.USER }}"
-    group: "{{ ansible_env.USER }}"
-    mode: "0644"
+    dest: '{{ ansible_user_dir }}'
+    owner: '{{ ansible_user_id }}'
+    group: '{{ ansible_user_id }}'
+    mode: 0644
 
 - name: Включить режим "Instant Prompt"
-  blockinfile:
-    path: "{{ ansible_env.HOME }}/.zshrc"
-    marker: "\n# {mark} ANSIBLE MANAGED BLOCK - Powerlevel10k (Instant Prompt mode)"
-    insertafter: "# For Ansible: begin script marker"
-    block: |
-
+  ansible.builtin.copy:
+    dest: '{{ ansible_user_dir }}/.zshrc-00-p10k-instant-prompt.zsh'
+    mode: 0644
+    content: |
       # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
       # Initialization code that may require console input (password prompts, [y/n]
       # confirmations, etc.) must go above this block; everything else may go below.
@@ -24,11 +22,9 @@
       fi
 
 - name: Включить загрузку файла настроек Powerlevel10k
-  blockinfile:
-    path: "{{ ansible_env.HOME }}/.zshrc"
-    marker: "\n# {mark} ANSIBLE MANAGED BLOCK - Powerlevel10k (configuration)"
-    insertafter: EOF
-    block: |
-
+  ansible.builtin.copy:
+    dest: '{{ ansible_user_dir }}/.zshrc-10-p10k-enable.zsh'
+    mode: 0644
+    content: |
       # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
       [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

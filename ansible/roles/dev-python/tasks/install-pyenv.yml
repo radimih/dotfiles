@@ -36,4 +36,4 @@
 - name: Сгенерировать {{ pyenv_init_script }}
   template:
     src: "{{ pyenv_init_script }}.j2"
-    dest: "{{ ansible_env.HOME }}/{{ pyenv_init_script }}"
+    dest: "{{ ansible_user_dir }}/{{ pyenv_init_script }}"
