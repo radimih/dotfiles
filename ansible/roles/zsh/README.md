@@ -39,8 +39,6 @@ cp ~/.p10k.zsh ~/dotfiles/ansible/roles/zsh/files/
 
 #### Необязательные
 
-| Переменная | Описание | Значение по-умолчанию |
-| --- | --- | --- |
 <table>
 <thead>
 <th>
@@ -52,9 +50,11 @@ cp ~/.p10k.zsh ~/dotfiles/ansible/roles/zsh/files/
 <th>
 Значение по-умолчанию
 </th>
-<tr>
 </thead>
 <tbody>
+
+<tr>
+
 <td valign="top">
 
 `plugins` 
@@ -79,7 +79,9 @@ cp ~/.p10k.zsh ~/dotfiles/ansible/roles/zsh/files/
 `[]`
 
 </td>
+
 </tr>
+
 </tbody>
 </table>
 

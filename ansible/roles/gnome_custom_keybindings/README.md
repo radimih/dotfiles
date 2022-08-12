@@ -18,9 +18,11 @@
 <th>
 Описание
 </th>
-<tr>
 </thead>
 <tbody>
+
+<tr>
+
 <td valign="top">
 
 `key_bindings`
@@ -35,7 +37,9 @@
 * `command:` Shell-команда
 
 </td>
+
 </tr>
+
 </tbody>
 </table>
 
