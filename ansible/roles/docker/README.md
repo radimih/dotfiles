@@ -51,7 +51,7 @@ Ansible-роль для установки [Docker](https://docs.docker.com/engi
 ```yaml
 features:
   buildkit: true
-log-driver: json-file
+log-driver: local
 log-opts:
   max-size: 10m
   max-file: '3'  # must always be a string
@@ -97,10 +97,10 @@ default-address-pools:
 - role: docker
   vars:
     daemon_json_extra:
+      log-driver: json-file
       log-opts:
         max-size: 100m
         max-file: '5'  # must always be a string
-        # https://docs.docker.com/config/containers/logging/log_tags/
         tag: '{% raw %}{{.ImageName}}|{{.Name}}{% endraw %}'
       experimental: true
       metrics-addr: "0.0.0.0:9323"
@@ -110,3 +110,9 @@ default-address-pools:
       registry-mirrors:
         - http://172.17.21.6:4444
 ```
+
+## Ссылки
+
+* [dockerd options](https://docs.docker.com/engine/reference/commandline/dockerd/)
+* [Configure logging drivers](https://docs.docker.com/config/containers/logging/configure/)
+* [Customize log driver output](https://docs.docker.com/config/containers/logging/log_tags/) (`log-opts.tag` options)

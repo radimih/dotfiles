@@ -3,7 +3,7 @@
 daemon_json_default:
   features:
     buildkit: true
-  log-driver: json-file  # https://docs.docker.com/config/containers/logging/json-file/
+  log-driver: local  # https://docs.docker.com/config/containers/logging/local/
   log-opts:
     max-size: 10m
     max-file: '3'  # must always be a string
