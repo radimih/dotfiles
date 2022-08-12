@@ -19,3 +19,9 @@ galaxy_info:
 dependencies: []
 
 argument_specs: {}
+  main:
+    options:
+      daemon_json_extra:
+        description: Дополнительные к daemon_json_default параметры dockerd
+        required: false
+        type: dict

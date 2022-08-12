@@ -1,6 +1,6 @@
 ---
 - name: Добавить официальный репозиторий Docker
-  ansible.builtin.include_tasks: add-repo-os-family-{{ ansible_os_family | lower }}.yml
+  ansible.builtin.include_tasks: add_repo_os_family_{{ ansible_os_family | lower }}.yml
 
 - name: Установить Docker и Docker Compose plugin
   ansible.builtin.package:
@@ -18,6 +18,30 @@
     groups: docker
     append: true
   become: true
+
+- name: Создать каталог /etc/docker
+  ansible.builtin.file:
+    path: /etc/docker
+    state: directory
+    mode: 0755
+    owner: root
+    group: root
+  become: true
+  tags:
+    - configure
+
+- name: Создать/обновить конфигурационный файл демона docker
+  ansible.builtin.copy:
+    content: >
+      {{ daemon_json_default | combine(daemon_json_extra, recursive=True) | to_nice_json }}
+    dest: /etc/docker/daemon.json
+    mode: 0644
+    owner: root
+    group: root
+  become: true
+  notify: restart-docker
+  tags:
+    - configure
 
 - name: Обеспечить запуск Docker после перезагрузки системы
   ansible.builtin.systemd:

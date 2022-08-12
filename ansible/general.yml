@@ -54,10 +54,21 @@
 
     - { role: keyd, tags: [keyd] }
     - { role: fonts, tags: [fonts] }
-    - { role: docker, tags: [docker] }
     - { role: vim, tags: [vim] }
-    - { role: flameshot, tags: [flameshot] }
     - { role: ranger, tags: [ranger] }
+    - { role: flameshot, tags: [flameshot] }
+
+    - role: docker
+      vars:
+        daemon_json_extra:
+          # Docker Registry в офисной VPN-сети
+          insecure-registries:
+            - 172.17.21.6:4444
+            - 172.17.21.6:2222
+          registry-mirrors:
+            - http://172.17.21.6:4444
+      tags:
+        - docker
 
     - role: remmina
       vars:
