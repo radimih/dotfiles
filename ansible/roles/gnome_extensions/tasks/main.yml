@@ -39,7 +39,7 @@
 - block:
 
   - name: Установить расширения
-    include_tasks: install-extension.yml
+    include_tasks: install_extension.yml
     vars:
       extension_info: '{{ item.json }}'
     loop: '{{ r__extensions_info.results }}'
