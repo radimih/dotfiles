@@ -30,11 +30,11 @@ cp ~/.p10k.zsh ~/dotfiles/ansible/roles/zsh/files/
 1. Enable Transient Prompt? `(y) Yes`
 1. Instant Prompt Mode: `(2) Quiet`
 
-## Переменные Ansible-роли
+## Аргументы Ansible-роли
 
 #### Обязательные
 
-| Переменная | Описание |
+| Аргумент | Описание |
 | --- | --- |  
 
 #### Необязательные
@@ -42,7 +42,7 @@ cp ~/.p10k.zsh ~/dotfiles/ansible/roles/zsh/files/
 <table>
 <thead>
 <th>
-Переменная
+Аргумент
 </th>
 <th>
 Описание
