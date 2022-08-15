@@ -1,16 +1,2 @@
 ---
-# Default daemon.json (https://docs.docker.com/engine/reference/commandline/dockerd/)
-daemon_json_default:
-  features:
-    buildkit: true
-  log-driver: local  # https://docs.docker.com/config/containers/logging/local/
-  log-opts:
-    max-size: 10m
-    max-file: '3'  # must always be a string
-  bip: 100.64.0.1/24
-  fixed-cidr: 100.64.0.1/24
-  default-address-pools:
-    - base: 100.65.0.0/16
-      size: 25
-
 daemon_json_extra: {}

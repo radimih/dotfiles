@@ -31,7 +31,7 @@ Ansible-роль для установки [Docker](https://docs.docker.com/engi
 
 <td valign="top">
 
-`daemon_json_default`
+`daemon_json_extra`
 
 </td>
 <td valign="top">
@@ -42,11 +42,8 @@ Ansible-роль для установки [Docker](https://docs.docker.com/engi
 Содержимое json-файла `/etc/docker/daemon.json` по-умолчанию, в котором задаются параметры
 [dockerd](https://docs.docker.com/engine/reference/commandline/dockerd/).
 
-Внимание! Приведено для справки. Чтобы изменить какие-либо значения параметров
-по-умолчанию или задать дополнительные параметры, необходимо использовать переменную `daemon_json_extra`.
-</td>
-
-<td valign="top">
+Параметры [dockerd](https://docs.docker.com/engine/reference/commandline/dockerd/),
+которые будут перекрывать или дополнять параметры по-умолчанию:
 
 ```yaml
 features:
@@ -61,22 +58,6 @@ default-address-pools:
   - base: 100.65.0.0/16
     size: 25
 ```
-
-</td>
-
-</tr>
-
-<tr>
-
-<td valign="top">
-
-`daemon_json_extra`
-
-</td>
-<td valign="top">
-
-Параметры [dockerd](https://docs.docker.com/engine/reference/commandline/dockerd/),
-которые будут перекрывать или дополнять параметры из `daemon_json_default`.
 
 </td>
 

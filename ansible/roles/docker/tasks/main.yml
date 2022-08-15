@@ -33,7 +33,7 @@
 - name: Создать/обновить конфигурационный файл демона docker
   ansible.builtin.copy:
     content: >
-      {{ daemon_json_default | combine(daemon_json_extra, recursive=True) | to_nice_json }}
+      {{ _daemon_json_default | combine(daemon_json_extra, recursive=True) | to_nice_json }}
     dest: /etc/docker/daemon.json
     mode: 0644
     owner: root
