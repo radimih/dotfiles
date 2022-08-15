@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: Radimir Mikhailov
-  description: Install Docker and Docker Compose
+  description: Install Docker (Docker Compose included)
   license: MIT
 
   min_ansible_version: 2.7
@@ -19,3 +19,9 @@ galaxy_info:
 dependencies: []
 
 argument_specs: {}
+  main:
+    options:
+      daemon_json_extra:
+        description: Дополнительные параметры dockerd
+        required: false
+        type: dict
