@@ -1,4 +1,4 @@
 ---
  - name: rebuild-fonts-cache
-   become: yes
-   shell: "fc-cache --force {{ fonts_dir }}"
+   ansible.builtin.command: fc-cache --force {{ _fonts_dir }}
+   become: true

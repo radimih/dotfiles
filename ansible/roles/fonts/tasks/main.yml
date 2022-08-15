@@ -1,16 +1,16 @@
 ---
 - name: Установить утилиту fc-cache
-  become: yes
   apt:
     name: fontconfig
     state: present
+  become: true
 
-- name: Скопировать шрифты в {{ fonts_dir }}
-  become: yes
+- name: Скопировать шрифты в {{ _fonts_dir }}
   copy:
     src: files/
-    dest: "{{ fonts_dir }}"
+    dest: '{{ _fonts_dir }}'
     owner: root
     group: root
-    mode: "644"
+    mode: 0644
+  become: true
   notify: rebuild-fonts-cache
