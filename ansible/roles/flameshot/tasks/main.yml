@@ -22,17 +22,19 @@
     path: '{{ ansible_user_dir }}/snap/flameshot/current/.config/flameshot/flameshot.ini'
     no_extra_spaces: true
     section: General
-    option: '{{ item.option }}'
+    option: '{{ item.key }}'
     value: '{{ item.value }}'
-  loop:
-    - { option: buttons, value: !unsafe '@Variant(\0\0\0\x7f\0\0\0\vQList<int>\0\0\0\0\x11\0\0\0\0\0\0\0\x1\0\0\0\x2\0\0\0\x3\0\0\0\x4\0\0\0\x5\0\0\0\x6\0\0\0\x12\0\0\0\xf\0\0\0\x13\0\0\0\t\0\0\0\x10\0\0\0\n\0\0\0\v\0\0\0\f\0\0\0\x14\0\0\0\x15)' }
-    - { option: drawColor, value: '#ff0000' }
-    - { option: drawFontSize, value: '10' }
-    - { option: drawThickness, value: '5' }
-    - { option: showDesktopNotification, value: 'false' }
-    - { option: showHelp, value: 'false' }
-    - { option: showStartupLaunchMessage, value: 'false' }
-    - { option: uiColor, value: '#90c9e5' }
+  loop: '{{ _options | dict2items }}'
+  vars:
+    _options:
+      buttons: !unsafe '@Variant(\0\0\0\x7f\0\0\0\vQList<int>\0\0\0\0\x11\0\0\0\0\0\0\0\x1\0\0\0\x2\0\0\0\x3\0\0\0\x4\0\0\0\x5\0\0\0\x6\0\0\0\x12\0\0\0\xf\0\0\0\x13\0\0\0\t\0\0\0\x10\0\0\0\n\0\0\0\v\0\0\0\f\0\0\0\x14\0\0\0\x15)'
+      drawColor: '#ff0000'
+      drawFontSize: '10'
+      drawThickness: '5'
+      showDesktopNotification: 'false'
+      showHelp: 'false'
+      showStartupLaunchMessage: 'false'
+      uiColor: '#90c9e5'
 
 - name: Создать служебный каталог для ярлыков запускаемых автоматически приложений
   ansible.builtin.file:
