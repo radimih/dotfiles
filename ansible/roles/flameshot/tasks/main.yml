@@ -5,6 +5,14 @@
     state: present
   become: true
 
+- name: Установить пакеты, необходимые для работы Flameshot в среде GNOME Wayland
+  ansible.builtin.apt:
+    name:
+      - xdg-desktop-portal
+      - xdg-desktop-portal-gnome
+    state: present
+  become: true
+
 - name: Запустить приложение, чтобы оно создало свои каталоги и файлы
   ansible.builtin.command: flameshot --version
   changed_when: false
