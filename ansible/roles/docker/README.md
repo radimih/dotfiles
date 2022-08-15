@@ -36,14 +36,9 @@ Ansible-роль для установки [Docker](https://docs.docker.com/engi
 </td>
 <td valign="top">
 
-Параметры [dockerd](https://docs.docker.com/engine/reference/commandline/dockerd/) по-умолчанию,
-которые хранятся в json-файле `/etc/docker/daemon.json`.
-
-Содержимое json-файла `/etc/docker/daemon.json` по-умолчанию, в котором задаются параметры
-[dockerd](https://docs.docker.com/engine/reference/commandline/dockerd/).
-
 Параметры [dockerd](https://docs.docker.com/engine/reference/commandline/dockerd/),
-которые будут перекрывать или дополнять параметры по-умолчанию:
+которые будут перекрывать или дополнять следующие параметры по-умолчанию
+(хранятся в приватной переменной роли [`_daemon_json_default`](vars/main.yml)):
 
 ```yaml
 features:
@@ -59,6 +54,7 @@ default-address-pools:
     size: 25
 ```
 
+Итоговые настройки dockerd хранятся в файле `/etc/docker/daemon.json`.
 </td>
 
 <td valign="top">
