@@ -1,33 +1,38 @@
 ---
 - name: Установить Snap-пакет приложения
-  become: yes
-  snap:
+  community.general.snap:
     name: flameshot
     state: present
+  become: true
 
 - name: Запустить приложение, чтобы оно создало свои каталоги и файлы
-  shell: flameshot --version
-  changed_when: no
+  ansible.builtin.command: flameshot --version
+  changed_when: false
 
 - name: Настроить приложение
-  ini_file:
+  ansible.builtin.ini_file:
     path: '{{ ansible_user_dir }}/snap/flameshot/current/.config/flameshot/flameshot.ini'
-    no_extra_spaces: yes
+    no_extra_spaces: true
     section: General
-    option: "{{ item.option }}"
-    value: "{{ item.value }}"
+    option: '{{ item.option }}'
+    value: '{{ item.value }}'
   loop:
-    - { option: "buttons", value: !unsafe '@Variant(\0\0\0\x7f\0\0\0\vQList<int>\0\0\0\0\x11\0\0\0\0\0\0\0\x1\0\0\0\x2\0\0\0\x3\0\0\0\x4\0\0\0\x5\0\0\0\x6\0\0\0\x12\0\0\0\xf\0\0\0\x13\0\0\0\t\0\0\0\x10\0\0\0\n\0\0\0\v\0\0\0\f\0\0\0\x14\0\0\0\x15)' }
-    - { option: "drawColor", value: "#ff0000" }
-    - { option: "drawFontSize", value: "10" }
-    - { option: "drawThickness", value: "5" }
-    - { option: "showDesktopNotification", value: "false" }
-    - { option: "showHelp", value: "false" }
-    - { option: "showStartupLaunchMessage", value: "false" }
-    - { option: "uiColor", value: "#90c9e5" }
+    - { option: buttons, value: !unsafe '@Variant(\0\0\0\x7f\0\0\0\vQList<int>\0\0\0\0\x11\0\0\0\0\0\0\0\x1\0\0\0\x2\0\0\0\x3\0\0\0\x4\0\0\0\x5\0\0\0\x6\0\0\0\x12\0\0\0\xf\0\0\0\x13\0\0\0\t\0\0\0\x10\0\0\0\n\0\0\0\v\0\0\0\f\0\0\0\x14\0\0\0\x15)' }
+    - { option: drawColor, value: '#ff0000' }
+    - { option: drawFontSize, value: '10' }
+    - { option: drawThickness, value: '5' }
+    - { option: showDesktopNotification, value: 'false' }
+    - { option: showHelp, value: 'false' }
+    - { option: showStartupLaunchMessage, value: 'false' }
+    - { option: uiColor, value: '#90c9e5' }
+
+- name: Создать служебный каталог для ярлыков запускаемых автоматически приложений
+  ansible.builtin.file:
+    path: '{{ ansible_user_dir }}/.config/autostart'
+    state: directory
 
 - name: Настроить автозапуск приложения
-  copy:
+  ansible.builtin.copy:
     content: |
       [Desktop Entry]
       Name=flameshot
@@ -36,4 +41,4 @@
       Terminal=false
       Type=Application
       X-GNOME-Autostart-enabled=true
-    dest: "{{ ansible_user_dir }}/.config/autostart/Flameshot.desktop"
+    dest: '{{ ansible_user_dir }}/.config/autostart/Flameshot.desktop'
