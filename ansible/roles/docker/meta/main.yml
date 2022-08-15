@@ -18,7 +18,7 @@ galaxy_info:
 
 dependencies: []
 
-argument_specs: {}
+argument_specs:
   main:
     options:
       daemon_json_extra:
