@@ -47,11 +47,6 @@ log-driver: local
 log-opts:
   max-size: 10m
   max-file: '3'  # must always be a string
-bip: 100.64.0.1/24
-fixed-cidr: 100.64.0.1/24
-default-address-pools:
-  - base: 100.65.0.0/16
-    size: 25
 ```
 
 Итоговые настройки dockerd хранятся в файле `/etc/docker/daemon.json`.
@@ -79,8 +74,16 @@ default-address-pools:
         max-size: 100m
         max-file: '5'  # must always be a string
         tag: '{% raw %}{{.ImageName}}|{{.Name}}{% endraw %}'
+      # Для сбора метрик Prometheus'ом
       experimental: true
       metrics-addr: "0.0.0.0:9323"
+      # Для устранения конфликтов с VPN-сетями
+      bip: 100.64.0.1/24
+      fixed-cidr: 100.64.0.1/24
+      default-address-pools:
+        - base: 100.65.0.0/16
+          size: 25
+      # Docker Registry в офисной VPN-сети
       insecure-registries:
         - 172.17.21.6:4444
         - 172.17.21.6:2222

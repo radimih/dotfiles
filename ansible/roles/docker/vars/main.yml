@@ -7,8 +7,3 @@ _daemon_json_default:
   log-opts:
     max-size: 10m
     max-file: '3'  # must always be a string
-  bip: 100.64.0.1/24
-  fixed-cidr: 100.64.0.1/24
-  default-address-pools:
-    - base: 100.65.0.0/16
-      size: 25
