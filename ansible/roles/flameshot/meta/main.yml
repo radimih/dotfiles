@@ -18,4 +18,10 @@ galaxy_info:
 
 dependencies: []
 
-argument_specs: {}
+argument_specs:
+  main:
+    options:
+      options:
+        description: Словарь устанавливаемых параметров Flameshot в секции `[General]`
+        required: false
+        type: dict
