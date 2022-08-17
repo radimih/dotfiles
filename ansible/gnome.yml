@@ -41,6 +41,12 @@
         value: "['<Shift>Control_R']"
         state: present
 
+    - name: Освободить клавишу Print для приложения Flameshot
+      community.general.dconf:
+        key: /org/gnome/shell/keybindings/show-screenshot-ui
+        value: "['']"
+        state: present
+
     - name: Установить wallpaper
       community.general.dconf:
         key: /org/gnome/desktop/background/{{ item.key }}
@@ -103,6 +109,9 @@
           - name: Layout Russian
             binding: '<Alt>F12'
             command: gdbus call --session --dest org.gnome.Shell --object-path /org/gnome/Shell/LayoutSwitchAPI --method org.gnome.Shell.LayoutSwitchAPI.Switch ru
+          - name: Screenshot by Flameshot
+            binding: 'Print'
+            command: flameshot gui
       tags:
         - keybindings
 
