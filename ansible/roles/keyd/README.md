@@ -8,8 +8,8 @@
 | `Enter` | `Enter` | `Right Ctrl`
 | `Space` | `Space` | `Meta`
 | `Tab` | `Tab` | _Vim-mode_ (клавиши `h`, `j`, `k`, `l`</br>действуют как стрелки)
-| `Left Shift` | `Left Alt + F11` | `Left Shift`
-| `Right Shift` | `Left Alt + F12` | `Right Shift`
+| `Left Shift` | `Ctrl + Shift + F11` | `Left Shift`
+| `Right Shift` | `Ctrl + Shift + F12` | `Right Shift`
 
 ## Аргументы Ansible-роли
 
