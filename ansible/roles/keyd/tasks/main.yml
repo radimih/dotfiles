@@ -15,8 +15,19 @@
 
 - name: Настроить systemd unit-файл демона keyd
   ansible.builtin.copy:
-    src: files/keyd.service
-    dest: /etc/systemd/system/
+    content: |
+      [Unit]
+      Description=key remapping daemon
+      Requires=local-fs.target
+      After=local-fs.target
+
+      [Service]
+      Type=simple
+      ExecStart=/usr/local/bin/keyd
+
+      [Install]
+      WantedBy=sysinit.target
+    dest: /etc/systemd/system/keyd.service
     mode: 0644
   become: true
 
