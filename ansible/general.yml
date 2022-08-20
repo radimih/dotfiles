@@ -20,10 +20,13 @@
       tags:
         - minipack
 
-    - name: Скопировать файл .editorconfig
+    - name: Скопировать dot-файлы
       ansible.builtin.copy:
-        src: files/.editorconfig
+        src: files/{{ item }}
         dest: '{{ ansible_user_dir }}/'
+      loop:
+        - .editorconfig
+        - .gitconfig
       tags:
         - files
 
@@ -56,7 +59,7 @@
     - { role: fonts, tags: [fonts] }
     - { role: vim, tags: [vim] }
     - { role: ranger, tags: [ranger] }
-    
+
     - role: flameshot
       vars:
         options:
