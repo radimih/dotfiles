@@ -6,6 +6,23 @@
 
   tasks:
 
+    - name: Установить часовой пояс
+      community.general.timezone:
+        name: Asia/Novokuznetsk
+      become: true
+      tags:
+        - timezone
+
+    - name: Скопировать dot-файлы
+      ansible.builtin.copy:
+        src: files/{{ item }}
+        dest: '{{ ansible_user_dir }}/'
+      loop:
+        - .editorconfig
+        - .gitconfig
+      tags:
+        - files
+
     - name: Установить/обновить минимальный набор пакетов
       ansible.builtin.apt:
         name:
@@ -19,16 +36,6 @@
       become: true
       tags:
         - minipack
-
-    - name: Скопировать dot-файлы
-      ansible.builtin.copy:
-        src: files/{{ item }}
-        dest: '{{ ansible_user_dir }}/'
-      loop:
-        - .editorconfig
-        - .gitconfig
-      tags:
-        - files
 
 - name: Настройка Desktop-окружения
   hosts:
