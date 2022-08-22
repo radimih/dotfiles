@@ -1,0 +1,13 @@
+---
+- name: Установить PPA-репозиторий приложения
+  ansible.builtin.apt_repository:
+    repo: ppa:ubuntuhandbook1/annotator
+    state: present
+    update_cache: true
+  become: true
+
+- name: Установить приложение
+  ansible.builtin.apt:
+    name: com.github.phase1geo.annotator
+    state: present
+  become: true
