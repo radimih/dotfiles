@@ -1,0 +1,38 @@
+---
+- name: Установить python-модуль psutil для работы ansible-модуля community.general.dconf
+  ansible.builtin.apt:
+    name: python3-psutil
+    state: present
+  become: true
+
+- name: Получить ID профиля терминала по-умолчанию
+  ansible.builtin.command: gsettings get org.gnome.Terminal.ProfilesList default
+  register: r__profile_id
+  changed_when: false
+
+- name: Определить dconf-путь до настроек профиля терминала по-умолчанию
+  ansible.builtin.set_fact:
+    _profile_path: /org/gnome/terminal/legacy/profiles:/:{{ r__profile_id.stdout | trim("'") }}
+
+- name: Установить параметры приложения типа string
+  community.general.dconf:
+    key: '{{ _profile_path }}/{{ item.key }}'
+    value: "'{{ item.value | string }}'"
+  loop: '{{ options | dict2items }}'
+  when: item.value is string
+
+- name: Установить параметры приложения типа number
+  community.general.dconf:
+    key: '{{ _profile_path }}/{{ item.key }}'
+    value: '{{ item.value }}'
+  loop: '{{ options | dict2items }}'
+  when:
+    - item.value is number
+    - item.value is not boolean
+
+- name: Установить параметры приложения типа boolean
+  community.general.dconf:
+    key: '{{ _profile_path }}/{{ item.key }}'
+    value: '{{ item.value | string | lower }}'
+  loop: '{{ options | dict2items }}'
+  when: item.value is boolean
