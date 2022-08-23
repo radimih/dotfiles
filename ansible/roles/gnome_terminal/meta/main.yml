@@ -1,0 +1,31 @@
+---
+galaxy_info:
+  author: Radimir Mikhailov
+  description: Setup GNOME Terminal
+  license: MIT
+
+  min_ansible_version: 2.7
+
+  platforms:
+    - name: Debian
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - all
+
+  galaxy_tags: []
+
+dependencies: []
+
+argument_specs:
+  main:
+    options:
+      keybindings:
+        description: Словарь клавиатурных привязок
+        required: false
+        type: dict
+      options:
+        description: Словарь устанавливаемых параметров в Default Profile
+        required: false
+        type: dict
