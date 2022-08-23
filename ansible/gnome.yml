@@ -142,3 +142,31 @@
           - 4839  # Clipboard History (https://extensions.gnome.org/extension/4839/clipboard-history/)
       tags:
         - extensions
+
+  post_tasks:
+
+    # Посмотреть текущие настройки GNOME-расширений:
+    #   dconf dump /org/gnome/shell/extensions/
+
+    - block:
+
+      - name: Настроить GNOME-расширение Material Shell
+        community.general.dconf:
+          key: /org/gnome/shell/extensions/materialshell/theme/surface-opacity
+          value: 70
+          state: present
+
+      - name: Настроить GNOME-расширение Clipboard History
+        community.general.dconf:
+          key: /org/gnome/shell/extensions/clipboard-history/{{ item.key }}
+          value: '{{ item.value }}'
+          state: present
+        loop: '{{ options | dict2items }}'
+        vars:
+          options:
+            toggle-menu: "['<Control>F10']"
+            prev-menu: "['<Control>F11']"
+            next-menu: "['<Control>F12']"
+
+      tags:
+        - extensions
