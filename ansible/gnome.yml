@@ -79,7 +79,8 @@
     #     value: "'Plata-Compact'"
     #     state: present
 
-    #   # GNOME Tweaks / Appearance / Themes / Shell (требуется включенное расширение "User Themes")
+    #   # GNOME Tweaks / Appearance / Themes / Shell (требуется включенное расширение "User Themes"
+    #   # https://extensions.gnome.org/extension/19/user-themes/)
     # - name: Установить выбранную тему текущей Shell-темой
     #   community.general.dconf:
     #     key: /org/gnome/shell/extensions/user-theme/name
@@ -136,8 +137,6 @@
       role: gnome_extensions
       vars:
         ids:
-          - 19    # User Themes (https://extensions.gnome.org/extension/19/user-themes/)
-          - 277   # Impatience (https://extensions.gnome.org/extension/277/impatience/)
           - 3357  # Material Shell (https://extensions.gnome.org/extension/3357/material-shell/)
           - 4727  # Primary Input on LockScreen (https://extensions.gnome.org/extension/4727/primary-input-on-lockscreen/)
           - 4839  # Clipboard History (https://extensions.gnome.org/extension/4839/clipboard-history/)
