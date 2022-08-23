@@ -88,9 +88,15 @@
 
   roles:
 
+    # Посмотреть какие параметры были изменены в самом приложении:
+    #   dconf dump /org/gnome/terminal/legacy/
+
     - name: Настроить GNOME Terminal
       role: gnome_terminal
       vars:
+        keybindings:
+          copy: <Primary>c
+          paste: <Primary>v
         options:
           background-color: rgb(0,43,54)      # Solarized dark
           foreground-color: rgb(131,148,150)  # Solarized dark

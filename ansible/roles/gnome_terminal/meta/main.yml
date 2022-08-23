@@ -21,6 +21,10 @@ dependencies: []
 argument_specs:
   main:
     options:
+      keybindings:
+        description: Словарь клавиатурных привязок
+        required: false
+        type: dict
       options:
         description: Словарь устанавливаемых параметров в Default Profile
         required: false

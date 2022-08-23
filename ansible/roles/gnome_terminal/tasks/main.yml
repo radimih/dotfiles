@@ -5,6 +5,12 @@
     state: present
   become: true
 
+- name: Установить клавиатурные привязки
+  community.general.dconf:
+    key: /org/gnome/terminal/legacy/keybindings/{{ item.key }}
+    value: "'{{ item.value | string }}'"
+  loop: '{{ keybindings | dict2items }}'
+
 - name: Получить ID профиля терминала по-умолчанию
   ansible.builtin.command: gsettings get org.gnome.Terminal.ProfilesList default
   register: r__profile_id
