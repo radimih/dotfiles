@@ -194,6 +194,7 @@
       ansible.builtin.lineinfile:
         path: '{{ ansible_user_dir }}/.local/share/gnome-shell/extensions/material-shell@papyelgringo/extension.js'
         state: present
+        backup: true
         backrefs: true
         regexp: '{{ item.search }}'
         line: '{{ item.replace }}'
