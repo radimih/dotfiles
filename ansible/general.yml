@@ -43,6 +43,14 @@
 
   pre_tasks:
 
+    - name: Создать каталог 'ws' (workspace) для работы
+      ansible.builtin.file:
+        path: '{{ ansible_user_dir }}/ws'
+        state: directory
+        mode: 0750
+      tags:
+        - files
+
     - name: Установить/обновить минимальный набор пакетов для Desktop
       ansible.builtin.apt:
         name:
