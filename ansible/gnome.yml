@@ -158,6 +158,8 @@
           key: /org/gnome/shell/extensions/materialshell/theme/surface-opacity
           value: 70
           state: present
+        tags:
+          - material-shell
 
       - name: Настроить GNOME-расширение Clipboard History
         community.general.dconf:
@@ -173,3 +175,32 @@
 
       tags:
         - extensions
+
+      # Сделать поиск в AppLauncher в GNOME-расширении Material Shell только по именам приложений
+      # и только по первым буквам слов в них:
+      #
+      # before:
+      #   const stringToSearch = `${button.app.get_name()}${button.app.get_id()}${button.app.get_description()}`;
+      #   const regex = new RegExp(this.inputContainer.get_text(), 'i');
+      #
+      #  after:
+      #   const stringToSearch = `${button.app.get_name()}`;  // Fix by Radimir
+      #   const regex = new RegExp('\\b' + this.inputContainer.get_text(), 'i');  // Fix by Radimir
+      #
+      # TODO: Создать соответствующий Pull Request (https://github.com/material-shell/material-shell)
+
+    - name: Пропатчить GNOME-расширение Material Shell
+      ansible.builtin.lineinfile:
+        path: '{{ ansible_user_dir }}/.local/share/gnome-shell/extensions/material-shell@papyelgringo/extension.js'
+        state: present
+        backrefs: true
+        regexp: '{{ item.search }}'
+        line: '{{ item.replace }}'
+      loop:
+        - search:  (.*\bstringToSearch = `\$\{button.app.get_name\(\)\})[^`]
+          replace: \1`;  // Fix by Radimir
+        - search:  ^(.*) = new RegExp\(this.inputContainer.get_text\(\)(.*)$
+          replace:    \1 = new RegExp('\\\\b' + this.inputContainer.get_text()\2  // Fix by Radimir
+      tags:
+        - extensions
+        - material-shell
