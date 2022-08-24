@@ -123,7 +123,7 @@
     - name: Определить кастомные клавиатурные привязки (все предыдущие удаляются)
       role: gnome_custom_keybindings
       vars:
-        key_bindings:
+        keybindings:
           - name: Layout English
             binding: '<Primary><Shift><Super>F11'  # Ctrl+Shift+F11
             command: gdbus call --session --dest org.gnome.Shell --object-path /org/gnome/Shell/LayoutSwitchAPI --method org.gnome.Shell.LayoutSwitchAPI.Switch us

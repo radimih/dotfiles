@@ -21,7 +21,7 @@ dependencies: []
 argument_specs:
   main:
     options:
-      key_bindings:
+      keybindings:
         description: Список клавиатурных привязок
         required: true
         type: list
