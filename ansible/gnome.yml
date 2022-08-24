@@ -46,12 +46,14 @@
         key: /org/gnome/desktop/background/{{ item.key }}
         value: "'{{ item.value | string }}'"
         state: present
-      loop:
-        - { key: color-shading-type, value: solid }
-        - { key: picture-options, value: zoom }
-        - { key: picture-uri, value: 'file://{{ ansible_user_dir }}/dotfiles/wallpapers/cold-coast.jpg' }
-        - { key: primary-color, value: '#000000' }
-        - { key: secondary-color, value: '#000000' }
+      loop: '{{ options | dict2items }}'
+      vars:
+        options:
+          color-shading-type: solid
+          picture-options: zoom
+          picture-uri: file://{{ ansible_user_dir }}/dotfiles/wallpapers/cold-coast.jpg
+          primary-color: '#000000'
+          secondary-color: '#000000'
       tags:
         - wallpaper
 
