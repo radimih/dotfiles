@@ -8,8 +8,8 @@
 | `Enter` | `Enter` | `Right Ctrl`
 | `Space` | `Space` | `Meta`
 | `Tab` | `Tab` | _Vim-mode_ (клавиши `h`, `j`, `k`, `l`</br>действуют как стрелки)
-| `Left Shift` | `Ctrl + Shift + F11` | `Left Shift`
-| `Right Shift` | `Ctrl + Shift + F12` | `Right Shift`
+| `Left Shift` | `Ctrl + Shift + Meta + F11` | `Left Shift`
+| `Right Shift` | `Ctrl + Shift + Meta + F12` | `Right Shift`
 
 ## Аргументы Ansible-роли
 
@@ -27,7 +27,7 @@
 
 ```bash
 cat <<EOF | docker build -t keyd-builder -
-FROM ubuntu:latest
+FROM ubuntu:20.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 
