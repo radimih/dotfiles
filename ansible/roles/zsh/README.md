@@ -14,6 +14,10 @@ cp ~/.p10k.zsh ~/dotfiles/ansible/roles/zsh/files/
 
 Рекомендуемые параметры:
 
+1. Does this look like a diamond? `(y) Yes`
+1. Does this look like a lock? `(y) Yes`
+1. Does this look like a Debian logo? `(y) Yes`
+1. Do all these icons fit between the crosses? `(y) Yes`
 1. Prompt Style: `(3) Rainbow`
 1. Character Set: `(1) Unicode`
 1. Show current time? `(1) No`
@@ -27,8 +31,9 @@ cp ~/.p10k.zsh ~/dotfiles/ansible/roles/zsh/files/
 1. Prompt Spacing: `(2) Sparse`
 1. Icons: `(1) Few icons`
 1. Prompt Flow: `(1) Concise`
-1. Enable Transient Prompt? `(y) Yes`
+1. Enable Transient Prompt? `(n) No`
 1. Instant Prompt Mode: `(2) Quiet`
+1. Apply changes to ~/.zshrc? `n) No`
 
 ## Аргументы Ansible-роли
 
