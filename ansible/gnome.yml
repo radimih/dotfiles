@@ -130,6 +130,9 @@
           - name: Layout Russian
             binding: '<Primary><Shift>F12'  # Ctrl+Shift+F12
             command: gdbus call --session --dest org.gnome.Shell --object-path /org/gnome/Shell/LayoutSwitchAPI --method org.gnome.Shell.LayoutSwitchAPI.Switch ru
+          - name: Terminal
+            binding: '<Super>t'
+            command: gnome-terminal
       tags:
         - keybindings
 
