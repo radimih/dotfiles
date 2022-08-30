@@ -116,6 +116,7 @@
         connections_dir: '{{ ansible_user_dir }}/snap/remmina/common/connections'
         options:
           disable_tray_icon: 'true'
+          hostkey: 65507  # Left Ctrl (в этом случае действует любой Ctrl)
           prevent_snap_welcome_message: 'true'
           view_file_mode: 1
         secret: !vault |
