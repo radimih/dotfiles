@@ -16,8 +16,6 @@ stty lnext undef  # освободить Ctrl+V
 stty start undef  # освободить Ctrl+Q
 stty intr ^Q      # вместо Ctrl+C сделать Ctrl+Q
 
-# For Ansible: begin script marker
-
 # Алиасы
 # ======
 
