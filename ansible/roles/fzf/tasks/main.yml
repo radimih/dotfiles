@@ -1,0 +1,6 @@
+---
+- name: Установить пакет приложения
+  ansible.builtin.package:
+    name: fzf
+    state: present
+  become: true
