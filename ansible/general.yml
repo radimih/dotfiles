@@ -90,6 +90,12 @@
       tags:
         - zsh
 
+    - role: fzf
+      vars:
+        default_options: --border --height=80% --info=inline --layout=reverse
+      tags:
+        - fzf
+
     - { role: vim, tags: [vim] }
     - { role: ranger, tags: [ranger] }
 
