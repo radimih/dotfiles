@@ -93,6 +93,8 @@
     - role: zsh
       vars:
         plugins:
+          - name: Aloxaf/fzf-tab
+            type: light
           - name: zsh-users/zsh-autosuggestions
             type: light
           - name: zdharma/fast-syntax-highlighting
