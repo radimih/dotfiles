@@ -1,0 +1,3 @@
+---
+default_command: find --type f
+default_options: --info=inline

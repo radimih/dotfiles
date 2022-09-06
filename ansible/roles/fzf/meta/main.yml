@@ -1,0 +1,31 @@
+---
+galaxy_info:
+  author: Radimir Mikhailov
+  description: Install fuzzy finder cli-tool (fzf)
+  license: MIT
+
+  min_ansible_version: 2.7
+
+  platforms:
+    - name: Debian
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - all
+
+  galaxy_tags: []
+
+dependencies: []
+
+argument_specs:
+  main:
+    options:
+      default_command:
+        description: Команда, результаты которой будут отображаться при запуске fzf вне пайплайна или при нажатии на Ctrl-T
+        required: false
+        type: str
+      default_options:
+        description: Параметры приложения fzf по-умолчанию
+        required: false
+        type: str

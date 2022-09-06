@@ -43,6 +43,14 @@
 
   pre_tasks:
 
+    - name: Создать каталог '$HOME/.local/bin'
+      ansible.builtin.file:
+        path: '{{ ansible_user_dir }}/.local/bin'
+        state: directory
+        mode: 0750
+      tags:
+        - files
+
     - name: Создать каталог 'ws' (workspace) для работы
       ansible.builtin.file:
         path: '{{ ansible_user_dir }}/ws'
@@ -54,6 +62,7 @@
     - name: Установить/обновить минимальный набор пакетов для Desktop
       ansible.builtin.apt:
         name:
+          - fd-find  # https://github.com/sharkdp/fd
           - git
           - httpie
           - jq
@@ -68,6 +77,14 @@
       tags:
         - minipack
 
+    - name: Сделать так, чтобы утилита fd-find была доступна по имени fd
+      ansible.builtin.file:
+        src: /usr/bin/fdfind
+        dest: '{{ ansible_user_dir }}/.local/bin/fd'
+        state: link
+      tags:
+        - files
+
   roles:
 
     - { role: keyd, tags: [keyd] }
@@ -76,9 +93,9 @@
     - role: zsh
       vars:
         plugins:
-          - name: zsh-users/zsh-autosuggestions
+          - name: Aloxaf/fzf-tab
             type: light
-          - name: marlonrichert/zsh-autocomplete
+          - name: zsh-users/zsh-autosuggestions
             type: light
           - name: zdharma/fast-syntax-highlighting
             type: light
@@ -89,6 +106,13 @@
                 value: 1
       tags:
         - zsh
+
+    - role: fzf
+      vars:
+        default_command: fd --type f --hidden --strip-cwd-prefix --exclude .git
+        default_options: --border --height=30% --info=inline --layout=reverse --bind=tab:accept
+      tags:
+        - fzf
 
     - { role: vim, tags: [vim] }
     - { role: ranger, tags: [ranger] }

@@ -1,0 +1,12 @@
+---
+- name: Установить пакет приложения
+  ansible.builtin.package:
+    name: fzf
+    state: present
+  become: true
+
+- name: Создать скрипт инициализации приложения
+  ansible.builtin.template:
+    src: .zshrc-40-fzf.zsh
+    dest: '{{ ansible_user_dir }}'
+    mode: 0644
