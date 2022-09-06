@@ -109,8 +109,8 @@
 
     - role: fzf
       vars:
-        default_command: fd --hidden --exclude ".git"
-        default_options: --border --height=40% --info=inline --layout=reverse --bind=tab:accept
+        default_command: fd --type f --hidden --strip-cwd-prefix --exclude .git
+        default_options: --border --height=30% --info=inline --layout=reverse --bind=tab:accept
       tags:
         - fzf
 

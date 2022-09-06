@@ -5,10 +5,11 @@
 
 export FZF_DEFAULT_OPTS='{{ default_options }}'
 export FZF_DEFAULT_COMMAND='{{ default_command }}'
+
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 [[ -f '{{ _script_key_binding }}' ]] && source {{ _script_key_binding }}
 
 # For fzf-tab plugin (https://github.com/Aloxaf/fzf-tab/wiki/Configuration#fzf-bindings)
 # Tab key for accept selection (as Enter key)
-zstyle ':fzf-tab:*' fzf-bindings 'tab:accept'
+zstyle ':fzf-tab:complete:*' fzf-bindings 'tab:accept'

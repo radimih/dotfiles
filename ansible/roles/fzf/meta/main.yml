@@ -21,6 +21,10 @@ dependencies: []
 argument_specs:
   main:
     options:
+      default_command:
+        description: Команда, результаты которой будут отображаться при запуске fzf вне пайплайна или при нажатии на Ctrl-T
+        required: false
+        type: str
       default_options:
         description: Параметры приложения fzf по-умолчанию
         required: false
