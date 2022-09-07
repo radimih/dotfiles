@@ -1,0 +1,21 @@
+---
+galaxy_info:
+  author: Radimir Mikhailov
+  description: Install analogues of standard POSIX CLI utilities
+  license: MIT
+
+  min_ansible_version: 2.7
+
+  platforms:
+    - name: Debian
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - all
+
+  galaxy_tags: []
+
+dependencies: []
+
+argument_specs: {}

@@ -1,0 +1,51 @@
+---
+- name: Установить пакеты утилит
+  ansible.builtin.package:
+    name:
+      - bat
+      - exa
+      - fd-find
+      - ripgrep
+    state: present
+  become: true
+
+- name: Скопировать скрипт инициализации утилит
+  ansible.builtin.copy:
+    src: .zshrc-40-cli_analogs.zsh
+    dest: '{{ ansible_user_dir }}'
+    mode: 0644
+
+- name: Создать каталог для конфигурационного файла bat
+  ansible.builtin.file:
+    path: '{{ ansible_user_dir }}/.config/bat'
+    state: directory
+    mode: 0750
+
+- name: Скопировать конфигурационный файл для bat
+  ansible.builtin.copy:
+    src: bat
+    dest: '{{ ansible_user_dir }}/.config/bat/config'
+    mode: 0644
+
+- name: Особенности для Debian/Ubuntu
+  block:
+
+  - name: Создать каталог '$HOME/.local/bin'
+    ansible.builtin.file:
+      path: '{{ ansible_user_dir }}/.local/bin'
+      state: directory
+      mode: 0750
+
+  - name: Сделать так, чтобы утилита bat была доступна по имени bat (а не batcat)
+    ansible.builtin.file:
+      src: /usr/bin/batcat
+      dest: '{{ ansible_user_dir }}/.local/bin/bat'
+      state: link
+
+  - name: Сделать так, чтобы утилита fd-find была доступна по имени fd (а не fdfind)
+    ansible.builtin.file:
+      src: /usr/bin/fdfind
+      dest: '{{ ansible_user_dir }}/.local/bin/fd'
+      state: link
+
+  when: ansible_os_family == 'Debian'

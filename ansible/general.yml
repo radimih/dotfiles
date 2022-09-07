@@ -43,14 +43,6 @@
 
   pre_tasks:
 
-    - name: Создать каталог '$HOME/.local/bin'
-      ansible.builtin.file:
-        path: '{{ ansible_user_dir }}/.local/bin'
-        state: directory
-        mode: 0750
-      tags:
-        - files
-
     - name: Создать каталог 'ws' (workspace) для работы
       ansible.builtin.file:
         path: '{{ ansible_user_dir }}/ws'
@@ -60,30 +52,17 @@
         - files
 
     - name: Установить/обновить минимальный набор пакетов для Desktop
-      ansible.builtin.apt:
+      ansible.builtin.package:
         name:
-          - fd-find  # https://github.com/sharkdp/fd
           - git
-          - httpie
           - jq
           - make
           - pipx
-          - ripgrep
           - xsel
-        state: latest
-        update_cache: true
-        cache_valid_time: 7200  # apt update если кэш не обновлялся более 2 часов
+        state: present
       become: true
       tags:
         - minipack
-
-    - name: Сделать так, чтобы утилита fd-find была доступна по имени fd
-      ansible.builtin.file:
-        src: /usr/bin/fdfind
-        dest: '{{ ansible_user_dir }}/.local/bin/fd'
-        state: link
-      tags:
-        - files
 
   roles:
 
@@ -106,6 +85,8 @@
                 value: 1
       tags:
         - zsh
+
+    - { role: cli_analogs, tags: [cli_analogs] }
 
     - role: fzf
       vars:
