@@ -1,13 +1,11 @@
 ---
-- name: Установить apt-пакет приложения и рекомендуемые зависимости
-  ansible.builtin.apt:
+- name: Установить пакет приложения и рекомендуемые зависимости
+  ansible.builtin.package:
     name:
       - ranger
-      - file
-      - python3-chardet
-    state: latest
-    update_cache: true
-    cache_valid_time: 7200  # apt update если кэш не обновлялся более 2 часов
+      - file  # for determining file types
+      - python3-chardet  # for improved encoding detection of text files
+    state: present
   become: true
 
 - name: Скопировать конфигурационный файл приложения

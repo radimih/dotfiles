@@ -1,12 +1,12 @@
 ---
 - name: Установить python-модуль psutil для работы ansible-модуля community.general.dconf
-  ansible.builtin.apt:
+  ansible.builtin.package:
     name: python3-psutil
     state: present
   become: true
 
 - name: Установить служебные пакеты
-  ansible.builtin.apt:
+  ansible.builtin.package:
     name:
       - gnome-shell-extensions
       - chrome-gnome-shell

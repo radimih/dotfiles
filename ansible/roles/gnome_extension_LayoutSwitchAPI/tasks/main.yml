@@ -1,7 +1,7 @@
 ---
 - name: Установить пакет для работы с GNONE-расширениями
   become: true
-  ansible.builtin.apt:
+  ansible.builtin.package:
     name: gnome-shell-extensions
     state: present
 

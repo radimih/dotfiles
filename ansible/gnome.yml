@@ -12,13 +12,13 @@
   pre_tasks:
 
     - name: Установить python-модуль psutil для работы ansible-модуля community.general.dconf
-      ansible.builtin.apt:
+      ansible.builtin.package:
         name: python3-psutil
         state: present
       become: true
 
     - name: Установить Gnome Tweaks
-      ansible.builtin.apt:
+      ansible.builtin.package:
         name: gnome-tweaks
         state: present
       become: true

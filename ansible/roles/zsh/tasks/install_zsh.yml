@@ -1,5 +1,5 @@
 ---
-- name: Установить пакет zsh, если еще не установлен
+- name: Установить пакет приложения
   ansible.builtin.package:
     name: zsh
     state: present

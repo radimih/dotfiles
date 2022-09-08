@@ -1,12 +1,12 @@
 ---
 - name: Установить утилиту fc-cache
-  apt:
+  ansible.builtin.package:
     name: fontconfig
     state: present
   become: true
 
 - name: Скопировать шрифты в {{ _fonts_dir }}
-  copy:
+  ansible.builtin.copy:
     src: files/
     dest: '{{ _fonts_dir }}'
     owner: root
