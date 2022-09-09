@@ -8,26 +8,29 @@
 set -euo pipefail
 
 connections_dir="{{ connections_dir }}"
+connections_dir="${connections_dir%/}/"  # добавить слэш в конце, если его ещё нет
 
 tempfile="$(mktemp --quiet --tmpdir --suffix=.txt xssh-XXXX)"
 
 ranger --choosefile="$tempfile" "$connections_dir" || (rm "$tempfile"; exit 1)  # В работе ranger произошла ошибка
 
 connection_file="$(cat "$tempfile")"
-connection_file_ext="${connection_file##*.}"
 rm "$tempfile"
 
-[[ -n "$connection_file" ]] || exit 1  # В ranger ничего не выбрано
-[[ "$connection_file_ext" == "yml" || "$connection_file_ext" == "yaml" ]] || exit 1
+[[ -z "$connection_file" ]] && exit 1  # В ranger ничего не выбрано
 
-# TODO: проверять, что выбранный файл находится в поддиректории $connections_dir
+connection_file_ext="${connection_file##*.}"
+connection_dir="$(dirname $connection_file)/"
+connection_path="${connection_dir#$connections_dir}"  # путь относительно $connections_dir
+
+[[ "$connection_dir" == "$connection_path" ]] && exit 1  # выбранный файл не находится в поддиректории $connections_dir
+[[ "$connection_file_ext" == "yml" || "$connection_file_ext" == "yaml" ]] || exit 1
 
 conn_name=$(yq --raw-output --exit-status '.name' "$connection_file")
 conn_host=$(yq --raw-output --exit-status '.host' "$connection_file")
 conn_user=$(yq --raw-output --exit-status '.user' "$connection_file")
 conn_password=$(yq --raw-output --exit-status '.password' "$connection_file")
 
-connection_dir="$(dirname $connection_file)"
-echo -e "Connect to \033[1m${conn_name}\033[0m ($conn_host) in \033[1m${connection_dir#$connections_dir/}\033[0m..."
+echo -e "Connect to \033[1m${conn_name}\033[0m ($conn_host) in \033[1m${connection_path:-/}\033[0m as ${conn_user} ..."
 
 SSHPASS="$conn_password" sshpass -e ssh -o StrictHostKeyChecking=no ${conn_user}@${conn_host}
