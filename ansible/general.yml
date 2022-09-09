@@ -107,3 +107,9 @@
             - http://172.17.21.6:4444
       tags:
         - docker
+
+    - role: xssh
+      vars:
+        connections_dir: '{{ ansible_user_dir }}/.ssh/connections'
+      tags:
+        - xssh

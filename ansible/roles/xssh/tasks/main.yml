@@ -1,0 +1,24 @@
+---
+- name: Установить зависимости | sshpass
+  ansible.builtin.package:
+    name: sshpass
+    state: present
+  become: true
+
+  # https://github.com/kislyuk/yq
+- name: Установить зависимости | yq
+  community.general.pipx:
+    name: yq
+    state: present
+
+- name: Создать каталог '$HOME/.local/bin'
+  ansible.builtin.file:
+    path: '{{ ansible_user_dir }}/.local/bin'
+    state: directory
+    mode: 0750
+
+- name: Скопировать скрипт xssh
+  ansible.builtin.template:
+    src: files/xssh
+    dest: '{{ ansible_user_dir }}/.local/bin'
+    mode: 0750
