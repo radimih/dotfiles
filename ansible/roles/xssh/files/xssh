@@ -14,11 +14,12 @@ tempfile="$(mktemp --quiet --tmpdir --suffix=.txt xssh-XXXX)"
 ranger --choosefile="$tempfile" "$connections_dir" || (rm "$tempfile"; exit 1)  # В работе ranger произошла ошибка
 
 connection_file="$(cat "$tempfile")"
+connection_file_ext="${connection_file##*.}"
 rm "$tempfile"
 
-test -n "$connection_file" || exit 1  # В ranger ничего не выбрано
+[[ -n "$connection_file" ]] || exit 1  # В ranger ничего не выбрано
+[[ "$connection_file_ext" == "yml" || "$connection_file_ext" == "yaml" ]] || exit 1
 
-# TODO: проверять, что выбранный файл имеет расширение yml
 # TODO: проверять, что выбранный файл находится в поддиректории $connections_dir
 
 conn_name=$(yq --raw-output --exit-status '.name' "$connection_file")
