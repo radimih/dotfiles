@@ -10,14 +10,19 @@ set -euo pipefail
 connections_dir="{{ connections_dir }}"
 connections_dir="${connections_dir%/}/"  # добавить слэш в конце, если его ещё нет
 
-tempfile="$(mktemp --quiet --tmpdir --suffix=.txt xssh-XXXX)"
+if [[ $# -eq 0 ]]
+then
+    tempfile="$(mktemp --quiet --tmpdir --suffix=.txt xssh-XXXX)"
 
-ranger --choosefile="$tempfile" "$connections_dir" || (rm "$tempfile"; exit 1)  # В работе ranger произошла ошибка
+    ranger --choosefile="$tempfile" "$connections_dir" || (rm "$tempfile"; exit 1)  # В работе ranger произошла ошибка
 
-connection_file="$(cat "$tempfile")"
-rm "$tempfile"
+    connection_file="$(cat "$tempfile")"
+    rm "$tempfile"
 
-[[ -z "$connection_file" ]] && exit 1  # В ranger ничего не выбрано
+    [[ -z "$connection_file" ]] && exit 1  # В ranger ничего не выбрано
+else
+    connection_file="$1"
+fi
 
 connection_file_ext="${connection_file##*.}"
 connection_dir="$(dirname $connection_file)/"
