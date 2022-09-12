@@ -32,5 +32,6 @@ conn_user=$(yq --raw-output --exit-status '.user' "$connection_file")
 conn_password=$(yq --raw-output --exit-status '.password' "$connection_file")
 
 echo -e "Connect to \033[1m${conn_name}\033[0m ($conn_host) in \033[1m${connection_path:-/}\033[0m as ${conn_user} ..."
+echo
 
 SSHPASS="$conn_password" sshpass -e ssh -o StrictHostKeyChecking=no ${conn_user}@${conn_host}
