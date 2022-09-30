@@ -6,5 +6,6 @@
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 alias cat='bat'
-alias ls='exa'
-alias ll='exa --oneline --all --group-directories-first --long --icons'
+alias ls='exa --icons --group-directories-first --time-style=long-iso'
+alias la='ls  --all'
+alias ll='ls  --all --oneline --long'
