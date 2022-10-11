@@ -6,8 +6,8 @@
 
 ---
 - name: Настройка GNOME Shell
-  hosts:
-    - desktop
+  hosts: 127.0.0.1
+  connection: local
 
   pre_tasks:
 

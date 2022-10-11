@@ -66,21 +66,8 @@
    Желательно не устанавливать глобальную идентификацию в git (ключ `--global`), чтобы
    случайно не смешать рабочие и личные идентификации в git.
 
-#### Настройка [Ansible Vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html)
-
-1. Задать пароль, с которым были зашифрованы все секреты:
-
-   ```bash
-   vi ansible/.vault-pass && chmod 600 ansible/.vault-pass
-   ```
-
-   Файл `ansible/.vault-pass` не должен храниться в системе контроля версий.
-
-   Имя этого файла определено в параметре `vault_password_file` в файле `ansible/ansible.cfg`.
-
 #### Установка Ansible
 
-1.
    ```bash
    ./install-ansible.sh
    ```
@@ -96,7 +83,5 @@
 
 ```bash
 cd ~/dotfiles/ansible
-ansible-playbook general.yml --limit "desktop|{имена серверов через запятую}" --tags "{список тэгов через запятую}"
+ansible-playbook <плейбук.yml> --tags "<список тэгов через запятую>"
 ```
-
-Для серверов можно игнорировать запрос пароля `BECOME password:` и просто нажимать Enter.

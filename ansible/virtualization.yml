@@ -1,7 +1,7 @@
 ---
 - name: Добавить поддержку виртуализации
-  hosts:
-    - desktop
+  hosts: 127.0.0.1
+  connection: local
 
   roles:
 

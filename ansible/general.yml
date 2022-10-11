@@ -1,10 +1,9 @@
 ---
 - name: Настройка Linux-окружения
-  hosts:
-    - desktop
-    - servers
+  hosts: 127.0.0.1
+  connection: local
 
-  tasks:
+  pre_tasks:
 
     - name: Установить часовой пояс
       community.general.timezone:
@@ -27,9 +26,14 @@
       ansible.builtin.package:
         name:
           - curl
+          - git
           - inetutils-traceroute
+          - jq
+          - make
           - net-tools
+          - pipx
           - tree
+          - xsel
         state: present
       become: true
       tags:
@@ -52,12 +56,6 @@
       tags:
         - ssh
 
-- name: Настройка Desktop-окружения
-  hosts:
-    - desktop
-
-  pre_tasks:
-
     - name: Создать каталог 'ws' (workspace) для работы
       ansible.builtin.file:
         path: '{{ ansible_user_dir }}/ws'
@@ -65,19 +63,6 @@
         mode: 0750
       tags:
         - files
-
-    - name: Установить/обновить минимальный набор пакетов для Desktop
-      ansible.builtin.package:
-        name:
-          - git
-          - jq
-          - make
-          - pipx
-          - xsel
-        state: present
-      become: true
-      tags:
-        - minipack
 
   roles:
 

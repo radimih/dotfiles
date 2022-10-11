@@ -24,32 +24,19 @@ Vagrant.configure("2") do |config|
     shell.privileged = false
   end
 
-  config.vm.provision "general", type: "ansible_local" do |ansible|
-    ansible.groups = {
-      "desktop" => ["vm-desktop"]
-    }
-    ansible.install = false
-    ansible.playbook = "general.yml"
-    ansible.verbose = false  # возможные значения: false, true (эквивалентно опции -v), "vvv", "vvvv"
+  config.vm.provision "general", type: "shell" do |shell|
+    shell.inline = "cd dotfiles/ansible; ansible-playbook general.yml"
+    shell.privileged = false
   end
 
-  config.vm.provision "gnome", type: "ansible_local" do |ansible|
-    ansible.groups = {
-      "desktop" => ["vm-desktop"]
-    }
-    ansible.install = false
-    ansible.playbook = "gnome.yml"
-    ansible.verbose = false  # возможные значения: false, true (эквивалентно опции -v), "vvv", "vvvv"
+  config.vm.provision "gnome", type: "shell" do |shell|
+    shell.inline = "cd dotfiles/ansible; ansible-playbook gnome.yml"
+    shell.privileged = false
   end
 
-  config.vm.provision "gui-apps", type: "ansible_local" do |ansible|
-    ansible.groups = {
-      "desktop" => ["vm-desktop"]
-    }
-    ansible.install = false
-    ansible.playbook = "gui-apps.yml"
-    ansible.tags = ["annotator"]
-    ansible.verbose = false  # возможные значения: false, true (эквивалентно опции -v), "vvv", "vvvv"
+  config.vm.provision "gui-apps", type: "shell" do |shell|
+    shell.inline = "cd dotfiles/ansible; ansible-playbook gui-apps.yml"
+    shell.privileged = false
   end
 
 end
