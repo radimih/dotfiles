@@ -18,7 +18,6 @@
         dest: '{{ ansible_user_dir }}/'
       loop:
         - .editorconfig
-        - .gitconfig
       tags:
         - files
 
