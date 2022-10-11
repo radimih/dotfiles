@@ -113,7 +113,7 @@
     - { role: vim, tags: [vim] }
     - { role: ranger, tags: [ranger] }
 
-    - role: docker
+    - role: radimih.docker
       vars:
         daemon_json_extra:
           # Docker Registry в офисной VPN-сети

@@ -1,0 +1,4 @@
+---
+- name: radimih.docker
+  src: https://github.com/radimih/ansible-role-docker.git
+  scm: git

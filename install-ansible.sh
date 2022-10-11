@@ -44,4 +44,7 @@ case "$(uname -s)" in
         ;;
 esac
 
+title "[i] Install Ansible Requirements"
+ansible-galaxy install -r ansible/requirements.yml
+
 title "[i] Done."
