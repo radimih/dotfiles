@@ -21,10 +21,10 @@ case "$(uname -s)" in
                     if [[ ! -x /usr/bin/ansible ]]
                     then
                         title "[i] Install Ansible"
-                        sudo apt update
-                        sudo apt install software-properties-common
+                        sudo apt-get update
+                        sudo apt-get install software-properties-common
                         sudo add-apt-repository --yes --update ppa:ansible/ansible
-                        sudo apt install -y ansible
+                        sudo apt-get install -y ansible
                         # TODO: добавить установку shell autocompletion (см. Checkvist)
                     fi
                     ;;
@@ -45,6 +45,10 @@ case "$(uname -s)" in
 esac
 
 title "[i] Install Ansible Requirements"
-ansible-galaxy install -r ansible/requirements.yml
+if grep -q '^vagrant:' /etc/passwd; then
+  ansible-galaxy install -r ansible/requirements.yml --roles-path /usr/share/ansible/roles
+else
+  ansible-galaxy install -r ansible/requirements.yml
+fi
 
 title "[i] Done."
