@@ -21,6 +21,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "init", type: "shell" do |shell|
     shell.inline = "cd dotfiles; ./install-ansible.sh"
+    shell.privileged = false
   end
 
   config.vm.provision "general", type: "ansible_local" do |ansible|

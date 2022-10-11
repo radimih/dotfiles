@@ -45,10 +45,6 @@ case "$(uname -s)" in
 esac
 
 title "[i] Install Ansible Requirements"
-if grep -q '^vagrant:' /etc/passwd; then
-  ansible-galaxy install -r ansible/requirements.yml --roles-path /usr/share/ansible/roles
-else
-  ansible-galaxy install -r ansible/requirements.yml
-fi
+ansible-galaxy install -r ansible/requirements.yml
 
 title "[i] Done."
