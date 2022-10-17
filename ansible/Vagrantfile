@@ -25,16 +25,19 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.provision "general", type: "shell" do |shell|
+    shell.env = {"ANSIBLE_BECOME_ASK_PASS" => "false"}
     shell.inline = "cd dotfiles/ansible; ansible-playbook general.yml"
     shell.privileged = false
   end
 
   config.vm.provision "gnome", type: "shell" do |shell|
+    shell.env = {"ANSIBLE_BECOME_ASK_PASS" => "false"}
     shell.inline = "cd dotfiles/ansible; ansible-playbook gnome.yml"
     shell.privileged = false
   end
 
   config.vm.provision "gui-apps", type: "shell" do |shell|
+    shell.env = {"ANSIBLE_BECOME_ASK_PASS" => "false"}
     shell.inline = "cd dotfiles/ansible; ansible-playbook gui-apps.yml"
     shell.privileged = false
   end
