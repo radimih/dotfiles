@@ -1,0 +1,19 @@
+---
+- name: Установить поддержку GPG-ключей
+  ansible.builtin.apt:
+    name: add-apt-key
+    state: present
+  become: true
+
+- name: Добавить GPG-ключ репозитория
+  ansible.builtin.apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    state: present
+  become: true
+
+- name: Добавить официальный PPA
+  ansible.builtin.apt_repository:
+    repo: 'deb [arch=amd64] https://apt.kubernetes.io/ kubernetes-xenial main'
+    state: present
+  become: true
+

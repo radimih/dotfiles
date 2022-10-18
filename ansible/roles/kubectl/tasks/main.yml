@@ -1,0 +1,15 @@
+---
+- name: Добавить официальный репозиторий Kubernetes
+  ansible.builtin.include_tasks: add_repo_os_family_{{ ansible_os_family | lower }}.yml
+
+- name: Установить пакет kubectl
+  ansible.builtin.package:
+    name: kubectl
+    state: present
+  become: true
+
+- name: Настроить в zsh алиас 'k' и автодополнение
+  ansible.builtin.copy:
+    src: .zshrc-40-kubectl.zsh
+    dest: '{{ ansible_user_dir }}'
+    mode: 0644
