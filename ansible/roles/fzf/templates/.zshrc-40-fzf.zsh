@@ -12,4 +12,4 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # For fzf-tab plugin (https://github.com/Aloxaf/fzf-tab/wiki/Configuration#fzf-bindings)
 # Tab key for accept selection (as Enter key)
-zstyle ':fzf-tab:complete:*' fzf-bindings 'tab:accept'
+# zstyle ':fzf-tab:complete:*' fzf-bindings 'tab:accept'
