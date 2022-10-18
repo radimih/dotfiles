@@ -2,6 +2,8 @@
 - name: Добавить поддержку виртуализации
   hosts: 127.0.0.1
   connection: local
+  gather_facts: true
+  gather_subset: min
 
   roles:
 
