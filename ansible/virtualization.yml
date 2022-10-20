@@ -20,8 +20,10 @@
 
     - role: apt_thirdparty_package
       vars:
-        key_url: https://apt.releases.hashicorp.com/gpg
-        repo_url: https://apt.releases.hashicorp.com
+        key_url: http://91.243.85.216:8080/banned-from-russia/hashicorp-apt/gpg
+        repo_url: http://91.243.85.216:8080/banned-from-russia/hashicorp-apt
+        # key_url: https://apt.releases.hashicorp.com/gpg
+        # repo_url: https://apt.releases.hashicorp.com
         repo_component: main
         package_name: vagrant
       when:
@@ -31,8 +33,10 @@
 
     - role: apt_thirdparty_package
       vars:
-        key_url: https://apt.releases.hashicorp.com/gpg
-        repo_url: https://apt.releases.hashicorp.com
+        key_url: http://91.243.85.216:8080/banned-from-russia/hashicorp-apt/gpg
+        repo_url: http://91.243.85.216:8080/banned-from-russia/hashicorp-apt
+        # key_url: https://apt.releases.hashicorp.com/gpg
+        # repo_url: https://apt.releases.hashicorp.com
         repo_component: main
         package_name: packer
       when:
