@@ -3,14 +3,14 @@
   become: true
   block:
     - name: Install apt key for repository of '{{ package_name }}' package
-      ansible.builtin.apt_key:
+      ansible.builtin.get_url:
         url: '{{ key_url }}'
-        state: present
-        validate_certs: no
+        dest: '{{ key_file }}'
+        mode: 0644
 
     - name: Install repository of '{{ package_name }}' package
       ansible.builtin.apt_repository:
-        repo: deb [arch=amd64] {{ repo_url }} {{ ansible_distribution_release }} {{ repo_component }}
+        repo: deb [arch=amd64 signed-by={{ key_file }}] {{ repo_url }} {{ ansible_distribution_release }} {{ repo_component }}
         state: present
 
     - name: Install '{{ package_name }}' package

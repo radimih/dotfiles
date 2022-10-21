@@ -24,6 +24,7 @@
         repo_url: http://91.243.85.216:8080/banned-from-russia/hashicorp-apt
         # key_url: https://apt.releases.hashicorp.com/gpg
         # repo_url: https://apt.releases.hashicorp.com
+        key_file: /usr/share/keyrings/hashicorp.asc  # расширение .asc, так как ключ, размещённый по ссылке, в ASCII-формате
         repo_component: main
         package_name: vagrant
       when:
@@ -37,6 +38,7 @@
         repo_url: http://91.243.85.216:8080/banned-from-russia/hashicorp-apt
         # key_url: https://apt.releases.hashicorp.com/gpg
         # repo_url: https://apt.releases.hashicorp.com
+        key_file: /usr/share/keyrings/hashicorp.asc  # расширение .asc, так как ключ, размещённый по ссылке, в ASCII-формате
         repo_component: main
         package_name: packer
       when:

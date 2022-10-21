@@ -21,6 +21,10 @@ dependencies: []
 argument_specs:
   main:
     options:
+      key_file:
+        description: Файл, в котором сохраняется PGP-ключ репозитория
+        required: true
+        type: str
       key_url:
         description: Public key URL of the repository
         required: true
