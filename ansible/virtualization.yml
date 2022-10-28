@@ -12,7 +12,7 @@
         key_url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
         repo_url: https://download.virtualbox.org/virtualbox/debian
         repo_component: contrib
-        package_name: virtualbox-6.1
+        package_name: virtualbox-7.0
       when:
         - ansible_os_family == 'Debian'
       tags:
