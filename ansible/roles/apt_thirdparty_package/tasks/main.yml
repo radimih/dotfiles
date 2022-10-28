@@ -1,4 +1,9 @@
 ---
+- name: Получить недостающие факты о хосте
+  ansible.builtin.setup:
+    gather_subset: min
+  when: ansible_distribution_release is not defined
+
 - name: Block to set become=true on all role tasks
   become: true
   block:
