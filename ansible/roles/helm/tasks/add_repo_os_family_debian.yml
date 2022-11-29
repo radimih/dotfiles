@@ -1,0 +1,19 @@
+---
+- name: 'Файл для размещения ключа PPA-репозитория: /usr/share/keyrings/helm.asc'
+  ansible.builtin.set_fact:
+    _key_file: /usr/share/keyrings/helm.asc
+
+- name: Установить ключ PPA-репозитория
+  ansible.builtin.get_url:
+    url: https://baltocdn.com/helm/signing.asc
+    dest: '{{ _key_file }}'
+    mode: 0644
+  become: true
+
+- name: Добавить PPA-репозиторий
+  ansible.builtin.apt_repository:
+    repo: 'deb [signed-by={{ _key_file }}] https://baltocdn.com/helm/stable/debian/ all main'
+    filename: helm-stable-debian
+    state: present
+  become: true
+

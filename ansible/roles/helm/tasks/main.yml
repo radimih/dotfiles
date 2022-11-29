@@ -1,0 +1,15 @@
+---
+- name: Получить недостающие факты о хосте
+  ansible.builtin.setup:
+    gather_subset: min
+  when: ansible_os_family is not defined
+
+- name: Добавить репозиторий Helm, если необходимо
+  ansible.builtin.include_tasks: add_repo_os_family_{{ ansible_os_family | lower }}.yml
+  when: ansible_os_family | lower in ('debian')
+
+- name: Установить пакет helm
+  ansible.builtin.package:
+    name: helm
+    state: present
+  become: true

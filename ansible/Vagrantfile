@@ -42,4 +42,10 @@ Vagrant.configure("2") do |config|
     shell.privileged = false
   end
 
+  config.vm.provision "tui-apps", type: "shell" do |shell|
+    shell.env = {"ANSIBLE_BECOME_ASK_PASS" => "false"}
+    shell.inline = "cd dotfiles/ansible; ansible-playbook tui-apps.yml"
+    shell.privileged = false
+  end
+
 end
