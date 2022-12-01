@@ -15,7 +15,7 @@ indent_size = 4
 indent_style = space
 trim_trailing_whitespace = true
 
-[*.{json,yml,yaml,yml.j2,yaml.j2,hcl}]
+[*.{hcl,json,yaml,yaml.gotmpl,yaml.j2,yml,yml.gotmpl,yml.j2}]
 indent_size = 2
 
 [Vagrantfile]
