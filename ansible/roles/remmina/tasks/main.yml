@@ -14,7 +14,7 @@
     path: '{{ connections_dir }}'
     state: directory
 
-- name: Установить в параметрах приложения каталог для профилей соединений в '{{ _connections_dir }}'
+- name: Установить в параметрах приложения каталог для профилей соединений в '{{ connections_dir }}'
   ansible.builtin.ini_file:
     path: '{{ _config_file }}'
     no_extra_spaces: true
