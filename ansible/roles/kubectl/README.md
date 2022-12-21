@@ -1,4 +1,4 @@
-# Docker
+# kubectl
 
 Ansible-роль для установки [kubectl](https://kubernetes.io/docs/reference/kubectl/).
 
