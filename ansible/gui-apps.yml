@@ -7,3 +7,4 @@
   roles:
 
     - { role: annotator, tags: [annotator] }
+    - { role: telegram, tags: [telegram] }

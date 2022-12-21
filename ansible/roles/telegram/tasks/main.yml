@@ -1,0 +1,12 @@
+---
+- name: Получить недостающие факты о хосте
+  ansible.builtin.setup:
+    gather_subset: min
+  when: ansible_distribution is not defined
+
+- name: Установить Snap-пакет приложения
+  community.general.snap:
+    name: telegram-desktop
+    state: present
+  become: true
+  when: ansible_distribution == 'Ubuntu'
