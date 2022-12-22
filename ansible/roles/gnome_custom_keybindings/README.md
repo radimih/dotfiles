@@ -6,19 +6,21 @@
 Привязки, определённые вне этой роли (например, через _Settings_), после выполнения роли становятся
 неактивными.
 
-Посмотреть текущие привязки: 
-  ```bash
-  dconf dump /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/
-  ```
+Посмотреть текущие привязки:
+
+```bash
+dconf dump /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/
+```
 
 Посмотреть какие из них включены:
-  ```bash
-  dconf read /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings
-  ```
+
+```bash
+dconf read /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings
+```
 
 ## Аргументы Ansible-роли
 
-#### Обязательные
+### Обязательные
 
 <table>
 <thead>
@@ -53,8 +55,7 @@
 </tbody>
 </table>
 
-#### Необязательные
+### Необязательные
 
 | Аргумент | Описание | Значение по-умолчанию |
 | --- | --- | --- |
-

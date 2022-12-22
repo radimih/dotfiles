@@ -1,0 +1,12 @@
+# https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md
+---
+MD013: false
+MD033:
+  allowed_elements:
+    - br
+    - table
+    - tbody
+    - td
+    - th
+    - thead
+    - tr
