@@ -1,0 +1,19 @@
+---
+- name: 'Файл для размещения ключа PPA-репозитория: /usr/share/keyrings/packages.microsoft.asc'
+  ansible.builtin.set_fact:
+    _key_file: /usr/share/keyrings/packages.microsoft.asc
+
+- name: Установить ключ PPA-репозитория
+  ansible.builtin.get_url:
+    url: https://packages.microsoft.com/keys/microsoft.asc
+    dest: '{{ _key_file }}'
+    mode: 0644
+  become: true
+
+- name: Добавить официальный PPA-репозиторий
+  ansible.builtin.apt_repository:
+    repo: 'deb [signed-by={{ _key_file }}] https://packages.microsoft.com/repos/code stable main'
+    filename: vscode
+    state: present
+  become: true
+

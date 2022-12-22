@@ -8,3 +8,4 @@
 
     - { role: annotator, tags: [annotator] }
     - { role: telegram, tags: [telegram] }
+    - { role: vscode, tags: [vscode] }
