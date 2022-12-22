@@ -2,22 +2,6 @@
 
 Конфигурация моих локальных Linux-систем.
 
-## Ansible-роли
-
-Роль | Назначение | Ручная донастройка? | Теги
----- | ---------- | :-----------------: | ----
-[dev-python](ansible/roles/dev-python) | Настройка окружения для разработки на Python | нет | `dev` `python`
-[docker](ansible/roles/docker) | Установка [Docker](https://docs.docker.com/engine/) и [Docker Compose](https://docs.docker.com/compose/) | нет | `docker`
-[fonts](ansible/roles/fonts) | Установка шрифтов | нет | `fonts`
-[flameshot](ansible/roles/flameshot) | Установка утилиты [flameshot](https://github.com/flameshot-org/flameshot) для создания скриншотов | нет | `flameshot`
-[gnome](ansible/roles/gnome) | Настройка DE [GNOME Shell](https://wiki.gnome.org/Projects/GnomeShell) и его расширений | нет | `gnome`
-[joplin](ansible/roles/joplin) | Установка приложения [Joplin](https://joplinapp.org/) для ведения заметок | [да](ansible/roles/joplin#после-установки) | `joplin`
-[keyd](ansible/roles/keyd) | Настройка клавиатуры (переопределение поведения клавиш) | нет | `keyd`
-[ranger](ansible/roles/ranger) | Установка консольного файлового менеджера [ranger](https://github.com/ranger/ranger) | нет | `ranger`
-[remmina](ansible/roles/remmina) | Установка приложения [Remmina](https://remmina.org/) для доступа к хостам через SSH и RDP | [да](ansible/roles/remmina#после-установки) | `remmina`
-[vim](ansible/roles/vim) | Установка и настройка Vim | нет | `vim`
-[zsh](ansible/roles/zsh) | Установка shell-оболочки [Zsh](https://www.zsh.org/) и настройка окружения | нет | `zsh`
-
 ## Первоначальная установка на новую систему
 
 ### Привязка к GitHub-аккаунту
