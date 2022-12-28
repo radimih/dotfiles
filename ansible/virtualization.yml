@@ -49,6 +49,16 @@
 
   post_tasks:
 
+    # Чтобы в ВМ, запущенных пользователем ansible_user_id, были доступны USB-устройства
+    - name: Добавить пользователя '{{ ansible_user_id }}' в группу 'vboxusers'
+      ansible.builtin.user:
+        name: '{{ ansible_user_id }}'
+        groups: vboxusers
+        append: true
+      become: true
+      tags:
+        - virtualbox
+
     # Стандартная команда vagrant autocomplete install довольно топорно прописывает
     # вызов autocompletion-скрипта в конец скриптов ~/.bashrc и ~/.zshrc
 
