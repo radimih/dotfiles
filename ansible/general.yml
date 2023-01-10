@@ -28,7 +28,7 @@
         name:
           - curl
           - git
-          - inetutils-traceroute
+          - traceroute
           - jq
           - make
           - net-tools
