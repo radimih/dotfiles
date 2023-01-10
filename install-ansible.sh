@@ -11,40 +11,46 @@ title() {
 title "[i] Ask for sudo password"
 sudo -v
 
-case "$(uname -s)" in
-    Linux)
-        if [ -f /etc/os-release ]
-        then
-            source /etc/os-release
-            case "$ID_LIKE" in
-                debian | ubuntu)
-                    if [[ ! -x /usr/bin/ansible ]]
-                    then
-                        title "[i] Install Ansible"
+if [[ -x /usr/bin/ansible ]]
+then
+    title "[i] Ansible is already installed"
+else
+    title "[i] Install Ansible"
+    case "$(uname -s)" in
+        Linux)
+            if [ -f /etc/os-release ]
+            then
+                source /etc/os-release
+                case "$ID" in
+                    fedora)
+                        sudo dnf install -y ansible
+                        ;;
+                    ubuntu)
                         sudo apt-get update
                         sudo apt-get install software-properties-common
                         sudo add-apt-repository --yes --update ppa:ansible/ansible
                         sudo apt-get install -y ansible
-                        # TODO: добавить установку shell autocompletion (см. Checkvist)
-                    fi
-                    ;;
-                *)
-                    title "[!] Unsupported Linux Distribution: $ID (like $ID_LIKE)"
-                    exit 1
-                    ;;
-            esac
-        else
-            title "[!] Unsupported Linux Distribution"
+                        ;;
+                    *)
+                        title "[!] Unsupported Linux Distribution: $ID"
+                        exit 1
+                        ;;
+                esac
+            else
+                title "[!] Unsupported Linux Distribution"
+                exit 1
+            fi
+            ;;
+            # TODO: добавить установку shell autocompletion (см. Checkvist)
+        *)
+            title "[!] Unsupported OS"
             exit 1
-        fi
-        ;;
-    *)
-        title "[!] Unsupported OS"
-        exit 1
-        ;;
-esac
+            ;;
+    esac
+fi
 
 title "[i] Install Ansible Requirements"
 ansible-galaxy install -r ansible/requirements.yml
 
 title "[i] Done."
+echo
