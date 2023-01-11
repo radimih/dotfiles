@@ -5,14 +5,6 @@
     state: present
   become: true
 
-- name: Установить служебные пакеты
-  ansible.builtin.package:
-    name:
-      - gnome-shell-extensions
-      - chrome-gnome-shell
-    state: present
-  become: true
-
 - name: Получить версию GNOME Shell
   ansible.builtin.shell: gnome-shell --version | sed 's/[^0-9.]*\([0-9.]*\).*/\1/'
   register: r__gnome_version

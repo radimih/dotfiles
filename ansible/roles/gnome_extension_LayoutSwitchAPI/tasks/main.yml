@@ -1,10 +1,4 @@
 ---
-- name: Установить пакет для работы с GNONE-расширениями
-  become: true
-  ansible.builtin.package:
-    name: gnome-shell-extensions
-    state: present
-
 - name: Скопировать/обновить файлы расширения
   ansible.builtin.copy:
     src: files/layout-switch-api@radimir
