@@ -1,6 +1,6 @@
 ---
-- name: Установить Snap-пакет приложения
-  community.general.snap:
+- name: Установить пакет приложения
+  ansible.builtin.package:
     name: flameshot
     state: present
   become: true
@@ -13,32 +13,19 @@
     state: present
   become: true
 
-- name: Запустить приложение, чтобы оно создало свои каталоги и файлы
-  ansible.builtin.command: flameshot --version
-  changed_when: false
+- name: Создать каталог для конфигурационного файла приложения
+  ansible.builtin.file:
+    path: '~/.config/flameshot'
+    state: directory
+    mode: 0755
 
 - name: Настроить приложение
-  ansible.builtin.ini_file:
-    path: '{{ ansible_user_dir }}/snap/flameshot/current/.config/flameshot/flameshot.ini'
+  community.general.ini_file:
+    path: '~/.config/flameshot/flameshot.ini'
+    create: true
+    mode: 0644
     no_extra_spaces: true
     section: General
     option: '{{ item.key }}'
     value: '{{ item.value }}'
   loop: '{{ options | dict2items }}'
-
-- name: Создать служебный каталог для ярлыков запускаемых автоматически приложений
-  ansible.builtin.file:
-    path: '{{ ansible_user_dir }}/.config/autostart'
-    state: directory
-
-- name: Настроить автозапуск приложения
-  ansible.builtin.copy:
-    content: |
-      [Desktop Entry]
-      Name=flameshot
-      Icon=flameshot
-      Exec=flameshot
-      Terminal=false
-      Type=Application
-      X-GNOME-Autostart-enabled=true
-    dest: '{{ ansible_user_dir }}/.config/autostart/Flameshot.desktop'

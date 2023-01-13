@@ -13,23 +13,30 @@
 
 | Аргумент | Описание | Значение по-умолчанию |
 | --- | --- | --- |
-| `options` | Словарь параметров Flameshot из секции `[General]`, значения которых подменяются в конфигурационном файле приложения (`~/snap/flameshot/current/.config/flameshot/flameshot.ini`).<br/><br/>ВНИМАНИЕ! Boolean-значения параметров должны задаваться только в виде строк `'true'` или `'false'`. | `{}` |
+| `options` | Словарь параметров Flameshot из секции `[General]`, значения которых подменяются в конфигурационном файле приложения (`~/.config/flameshot/flameshot.ini`).<br/><br/>ВНИМАНИЕ! Boolean-значения параметров должны задаваться только в виде строк `'true'` или `'false'`. | `{}` |
+
+Параметры и их значения можно взять из конфигурационного файла `~/.config/flameshot/flameshot.ini`,
+который будет создан после изменения параметров в GUI-конфигураторе:
+
+```bash
+flameshot config
+```
 
 ## Пример
 
 ```yaml
 - role: flameshot
-    vars:
-      options:
-        # Отключить ненужные кнопки
-        buttons: !unsafe '@Variant(\0\0\0\x7f\0\0\0\vQList<int>\0\0\0\0\x11\0\0\0\0\0\0\0\x1\0\0\0\x2\0\0\0\x3\0\0\0\x4\0\0\0\x5\0\0\0\x6\0\0\0\x12\0\0\0\xf\0\0\0\x13\0\0\0\t\0\0\0\x10\0\0\0\n\0\0\0\v\0\0\0\f\0\0\0\x14\0\0\0\x15)'
-        drawColor: '#ff0000'
-        drawFontSize: '10'
-        drawThickness: '5'
-        showDesktopNotification: 'false'
-        showHelp: 'false'
-        showStartupLaunchMessage: 'false'
-        uiColor: '#90c9e5'
+  vars:
+    options:
+      # Отключить ненужные кнопки
+      buttons: !unsafe '@Variant(\0\0\0\x7f\0\0\0\vQList<int>\0\0\0\0\x11\0\0\0\0\0\0\0\x1\0\0\0\x2\0\0\0\x3\0\0\0\x4\0\0\0\x5\0\0\0\x6\0\0\0\x12\0\0\0\xf\0\0\0\x13\0\0\0\t\0\0\0\x10\0\0\0\n\0\0\0\v\0\0\0\f\0\0\0\x14\0\0\0\x15)'
+      drawColor: '#ff0000'
+      drawFontSize: '10'
+      drawThickness: '5'
+      showDesktopNotification: 'false'
+      showHelp: 'false'
+      showStartupLaunchMessage: 'false'
+      uiColor: '#90c9e5'
 ```
 
 ## Настройка под GNOME
