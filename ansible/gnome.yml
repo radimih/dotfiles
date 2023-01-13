@@ -43,6 +43,12 @@
         value: "['<Shift>Control_R']"
         state: present
 
+    - name: Освободить клавишу Print для приложения Flameshot
+      community.general.dconf:
+        key: /org/gnome/shell/keybindings/show-screenshot-ui
+        value: "['']"
+        state: present
+
     - name: Установить wallpaper
       community.general.dconf:
         key: /org/gnome/desktop/background/{{ item.key }}
@@ -137,6 +143,9 @@
           - name: Terminal
             binding: '<Super>t'
             command: gnome-terminal
+          - name: Screenshot by Flameshot
+            binding: 'Print'
+            command: flameshot gui
       tags:
         - keybindings
 
