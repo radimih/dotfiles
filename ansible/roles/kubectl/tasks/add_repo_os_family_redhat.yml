@@ -1,0 +1,19 @@
+---
+- name: Установить публичный ключ репозитория
+  ansible.builtin.rpm_key:
+    key: https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+    state: present
+  become: true
+
+- name: Добавить официальный репозиторий приложения
+  ansible.builtin.yum_repository:
+    name: kubernetes
+    description: Kubernetes
+    file: kubernetes
+    baseurl: https://packages.cloud.google.com/yum/repos/kubernetes-el7-$basearch
+    gpgkey: https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+    gpgcheck: true
+    enabled: true
+    state: present
+  become: true
+
