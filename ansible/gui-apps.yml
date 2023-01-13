@@ -6,7 +6,15 @@
 
   roles:
 
-    - { role: annotator, tags: [annotator] }
+    - role: flameshot
+      vars:
+        options:
+          showDesktopNotification: 'false'
+          showHelp: 'false'
+          showStartupLaunchMessage: 'false'
+      tags:
+        - flameshot
+
     - { role: telegram, tags: [telegram] }
     - { role: vscode, tags: [vscode] }
     - { role: zoom, tags: [zoom] }
