@@ -1,8 +1,8 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-# distr = "fedora-37-workstation"
-distr = "ubuntu-22.04-desktop"
+distr = "fedora-37-workstation"
+# distr = "ubuntu-22.04-desktop"
 
 Vagrant.configure("2") do |config|
 
