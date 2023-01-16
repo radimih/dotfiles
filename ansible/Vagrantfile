@@ -1,15 +1,18 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+# distr = "fedora-37-workstation"
+distr = "ubuntu-22.04-desktop"
+
 Vagrant.configure("2") do |config|
 
   config.vm.define "vm-desktop"
 
-  config.vm.box = "fedora-37-workstation"
-  config.vm.box_url = "file://#{Dir.home()}/ws/virtual-machines/boxes/fedora-37-workstation.json"
+  config.vm.box = distr
+  config.vm.box_url = "file://#{Dir.home()}/ws/virtual-machines/boxes/#{distr}.json"
 
   config.vm.provider "virtualbox" do |v|
-    v.name = "fedora-37-workstation"
+    v.name = "vm-for-dotfiles"
     v.gui = true
     v.memory = 4096
     v.customize ["setextradata", :id, "CustomVideoMode1", "1920x1080x32"]
