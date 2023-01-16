@@ -40,7 +40,7 @@
       tags:
         - minipack
 
-    - name:
+    - name: Настроить SSH-клиент
       ansible.builtin.copy:
         content: |
           # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -64,6 +64,19 @@
         mode: 0750
       tags:
         - files
+
+    - name: Настроить дистрибутив {{ ansible_distribution }}
+      ansible.builtin.include_tasks:
+        file: '{{ item }}'
+        apply:
+          tags:
+            - distr
+      with_first_found:
+        - files:
+            - tasks/distr_{{ ansible_distribution | lower }}.yml
+          skip: true
+      tags:
+        - distr
 
   roles:
 
