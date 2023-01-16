@@ -7,6 +7,8 @@
 
   roles:
 
+    - { role: virtualbox, tags: [virtualbox] }
+      
     - role: apt_thirdparty_package
       vars:
         key_url: http://91.243.85.216:8080/banned-from-russia/hashicorp-apt/gpg

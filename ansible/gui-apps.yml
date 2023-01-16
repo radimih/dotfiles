@@ -16,6 +16,5 @@
         - flameshot
 
     - { role: telegram, tags: [telegram] }
-    - { role: virtualbox, tags: [virtualbox] }
     - { role: vscode, tags: [vscode] }
     - { role: zoom, tags: [zoom] }
