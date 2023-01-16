@@ -1,4 +1,20 @@
 ---
+- name: '{{ ansible_distribution }}: ускорить работу dnf'
+  community.general.ini_file:
+    path: /etc/dnf/dnf.conf
+    no_extra_spaces: true
+    section: main
+    option: '{{ kv.key }}'
+    value: '{{ kv.value }}'
+  become: true
+  loop: '{{ _options | dict2items }}'
+  loop_control:
+    loop_var: kv
+  vars:
+    _options:
+      fastestmirror: 'True'
+      max_parallel_downloads: 5
+
 # https://rpmfusion.org/Configuration
 - name: '{{ ansible_distribution }}: включить репозитории RPM Fusion (free и nonfree)'
   ansible.builtin.dnf:
