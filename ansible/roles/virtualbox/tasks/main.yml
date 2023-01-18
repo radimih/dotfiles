@@ -4,14 +4,8 @@
     gather_subset: min
   when: ansible_os_family is not defined
 
-- name: Добавить официальный репозиторий приложения
-  ansible.builtin.include_tasks: add_repo_os_family_{{ ansible_os_family | lower }}.yml
-
-- name: Установить пакет приложения
-  ansible.builtin.package:
-    name: virtualbox-7.0
-    state: present
-  become: true
+- name: Установить приложение для семейства ОС {{ ansible_os_family }}
+  ansible.builtin.include_tasks: os_family_{{ ansible_os_family | lower }}.yml
 
 # Чтобы в ВМ, запущенных пользователем ansible_user_id, были доступны USB-устройства
 - name: Добавить пользователя '{{ ansible_user_id }}' в группу 'vboxusers'

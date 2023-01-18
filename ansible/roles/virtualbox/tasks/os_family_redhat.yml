@@ -1,0 +1,23 @@
+---
+# https://rpmfusion.org/Howto/VirtualBox
+
+# ВНИМАНИЕ! Предполагается, что включен репозиторий RPM Fusion free
+
+- name: '{{ ansible_os_family }}: установить пакет приложения'
+  ansible.builtin.dnf:
+    name: VirtualBox  # akmod-VirtualBox и kernel-devel уже указаны в зависимостях
+    state: present
+  become: true
+  register: r__vbox_packages
+
+- name: '{{ ansible_os_family }}: скомпилировать модули ядра vbox*, если необходимо'
+  ansible.builtin.command: akmods
+  become: true
+  changed_when: false
+
+- name: '{{ ansible_os_family }}: загрузить модули ядра vbox*'
+  ansible.builtin.systemd:
+    name: vboxdrv
+    state: restarted
+  become: true
+  when: r__vbox_packages.changed
