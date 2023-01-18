@@ -28,7 +28,7 @@
     disable_gpg_check: true
   become: true
 
-- name: Включить Flatpak-репозиторий Flathub
+- name: '{{ ansible_distribution }}: включить Flatpak-репозиторий Flathub'
   community.general.flatpak_remote:
     name: flathub
     flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
