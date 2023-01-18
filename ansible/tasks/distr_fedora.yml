@@ -27,3 +27,11 @@
     # как раз и устанавливаются этими пакетами
     disable_gpg_check: true
   become: true
+
+- name: Включить Flatpak-репозиторий Flathub
+  community.general.flatpak_remote:
+    name: flathub
+    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+    method: system
+    state: present
+  become: true
