@@ -1,0 +1,14 @@
+---
+- name: '{{ ansible_os_family }}: установить публичный ключ репозитория'
+  ansible.builtin.get_url:
+    url: '{{ _apt_urls.key }}'
+    dest: /usr/share/keyrings/hashicorp.asc  # расширение .asc, так как ключ, размещённый по ссылке, в ASCII-формате
+    mode: 0644
+  become: true
+
+- name: '{{ ansible_os_family }}: добавить официальный репозиторий приложения'
+  ansible.builtin.apt_repository:
+    repo: 'deb [signed-by=/usr/share/keyrings/hashicorp.asc] {{ _apt_urls.repo }} {{ ansible_distribution_release }} main'
+    filename: hashicorp
+    state: present
+  become: true
