@@ -1,6 +1,14 @@
 ---
 _apt_urls:
-  key: http://91.243.85.216:8080/banned-from-russia/hashicorp-apt/gpg
-  repo: http://91.243.85.216:8080/banned-from-russia/hashicorp-apt
   # key: https://apt.releases.hashicorp.com/gpg
   # repo: https://apt.releases.hashicorp.com
+  key: http://91.243.85.216:8080/banned-from-russia/hashicorp-apt/gpg
+  repo: http://91.243.85.216:8080/banned-from-russia/hashicorp-apt
+
+_rpm_urls:
+  # key: https://rpm.releases.hashicorp.com/gpg
+  # repo: https://rpm.releases.hashicorp.com/fedora/$releasever/$basearch/stable
+  # repo_file: https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
+  key: http://91.243.85.216:8080/banned-from-russia/hashicorp-rpm/gpg
+  repo: http://91.243.85.216:8080/banned-from-russia/hashicorp-rpm/fedora/$releasever/$basearch/stable
+  repo_file: http://91.243.85.216:8080/banned-from-russia/hashicorp-rpm/fedora/hashicorp.repo

@@ -1,0 +1,25 @@
+---
+- name: '{{ ansible_os_family }}: установить публичный ключ репозитория'
+  ansible.builtin.rpm_key:
+    key: '{{ _rpm_urls.key }}'
+    state: present
+  become: true
+
+- name: '{{ ansible_os_family }}: добавить официальный репозиторий'
+  ansible.builtin.yum_repository:
+    name: hashicorp
+    description: HashiCorp Stable
+    file: hashicorp
+    baseurl: '{{ _rpm_urls.repo }}'
+    gpgkey: '{{ _rpm_urls.key }}'
+    gpgcheck: true
+    enabled: true
+    state: present
+  # Такой вариант установки работает только когда HashiCorp доступен из России:
+  # ansible.builtin.get_url:
+  #   url: '{{ _rpm_urls.repo_file }}'
+  #   dest: /etc/yum.repos.d/hashicorp.repo
+  #   owner: root
+  #   group: root
+  #   mode: 0644
+  become: true
