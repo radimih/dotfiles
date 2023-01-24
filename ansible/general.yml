@@ -80,8 +80,15 @@
 
   roles:
 
-    - { role: keyd, tags: [keyd] }
+    - role: locale
+      vars:
+        formats: ru_RU.UTF-8
+        language: en_US.UTF-8
+      tags:
+        - locale
+
     - { role: fonts, tags: [fonts] }
+    - { role: keyd, tags: [keyd] }
 
     - role: zsh
       vars:

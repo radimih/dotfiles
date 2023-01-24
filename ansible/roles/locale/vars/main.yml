@@ -1,0 +1,4 @@
+---
+_system_locale_file:
+  debian: /etc/default/locale
+  redhat: /etc/locale.conf

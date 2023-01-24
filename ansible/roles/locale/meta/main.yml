@@ -1,0 +1,38 @@
+---
+galaxy_info:
+  author: Radimir Mikhailov
+  description: Configure system locale
+  license: MIT
+  role_name: locale
+
+  min_ansible_version: 2.7
+
+  platforms:
+    - name: Debian
+      versions:
+        - all
+    - name: EL
+      versions:
+        - all
+    - name: Fedora
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - all
+
+  galaxy_tags: []
+
+dependencies: []
+
+argument_specs:
+  main:
+    options:
+      formats:
+        description: Локаль для форматов чисел, дат, валюты и тд
+        required: true
+        type: str
+      language:
+        description: Локаль для текстов в пользовательском интерфейсе и веб-страниц
+        required: true
+        type: str
