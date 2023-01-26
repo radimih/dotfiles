@@ -57,13 +57,17 @@
       tags:
         - ssh
 
-    - name: Создать каталог 'ws' (workspace) для работы
+    - name: Создать мои каталоги
       ansible.builtin.file:
-        path: '{{ ansible_user_dir }}/ws'
+        path: '{{ ansible_user_dir }}/{{ item }}'
         state: directory
         mode: 0750
+      loop:
+        - 1clouds  # синхронизируемые с облаками файлы
+        - 1git     # все git-репозитории, кроме dotfiles
+        - 1temp    # временные файлы, которые "не жалко"
       tags:
-        - files
+        - dirs
 
     - name: Настроить дистрибутив {{ ansible_distribution }}
       ansible.builtin.include_tasks:
