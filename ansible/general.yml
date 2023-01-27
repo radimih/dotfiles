@@ -61,7 +61,7 @@
       ansible.builtin.file:
         path: '{{ ansible_user_dir }}/{{ item }}'
         state: directory
-        mode: 0750
+        mode: 0700
       loop:
         - 1clouds  # синхронизируемые с облаками файлы
         - 1git     # все git-репозитории, кроме dotfiles

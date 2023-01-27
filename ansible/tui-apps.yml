@@ -8,3 +8,9 @@
 
     - { role: helm, tags: [helm] }
     - { role: kubectl, tags: [kubectl] }
+
+    - role: yandex_disk_cli
+      vars:
+        dir: ~/1clouds/yandex
+      tags:
+        - yandex-disk

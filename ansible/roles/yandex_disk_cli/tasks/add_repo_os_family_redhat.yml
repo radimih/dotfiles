@@ -1,0 +1,18 @@
+---
+- name: '{{ ansible_os_family }}: установить публичный ключ репозитория'
+  ansible.builtin.rpm_key:
+    key: https://repo.yandex.ru/yandex-disk/YANDEX-DISK-KEY.GPG
+    state: present
+  become: true
+
+- name: '{{ ansible_os_family }}: добавить официальный репозиторий'
+  ansible.builtin.yum_repository:
+    name: yandex
+    description: Yandex Disk
+    file: yandex-disk
+    baseurl: https://repo.yandex.ru/yandex-disk/rpm/stable/$basearch/
+    gpgkey: https://repo.yandex.ru/yandex-disk/YANDEX-DISK-KEY.GPG
+    gpgcheck: true
+    enabled: true
+    state: present
+  become: true

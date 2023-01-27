@@ -1,0 +1,14 @@
+---
+- name: '{{ ansible_os_family }}: установить публичный ключ репозитория'
+  ansible.builtin.get_url:
+    url: https://repo.yandex.ru/yandex-disk/YANDEX-DISK-KEY.GPG
+    dest: /usr/share/keyrings/
+    mode: 0644
+  become: true
+
+- name: '{{ ansible_os_family }}: добавить официальный репозиторий'
+  ansible.builtin.apt_repository:
+    repo: 'deb [signed-by=/usr/share/keyrings/YANDEX-DISK-KEY.GPG] https://repo.yandex.ru/yandex-disk/deb/ stable main'
+    filename: yandex-disk
+    state: present
+  become: true
