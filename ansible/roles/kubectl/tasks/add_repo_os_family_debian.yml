@@ -1,16 +1,16 @@
 ---
-- name: 'Файл для размещения ключа PPA-репозитория: /usr/share/keyrings/kubernetes-archive-keyring.gpg'
+- name: '{{ ansible_os_family }}: файл для размещения публичного ключа репозитория: /usr/share/keyrings/kubernetes-archive-keyring.asc'
   ansible.builtin.set_fact:
     _key_file: /usr/share/keyrings/kubernetes-archive-keyring.gpg
 
-- name: Установить ключ PPA-репозитория
+- name: '{{ ansible_os_family }}: установить публичный ключ репозитория'
   ansible.builtin.get_url:
     url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
     dest: '{{ _key_file }}'
     mode: 0644
   become: true
 
-- name: Добавить официальный PPA-репозиторий
+- name: '{{ ansible_os_family }}: добавить официальный репозиторий'
   ansible.builtin.apt_repository:
     repo: 'deb [signed-by={{ _key_file }}] https://apt.kubernetes.io/ kubernetes-xenial main'
     filename: kubernetes

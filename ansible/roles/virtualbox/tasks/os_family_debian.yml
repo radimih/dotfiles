@@ -1,9 +1,9 @@
 ---
-- name: '{{ ansible_os_family }}: файл для размещения публичного ключа PPA-репозитория: /usr/share/keyrings/oracle-virtualbox-2016.asc'
+- name: '{{ ansible_os_family }}: файл для размещения публичного ключа репозитория: /usr/share/keyrings/oracle-virtualbox-2016.asc'
   ansible.builtin.set_fact:
     _key_file: /usr/share/keyrings/oracle-virtualbox-2016.asc
 
-- name: '{{ ansible_os_family }}: установить публичный ключ PPA-репозитория'
+- name: '{{ ansible_os_family }}: установить публичный ключ репозитория'
   ansible.builtin.get_url:
     url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
     dest: '{{ _key_file }}'
@@ -11,7 +11,7 @@
     timeout: 30  # virtualbox.org иногда долго отвечает
   become: true
 
-- name: '{{ ansible_os_family }}: добавить официальный PPA-репозиторий приложения'
+- name: '{{ ansible_os_family }}: добавить официальный репозиторий'
   ansible.builtin.apt_repository:
     repo: 'deb [arch=amd64 signed-by={{ _key_file }}] https://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib'
     filename: virtualbox

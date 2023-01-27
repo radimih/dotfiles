@@ -6,7 +6,7 @@
     mode: 0644
   become: true
 
-- name: '{{ ansible_os_family }}: добавить официальный репозиторий приложения'
+- name: '{{ ansible_os_family }}: добавить официальный репозиторий'
   ansible.builtin.apt_repository:
     repo: 'deb [signed-by=/usr/share/keyrings/hashicorp.asc] {{ _apt_urls.repo }} {{ ansible_distribution_release }} main'
     filename: hashicorp

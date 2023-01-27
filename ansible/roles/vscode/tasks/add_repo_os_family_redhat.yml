@@ -1,11 +1,11 @@
 ---
-- name: Установить публичный ключ репозитория
+- name: '{{ ansible_os_family }}: установить публичный ключ репозитория'
   ansible.builtin.rpm_key:
     key: https://packages.microsoft.com/keys/microsoft.asc
     state: present
   become: true
 
-- name: Добавить официальный репозиторий приложения
+- name: '{{ ansible_os_family }}: добавить официальный репозиторий'
   ansible.builtin.yum_repository:
     name: code
     description: Visual Studio Code
