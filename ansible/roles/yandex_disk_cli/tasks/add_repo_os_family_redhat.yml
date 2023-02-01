@@ -7,9 +7,8 @@
 
 - name: '{{ ansible_os_family }}: добавить официальный репозиторий'
   ansible.builtin.yum_repository:
-    name: yandex
+    name: yandex-disk
     description: Yandex Disk
-    file: yandex-disk
     baseurl: https://repo.yandex.ru/yandex-disk/rpm/stable/$basearch/
     gpgkey: https://repo.yandex.ru/yandex-disk/YANDEX-DISK-KEY.GPG
     gpgcheck: true
