@@ -29,3 +29,30 @@
     path: '{{ dir }}'
     state: directory
     mode: 0700
+
+- name: Создать каталог для конфигурационных файлов приложения
+  ansible.builtin.file:
+    path: '{{ _config_dir }}'
+    state: directory
+    mode: 0700
+
+- name: Создать конфигурационный файл приложения
+  ansible.builtin.template:
+    src: config.cfg
+    dest: '{{ _config_dir }}'
+    mode: 0640
+
+- name: Создать systemd unit-файл, общий для всех пользователей
+  ansible.builtin.copy:
+    src: files/yandex-disk@.service
+    dest: /etc/systemd/system/
+    owner: root
+    group: root
+    mode: 0644
+  become: true
+
+- name: 'Включить автозагрузку yandex-disk. Не забудьте привязать это устройство командой: $ yandex-disk token'
+  ansible.builtin.systemd:
+    name: yandex-disk@{{ ansible_user_id }}.service
+    enabled: true
+  become: true
