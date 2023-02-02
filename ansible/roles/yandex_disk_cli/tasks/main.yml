@@ -32,19 +32,19 @@
 
 - name: Создать каталог для конфигурационных файлов приложения
   ansible.builtin.file:
-    path: '{{ _config_dir }}'
+    path: '{{ ansible_user_dir }}/{{ _config_subdir }}'
     state: directory
     mode: 0700
 
-- name: Создать конфигурационный файл приложения
+- name: Настроить конфигурационный файл приложения
   ansible.builtin.template:
     src: config.cfg
-    dest: '{{ _config_dir }}'
+    dest: '{{ ansible_user_dir }}/{{ _config_subdir }}/{{ _config_filename }}'
     mode: 0640
 
-- name: Создать systemd unit-файл, общий для всех пользователей
-  ansible.builtin.copy:
-    src: files/yandex-disk@.service
+- name: Настроить systemd unit-файл, общий для всех пользователей
+  ansible.builtin.template:
+    src: yandex-disk@.service
     dest: /etc/systemd/system/
     owner: root
     group: root
