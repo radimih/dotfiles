@@ -4,4 +4,6 @@
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 export PATH="$PATH:$HOME/.local/bin"
-export EDITOR=vim
+
+# Так как переменная EDITOR может переопределяться, например, в VS Code
+[ -z "$EDITOR" ] && export EDITOR=vim
