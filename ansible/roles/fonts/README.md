@@ -2,12 +2,12 @@
 
 Шрифты берутся из каталога `files`:
 
-- `NerdFonts/` - шрифты из проекта [Nerd Fonts](https://www.nerdfonts.com/)
-  - [Iosevka](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Iosevka.zip):
-    оставить только **Term** [ Extralight | Ligth | Bold ] **Mono** шрифты:
+- `NerdFonts/` - шрифты от проекта [Nerd Fonts](https://www.nerdfonts.com/):
+  - [Iosevka](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/Iosevka.zip):
+    только шрифты **`Term`** `Nerd Font Complete` **`Mono`** [ `ExtraLight` | `Light` | `Bold` ] [`Italic`]:
 
     ```bash
-    ls *.ttf | grep -v -E "Iosevka Term( (Bold|Extralight|Light))? Nerd Font Complete Mono.ttf" | xargs -d '\n' rm
+    ls *.ttf | grep -v -E "Iosevka Term Nerd Font Complete Mono( (Bold|ExtraLight|Light))?( Italic)?\." | xargs -d '\n' rm
     ```
 
 ## Аргументы Ansible-роли
