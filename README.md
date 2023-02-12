@@ -8,9 +8,8 @@
 
 1. Установить минимальный набор пакетов:
 
-   ```bash
-   sudo apt update && sudo apt install -y git xsel
-   ```
+   - deb-based: `sudo apt update && sudo apt install -y git xsel`
+   - rpm-based: `sudo dnf install -y git xsel`
 
 1. Сгенерировать пару ключей SSH и скопировать открытый ключ в буфер обмена:
 
