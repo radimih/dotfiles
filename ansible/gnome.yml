@@ -19,11 +19,26 @@
         state: present
       become: true
 
-    - name: Установить Gnome Tweaks
+    - name: Установить GUI-приложение GNOME Tweaks
       ansible.builtin.package:
         name: gnome-tweaks
         state: present
       become: true
+
+    - name: Установить GUI-приложение для управления GNOME-расширениями (вариант для Fedora)
+      ansible.builtin.dnf:
+        name: gnome-extensions-app
+        state: present
+      become: true
+      when: ansible_distribution == 'Fedora'
+
+    - name: Установить GUI-приложение для управления GNOME-расширениями (вариант для Ubuntu)
+      ansible.builtin.apt:
+        name: gnome-shell-extension-prefs
+        state: present
+        install_recommends: false
+      become: true
+      when: ansible_distribution == 'Ubuntu'
 
     - name: Установить следование фокуса окна за мышью
       community.general.dconf:
