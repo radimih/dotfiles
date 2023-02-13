@@ -28,7 +28,26 @@
     disable_gpg_check: true
   become: true
 
-- name: '{{ ansible_distribution }}: включить Flatpak-репозиторий Flathub'
+# После включения Fedora Third Party Repositories в приложении Software или при установке системы
+# добавляется Flatpak-репозиторий flathub с включенной фильтрацией от Fedora, при которой можно
+# устанавливать приложения с Flathub.org только из белого списка (dnf info fedora-flathub-remote).
+# Даже при отключении Fedora Third Party Repositories фильтрующий репозиторий flathub всё равно
+# присутствует в системе в статусе disabled (flatpak remotes --show-disabled) и это мешает установить
+# нормальный flathub. Исправляем это.
+
+- name: '{{ ansible_distribution }}: проверить, установлен ли фильтрующий Flatpak-репозиторий Flathub'
+  ansible.builtin.shell:
+    cmd: flatpak remotes --system --show-disabled | grep -E '^flathub\s.*filtered.*' | wc -l
+  register: r__filtered_flathub_count
+  changed_when: false
+
+- name: '{{ ansible_distribution }}: удалить ФИЛЬТРУЮЩИЙ Flatpak-репозиторий Flathub от Fedora'
+  ansible.builtin.command:
+    cmd: flatpak remote-delete --system flathub
+  become: true
+  when: r__filtered_flathub_count.stdout | int > 0
+
+- name: '{{ ansible_distribution }}: включить стандартный Flatpak-репозиторий Flathub БЕЗ ФИЛЬТРА'
   community.general.flatpak_remote:
     name: flathub
     flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
