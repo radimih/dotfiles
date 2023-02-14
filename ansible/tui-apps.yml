@@ -10,6 +10,15 @@
     - { role: helm, tags: [helm] }
     - { role: kubectl, tags: [kubectl] }
 
+    - role: radimih.github_latest
+      vars:
+        user: helmfile
+        repo: helmfile
+        asset_filename_ending: _linux_amd64.tar.gz
+        dest_binary: ~/.local/bin/helmfile
+      tags:
+        - helmfile
+
     - role: yandex_disk_cli
       vars:
         dir: '{{ ansible_user_dir }}/1clouds/yandex'
