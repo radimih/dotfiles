@@ -19,9 +19,11 @@
         state: present
       become: true
 
-    - name: Установить GUI-приложение GNOME Tweaks
+    - name: Установить приложения для тонкой настройки GNOME
       ansible.builtin.package:
-        name: gnome-tweaks
+        name:
+          - dconf-editor
+          - gnome-tweaks
         state: present
       become: true
 
@@ -79,6 +81,24 @@
           secondary-color: '#000000'
       tags:
         - wallpaper
+
+    # Посмотреть какие параметры были изменены:
+    #   dconf dump /org/gnome/desktop/peripherals/touchpad/
+
+    - name: Настроить тачпад
+      community.general.dconf:
+        key: /org/gnome/desktop/peripherals/touchpad/{{ item.key }}
+        value: "{{ item.value }}"
+        state: present
+      loop: '{{ options | dict2items }}'
+      vars:
+        options:
+          click-method: "'areas'"  # чтобы заработала правая кнопка на тачпаде
+          speed: 0.5               # ускорить перемещение указателя
+          tap-to-click: 'true'
+          two-finger-scrolling-enabled: 'true'
+      tags:
+        - touchpad
 
     # # Тема "Plata" (https://gitlab.com/tista500/plata-theme) рекомендована автором
     # # расширения Material Shell
