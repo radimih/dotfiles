@@ -1,0 +1,45 @@
+---
+- name: Получить недостающие факты о хосте
+  ansible.builtin.setup:
+    gather_subset: min
+  when: ansible_user_dir is not defined
+
+- name: Создать каталоги
+  ansible.builtin.file:
+    path: '{{ item }}'
+    state: directory
+    mode: 0750
+  loop:
+    - '{{ _autostart_dir }}'
+    - '{{ _binary_dir }}'
+    - '{{ _config_dir }}'
+
+
+- name: Установить бинарник из GitHub-репозитория
+  ansible.builtin.include_role:
+    name: radimih.github_latest
+  vars:
+    user: slytomcat
+    repo: yd-go
+    asset_filename_ending: yd-go
+    dest_binary: '{{ _binary_dir }}/yd-go'
+
+  # По-умолчанию при запуске приложения создаётся конфиг-файл с Notification: true, StartDaemon: true
+- name: Настроить приложение
+  ansible.builtin.copy:
+    content: |
+      {"Conf":"{{ ansible_user_dir }}/.config/yandex-disk/config.cfg", "Theme":"dark", "Notifications":false, "StartDaemon":false, "StopDaemon":false}
+    dest: '{{ _config_dir }}/default.cfg'
+    mode: 0640
+
+- name: Настроить автозапуск приложения
+  ansible.builtin.copy:
+    content: |
+      [Desktop Entry]
+      Name=yandex.disk.indicator
+      Type=Application
+      Exec={{ _binary_dir }}/yd-go
+      Terminal=false
+      X-GNOME-Autostart-enabled=true
+    dest: '{{ _autostart_dir }}/yandex.disk.indicator.desktop'
+    mode: 0640

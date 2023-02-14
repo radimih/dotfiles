@@ -1,0 +1,4 @@
+---
+_autostart_dir: '{{ ansible_user_dir }}/.config/autostart'
+_binary_dir: '{{ ansible_user_dir }}/.local/bin'
+_config_dir: '{{ ansible_user_dir }}/.config/yd-go'
