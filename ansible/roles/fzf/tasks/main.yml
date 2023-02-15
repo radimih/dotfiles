@@ -1,4 +1,9 @@
 ---
+- name: Получить недостающие факты о хосте
+  ansible.builtin.setup:
+    gather_subset: min
+  when: ansible_os_family is not defined
+
 - name: Установить пакет приложения
   ansible.builtin.package:
     name: fzf
@@ -10,3 +15,5 @@
     src: .zshrc-40-fzf.zsh
     dest: '{{ ansible_user_dir }}'
     mode: 0644
+  vars:
+    _script_key_binding: '{{ _shell_scripts_dir[ansible_os_family | lower] }}/key-bindings.zsh'

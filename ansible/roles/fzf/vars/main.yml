@@ -1,2 +1,4 @@
 ---
-_script_key_binding: /usr/share/doc/fzf/examples/key-bindings.zsh
+_shell_scripts_dir:
+  debian: /usr/share/doc/fzf/examples
+  redhat: /usr/share/fzf/shell
