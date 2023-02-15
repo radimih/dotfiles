@@ -1,4 +1,9 @@
 ---
+- name: Получить недостающие факты о хосте
+  ansible.builtin.setup:
+    gather_subset: min
+  when: ansible_user_dir is not defined
+
 - name: Установить пакет приложения
   ansible.builtin.package:
     name: flameshot
@@ -15,13 +20,13 @@
 
 - name: Создать каталог для конфигурационного файла приложения
   ansible.builtin.file:
-    path: '~/.config/flameshot'
+    path: '{{ ansible_user_dir }}/.config/flameshot'
     state: directory
     mode: 0755
 
 - name: Настроить приложение
   community.general.ini_file:
-    path: '~/.config/flameshot/flameshot.ini'
+    path: '{{ ansible_user_dir }}/.config/flameshot/flameshot.ini'
     create: true
     mode: 0644
     no_extra_spaces: true

@@ -1,4 +1,9 @@
 ---
+- name: Получить недостающие факты о хосте
+  ansible.builtin.setup:
+    gather_subset: min
+  when: ansible_os_family is not defined
+
 - name: Установить пакеты утилит
   ansible.builtin.package:
     name:

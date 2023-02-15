@@ -15,7 +15,7 @@
         user: helmfile
         repo: helmfile
         asset_filename_ending: _linux_amd64.tar.gz
-        dest_binary: ~/.local/bin/helmfile
+        dest_binary: '{{ ansible_user_dir }}/.local/bin/helmfile'
       tags:
         - helmfile
 

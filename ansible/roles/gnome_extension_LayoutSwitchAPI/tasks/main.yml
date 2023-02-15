@@ -1,4 +1,9 @@
 ---
+- name: Получить недостающие факты о хосте
+  ansible.builtin.setup:
+    gather_subset: min
+  when: ansible_user_dir is not defined
+
 - name: Скопировать/обновить файлы расширения
   ansible.builtin.copy:
     src: files/layout-switch-api@radimir
