@@ -4,11 +4,12 @@
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 # From official installation script:
-# https://raw.githubusercontent.com/z-shell/zi-src/main/lib/sh/install.sh
+#   https://github.com/z-shell/zi-src/blob/main/lib/sh/install.sh
 
 source "{{ _zi_home_dir }}/{{ _zi_bin_dirname }}/zi.zsh"
 autoload -Uz _zi
 (( ${+_comps} )) && _comps[zi]=_zi
+zicompinit
 
 # From plugins Ansible variable:
 
