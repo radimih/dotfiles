@@ -14,6 +14,18 @@
       tags:
         - timezone
 
+    - name: Создать мои каталоги
+      ansible.builtin.file:
+        path: '{{ ansible_user_dir }}/{{ item }}'
+        state: directory
+        mode: 0700
+      loop:
+        - 1clouds  # синхронизируемые с облаками файлы
+        - 1git     # все git-репозитории, кроме dotfiles
+        - 1temp    # временные файлы, которые "не жалко"
+      tags:
+        - dirs
+
     - name: Скопировать dot-файлы
       ansible.builtin.copy:
         src: files/{{ item }}
@@ -57,18 +69,6 @@
       tags:
         - ssh
 
-    - name: Создать мои каталоги
-      ansible.builtin.file:
-        path: '{{ ansible_user_dir }}/{{ item }}'
-        state: directory
-        mode: 0700
-      loop:
-        - 1clouds  # синхронизируемые с облаками файлы
-        - 1git     # все git-репозитории, кроме dotfiles
-        - 1temp    # временные файлы, которые "не жалко"
-      tags:
-        - dirs
-
     - name: Настроить дистрибутив {{ ansible_distribution }}
       ansible.builtin.include_tasks:
         file: '{{ item }}'
@@ -93,6 +93,14 @@
 
     - { role: fonts, tags: [fonts] }
     - { role: keyd, tags: [keyd] }
+    - { role: cli_analogs, tags: [cli_analogs] }
+
+    - role: fzf
+      vars:
+        default_command: fd --type f --hidden --strip-cwd-prefix --exclude .git
+        default_options: --border --height=30% --info=inline --layout=reverse --bind=tab:down  # подробнее: man fzf
+      tags:
+        - fzf
 
     - role: zsh
       vars:
@@ -110,15 +118,6 @@
                 value: 1
       tags:
         - zsh
-
-    - { role: cli_analogs, tags: [cli_analogs] }
-
-    - role: fzf
-      vars:
-        default_command: fd --type f --hidden --strip-cwd-prefix --exclude .git
-        default_options: --border --height=30% --info=inline --layout=reverse --bind=tab:down  # подробнее: man fzf
-      tags:
-        - fzf
 
     - { role: vim, tags: [vim] }
     - { role: ranger, tags: [ranger] }
