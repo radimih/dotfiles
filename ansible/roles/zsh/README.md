@@ -1,4 +1,6 @@
-# Zsh и плагины
+# Ansible-роль `zsh`
+
+Установка shell-оболочки zsh и её плагинов.
 
 Используется очень быстрый менеджер плагинов [zi](https://github.com/z-shell/zi) (бывший [Zinit](https://github.com/zdharma/zinit)).
 
@@ -35,12 +37,12 @@ cp ~/.p10k.zsh ~/dotfiles/ansible/roles/zsh/files/
 1. Instant Prompt Mode: `(2) Quiet`
 1. Apply changes to ~/.zshrc? `n) No`
 
-## Аргументы Ansible-роли
+## Аргументы роли
 
 ### Обязательные
 
-| Аргумент | Описание |
-| --- | --- |  
+| Аргумент | Описание
+| -------- | --------
 
 ### Необязательные
 

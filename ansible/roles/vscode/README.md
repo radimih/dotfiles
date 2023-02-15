@@ -1,17 +1,17 @@
-# Visual Studio Code
+# Ansible-роль `vscode`
 
-Ansible-роль для установки [Visual Studio Code](https://code.visualstudio.com/).
+Установка [Visual Studio Code](https://code.visualstudio.com/).
 
 По мотивам официальной [инструкции по установке](https://code.visualstudio.com/docs/setup/linux).
 
-## Аргументы Ansible-роли
+## Аргументы роли
 
 ### Обязательные
 
-| Аргумент | Описание |
-| --- | --- |  
+| Аргумент | Описание
+| -------- | --------
 
 ### Необязательные
 
-| Аргумент | Описание | Значение по-умолчанию |
-| --- | --- | --- |
+| Аргумент | Описание | Default
+| -------- | -------- | -------

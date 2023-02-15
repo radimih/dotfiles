@@ -1,15 +1,15 @@
-# Yandex Disk Indicator
+# Ansible-роль `yandex_disk_indicator`
 
-Ansible-роль для установки [индикатора Yandex-диска на панели](https://github.com/slytomcat/yd-go).
+Установка [индикатора Yandex-диска на панели](https://github.com/slytomcat/yd-go).
 
 ## Аргументы роли
 
 ### Обязательные
 
 | Аргумент | Описание
-| --- | --- |
+| -------- | --------
 
 ### Необязательные
 
 | Аргумент | Описание | Default
-| --- | --- | ---
+| -------- | -------- | -------

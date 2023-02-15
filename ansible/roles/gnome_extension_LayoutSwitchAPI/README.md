@@ -1,4 +1,6 @@
-# LayoutSwitchAPI GNOME extension
+# Ansible-роль `gnome_extension_LayoutSwitchAPI`
+
+Установка GNOME-расширения LayoutSwitchAPI.
 
 Расширение используется для реализации немодального переключения раскладок клавиатуры в GNOME Shell.
 
@@ -43,14 +45,14 @@ gsettings get org.gnome.desktop.input-sources sources
 gnome-extensions enable layout-switch-api@radimir
 ```
 
-## Аргументы Ansible-роли
+## Аргументы роли
 
 ### Обязательные
 
-| Аргумент | Описание |
-| --- | --- |  
+| Аргумент | Описание
+| -------- | --------
 
 ### Необязательные
 
-| Аргумент | Описание | Значение по-умолчанию |
-| --- | --- | --- |
+| Аргумент | Описание | Default
+| -------- | -------- | -------

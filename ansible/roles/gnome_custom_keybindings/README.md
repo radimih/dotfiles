@@ -1,4 +1,4 @@
-# gnome_custom_keybindings
+# Ansible-роль `gnome_custom_keybindings`
 
 Определение кастомных клавиатурных привязок в среде GNOME.
 
@@ -18,7 +18,7 @@ dconf dump /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/
 dconf read /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings
 ```
 
-## Аргументы Ansible-роли
+## Аргументы роли
 
 ### Обязательные
 
@@ -57,5 +57,5 @@ dconf read /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings
 
 ### Необязательные
 
-| Аргумент | Описание | Значение по-умолчанию |
-| --- | --- | --- |
+| Аргумент | Описание | Default
+| -------- | -------- | -------
