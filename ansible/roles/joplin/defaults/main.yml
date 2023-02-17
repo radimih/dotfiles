@@ -1,6 +1,0 @@
----
-app_github: laurent22/joplin
-app_name: Joplin
-app_dir: /opt/{{ app_name|lower }}
-app_exec: "{{ app_dir }}/{{ app_name }}.AppImage"
-app_icon_url: https://joplinapp.org/images/Icon512.png

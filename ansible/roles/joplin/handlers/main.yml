@@ -1,4 +1,0 @@
----
-- name: update-desktop-database
-  become: yes
-  shell: update-desktop-database {{ launcher_dir }}

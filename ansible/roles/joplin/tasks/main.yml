@@ -1,9 +1,0 @@
----
-- name: Обновить приложение
-  import_tasks: update_app.yml
-
-- name: Обновить иконку приложения
-  import_tasks: update_icon.yml
-
-- name: Обновить ярлык запуска приложения
-  import_tasks: update_launcher.yml
