@@ -1,0 +1,41 @@
+---
+- name: Установка повседневных приложений
+  hosts: 127.0.0.1
+  connection: local
+  gather_facts: true
+  gather_subset: min
+
+  roles:
+
+    - role: flameshot
+      vars:
+        options:
+          showDesktopNotification: 'false'
+          showHelp: 'false'
+          showStartupLaunchMessage: 'false'
+      tags:
+        - flameshot
+        - gui
+
+    - { role: obsidian, tags: [obsidian, gui] }
+    - { role: ranger, tags: [ranger, tui] }
+    - { role: telegram, tags: [telegram, gui] }
+    - { role: vim, tags: [vim, tui] }
+    - { role: vscode, tags: [vscode, gui] }
+
+    - role: xssh
+      vars:
+        connections_dir: '{{ ansible_user_dir }}/.ssh/connections'
+      tags:
+        - xssh
+        - tui
+
+    - role: yandex_disk_cli
+      vars:
+        dir: '{{ ansible_user_dir }}/1clouds/yandex'
+      tags:
+        - yandex-disk
+        - tui
+
+    - { role: yandex_disk_indicator, tags: [yandex-disk, gui] }
+    - { role: zoom, tags: [zoom, gui] }

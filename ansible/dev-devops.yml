@@ -1,0 +1,33 @@
+---
+- name: Установка DevOps-инструментария
+  hosts: 127.0.0.1
+  connection: local
+  gather_facts: true
+  gather_subset: min
+
+  roles:
+
+    - role: radimih.docker
+      vars:
+        daemon_json_extra:
+          # Docker Registry в офисной VPN-сети
+          insecure-registries:
+            - 172.17.21.6:4444
+            - 172.17.21.6:2222
+          registry-mirrors:
+            - http://172.17.21.6:4444
+      tags:
+        - docker
+
+    - { role: helm, tags: [helm] }
+
+    - role: radimih.github_latest
+      vars:
+        user: helmfile
+        repo: helmfile
+        asset_filename_ending: _linux_amd64.tar.gz
+        dest_binary: '{{ ansible_user_dir }}/.local/bin/helmfile'
+      tags:
+        - helmfile
+
+    - { role: kubectl, tags: [kubectl] }

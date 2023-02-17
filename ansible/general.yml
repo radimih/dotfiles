@@ -118,24 +118,3 @@
                 value: 1
       tags:
         - zsh
-
-    - { role: vim, tags: [vim] }
-    - { role: ranger, tags: [ranger] }
-
-    - role: radimih.docker
-      vars:
-        daemon_json_extra:
-          # Docker Registry в офисной VPN-сети
-          insecure-registries:
-            - 172.17.21.6:4444
-            - 172.17.21.6:2222
-          registry-mirrors:
-            - http://172.17.21.6:4444
-      tags:
-        - docker
-
-    - role: xssh
-      vars:
-        connections_dir: '{{ ansible_user_dir }}/.ssh/connections'
-      tags:
-        - xssh
