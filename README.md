@@ -9,7 +9,7 @@
 1. Установить минимальный набор пакетов:
 
    - deb-based:
-   
+
      ```bash
      sudo apt update && sudo apt install -y git xsel
      ```
