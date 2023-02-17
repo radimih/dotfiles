@@ -1,0 +1,5 @@
+---
+_dirs:
+  binary: /usr/local/bin
+  icons: /usr/local/share/icons/hicolor/512x512/apps
+  launcher: /usr/local/share/applications

@@ -1,0 +1,44 @@
+---
+- name: Создать необходимые каталоги
+  ansible.builtin.file:
+    path: '{{ item.value }}'
+    state: directory
+    mode: 0755
+  loop: '{{ _dirs | dict2items }}'
+  become: true
+
+- name: Установить бинарник из GitHub-репозитория
+  ansible.builtin.include_role:
+    name: radimih.github_latest
+    apply:
+      become: true
+  vars:
+    user: obsidianmd
+    repo: obsidian-releases
+    asset_filename_ending: .AppImage
+    asset_filename_not_contains: -arm64
+    dest_binary: '{{ _dirs.binary }}/Obsidian.AppImage'
+
+- name: Обновить иконку приложения
+  ansible.builtin.copy:
+    src: files/obsidian.png
+    dest: '{{ _dirs.icons }}'
+    mode: 0644
+  become: true
+
+- name: Сконфигурировать ярлык приложения
+  ansible.builtin.copy:
+    content: |
+      [Desktop Entry]
+      Name=Obsidian
+      Exec={{ _dirs.binary }}/Obsidian.AppImage %u
+      Type=Application
+      Terminal=false
+      Icon={{ _dirs.icons }}/obsidian.png
+      StartupWMClass=obsidian
+      Comment=Obsidian
+      Categories=Office;
+      MimeType=text/html;x-scheme-handler/obsidian;
+    dest: '{{ _dirs.launcher }}/obsidian.desktop'
+  notify: update-desktop-database
+  become: true

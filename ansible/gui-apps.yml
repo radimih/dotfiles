@@ -15,6 +15,7 @@
       tags:
         - flameshot
 
+    - { role: obsidian, tags: [obsidian] }
     - { role: telegram, tags: [telegram] }
     - { role: vscode, tags: [vscode] }
     - { role: yandex_disk_indicator, tags: [yandex-disk] }
