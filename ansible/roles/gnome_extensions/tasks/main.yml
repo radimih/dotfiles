@@ -12,11 +12,11 @@
 
 - name: 'Версия GNOME Shell: {{ r__gnome_version.stdout }}'
   ansible.builtin.set_fact:
-    gnome_shell_version: '{{ r__gnome_version.stdout }}'
+    _gnome_shell_version: '{{ r__gnome_version.stdout }}'
 
 - name: Получить информацию по устанавливаемым расширениям
   ansible.builtin.uri:
-    url: https://extensions.gnome.org/extension-info/?pk={{ item }}&shell_version={{ gnome_shell_version }}
+    url: https://extensions.gnome.org/extension-info/?pk={{ item }}&shell_version={{ _gnome_shell_version }}
     return_content: true
   loop: '{{ ids }}'
   register: r__extensions_info

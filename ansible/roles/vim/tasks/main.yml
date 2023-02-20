@@ -30,12 +30,12 @@
 
   - name: 'Путь к редактору по-умолчанию: {{ r__default_editor.stdout }}'
     ansible.builtin.set_fact:
-      default_editor: '{{ r__default_editor.stdout }}'
+      _default_editor: '{{ r__default_editor.stdout }}'
 
   - name: Установить Vim редактором по-умолчанию
     ansible.builtin.command: update-alternatives --set editor /usr/bin/vim.basic
     become: true
     changed_when: true
-    when: default_editor != '/usr/bin/vim.basic'
+    when: _default_editor != '/usr/bin/vim.basic'
 
   when: ansible_os_family == 'Debian'

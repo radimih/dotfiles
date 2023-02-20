@@ -6,7 +6,7 @@
 
 - name: "Расширение {{ extension_info.name }} ({{ extension_info.pk }}) | Версия установленного (0 - если не установлено): {{ r__extension_installed_version.stdout or 0 }}, на сайте: {{ extension_info.version }}"
   ansible.builtin.set_fact:
-    extension_version:
+    _extension_version:
       installed: '{{ r__extension_installed_version.stdout or 0 }}'
       website: '{{ extension_info.version }}'
 
@@ -22,7 +22,7 @@
     ansible.builtin.command: gnome-extensions install --force '{{ r__extension_download.dest }}'
     # notify: restart-gnome-shell
 
-  when: extension_version.website | int > extension_version.installed|int
+  when: _extension_version.website | int > _extension_version.installed|int
 
 # - name: "Расширение {{ extension_info.name }} ({{ extension_info.pk }}) | Включить"
 #   shell: gnome-extensions enable "{{ extension_info.uuid }}"
