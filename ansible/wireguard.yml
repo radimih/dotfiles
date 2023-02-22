@@ -1,0 +1,48 @@
+---
+- name: Настройка Wireguard-соединения
+  hosts: 127.0.0.1
+  connection: local
+  gather_facts: true
+  gather_subset: min
+
+  vars:
+    wg_profiles_dir: '{{ ansible_user_dir }}/.config/wireguard'
+
+  vars_prompt:
+
+    - name: vpn_host
+      prompt: VPN host
+      private: false
+
+    - name: vpn_user
+      prompt: VPN host user
+      private: false
+
+    - name: wg_peer
+      prompt: Wireguard peer name
+      private: false
+
+  tasks:
+
+    - name: Установить пакет поддержки Wireguard
+      ansible.builtin.package:
+        name: wireguard{{ '-tools' if ansible_os_family == 'RedHat' }}
+        state: present
+      become: true
+      tags:
+        - package
+
+    - name: Создать каталог для профилей Wireguard-соединений
+      ansible.builtin.file:
+        path: '{{ wg_profiles_dir }}'
+        state: directory
+        mode: 0755
+
+    - name: Скачать конфигурационный файл с VPN-сервера
+      # ansible.posix.synchronize:
+      #   mode: pull
+      #   src: rsync://xman@91.243.85.216:/opt/wireguard/config/peer_myWork/peer_myWork.conf
+      #   dest: /etc/wireguard/wg0.conf
+      ansible.builtin.command:
+        # cmd: scp {{ vpn_user }}@{{ vpn_host }}:/opt/wireguard/config/peer_{{ wg_peer }}/peer_{{ wg_peer }}.conf /etc/wireguard/wg0.conf
+        cmd: scp -o "StrictHostKeyChecking=no" xman@91.243.85.216:/opt/wireguard/config/peer_myWork/peer_myWork.conf {{ wg_profiles_dir }}/wg0.conf
