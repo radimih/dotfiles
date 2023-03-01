@@ -40,10 +40,11 @@ alias -g T='| tail'
 
 HISTSIZE=1000
 SAVEHIST=1000
-HISTFILE=~/.zsh_history
+HISTFILE=${ZDOTDIR:-~}/.zsh_history
 
 setopt append_history
 setopt extended_history
+setopt inc_append_history
 setopt inc_append_history_time
 setopt hist_ignore_all_dups
 setopt hist_reduce_blanks
