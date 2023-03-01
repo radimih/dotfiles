@@ -107,9 +107,14 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=69'
 
 # Дополнительные скрипты .zshrc-*.zsh
 # ===================================
-setopt +o nomatch
-for file in $HOME/.zshrc-*.zsh; do
-  [ -f "$file" ] || continue
+
+# Для выбора файлов используются квалификаторы (Glob Qualifiers). Это дополнительные параметры шаблона,
+# заключённые в круглые скобки в конце шаблона.
+#   . - выбирать только файлы (plain files)
+#   N - не выдавать ошибку, если ничего не найдено (аналог команды setopt +o nomatch)
+# Подробнее в разделе 14.8.7 https://zsh.sourceforge.io/Doc/Release/Expansion.html#Filename-Generation
+
+for file in $HOME/.zshrc-*.zsh(.N); do
   source "$file"
 done
 
