@@ -33,7 +33,13 @@
     force: yes
     update: yes
 
+- name: Создать каталог $ZSHRC_DIR для zsh-скриптов инициализации
+  ansible.builtin.file:
+    path: '{{ ansible_env.ZSHRC_DIR }}'
+    state: directory
+    mode: 0750
+
 - name: Сгенерировать {{ pyenv_init_script }}
   template:
     src: "{{ pyenv_init_script }}.j2"
-    dest: "{{ ansible_user_dir }}/{{ pyenv_init_script }}"
+    dest: "{{ ansible_env.ZSHRC_DIR }}/{{ pyenv_init_script }}"

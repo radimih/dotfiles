@@ -56,3 +56,7 @@ argument_specs:
                 description: значение опции
                 required: true
                 type: str
+      zsh_home_subdir:
+        description: Подкаталог в домашнем каталоге пользователя для размещения конфигурационных файлов zsh
+        required: false
+        type: path

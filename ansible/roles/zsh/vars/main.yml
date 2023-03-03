@@ -1,4 +1,4 @@
 ---
-_zdotdir_subdir: .config/zsh
 _zi_bin_dirname: bin
 _zi_home_dir: '{{ ansible_user_dir }}/.zi'
+_zshrc_subdir: zshrc.d

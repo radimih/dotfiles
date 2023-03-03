@@ -5,6 +5,16 @@
   gather_facts: true
   gather_subset: min
 
+  vars:
+    # Подкаталог в домашнем каталоге пользователя для всех конфигурационных файлов оболочки zsh
+    ZSH_HOME_SUBDIR: .config/zsh
+
+  environment:
+    # Переменная окружения ZSHRC_DIR используется в ролях, устанавливающих свои zsh-скрипты
+    # инициализации. Её значение устанавливается в роли zsh, но при первом запуске плейбука
+    # эта переменная еще недоступна. Поэтому устанавливается здесь вручную.
+    ZSHRC_DIR: ~/{{ ZSH_HOME_SUBDIR }}/zshrc.d
+
   pre_tasks:
 
     - name: Установить часовой пояс
@@ -84,16 +94,9 @@
 
   roles:
 
-    - role: locale
-      vars:
-        formats: ru_RU.UTF-8
-        language: en_US.UTF-8
-      tags:
-        - locale
+    - { role: cli_analogs, tags: [cli_analogs] }
 
     - { role: fonts, tags: [fonts] }
-    - { role: keyd, tags: [keyd] }
-    - { role: cli_analogs, tags: [cli_analogs] }
 
     - role: fzf
       vars:
@@ -102,8 +105,18 @@
       tags:
         - fzf
 
+    - { role: keyd, tags: [keyd] }
+
+    - role: locale
+      vars:
+        formats: ru_RU.UTF-8
+        language: en_US.UTF-8
+      tags:
+        - locale
+
     - role: zsh
       vars:
+        zsh_home_subdir: '{{ ZSH_HOME_SUBDIR }}'
         plugins:
           - name: Aloxaf/fzf-tab
             type: light

@@ -13,8 +13,14 @@
     state: present
   become: true
 
+- name: Создать каталог $ZSHRC_DIR для zsh-скриптов инициализации
+  ansible.builtin.file:
+    path: '{{ ansible_env.ZSHRC_DIR }}'
+    state: directory
+    mode: 0750
+
 - name: Настроить в zsh алиас 'k' и автодополнение
   ansible.builtin.copy:
-    src: .zshrc-40-kubectl.zsh
-    dest: '{{ ansible_user_dir }}'
+    src: 40-kubectl.zsh
+    dest: '{{ ansible_env.ZSHRC_DIR }}'
     mode: 0644
