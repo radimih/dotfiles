@@ -116,7 +116,7 @@ zsh-скрипты инициализации, ссылаясь на эту пе
 
 ```bash
 p10k configure
-cp ~/.p10k.zsh ~/dotfiles/ansible/roles/zsh/files/
+cp $ZDOTDIR/.p10k.zsh ~/dotfiles/ansible/roles/zsh/files/
 ```
 
 Рекомендуемые параметры:
