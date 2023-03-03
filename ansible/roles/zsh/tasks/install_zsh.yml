@@ -18,11 +18,14 @@
   become: true
   when: r__which_result.rc == 0
 
-- name: Создать каталог ZDOTDIR (~/{{ _zdotdir_subdir }})
+- name: Создать в домашнем каталоге служебные подкаталоги для zsh
   ansible.builtin.file:
-    path: '{{ ansible_user_dir }}/{{ _zdotdir_subdir }}'
+    path: '{{ ansible_user_dir }}/{{ item }}'
     state: directory
     mode: 0750
+  loop:
+    - '{{ zsh_home_subdir }}'
+    - '{{ zsh_home_subdir }}/{{ _zshrc_subdir }}'
 
 - name: Настроить стартовый файл ~/.zshenv
   ansible.builtin.copy:
@@ -34,15 +37,16 @@
 
       # .zshenv - Zsh environment file, загружается всегда
 
-      export ZDOTDIR=~/{{ _zdotdir_subdir }}
-      [[ -f $ZDOTDIR/.zshenv ]] && . $ZDOTDIR/.zshenv
+      export ZDOTDIR=~/{{ zsh_home_subdir }}
+      export ZSHRC_DIR=$ZDOTDIR/{{ _zshrc_subdir }}
+      [[ -f $ZDOTDIR/.zshenv ]] && . $ZDOTDIR/.zshenv || true
     dest: '{{ ansible_user_dir }}/.zshenv'
     mode: 0644
 
 - name: Скопировать файлы настроек zsh
   ansible.builtin.copy:
     src: files/{{ item }}
-    dest: '{{ ansible_user_dir }}/{{ _zdotdir_subdir }}'
+    dest: '{{ ansible_user_dir }}/{{ zsh_home_subdir }}'
     owner: '{{ ansible_user_id }}'
     group: '{{ ansible_user_id }}'
     mode: 0644

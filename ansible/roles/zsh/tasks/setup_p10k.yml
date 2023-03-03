@@ -9,9 +9,15 @@
     group: '{{ ansible_user_id }}'
     mode: 0644
 
+- name: Создать каталог $ZSHRC_DIR для zsh-скриптов инициализации
+  ansible.builtin.file:
+    path: '{{ ansible_env.ZSHRC_DIR }}'
+    state: directory
+    mode: 0750
+
 - name: Включить режим "Instant Prompt"
   ansible.builtin.copy:
-    dest: '{{ ansible_user_dir }}/.zshrc-00-p10k-instant-prompt.zsh'
+    dest: '{{ ansible_env.ZSHRC_DIR }}/00-p10k-instant-prompt.zsh'
     mode: 0644
     content: |
       # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -28,7 +34,7 @@
 
 - name: Включить загрузку файла настроек Powerlevel10k
   ansible.builtin.copy:
-    dest: '{{ ansible_user_dir }}/.zshrc-10-p10k-enable.zsh'
+    dest: '{{ ansible_env.ZSHRC_DIR }}/10-p10k-enable.zsh'
     mode: 0644
     content: |
       # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

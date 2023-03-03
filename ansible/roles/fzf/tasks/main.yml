@@ -10,10 +10,16 @@
     state: present
   become: true
 
-- name: Создать скрипт инициализации приложения
+- name: Создать каталог $ZSHRC_DIR для zsh-скриптов инициализации
+  ansible.builtin.file:
+    path: '{{ ansible_env.ZSHRC_DIR }}'
+    state: directory
+    mode: 0750
+
+- name: Создать zsh-скрипт инициализации приложения
   ansible.builtin.template:
-    src: .zshrc-40-fzf.zsh
-    dest: '{{ ansible_user_dir }}'
+    src: 40-fzf.zsh
+    dest: '{{ ansible_env.ZSHRC_DIR }}'
     mode: 0644
   vars:
     _script_key_binding: '{{ _shell_scripts_dir[ansible_os_family | lower] }}/key-bindings.zsh'

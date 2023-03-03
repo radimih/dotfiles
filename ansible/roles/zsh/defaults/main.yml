@@ -1,2 +1,3 @@
 ---
 plugins: []
+zsh_home_subdir: .config/zsh

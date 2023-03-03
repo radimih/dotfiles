@@ -1,41 +1,16 @@
 # Ansible-роль `zsh`
 
-Установка shell-оболочки zsh и её плагинов.
+Установка оболочки [zsh](https://zsh.sourceforge.io/) и её плагинов.
 
-Используется очень быстрый менеджер плагинов [zi](https://github.com/z-shell/zi) (бывший [Zinit](https://github.com/zdharma/zinit)).
+Для управления плагинами используется менеджер плагинов [antidote](https://github.com/mattmc3/antidote).
 
-Конфигурирование плагинов сделано по мотивам Ansible-роли [ansible-zplugin](https://github.com/Townk/ansible-zplugin).
+[Startup-файлы](https://zsh.sourceforge.io/Doc/Release/Files.html) оболочки размещаются
+в каталоге `~/.config/zsh`. Для этого определяется стандартная переменная окружения `ZDOTDIR`.
 
-В качестве shell prompt используется [Powerlevel10k](https://github.com/romkatv/powerlevel10k). Устанавливается как zi-плагин.
-Иногда после крупного обновления необходимо заново формировать конфигурационный файл:
-
-```bash
-p10k configure
-cp ~/.p10k.zsh ~/dotfiles/ansible/roles/zsh/files/
-```
-
-Рекомендуемые параметры:
-
-1. Does this look like a diamond? `(y) Yes`
-1. Does this look like a lock? `(y) Yes`
-1. Does this look like a Debian logo? `(y) Yes`
-1. Do all these icons fit between the crosses? `(y) Yes`
-1. Prompt Style: `(3) Rainbow`
-1. Character Set: `(1) Unicode`
-1. Show current time? `(1) No`
-1. Prompt Separators: `(2) Vertical`
-1. Prompt Heads: `(4) Round`
-1. Prompt Tails: `(1) Flat`
-1. Prompt Height: `(2) Two lines`
-1. Prompt Connection: `(2) Dotted`
-1. Prompt Frame: `(1) No frame`
-1. Connection Color: `(4) Darkest`
-1. Prompt Spacing: `(2) Sparse`
-1. Icons: `(1) Few icons`
-1. Prompt Flow: `(1) Concise`
-1. Enable Transient Prompt? `(n) No`
-1. Instant Prompt Mode: `(2) Quiet`
-1. Apply changes to ~/.zshrc? `n) No`
+В подкаталоге `~/.config/zsh/zshrc.d` могут располагаться дополнительные zsh-скрипты инициализации, которые
+будут выполняться в _алфавитном_ порядке в момент входа в _интерактивный режим_ оболочки.
+Переменная окружения `ZSHRC_DIR` указывает на этот каталог. Другие роли могут устанавливать свои
+zsh-скрипты инициализации, ссылаясь на эту переменную: `{{ ansible_env.ZSHRC_DIR }}`.
 
 ## Аргументы роли
 
@@ -89,6 +64,28 @@ cp ~/.p10k.zsh ~/dotfiles/ansible/roles/zsh/files/
 
 </tr>
 
+<tr>
+
+<td valign="top">
+
+`zsh_home_subdir`
+
+</td>
+<td valign="top">
+
+Подкаталог в домашнем каталоге пользователя для размещения всех конфигурационных и
+[startup-файлов](https://zsh.sourceforge.io/Doc/Release/Files.html) оболочки.
+
+</td>
+
+<td valign="top">
+
+`.config/zsh`
+
+</td>
+
+</tr>
+
 </tbody>
 </table>
 
@@ -110,3 +107,37 @@ cp ~/.p10k.zsh ~/dotfiles/ansible/roles/zsh/files/
           - name: depth
             value: "1"
 ```
+
+## Shell Prompt
+
+В качестве shell prompt используется [Powerlevel10k](https://github.com/romkatv/powerlevel10k).
+Устанавливается как плагин. После существенного обновления плагина желательно заново формировать
+его конфигурационный файл `.p10k.zsh`:
+
+```bash
+p10k configure
+cp ~/.p10k.zsh ~/dotfiles/ansible/roles/zsh/files/
+```
+
+Рекомендуемые параметры:
+
+1. Does this look like a diamond? `(y) Yes`
+1. Does this look like a lock? `(y) Yes`
+1. Does this look like a Debian logo? `(y) Yes`
+1. Do all these icons fit between the crosses? `(y) Yes`
+1. Prompt Style: `(3) Rainbow`
+1. Character Set: `(1) Unicode`
+1. Show current time? `(1) No`
+1. Prompt Separators: `(2) Vertical`
+1. Prompt Heads: `(4) Round`
+1. Prompt Tails: `(1) Flat`
+1. Prompt Height: `(2) Two lines`
+1. Prompt Connection: `(2) Dotted`
+1. Prompt Frame: `(1) No frame`
+1. Connection Color: `(4) Darkest`
+1. Prompt Spacing: `(2) Sparse`
+1. Icons: `(1) Few icons`
+1. Prompt Flow: `(1) Concise`
+1. Enable Transient Prompt? `(n) No`
+1. Instant Prompt Mode: `(2) Quiet`
+1. Apply changes to ~/.zshrc? `n) No`
