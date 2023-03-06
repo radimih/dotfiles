@@ -109,7 +109,7 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=69'
 # ==================================
 
 # Переменная ZHRC_DIR определяется в ~/.zshenv.
-
+#
 # Для выбора скриптов используются квалификаторы (Glob Qualifiers). Это дополнительные параметры шаблона,
 # заключённые в круглые скобки в конце шаблона.
 #   . - выбирать только файлы (plain files)
@@ -120,6 +120,9 @@ for file in $ZSHRC_DIR/*.zsh(.N); do
   source "$file"
 done
 
-# zi
-# ==
-[ -s $HOME/.zirc ] && source $HOME/.zirc || true
+# Менеджер плагинов
+# =================
+if [[ -s ${ZDOTDIR:-~}/.antidote/antidote.zsh ]]; then
+  source ${ZDOTDIR:-~}/.antidote/antidote.zsh
+  antidote load
+fi

@@ -37,25 +37,10 @@ argument_specs:
             description: имя плагина в виде <repo>/<plugin>
             required: true
             type: str
-          type:
-            description: тип загрузки плагина
-            required: true
-            type: str
-            choices: [light, load]
-          ices:
-            description: необязательный список опций плагина
+          path:
+            description: подкаталог или файл внутри репозитория плагина
             required: false
-            type: list
-            elements: dict
-            options:
-              name:
-                description: имя опции
-                required: true
-                type: str
-              value:
-                description: значение опции
-                required: true
-                type: str
+            type: path
       zsh_home_subdir:
         description: Подкаталог в домашнем каталоге пользователя для размещения конфигурационных файлов zsh
         required: false

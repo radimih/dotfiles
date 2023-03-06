@@ -1,4 +1,4 @@
 ---
-_zi_bin_dirname: bin
-_zi_home_dir: '{{ ansible_user_dir }}/.zi'
+_pm_git_url: https://github.com/mattmc3/antidote
+_pm_home_subdir: .antidote
 _zshrc_subdir: zshrc.d
