@@ -47,12 +47,7 @@ zsh-скрипты инициализации, ссылаясь на эту пе
 Список zsh-плагинов. Каждый плагин определятся словарём:
 
 - `name:` имя плагина в виде `<repo>/<plugin>`
-- `type:` тип загрузки плагина:
-  - `light`
-  - `load`
-- `ices:` необязательный список опций плагина. Каждая опция определяется словарём:
-  - `name:` имя опции
-  - `value:` значение опции
+- `path:` _(необязательно)_ подкаталог или файл внутри репозитория плагина
 
 </td>
 
@@ -96,16 +91,11 @@ zsh-скрипты инициализации, ссылаясь на эту пе
   vars:
     plugins:
       - name: zsh-users/zsh-autosuggestions
-        type: light
       - name: marlonrichert/zsh-autocomplete
-        type: light
       - name: zdharma/fast-syntax-highlighting
-        type: light
       - name: romkatv/powerlevel10k
-        type: light
-        ices:
-          - name: depth
-            value: "1"
+      - name: belak/zsh-utils
+        path: completion
 ```
 
 ## Shell Prompt

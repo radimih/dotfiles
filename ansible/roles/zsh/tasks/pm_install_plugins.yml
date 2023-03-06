@@ -1,8 +1,0 @@
----
-- name: Сгенерировать .zirc
-  ansible.builtin.template:
-    src: .zirc.j2
-    dest: '{{ ansible_user_dir }}/.zirc'
-    mode: 0644
-  tags:
-    - zirc

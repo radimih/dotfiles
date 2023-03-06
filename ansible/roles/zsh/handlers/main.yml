@@ -1,0 +1,12 @@
+---
+- name: Очистить кэш менеджера плагинов Antidote
+  ansible.builtin.file:
+    state: absent
+    path: '{{ ansible_user_dir }}/.cache/antidote/'
+  listen: clean_antidote
+
+- name: Удалить сгенерированный менеджером плагинов файл .zsh_plugins.zsh
+  ansible.builtin.file:
+    state: absent
+    path: '{{ ansible_user_dir }}/{{ zsh_home_subdir }}/.zsh_plugins.zsh'
+  listen: clean_antidote

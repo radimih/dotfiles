@@ -1,5 +1,3 @@
-# https://github.com/z-shell/zi
-
 ---
 - name: Установить git, если еще не установлен
   ansible.builtin.package:
@@ -7,15 +5,16 @@
     state: present
   become: true
 
-- name: Создать каталог установки zi
+- name: Создать каталог установки менеджера плагинов
   ansible.builtin.file:
-    path: '{{ _zi_home_dir }}'
+    path: '{{ ansible_user_dir }}/{{ zsh_home_subdir }}/{{ _pm_home_subdir }}'
     state: directory
     mode: 0755
 
-- name: Склонировать/обновить zi
+- name: Склонировать/обновить менеджер плагинов
   ansible.builtin.git:
-    repo: https://github.com/z-shell/zi
-    dest: '{{ _zi_home_dir }}/{{ _zi_bin_dirname }}'
+    repo: '{{ _pm_git_url }}'
+    dest: '{{ ansible_user_dir }}/{{ zsh_home_subdir }}/{{ _pm_home_subdir }}'
+    depth: 1
     force: true
     update: true

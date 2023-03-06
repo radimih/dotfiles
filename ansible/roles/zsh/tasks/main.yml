@@ -10,11 +10,8 @@
 - name: Установить менеджер плагинов
   import_tasks: install_pm.yml
 
-- name: Установить плагины, указанные в параметре plugins
-  import_tasks: pm_install_plugins.yml
-
-- name: Удалить плагины, не указанные в параметре plugins
-  import_tasks: pm_remove_plugins.yml
+- name: Настроить плагины, указанные в параметре plugins
+  import_tasks: setup_pm.yml
 
 - name: Настроить Powerlevel10k
   import_tasks: setup_p10k.yml
