@@ -1,0 +1,4 @@
+---
+_subdirs:
+  binary: .local/bin
+  config: .config/xssh
