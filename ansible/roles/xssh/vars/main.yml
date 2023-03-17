@@ -2,3 +2,4 @@
 _subdirs:
   binary: .local/bin
   config: .config/xssh
+  launcher: .local/share/applications
