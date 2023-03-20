@@ -6,7 +6,7 @@
   become: true
 
 - name: Получить версию GNOME Shell
-  ansible.builtin.shell: gnome-shell --version | sed 's/[^0-9.]*\([0-9.]*\).*/\1/'
+  ansible.builtin.shell: gnome-shell --version | sed -E 's/[^0-9]*([0-9.]*)/\1/'
   register: r__gnome_version
   changed_when: false
 
