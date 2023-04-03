@@ -16,6 +16,7 @@
             - 172.17.21.6:2222
           registry-mirrors:
             - http://172.17.21.6:4444
+        remove_unused_images: false
       tags:
         - docker
 
