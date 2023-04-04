@@ -5,6 +5,9 @@
   gather_facts: true
   gather_subset: min
 
+  vars:
+    YANDEX_DISK_DIR: '{{ ansible_user_dir }}/1clouds/yandex'
+
   roles:
 
     - role: flameshot
@@ -25,14 +28,14 @@
 
     - role: xssh
       vars:
-        connections_dir: '{{ ansible_user_dir }}/.ssh/connections'
+        connections_dir: '{{ YANDEX_DISK_DIR }}/ssh'
       tags:
         - xssh
         - tui
 
     - role: yandex_disk_cli
       vars:
-        dir: '{{ ansible_user_dir }}/1clouds/yandex'
+        dir: '{{ YANDEX_DISK_DIR }}'
       tags:
         - yandex-disk
         - tui
