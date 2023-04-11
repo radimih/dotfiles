@@ -56,6 +56,7 @@
           - net-tools
           - pipx
           - tree
+          - wireguard{{ '-tools' if ansible_os_family == 'RedHat' }}
           - xsel
         state: present
       become: true
