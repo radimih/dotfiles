@@ -30,6 +30,7 @@
         state: directory
         mode: 0700
       loop:
+        - .local/bin
         - 1clouds  # синхронизируемые с облаками файлы
         - 1git     # все git-репозитории, кроме dotfiles
         - 1temp    # временные файлы, которые "не жалко"
