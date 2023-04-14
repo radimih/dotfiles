@@ -4,17 +4,15 @@
     gather_subset: min
   when: ansible_user_dir is not defined
 
-- name: Установить зависимости | sshpass
+- name: Установить зависимости
   ansible.builtin.package:
-    name: sshpass
+    name:
+      - jq
+      - python3-{{ 'py' if ansible_os_family == 'RedHat' }}yaml
+      - ranger
+      - sshpass
     state: present
   become: true
-
-  # https://github.com/kislyuk/yq
-- name: Установить зависимости | yq
-  community.general.pipx:
-    name: yq
-    state: present
 
 - name: Создать служебные подкаталоги в домашнем каталоге пользователя
   ansible.builtin.file:
