@@ -36,6 +36,7 @@
       # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
       XSSH_CONNECTIONS_DIR={{ connections_dir }}
+      XSSH_CONNECT_TIMEOUT=10
     dest: '{{ ansible_user_dir }}/{{ _subdirs.config }}/xssh.conf'
     mode: 0644
 
