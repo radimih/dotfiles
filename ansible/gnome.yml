@@ -100,38 +100,6 @@
       tags:
         - touchpad
 
-    # # Тема "Plata" (https://gitlab.com/tista500/plata-theme) рекомендована автором
-    # # расширения Material Shell
-
-    # - name: Установить PPA-репозиторий темы
-    #   ansible.builtin.apt_repository:
-    #     repo: ppa:tista/plata-theme
-    #     state: present
-    #   become: true
-
-    # - name: Установить apt-пакет темы
-    #   ansible.builtin.apt:
-    #     name: plata-theme
-    #     state: latest
-    #     update_cache: true
-    #     cache_valid_time: 7200  # apt update если кэш не обновлялся более 2 часов
-    #   become: true
-
-    #   # GNOME Tweaks / Appearance / Themes / Applications
-    # - name: Установить выбранную тему текущей Applications-темой
-    #   community.general.dconf:
-    #     key: /org/gnome/desktop/interface/gtk-theme
-    #     value: "'Plata-Compact'"
-    #     state: present
-
-    #   # GNOME Tweaks / Appearance / Themes / Shell (требуется включенное расширение "User Themes"
-    #   # https://extensions.gnome.org/extension/19/user-themes/)
-    # - name: Установить выбранную тему текущей Shell-темой
-    #   community.general.dconf:
-    #     key: /org/gnome/shell/extensions/user-theme/name
-    #     value: "'Plata-Compact'"
-    #     state: present
-
   roles:
 
     # Посмотреть какие параметры были изменены в самом приложении:
