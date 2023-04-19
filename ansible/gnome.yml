@@ -13,6 +13,13 @@
 
   pre_tasks:
 
+    # FIXME: https://github.com/ansible-collections/community.general/issues/6271
+    - name: ВРЕМЕННО! Пропатчить модуль community.general.dconf
+      ansible.builtin.copy:
+        src: dconf.py
+        dest: /usr/lib/python3.11/site-packages/ansible_collections/community/general/plugins/modules/
+      become: true
+
     - name: Установить python-модуль psutil для работы ansible-модуля community.general.dconf
       ansible.builtin.package:
         name: python3-psutil
