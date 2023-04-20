@@ -42,7 +42,7 @@ Mouse & Touchpad
 
 ### В терминале
 
-1. Назначить имя хосту:
+1. Назначить имя хосту в формате `my`|_компания_`-`_компьютер_|`office`:
     ```bash
     sudo hostnamectl set-name it2g-dell5490
     ```
