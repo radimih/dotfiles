@@ -48,6 +48,6 @@ Mouse & Touchpad
     ```
 1. Обновить систему:
     ```bash
-    sudo dnf -y –refresh update
+    sudo dnf -y –-refresh update
     sudo reboot
     ```
