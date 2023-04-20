@@ -45,10 +45,10 @@ Vagrant.configure("2") do |config|
     shell.privileged = false
   end
 
-  # config.vm.provision "test", type: "shell" do |shell|
-  #   shell.env = {"ANSIBLE_BECOME_ASK_PASS" => "false"}
-  #   shell.inline = "cd dotfiles/ansible; ansible-playbook dev-devops.yml"
-  #   shell.privileged = false
-  # end
+  config.vm.provision "test", type: "shell" do |shell|
+    shell.env = {"ANSIBLE_BECOME_ASK_PASS" => "false"}
+    shell.inline = "cd dotfiles/ansible; ansible-playbook dev-devops.yml"
+    shell.privileged = false
+  end
 
 end
