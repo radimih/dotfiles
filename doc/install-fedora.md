@@ -1,4 +1,4 @@
-# Установка Fedora
+# Установка [Fedora Workstation](https://fedoraproject.org/workstation/)
 
 ## Ключевые особенности установки
 
