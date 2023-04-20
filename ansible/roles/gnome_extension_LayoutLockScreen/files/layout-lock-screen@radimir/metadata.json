@@ -1,0 +1,11 @@
+{
+  "name": "LayoutLockScreen",
+  "description": "Automatically switch to primary keyboard layout at lock screen",
+  "uuid": "layout-lock-screen@radimir",
+  "version": 1,
+  "shell-version": [
+    "43",
+    "44"
+  ],
+  "url": "https://github.com/radimih/dotfiles/tree/master/ansible/roles/gnome_extension_LayoutLockScreen"
+}
