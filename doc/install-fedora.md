@@ -1,43 +1,53 @@
 # Установка Fedora
 
-Актуально для Fedora **38**.
+## Ключевые особенности установки
 
-| Mount Point | Size      | Device Type        | Encrypt | LUKS Version | File System
-| ----------- | --------: | :----------------: | :-----: | :----------: | :------------------:
-| `/boot/efi` |   600 Mib | Standard Partition | —       | —            | EFI System Partition
-| `/boot`     |  1024 Mib | Standard Partition | —       | —            | ext4
-| `/`         | остальное | Standard Partition | ON      | luks2        | **ext4**
+- **Language**: `English`  
+  Так проще эксплуатировать систему. Русская раскладка добавляется позже в плейбуках.
+- **File system**: `ext4`  
+  Чем проще, тем лучще. На десктопе практически не используются фишки Btrfs.
+- **Disk encryption**: `ON`
 
-# ВРЕМЕННО
+## Параметры установки
 
-## Установка Fedora 38
+- Language: `English` (default)
+- Time & Date: `Asia` / `Novokuznetsk`
+- Installation Destination:
+    1. Выбрать Storage Configuration: `Custom`
+    1. Удалить все существующие разделы
+    1. New mount points will use the following partitioning scheme: `Standard Partition`
+    1. Encrypt my data: `ON`
+    1. Click here to create them automatically
 
-1. English (default)
-1. Time & Date: Asia / Novokuznetsk
-1. Installation Destination
-    - Storage Configuration: Custom
-    - Удалить все существующие разделы
-    - New mount points will use the following partitioning scheme: Standard Partition
-    - Encrypt my data ON
-    - Click her to create them automatically
+    | Mount Point | Size      | Device Type        | Encrypt | LUKS Version | File System
+    | ----------- | --------: | :----------------: | :-----: | :----------: | :------------------:
+    | `/boot/efi` |   600 Mib | Standard Partition | —       | —            | EFI System Partition
+    | `/boot`     |  1024 Mib | Standard Partition | —       | —            | ext4
+    | `/`         | остальное | Standard Partition | ON      | luks2        | **ext4**
 
 ## Сразу после установки
 
-### в мастере настройки
+### В мастере настройки
 
-- Automatic Problem Reporting: OFF
-- Enable Third-party Repositories: DISABLE
-- Full Name: Radimir
-- Username: radimir
+- Automatic Problem Reporting: `OFF`
+- Enable Third-party Repositories: `DISABLE`
+- Full Name: `Radimir`
+- Username: `radimir`
 
-### в Settings
+### В Settings (только для ноутбука)
 
 Mouse & Touchpad
-Touchpad Speed: увеличить
-Tap to Click: ON
+- Touchpad Speed: увеличить
+- Tap to Click: `ON`
 
-### в Terminal
+### В терминале
 
-$ sudo hostnamectl set-name it2g-dell5490
-$ sudo dnf -y –refresh update
-$ sudo reboot
+1. Назначить имя хосту:
+    ```bash
+    sudo hostnamectl set-name it2g-dell5490
+    ```
+1. Обновить систему:
+    ```bash
+    sudo dnf -y –refresh update
+    sudo reboot
+    ```
