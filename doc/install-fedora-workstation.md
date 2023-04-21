@@ -82,7 +82,7 @@
 
 ### В Firefox
 
-1. https://google.com/chrome
+1. <https://google.com/chrome>
 1. Нажать **Download Chrome**
 1. Выбрать **64bit .rpm**
 1. Нажать **Accept and Install**
