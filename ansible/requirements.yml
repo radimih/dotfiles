@@ -2,9 +2,9 @@
 - name: radimih.docker
   src: https://github.com/radimih/ansible-role-docker.git
   scm: git
-  version: main
+  version: v1.0.0
 
 - name: radimih.github_latest
   src: https://github.com/radimih/ansible-role-github-latest.git
   scm: git
-  version: main
+  version: v1.0.0
