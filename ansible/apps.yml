@@ -13,6 +13,9 @@
     - role: flameshot
       vars:
         options:
+          drawColor: '#ff0000'
+          drawFontSize: '10'
+          drawThickness: '5'
           showDesktopNotification: 'false'
           showHelp: 'false'
           showStartupLaunchMessage: 'false'
