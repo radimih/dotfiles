@@ -17,7 +17,10 @@
     - name: ВРЕМЕННО! Пропатчить модуль community.general.dconf
       ansible.builtin.copy:
         src: dconf.py
+        # Fedora 38
         dest: /usr/lib/python3.11/site-packages/ansible_collections/community/general/plugins/modules/
+        # Ubuntu 22.04
+        # dest: /usr/lib/python3/dist-packages/ansible_collections/community/general/plugins/modules/
       become: true
 
     - name: Установить python-модуль psutil для работы ansible-модуля community.general.dconf
@@ -89,25 +92,6 @@
       tags:
         - wallpaper
 
-    # Посмотреть какие параметры были изменены:
-    #   dconf dump /org/gnome/desktop/peripherals/touchpad/
-
-    - name: Настроить тачпад
-      community.general.dconf:
-        key: /org/gnome/desktop/peripherals/touchpad/{{ item.key }}
-        value: "{{ item.value }}"
-        state: present
-      loop: '{{ options | dict2items }}'
-      vars:
-        options:
-          click-method: "'areas'"  # чтобы заработала правая кнопка на тачпаде
-          speed: 0.5               # ускорить перемещение указателя
-          tap-to-click: 'true'
-          two-finger-scrolling-enabled: 'true'
-      tags:
-        - touchpad
-        - laptop
-
     - name: Получить тип устройства
       ansible.builtin.command: hostnamectl chassis
       changed_when: false
@@ -115,11 +99,31 @@
       tags:
         - laptop
 
-    - name: Увеличить размер шрифтов на ноутбуке
-      community.general.dconf:
-        key: /org/gnome/desktop/interface/text-scaling-factor
-        value: 1.3
-        state: present
+    - name: Настроить параметры для ноутбука
+      block:
+
+        - name: Увеличить размер шрифтов на ноутбуке
+          community.general.dconf:
+            key: /org/gnome/desktop/interface/text-scaling-factor
+            value: 1.3
+            state: present
+
+        # Посмотреть какие параметры были изменены:
+        #   dconf dump /org/gnome/desktop/peripherals/touchpad/
+
+        - name: Настроить тачпад
+          community.general.dconf:
+            key: /org/gnome/desktop/peripherals/touchpad/{{ item.key }}
+            value: "{{ item.value }}"
+            state: present
+          loop: '{{ options | dict2items }}'
+          vars:
+            options:
+              click-method: "'areas'"  # чтобы заработала правая кнопка на тачпаде
+              speed: 0.5               # ускорить перемещение указателя
+              tap-to-click: 'true'
+              two-finger-scrolling-enabled: 'true'
+
       when: r__computer_type.stdout in ('laptop')
       tags:
         - laptop
