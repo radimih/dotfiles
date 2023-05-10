@@ -2,78 +2,51 @@
 
 Конфигурация моих локальных Linux-систем.
 
-## Первоначальная установка на новую систему
+## Установка Linux
 
-### 1. Привязка к GitHub-аккаунту
+- [Fedora Workstation](doc/install-fedora-workstation.md)
 
-1. Установить минимальный набор пакетов:
+## Первоначальная настройка системы
 
-   - deb-based:
+1. Назначить имя хосту в формате `my`|_компания_`-`_компьютер_|`office`:
 
-     ```bash
-     sudo apt update && sudo apt install -y git xsel
-     ```
+    ```bash
+    sudo hostnamectl hostname it2g-dell5490
+    ```
 
-   - rpm-based:
+1. Установить **Google Chrome**:
+    1. <https://google.com/chrome>
+    1. Нажать **Download Chrome**
+    1. Выбрать **DEB** или **RPM**
+    1. Нажать **Accept and Install**
+    1. ВНИМАНИЕ! Не выбирать установку Third-Party Repositories в **Software**
 
-     ```bash
-     sudo dnf install -y git xsel
-     ```
+1. [Настроить dotfiles](doc/dotfiles.md)
 
-1. Сгенерировать пару ключей SSH и скопировать открытый ключ в буфер обмена:
+## Конфигурирование
 
-   ```bash
-   ssh-keygen -t ed25519 && \
-   ssh-add  && \
-   xsel --input --clipboard < ~/.ssh/id_ed25519.pub
-   ```
-
-1. Добавить открытый ключ в GitHub-аккаунт:
-
-   На странице [Профиль → Settings → SSH and GPG keys → New SSH key](https://github.com/settings/ssh/new):
-   - **Title**: < пользователь >`-`< 'my' | компания >`-`< компьютер | 'office' >
-   - **Key**: _вставить из буфера обмена_
-
-1. Проверить SSH-доступ и добавить хост GitHub в доверенные хосты:
-
-   ```bash
-   ssh -T git@github.com
-   ```
-
-### 2. Клонирование и настройка GitHub-репозитория
-
-1. Склонировать репозиторий:
-
-   ```bash
-   cd ~ && git clone git@github.com:radimih/dotfiles.git && cd dotfiles
-   ```
-
-1. Настроить идентификацию пользователя в репозитории (для внесения изменений в будущем):
-
-   ```bash
-   git config user.email "radimir.com@gmail.com" && \
-   git config user.name "Radimir Mikhailov"
-   ```
-
-   Желательно не устанавливать глобальную идентификацию в git (ключ `--global`), чтобы
-   случайно не смешать рабочие и личные идентификации в git.
-
-### 3. Установка Ansible
-
-   ```bash
-   ./install-ansible.sh
-   ```
-
-   Устанавливается официальный **Ansible community package**, который включает в себя
-   **ansible-core** и стандартный набор [коллекций](https://docs.ansible.com/ansible/latest/collections/index.html).
-
-   Можно было бы установить только пакет `ansible-core` и далее с помощью команды `ansible-galaxy collection install`
-   установить только необходимые коллекции, но в этом случае пришлось бы обновлять эти коллекции вручную
-   (ключ `--upgrade` у вышеприведённой команды).
-
-## Установка / обновление компонент
+### Установка / обновление компонент
 
 ```bash
 cd ~/dotfiles/ansible
 ansible-playbook <плейбук.yml> --tags "<список тэгов через запятую>"
 ```
+
+| Плейбук                                            | Описание
+| -------------------------------------------------- | --------
+| [`apps.yml`](ansible/apps.yml)                     | Установка приложений
+| [`dev-devops.yml`](ansible/dev-devops.yml)         | Установка DevOps-инструментов
+| [`general.yml`](ansible/general.yml)               | Общая настройка системы
+| [`gnome.yml`](ansible/gnome.yml)                   | Настройка GNOME
+| [`virtualization.yml`](ansible/virtualization.yml) | Установка инструментов виртуализации
+
+### Ручная донастройка ПО _(после выполнения соответствующих плейбуков)_
+
+- [Telegram](ansible/roles/telegram/README.md#настройка-после-установки)
+- [VS Code](ansible/roles/vscode/README.md#настройка-после-установки)
+- [Yandex Disk CLI](ansible/roles/yandex_disk_cli/README.md#настройка-после-установки)
+
+### Прочее
+
+- [Настройка Wireguard-соединений](doc/wireguard.md)
+- [Обновление прошивок оборудования](doc/hardware.md)

@@ -67,23 +67,9 @@
 
 ### В терминале
 
-1. Назначить имя хосту в формате `my`|_компания_`-`_компьютер_|`office`:
-
-    ```bash
-    sudo hostnamectl hostname it2g-dell5490
-    ```
-
 1. Обновить систему:
 
     ```bash
     sudo dnf offline-upgrade download -y --refresh
     sudo dnf offline-upgrade reboot
     ```
-
-### В Firefox
-
-1. <https://google.com/chrome>
-1. Нажать **Download Chrome**
-1. Выбрать **64bit .rpm**
-1. Нажать **Accept and Install**
-1. ВНИМАНИЕ! Не выбирать установку Third-Party Repositories в **Software**
