@@ -19,9 +19,14 @@
     1. Нажать **Download Chrome**
     1. Выбрать **DEB** или **RPM**
     1. Нажать **Accept and Install**
-    1. ВНИМАНИЕ! Не выбирать установку Third-Party Repositories в **Software**
+    1. Нажать **Ignore** в всплывающем окне "Enable Third Party Software Repositories?"  
+       (этот вопрос может задать приложение GNOME Software под Fedora)
 
-1. [Настроить dotfiles](doc/dotfiles.md)
+1. Настроить синхронизацию в **Google Chrome**:
+    1. Добавить нового пользователя
+    1. Удалить `Person 1`
+
+3. [Настроить dotfiles](doc/dotfiles.md)
 
 ## Конфигурирование
 
