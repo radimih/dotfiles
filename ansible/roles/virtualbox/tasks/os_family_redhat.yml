@@ -15,6 +15,11 @@
   become: true
   changed_when: false
 
+# FIXME: не работает из-за Secure Boot. Проверить: modprobe vboxdrv
+# Смотри:
+#   - /usr/share/doc/akmods/README.secureboot
+#   - https://rpmfusion.org/Howto/VirtualBox
+#   - https://rpmfusion.org/Howto/Secure%20Boot
 - name: '{{ ansible_os_family }}: загрузить модули ядра vbox*'
   ansible.builtin.systemd:
     name: vboxdrv
