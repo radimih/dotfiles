@@ -130,6 +130,7 @@
           copy: <Primary>c
           paste: <Primary>v
         options:
+          cursor-shape: ibeam
           background-color: rgb(0,43,54)      # Solarized dark
           foreground-color: rgb(131,148,150)  # Solarized dark
           background-transparency-percent: 9
