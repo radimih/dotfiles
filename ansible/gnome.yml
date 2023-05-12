@@ -211,8 +211,10 @@
         vars:
           options:
             toggle-menu: "['<Control>F10']"
-            prev-menu: "['<Control>F11']"
-            next-menu: "['<Control>F12']"
+            prev-entry: "['<Control>F11']"
+            next-entry: "['<Control>F12']"
+        tags:
+          - clipboard-history
 
       tags:
         - extensions
