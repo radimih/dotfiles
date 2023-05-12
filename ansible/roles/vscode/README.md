@@ -22,6 +22,11 @@
 
 "Шестерёнка" (Manage) → `Turn on Settings Sync...`:
 
-    1. Отключить `UI State`
-    1. Нажать **Sign in & Turn on**
-    1. Выбрать `Sign in with GitHub`
+1. Отключить `UI State`
+1. Нажать **Sign in & Turn on**
+1. Выбрать `Sign in with GitHub`
+
+На всякий случай настройки из каталога `~/.config/Code/User` сохранены здесь:
+
+- [`keybindings.json`](files/keybindings.json)
+- [`settings.json`](files/settings.json)
