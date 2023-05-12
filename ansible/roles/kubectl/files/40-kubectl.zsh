@@ -5,4 +5,5 @@
 
 alias k='kubectl'
 
-source <(kubectl completion zsh)
+# FIXME: в zsh получаем ошибку "zsh: compdef: command not found..."
+# source <(kubectl completion zsh)
