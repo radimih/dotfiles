@@ -1,7 +1,7 @@
 // Place your key bindings in this file to override the defaultsauto[]
 [
 	{
-		"key": "ctrl+c ctrl",
+		"key": "ctrl+c",
 		"command": "workbench.action.terminal.copySelection",
 		"when": "terminalFocus && terminalHasBeenCreated && terminalTextSelected || terminalFocus && terminalProcessSupported && terminalTextSelected"
 	},
@@ -11,7 +11,7 @@
 		"when": "terminalFocus && terminalHasBeenCreated && terminalTextSelected || terminalFocus && terminalProcessSupported && terminalTextSelected"
 	},
 	{
-		"key": "ctrl+v ctrl",
+		"key": "ctrl+v",
 		"command": "workbench.action.terminal.paste",
 		"when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
 	},
