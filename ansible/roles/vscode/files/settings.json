@@ -49,6 +49,7 @@
     "workbench.sideBar.location": "right",
     "workbench.startupEditor": "none",
     "workbench.statusBar.visible": true,
+    "ansible.lightspeed.enabled": false,
     "cSpell.enableFiletypes": [
         "ansible",
         "ansible-jinja",
