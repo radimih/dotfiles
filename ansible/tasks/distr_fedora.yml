@@ -13,7 +13,7 @@
   vars:
     _options:
       fastestmirror: 'True'
-      max_parallel_downloads: 5
+      max_parallel_downloads: 10
 
 # https://rpmfusion.org/Configuration
 - name: '{{ ansible_distribution }}: включить репозитории RPM Fusion (free и nonfree)'
