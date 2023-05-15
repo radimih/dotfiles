@@ -26,7 +26,7 @@
     1. Добавить нового пользователя
     1. Удалить `Person 1`
 
-3. [Настроить dotfiles](doc/dotfiles.md)
+1. [Настроить dotfiles](doc/dotfiles.md)
 
 ## Конфигурирование
 
