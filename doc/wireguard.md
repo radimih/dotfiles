@@ -2,7 +2,7 @@
 
 1. Скачать файл настройки WireGuard-соединения
 
-1. Импортировать соединение в NetworkManager:
+1. Импортировать соединение в **NetworkManager**:
 
     ```bash
     nmcli con import type wireguard file <файл соединения.conf>
@@ -16,3 +16,9 @@
     ```
 
 1. Удалить файл соединения
+
+1. Отключить автоматическое соединение:
+
+    ```bash
+    nmcli connection modify <название соединения> connection.autoconnect no
+    ```
