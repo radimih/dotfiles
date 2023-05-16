@@ -1,11 +1,12 @@
 ---
-- name: '{{ ansible_distribution }}: ускорить работу dnf'
+- name: Fedora | Ускорить работу dnf
   community.general.ini_file:
     path: /etc/dnf/dnf.conf
     no_extra_spaces: true
     section: main
     option: '{{ kv.key }}'
     value: '{{ kv.value }}'
+    mode: '0644'
   become: true
   loop: '{{ _options | dict2items }}'
   loop_control:
@@ -16,7 +17,7 @@
       max_parallel_downloads: 10
 
 # https://rpmfusion.org/Configuration
-- name: '{{ ansible_distribution }}: включить репозитории RPM Fusion (free и nonfree)'
+- name: Fedora | Включить репозитории RPM Fusion (free и nonfree)
   ansible.builtin.dnf:
     name:
       - https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_distribution_version }}.noarch.rpm
@@ -41,19 +42,20 @@
 #
 # И это мешает установить нормальный flathub. Исправляем это.
 
-- name: '{{ ansible_distribution }}: проверить, установлен ли фильтрующий Flatpak-репозиторий Flathub'
+- name: Fedora | Проверить, установлен ли фильтрующий Flatpak-репозиторий Flathub
   ansible.builtin.shell:
     cmd: flatpak remotes --system --show-disabled | grep -E '^flathub\s.*filtered.*' | wc -l
   register: r__filtered_flathub_count
   changed_when: false
 
-- name: '{{ ansible_distribution }}: удалить ФИЛЬТРУЮЩИЙ Flatpak-репозиторий Flathub от Fedora'
+- name: Fedora | Удалить ФИЛЬТРУЮЩИЙ Flatpak-репозиторий Flathub от Fedora
   ansible.builtin.command:
     cmd: flatpak remote-delete --system flathub
   become: true
+  changed_when: false
   when: r__filtered_flathub_count.stdout | int > 0
 
-- name: '{{ ansible_distribution }}: включить стандартный Flatpak-репозиторий Flathub БЕЗ ФИЛЬТРА'
+- name: Fedora | Включить стандартный Flatpak-репозиторий Flathub БЕЗ ФИЛЬТРА
   community.general.flatpak_remote:
     name: flathub
     flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
