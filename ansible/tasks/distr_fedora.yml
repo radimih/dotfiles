@@ -69,6 +69,22 @@
 
 # https://rpmfusion.org/Howto/Multimedia
 
+- name: Переключиться на полную версию фреймворка FFmpeg (https://ffmpeg.org)
+  block:
+
+    - name: Fedora | Удалить урезанную версию фреймворка FFmpeg
+      ansible.builtin.dnf:
+        name: ffmpeg-free
+        state: absent
+      become: true
+
+    - name: Fedora | Установить полную версию фреймворка FFmpeg
+      ansible.builtin.dnf:
+        name: ffmpeg
+        state: present
+        allowerasing: true
+      become: true
+
 - name: Включить аппаратное ускорение видео
   block:
 
@@ -81,5 +97,36 @@
     - name: Fedora | Установить драйверы для Intel Graphics
       ansible.builtin.dnf:
         name: intel-media-driver
+        state: present
       become: true
       when: r__vga_controllers.stdout.find('Intel') != -1
+
+- name: Добавить поддержку кодеков H.264/265 для Mesa-based VA-API video acceleration drivers (https://www.mesa3d.org)
+  block:
+
+    - name: Fedora | Удалить Mesa-based VA-API видеодрайвер без поддержки H.264/265
+      ansible.builtin.dnf:
+        name: mesa-va-drivers
+        state: absent
+      become: true
+
+    - name: Fedora | Установить Mesa-based VA-API видеодрайвер с поддержкой H.264/265
+      ansible.builtin.dnf:
+        name: mesa-va-drivers-freeworld
+        state: present
+      become: true
+
+- name: Добавить поддержку кодеков H.264/265 для Mesa-based VDPAU drivers (https://www.mesa3d.org)
+  block:
+
+    - name: Fedora | Удалить Mesa-based драйвер VDPAU без поддержки H.264/265
+      ansible.builtin.dnf:
+        name: mesa-vdpau-drivers
+        state: absent
+      become: true
+
+    - name: Fedora | Установить Mesa-based драйвер VDPAU с поддержкой H.264/265
+      ansible.builtin.dnf:
+        name: mesa-vdpau-drivers-freeworld
+        state: present
+      become: true
