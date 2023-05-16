@@ -42,23 +42,26 @@
 #
 # И это мешает установить нормальный flathub. Исправляем это.
 
-- name: Fedora | Проверить, установлен ли фильтрующий Flatpak-репозиторий Flathub
-  ansible.builtin.shell:
-    cmd: flatpak remotes --system --show-disabled | grep -E '^flathub\s.*filtered.*' | wc -l
-  register: r__filtered_flathub_count
-  changed_when: false
+- name: Включить полноценный репозиторий Flathub.org
+  block:
 
-- name: Fedora | Удалить ФИЛЬТРУЮЩИЙ Flatpak-репозиторий Flathub от Fedora
-  ansible.builtin.command:
-    cmd: flatpak remote-delete --system flathub
-  become: true
-  changed_when: false
-  when: r__filtered_flathub_count.stdout | int > 0
+    - name: Fedora | Проверить, установлен ли фильтрующий Flatpak-репозиторий Flathub
+      ansible.builtin.shell:
+        cmd: flatpak remotes --system --show-disabled | grep -E '^flathub\s.*filtered.*' | wc -l
+      register: r__filtered_flathub_count
+      changed_when: false
 
-- name: Fedora | Включить стандартный Flatpak-репозиторий Flathub БЕЗ ФИЛЬТРА
-  community.general.flatpak_remote:
-    name: flathub
-    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
-    method: system
-    state: present
-  become: true
+    - name: Fedora | Удалить ФИЛЬТРУЮЩИЙ Flatpak-репозиторий Flathub от Fedora
+      ansible.builtin.command:
+        cmd: flatpak remote-delete --system flathub
+      become: true
+      changed_when: false
+      when: r__filtered_flathub_count.stdout | int > 0
+
+    - name: Fedora | Включить стандартный Flatpak-репозиторий Flathub БЕЗ ФИЛЬТРА
+      community.general.flatpak_remote:
+        name: flathub
+        flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+        method: system
+        state: present
+      become: true
