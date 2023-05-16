@@ -17,6 +17,7 @@
       max_parallel_downloads: 10
 
 # https://rpmfusion.org/Configuration
+
 - name: Fedora | Включить репозитории RPM Fusion (free и nonfree)
   ansible.builtin.dnf:
     name:
@@ -65,3 +66,20 @@
         method: system
         state: present
       become: true
+
+# https://rpmfusion.org/Howto/Multimedia
+
+- name: Включить аппаратное ускорение видео
+  block:
+
+    - name: Fedora | Получить информацию об используемых видеокартах
+      ansible.builtin.shell:
+        cmd: lspci | grep VGA
+      register: r__vga_controllers
+      changed_when: false
+
+    - name: Fedora | Установить драйверы для Intel Graphics
+      ansible.builtin.dnf:
+        name: intel-media-driver
+      become: true
+      when: r__vga_controllers.stdout.find('Intel') != -1
