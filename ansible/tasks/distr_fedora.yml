@@ -85,6 +85,24 @@
         allowerasing: true
       become: true
 
+- name: Установить дополнительные кодеки
+  block:
+
+    - name: Fedora | Включить поддержку фреймворка GStreamer с дополнительными кодеками
+      ansible.builtin.dnf:
+        name: '@Multimedia'  # Посмотреть содержимое группы: dnf group info Multimedia
+        state: present
+        exclude:
+          - PackageKit-gstreamer-plugin
+        install_weak_deps: false
+      become: true
+
+    - name: Fedora | Добавить в GStreamer поддержку кодека H.264
+      ansible.builtin.dnf:
+        name: gstreamer1-plugin-openh264
+        state: present
+      become: true
+
 - name: Включить аппаратное ускорение видео
   block:
 
