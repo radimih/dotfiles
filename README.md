@@ -26,7 +26,9 @@
     1. Добавить нового пользователя
     1. Удалить `Person 1`
 
-1. [Настроить dotfiles](doc/dotfiles.md)
+1. [Настроить **Google Chrome** и его расширения](doc/google-chrome.md)
+
+1. [Настроить **dotfiles**](doc/dotfiles.md)
 
 ## Конфигурирование
 
