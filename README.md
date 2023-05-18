@@ -50,6 +50,7 @@ ansible-playbook <плейбук.yml> --tags "<список тэгов чере�
 - [Telegram](ansible/roles/telegram/README.md#настройка-после-установки)
 - [VS Code](ansible/roles/vscode/README.md#настройка-после-установки)
 - [Yandex Disk CLI](ansible/roles/yandex_disk_cli/README.md#настройка-после-установки)
+- [Zoom](ansible/roles/zoom/README.md#настройка-после-установки)
 
 ### Прочее
 
