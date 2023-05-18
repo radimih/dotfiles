@@ -58,6 +58,7 @@
           - pipx
           - tree
           - wireguard{{ '-tools' if ansible_os_family == 'RedHat' }}
+          - wl-clipboard
           - xsel
         state: present
       become: true
