@@ -5,6 +5,8 @@
 - Settings (Настройки):
   - Appearance (Внешний вид):
     - `☑` Show home button (Показывать кнопку "Главная страница")
+  - Languages / Spell check:
+    - `☑` Russian
   - Downloads (Скаченные файлы):
     - `☑` Ask where to save each file before downloading
 - More tools (Дополнительные инструменты) / Developer tools:
