@@ -55,6 +55,7 @@
         "ansible-jinja",
         "dockerfile",
         "hcl",
+        "helm",
         "ini",
         "jinja",
         "jinja-yaml",
@@ -98,8 +99,6 @@
         "самоподписанным",
         "Склонировать"
     ],
-    "docker.showStartPage": false,
-    "gitlab.instanceUrl": "https://git.it2g.ru",
     "gitlens.codeLens.enabled": false,
     "gitlens.currentLine.enabled": false,
     "gitlens.hovers.currentLine.over": "line",
@@ -122,7 +121,6 @@
         "**/*.scss"
     ],
     "todo-tree.filtering.includeHiddenFiles": true,
-    "todo-tree.general.enableFileWatcher": false,
     "todo-tree.general.statusBar": "current file",
     "vim.handleKeys": { "<C-f>": false },
     "vim.hlsearch": true,
@@ -151,5 +149,6 @@
     "vscode-kubernetes.log-viewer.since": 300,
     "vscode-kubernetes.log-viewer.tail": -1,
     "vscode-kubernetes.log-viewer.timestamp": false,
-    "vscode-kubernetes.log-viewer.wrap": false
+    "vscode-kubernetes.log-viewer.wrap": false,
+    "yaml.customTags": ["!reference sequence"]
 }
