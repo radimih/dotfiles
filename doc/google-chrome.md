@@ -46,6 +46,10 @@
 - `⎅` Loop animation
 - `☑` Mouse hover automatically scrubs
 
+### [QR Code Generator](https://chrome.google.com/webstore/detail/qr-code-generator/hoeiookpkijlnjdafhaclpdbfflelmci)
+
+Генератор и сканер QR-кодов (через Web-камеру).
+
 ### [SmartAdblock](https://chrome.google.com/webstore/detail/smartadblock/fofomggefchbeiemhdhacdojbefmkhfb/)
 
 Блокировка рекламы. Потребляет еще меньше памяти и умеет обходить обнаружение блокировщика рекламы.
