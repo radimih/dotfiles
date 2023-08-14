@@ -51,6 +51,10 @@
 
 Генератор и сканер QR-кодов (через Web-камеру).
 
+### [Search Bookmarks, History and Tabs](https://chrome.google.com/webstore/detail/search-bookmarks-history/cofpegcepiccpobikjoddpmmocficdjj)
+
+Поиск по закладкам и истории просмотра.
+
 ### [SmartAdblock](https://chrome.google.com/webstore/detail/smartadblock/fofomggefchbeiemhdhacdojbefmkhfb/)
 
 Блокировка рекламы. Потребляет еще меньше памяти и умеет обходить обнаружение блокировщика рекламы.
