@@ -15,6 +15,10 @@
 
 ## Расширения
 
+### [Bitwarden](https://chrome.google.com/webstore/detail/bitwarden-free-password-m/nngceckbapebfimnlniiiahkandclblb)
+
+Менеджер паролей.
+
 ### [Chromium Wheel Smooth Scroller](https://chrome.google.com/webstore/detail/chromium-wheel-smooth-scr/khpcanbeojalbkpgpmjpdkjnkfcgfkhb)
 
 Мягкий скролинг страниц мышкой и клавиатурой.
