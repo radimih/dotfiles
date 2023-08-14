@@ -115,6 +115,12 @@ Userscript-менеджер.
 
 Менеджер сессий. В отличии от основного расширения (Toby) не заменяет стартовую страницу.
 
+#### Параметры
+
+- `⎅` Open cards on the same tab
+- `☑` Dark Theme
+- `☑` Remove duplicate tabs
+
 ### [XTranslate](https://chrome.google.com/webstore/detail/xtranslate/gfgpkepllngchpmcippidfhmbhlljhoo)
 
 Перевод слов, выделенных фраз и целых абзацев.
