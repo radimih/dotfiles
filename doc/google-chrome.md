@@ -45,6 +45,7 @@
 - `⎅` Start playing as soon as image loads
 - `⎅` Loop animation
 - `☑` Mouse hover automatically scrubs
+- Player background: `Dark`
 
 ### [QR Code Generator](https://chrome.google.com/webstore/detail/qr-code-generator/hoeiookpkijlnjdafhaclpdbfflelmci)
 
