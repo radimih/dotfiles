@@ -26,11 +26,14 @@
    xsel --input --clipboard < ~/.ssh/id_ed25519.pub
    ```
 
-1. Добавить открытый ключ в GitHub-аккаунт:
+1. Дважды добавить открытый ключ в GitHub-аккаунт с разными **Key type**:
 
    На странице [Профиль → Settings → SSH and GPG keys → New SSH key](https://github.com/settings/ssh/new):
    - **Title**: < пользователь >`-`< 'my' | компания >`-`< компьютер | 'office' >
    - **Key**: _вставить из буфера обмена_
+   - **Key type**:
+     - `Authentication Key` (для доступа к репозиториям)
+     - `Signing Key` (для подписывания коммитов)
 
 1. Проверить SSH-доступ и добавить хост GitHub в доверенные хосты:
 
