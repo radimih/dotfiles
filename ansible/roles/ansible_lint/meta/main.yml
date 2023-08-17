@@ -1,9 +1,9 @@
 ---
 galaxy_info:
   author: Radimir Mikhailov
-  description: Install Ansible-lint
+  description: Install Ansible Lint
   license: MIT
-  role_name: ansible-lint
+  role_name: ansible_lint
 
   min_ansible_version: 2.7
 

@@ -1,4 +1,4 @@
-# Ansible-роль `ansible-lint`
+# Ansible-роль `ansible_lint`
 
 Роль для установки [ansible-lint](https://github.com/ansible/ansible-lint).
 

@@ -7,7 +7,7 @@
 
   roles:
 
-    - { role: ansible-lint, tags: [ansible-lint] }
+    - { role: ansible_lint, tags: [ansible-lint] }
 
     - role: radimih.docker
       vars:
