@@ -24,7 +24,8 @@
         "helmfile.yaml": "helm",
         "helmfile.yml": "helm",
         "*.yaml.gotmpl": "helm",
-        "*.yml.gotmpl": "helm"
+        "*.yml.gotmpl": "helm",
+        ".ansible-lint": "yaml"
     },
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 3000,
@@ -87,6 +88,7 @@
         "radimih",
         "radimir",
         "sharedsettings",
+        "subdir",
         "subproccess",
         "thirdparty",
         "автодополнение",
@@ -103,6 +105,25 @@
     "gitlens.currentLine.enabled": false,
     "gitlens.hovers.currentLine.over": "line",
     "gitlens.plusFeatures.enabled": false,
+    "linter.linters": {
+      "yamllint": {
+        "capabilities": [
+          "ignore-line"
+        ],
+        "command": [
+          "yamllint",
+          "--format",
+          "parsable",
+          "-"
+        ],
+        "enabled": true,
+        "languages": [
+          "yaml"
+        ],
+        "name": "yamllint",
+        "url": "https://github.com/adrienverge/yamllint"
+      }
+    },
     "projectManager.git.baseFolders": [
         "~/dotfiles",
         "~/1git"
@@ -150,5 +171,11 @@
     "vscode-kubernetes.log-viewer.tail": -1,
     "vscode-kubernetes.log-viewer.timestamp": false,
     "vscode-kubernetes.log-viewer.wrap": false,
-    "yaml.customTags": ["!reference sequence"]
+    "yaml.customTags": [
+        "!reference sequence"
+    ],
+    "yaml.format.singleQuote": true,
+    "yaml.schemas": {
+      "https://json.schemastore.org/yamllint.json": ".config/yamllint/config"
+    }
 }
