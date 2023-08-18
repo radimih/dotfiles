@@ -61,4 +61,5 @@
       Comment=Manage SSH connections
       Categories=ConsoleOnly;
     dest: '{{ ansible_user_dir }}/{{ _subdirs.launcher }}/xssh.desktop'
-  notify: update-desktop-database
+    mode: 0644
+  notify: Update-desktop-database

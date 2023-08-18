@@ -10,8 +10,9 @@
   ansible.builtin.copy:
     src: files/etc/default.conf
     dest: /etc/keyd/
+    mode: 0644
   become: true
-  notify: restart-keyd
+  notify: Restart-keyd
 
 - name: Настроить systemd unit-файл демона keyd
   ansible.builtin.copy:

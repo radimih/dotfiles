@@ -40,5 +40,6 @@
       Categories=Office;
       MimeType=text/html;x-scheme-handler/obsidian;
     dest: '{{ _dirs.launcher }}/obsidian.desktop'
-  notify: update-desktop-database
+    mode: 0644
+  notify: Update-desktop-database
   become: true

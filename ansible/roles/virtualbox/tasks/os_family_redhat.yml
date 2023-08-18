@@ -8,21 +8,9 @@
     name: VirtualBox  # akmod-VirtualBox и kernel-devel уже указаны в зависимостях
     state: present
   become: true
-  register: r__vbox_packages
+  notify: Restart-vboxdrv
 
 - name: '{{ ansible_os_family }}: скомпилировать модули ядра vbox*, если необходимо'
   ansible.builtin.command: akmods
   become: true
   changed_when: false
-
-# FIXME: не работает из-за Secure Boot. Проверить: modprobe vboxdrv
-# Смотри:
-#   - /usr/share/doc/akmods/README.secureboot
-#   - https://rpmfusion.org/Howto/VirtualBox
-#   - https://rpmfusion.org/Howto/Secure%20Boot
-- name: '{{ ansible_os_family }}: загрузить модули ядра vbox*'
-  ansible.builtin.systemd:
-    name: vboxdrv
-    state: restarted
-  become: true
-  when: r__vbox_packages.changed

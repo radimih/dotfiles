@@ -1,30 +1,37 @@
 ---
-- name: "Расширение {{ extension_info.name }} ({{ extension_info.pk }}) | Определить уже установленную версию"
-  ansible.builtin.shell: gnome-extensions info {{ extension_info.uuid }} | sed -n '/Version:/s/[^0-9.]*\([0-9.]*\).*/\1/p'
+- name: Расширение {{ extension_info.name }} ({{ extension_info.pk }}) | Определить уже установленную версию
+  ansible.builtin.shell: |
+    set -o pipefail
+    gnome-extensions info {{ extension_info.uuid }} | sed -n '/Version:/s/[^0-9.]*\([0-9.]*\).*/\1/p'
   register: r__extension_installed_version
   changed_when: false
 
-- name: "Расширение {{ extension_info.name }} ({{ extension_info.pk }}) | Версия установленного (0 - если не установлено): {{ r__extension_installed_version.stdout or 0 }}, на сайте: {{ extension_info.version }}"
+- name: >-
+    Расширение {{ extension_info.name }} ({{ extension_info.pk }}) |
+    Версия установленного (0 - если не установлено): {{ r__extension_installed_version.stdout or 0 }}, на сайте: {{ extension_info.version }}
   ansible.builtin.set_fact:
     _extension_version:
       installed: '{{ r__extension_installed_version.stdout or 0 }}'
       website: '{{ extension_info.version }}'
 
-- block:
-
-  - name: 'Расширение {{ extension_info.name }} ({{ extension_info.pk }}) | Загрузить с сайта'
-    ansible.builtin.get_url:
-      url: https://extensions.gnome.org{{ extension_info.download_url }}
-      dest: '{{ r__extensions_download_dir.path }}/{{ extension_info.uuid }}.zip'
-    register: r__extension_download
-
-  - name: 'Расширение {{ extension_info.name }} ({{ extension_info.pk }}) | Установить/обновить'
-    ansible.builtin.command: gnome-extensions install --force '{{ r__extension_download.dest }}'
-    # notify: restart-gnome-shell
-
+- name: Установить/обновить расширение
   when: _extension_version.website | int > _extension_version.installed|int
+  block:
+
+    - name: Расширение {{ extension_info.name }} ({{ extension_info.pk }}) | Загрузить с сайта
+      ansible.builtin.get_url:
+        url: https://extensions.gnome.org{{ extension_info.download_url }}
+        dest: '{{ r__extensions_download_dir.path }}/{{ extension_info.uuid }}.zip'
+        mode: 0644
+      register: r__extension_download
+
+    - name: Расширение {{ extension_info.name }} ({{ extension_info.pk }}) | Установить/обновить
+      ansible.builtin.command:
+        cmd: gnome-extensions install --force '{{ r__extension_download.dest }}'
+      register: result
+      changed_when: result.rc != 0
+      # notify: restart-gnome-shell
 
 # - name: "Расширение {{ extension_info.name }} ({{ extension_info.pk }}) | Включить"
 #   shell: gnome-extensions enable "{{ extension_info.uuid }}"
 #   # TODO: changed_when = yes только когда фактически включается
-

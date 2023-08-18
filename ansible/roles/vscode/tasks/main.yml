@@ -22,6 +22,6 @@
     scope: global
   loop:
     - {key: diff.tool, value: default-difftool}
-    - {key: difftool.default-difftool.cmd, value: 'code --wait --diff $LOCAL $REMOTE'}
+    - {key: difftool.default-difftool.cmd, value: code --wait --diff $LOCAL $REMOTE}
     - {key: merge.tool, value: code}
-    - {key: mergetool.code.cmd, value: 'code --wait --merge $REMOTE $LOCAL $BASE $MERGED'}
+    - {key: mergetool.code.cmd, value: code --wait --merge $REMOTE $LOCAL $BASE $MERGED}

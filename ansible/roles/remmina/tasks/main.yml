@@ -17,19 +17,22 @@
 - name: Создать каталог для хранения файлов-профилей соединений Remmina
   ansible.builtin.file:
     path: '{{ connections_dir }}'
+    mode: 0755
     state: directory
 
 - name: Установить в параметрах приложения каталог для профилей соединений в '{{ connections_dir }}'
-  ansible.builtin.ini_file:
+  community.general.ini_file:
     path: '{{ _config_file }}'
+    mode: 0600
     no_extra_spaces: true
     section: '{{ _config_section }}'
     option: datadir_path
     value: '{{ connections_dir }}'
 
 - name: Установить в параметрах приложения secret приложения
-  ansible.builtin.ini_file:
+  community.general.ini_file:
     path: '{{ _config_file }}'
+    mode: 0600
     no_extra_spaces: true
     section: '{{ _config_section }}'
     option: secret
@@ -37,8 +40,9 @@
   when: secret is defined
 
 - name: Установить параметры приложения
-  ansible.builtin.ini_file:
+  community.general.ini_file:
     path: '{{ _config_file }}'
+    mode: 0600
     no_extra_spaces: true
     section: '{{ _config_section }}'
     option: '{{ item.key }}'

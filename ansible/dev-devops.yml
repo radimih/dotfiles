@@ -3,11 +3,11 @@
   hosts: 127.0.0.1
   connection: local
   gather_facts: true
-  gather_subset: min
+  gather_subset: [min]
 
   roles:
 
-    - { role: ansible_lint, tags: [ansible-lint] }
+    - {role: ansible_lint, tags: [ansible-lint]}
 
     - role: radimih.docker
       vars:
@@ -22,7 +22,7 @@
       tags:
         - docker
 
-    - { role: helm, tags: [helm] }
+    - {role: helm, tags: [helm]}
 
     # https://github.com/helmfile/helmfile
     - role: radimih.github_latest
@@ -34,4 +34,4 @@
       tags:
         - helmfile
 
-    - { role: kubectl, tags: [kubectl] }
+    - {role: kubectl, tags: [kubectl]}

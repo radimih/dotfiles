@@ -12,8 +12,7 @@
 
 - name: '{{ ansible_os_family }}: добавить официальный репозиторий'
   ansible.builtin.apt_repository:
-    repo: 'deb [signed-by={{ _key_file }}] https://baltocdn.com/helm/stable/debian/ all main'
+    repo: deb [signed-by={{ _key_file }}] https://baltocdn.com/helm/stable/debian/ all main
     filename: helm-stable-debian
     state: present
   become: true
-

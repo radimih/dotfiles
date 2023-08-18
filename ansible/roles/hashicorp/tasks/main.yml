@@ -22,6 +22,8 @@
     _bash_completion_dir: /etc/bash_completion.d
     _zsh_completion_dir: /usr/share/zsh/vendor-completions
   when: "'vagrant' in packages"
+  tags:
+    - autocompletion
   block:
     - name: Получить версию Vagrant
       ansible.builtin.shell:
@@ -35,8 +37,8 @@
 
     - name: Вычислить пути до autocompletion-скриптов
       ansible.builtin.set_fact:
-        _vagrant_completion_script_bash: '/opt/vagrant/embedded/gems/{{ _vagrant_version }}/gems/vagrant-{{ _vagrant_version }}/contrib/bash/completion.sh'
-        _vagrant_completion_script_zsh: '/opt/vagrant/embedded/gems/{{ _vagrant_version }}/gems/vagrant-{{ _vagrant_version }}/contrib/zsh/_vagrant'
+        _vagrant_completion_script_bash: /opt/vagrant/embedded/gems/{{ _vagrant_version }}/gems/vagrant-{{ _vagrant_version }}/contrib/bash/completion.sh
+        _vagrant_completion_script_zsh: /opt/vagrant/embedded/gems/{{ _vagrant_version }}/gems/vagrant-{{ _vagrant_version }}/contrib/zsh/_vagrant
 
     - name: Прописать autocompletion-скрипт в системе для bash ({{ _bash_completion_dir }}/)
       ansible.builtin.copy:
@@ -60,5 +62,3 @@
       become: true
       tags:
         - zsh
-  tags:
-    - autocompletion

@@ -24,7 +24,7 @@
     asset_filename_ending: yd-go
     dest_binary: '{{ _binary_dir }}/yd-go'
 
-  # По-умолчанию при запуске приложения создаётся конфиг-файл с Notification: true, StartDaemon: true
+# По-умолчанию при запуске приложения создаётся конфиг-файл с Notification: true, StartDaemon: true
 - name: Настроить приложение
   ansible.builtin.copy:
     content: |

@@ -1,6 +1,6 @@
 ---
-- name: restart-keyd
-  become: yes
-  systemd:
+- name: Restart-keyd
+  ansible.builtin.systemd:
     name: keyd
     state: restarted
+  become: true

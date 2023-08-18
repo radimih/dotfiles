@@ -5,7 +5,7 @@ galaxy_info:
   license: MIT
   role_name: vscode
 
-  min_ansible_version: 2.7
+  min_ansible_version: '2.7'
 
   platforms:
     - name: Debian

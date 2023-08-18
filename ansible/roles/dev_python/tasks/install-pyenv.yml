@@ -1,8 +1,8 @@
 ---
-  # https://github.com/pyenv/pyenv/wiki#suggested-build-environment
+# https://github.com/pyenv/pyenv/wiki#suggested-build-environment
 - name: Установить пакеты, необходимые для сборки произвольных версий Python
-  become: yes
-  apt:
+  become: true
+  ansible.builtin.apt:
     name:
       - wget
       - curl
@@ -22,16 +22,16 @@
       - libffi-dev
       - liblzma-dev
     state: present
-    install_recommends: no
-    update_cache: yes
+    install_recommends: false
+    update_cache: true
     cache_valid_time: 7200  # apt update если кэш не обновлялся более 2 часов
 
-- name: Склонировать/обновить pyenv
-  git:
+- name: Склонировать/обновить pyenv  # noqa: latest (предотвратить срабатывание правила latest[git] Ansible-линтера)
+  ansible.builtin.git:
     repo: https://github.com/pyenv/pyenv.git
-    dest: "{{ pyenv_home_dir }}"
-    force: yes
-    update: yes
+    dest: '{{ pyenv_home_dir }}'
+    force: true
+    update: true
 
 - name: Создать каталог $ZSHRC_DIR для zsh-скриптов инициализации
   ansible.builtin.file:
@@ -40,6 +40,7 @@
     mode: 0750
 
 - name: Сгенерировать {{ pyenv_init_script }}
-  template:
-    src: "{{ pyenv_init_script }}.j2"
-    dest: "{{ ansible_env.ZSHRC_DIR }}/{{ pyenv_init_script }}"
+  ansible.builtin.template:
+    src: '{{ pyenv_init_script }}.j2'
+    dest: '{{ ansible_env.ZSHRC_DIR }}/{{ pyenv_init_script }}'
+    mode: 0644

@@ -14,6 +14,7 @@
   ansible.builtin.copy:
     src: files/.vimrc
     dest: '{{ ansible_user_dir }}/'
+    mode: 0644
 
 - name: Получить недостающие факты о хосте
   ansible.builtin.setup:
@@ -21,21 +22,22 @@
   when: ansible_os_family is not defined
 
 - name: Особенности для Debian/Ubuntu
+  when: ansible_os_family == 'Debian'
   block:
 
-  - name: Получить путь к текущему редактору по-умолчанию
-    ansible.builtin.shell: update-alternatives --query editor | grep "Value" | cut -d" " -f2
-    register: r__default_editor
-    changed_when: false
+    - name: Получить путь к текущему редактору по-умолчанию
+      ansible.builtin.shell: |
+        set -o pipefail
+        update-alternatives --query editor | grep "Value" | cut -d" " -f2
+      register: r__default_editor
+      changed_when: false
 
-  - name: 'Путь к редактору по-умолчанию: {{ r__default_editor.stdout }}'
-    ansible.builtin.set_fact:
-      _default_editor: '{{ r__default_editor.stdout }}'
+    - name: 'Путь к редактору по-умолчанию: {{ r__default_editor.stdout }}'
+      ansible.builtin.set_fact:
+        _default_editor: '{{ r__default_editor.stdout }}'
 
-  - name: Установить Vim редактором по-умолчанию
-    ansible.builtin.command: update-alternatives --set editor /usr/bin/vim.basic
-    become: true
-    changed_when: true
-    when: _default_editor != '/usr/bin/vim.basic'
-
-  when: ansible_os_family == 'Debian'
+    - name: Установить Vim редактором по-умолчанию
+      ansible.builtin.command: update-alternatives --set editor /usr/bin/vim.basic
+      become: true
+      changed_when: true
+      when: _default_editor != '/usr/bin/vim.basic'

@@ -13,4 +13,4 @@
     group: root
     mode: 0644
   become: true
-  notify: rebuild-fonts-cache
+  notify: Rebuild-fonts-cache

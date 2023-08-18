@@ -1,2 +1,2 @@
 ---
-pyenv_init_script: "zz-pyenv.zsh"
+pyenv_init_script: zz-pyenv.zsh

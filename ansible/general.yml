@@ -3,7 +3,7 @@
   hosts: 127.0.0.1
   connection: local
   gather_facts: true
-  gather_subset: min
+  gather_subset: [min]
 
   vars:
     # Подкаталог в домашнем каталоге пользователя для всех конфигурационных файлов оболочки zsh
@@ -41,6 +41,7 @@
       ansible.builtin.copy:
         src: files/{{ item }}
         dest: '{{ ansible_user_dir }}/'
+        mode: 0644
       loop:
         - .editorconfig
       tags:
@@ -105,16 +106,16 @@
         scope: global
       loop:
         - {key: gpg.format, value: ssh}
-        - {key: user.signingKey, value: '~/.ssh/id_ed25519'}
+        - {key: user.signingKey, value: ~/.ssh/id_ed25519}
         - {key: commit.gpgSign, value: 'true'}
       tags:
         - git
 
   roles:
 
-    - { role: cli_analogs, tags: [cli_analogs] }
+    - {role: cli_analogs, tags: [cli_analogs]}
 
-    - { role: fonts, tags: [fonts] }
+    - {role: fonts, tags: [fonts]}
 
     - role: fzf
       vars:
@@ -123,7 +124,7 @@
       tags:
         - fzf
 
-    - { role: keyd, tags: [keyd] }
+    - {role: keyd, tags: [keyd]}
 
     - role: locale
       vars:

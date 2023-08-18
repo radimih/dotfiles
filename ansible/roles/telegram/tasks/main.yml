@@ -13,19 +13,18 @@
 
 - name: Для Fedora
   become: true
+  when: ansible_distribution == 'Fedora'
   block:
 
-  - name: Включить Flatpak-репозиторий Flathub
-    community.general.flatpak_remote:
-      name: flathub
-      flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
-      method: system
-      state: present
+    - name: Включить Flatpak-репозиторий Flathub
+      community.general.flatpak_remote:
+        name: flathub
+        flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+        method: system
+        state: present
 
-  - name: Установить Flatpak-пакет приложения
-    community.general.flatpak:
-      name: org.telegram.desktop
-      remote: flathub
-      state: present
-
-  when: ansible_distribution == 'Fedora'
+    - name: Установить Flatpak-пакет приложения
+      community.general.flatpak:
+        name: org.telegram.desktop
+        remote: flathub
+        state: present

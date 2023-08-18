@@ -1,0 +1,11 @@
+---
+# FIXME: не работает из-за Secure Boot. Проверить: modprobe vboxdrv
+# Смотри:
+#   - /usr/share/doc/akmods/README.secureboot
+#   - https://rpmfusion.org/Howto/VirtualBox
+#   - https://rpmfusion.org/Howto/Secure%20Boot
+- name: Restart-vboxdrv
+  ansible.builtin.systemd:
+    name: vboxdrv
+    state: restarted
+  become: true

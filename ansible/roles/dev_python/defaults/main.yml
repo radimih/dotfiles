@@ -1,2 +1,2 @@
 ---
-pyenv_home_dir: "{{ ansible_user_dir }}/.pyenv"
+pyenv_home_dir: '{{ ansible_user_dir }}/.pyenv'

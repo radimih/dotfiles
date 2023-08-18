@@ -6,7 +6,8 @@
   become: true
 
 - name: Получить версию GNOME Shell
-  ansible.builtin.shell: gnome-shell --version | sed -E 's/[^0-9]*([0-9.]*)/\1/'
+  ansible.builtin.shell:
+    cmd: set -o pipefail && gnome-shell --version | sed -E 's/[^0-9]*([0-9.]*)/\1/'
   register: r__gnome_version
   changed_when: false
 
@@ -28,13 +29,14 @@
   register: r__extensions_download_dir
   changed_when: false
 
-- block:
+- name: Установить расширения и удалить временный каталог
+  block:
 
-  - name: Установить расширения
-    include_tasks: install_extension.yml
-    vars:
-      extension_info: '{{ item.json }}'
-    loop: '{{ r__extensions_info.results }}'
+    - name: Установить расширения
+      ansible.builtin.include_tasks: install_extension.yml
+      vars:
+        extension_info: '{{ item.json }}'
+      loop: '{{ r__extensions_info.results }}'
 
   always:
     - name: Удалить временный каталог для загрузки расширений

@@ -13,7 +13,7 @@
 
 - name: '{{ ansible_os_family }}: добавить официальный репозиторий'
   ansible.builtin.apt_repository:
-    repo: 'deb [arch=amd64 signed-by={{ _key_file }}] https://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib'
+    repo: deb [arch=amd64 signed-by={{ _key_file }}] https://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib
     filename: virtualbox
     state: present
   become: true

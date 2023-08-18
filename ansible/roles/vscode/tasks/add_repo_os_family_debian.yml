@@ -12,8 +12,7 @@
 
 - name: '{{ ansible_os_family }}: добавить официальный репозиторий'
   ansible.builtin.apt_repository:
-    repo: 'deb [signed-by={{ _key_file }}] https://packages.microsoft.com/repos/code stable main'
+    repo: deb [signed-by={{ _key_file }}] https://packages.microsoft.com/repos/code stable main
     filename: vscode
     state: present
   become: true
-

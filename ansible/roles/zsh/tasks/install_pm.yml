@@ -11,7 +11,7 @@
     state: directory
     mode: 0755
 
-- name: Склонировать/обновить менеджер плагинов
+- name: Склонировать/обновить менеджер плагинов  # noqa: latest (предотвратить срабатывание правила latest[git] Ansible-линтера)
   ansible.builtin.git:
     repo: '{{ _pm_git_url }}'
     dest: '{{ ansible_user_dir }}/{{ zsh_home_subdir }}/{{ _pm_home_subdir }}'

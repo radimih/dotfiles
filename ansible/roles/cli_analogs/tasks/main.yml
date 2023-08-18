@@ -39,24 +39,23 @@
     mode: 0644
 
 - name: Особенности для Debian/Ubuntu
+  when: ansible_os_family == 'Debian'
   block:
 
-  - name: Создать каталог '$HOME/.local/bin'
-    ansible.builtin.file:
-      path: '{{ ansible_user_dir }}/.local/bin'
-      state: directory
-      mode: 0750
+    - name: Создать каталог '$HOME/.local/bin'
+      ansible.builtin.file:
+        path: '{{ ansible_user_dir }}/.local/bin'
+        state: directory
+        mode: 0750
 
-  - name: Сделать так, чтобы утилита bat была доступна по имени bat (а не batcat)
-    ansible.builtin.file:
-      src: /usr/bin/batcat
-      dest: '{{ ansible_user_dir }}/.local/bin/bat'
-      state: link
+    - name: Сделать так, чтобы утилита bat была доступна по имени bat (а не batcat)
+      ansible.builtin.file:
+        src: /usr/bin/batcat
+        dest: '{{ ansible_user_dir }}/.local/bin/bat'
+        state: link
 
-  - name: Сделать так, чтобы утилита fd-find была доступна по имени fd (а не fdfind)
-    ansible.builtin.file:
-      src: /usr/bin/fdfind
-      dest: '{{ ansible_user_dir }}/.local/bin/fd'
-      state: link
-
-  when: ansible_os_family == 'Debian'
+    - name: Сделать так, чтобы утилита fd-find была доступна по имени fd (а не fdfind)
+      ansible.builtin.file:
+        src: /usr/bin/fdfind
+        dest: '{{ ansible_user_dir }}/.local/bin/fd'
+        state: link

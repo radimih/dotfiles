@@ -5,14 +5,14 @@
   when: ansible_user_dir is not defined
 
 - name: Установить zsh
-  import_tasks: install_zsh.yml
+  ansible.builtin.import_tasks: install_zsh.yml
 
 - name: Установить менеджер плагинов
-  import_tasks: install_pm.yml
+  ansible.builtin.import_tasks: install_pm.yml
 
 - name: Настроить плагины, указанные в параметре plugins
-  import_tasks: setup_pm.yml
+  ansible.builtin.import_tasks: setup_pm.yml
 
 - name: Настроить Powerlevel10k
-  import_tasks: setup_p10k.yml
+  ansible.builtin.import_tasks: setup_p10k.yml
   when: "'romkatv/powerlevel10k' in plugins | map(attribute='name')"

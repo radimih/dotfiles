@@ -19,6 +19,7 @@
 - name: '{{ ansible_os_family }}: удалить дублирующую секцию из repo-файла'
   community.general.ini_file:
     path: /etc/yum.repos.d/yandex-disk.repo
+    mode: 0644
     section: yandex
     state: absent
   become: true

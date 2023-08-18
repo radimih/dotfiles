@@ -8,7 +8,7 @@
 
 - name: '{{ ansible_os_family }}: добавить официальный репозиторий'
   ansible.builtin.apt_repository:
-    repo: 'deb [signed-by=/usr/share/keyrings/YANDEX-DISK-KEY.GPG] https://repo.yandex.ru/yandex-disk/deb/ stable main'
+    repo: deb [signed-by=/usr/share/keyrings/YANDEX-DISK-KEY.GPG] https://repo.yandex.ru/yandex-disk/deb/ stable main
     filename: yandex-disk
     state: present
   become: true

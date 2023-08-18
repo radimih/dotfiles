@@ -1,4 +1,4 @@
 ---
-- name: update-desktop-database
+- name: Update-desktop-database
   ansible.builtin.command: update-desktop-database {{ ansible_user_dir }}/{{ _subdirs.launcher }}
   changed_when: false

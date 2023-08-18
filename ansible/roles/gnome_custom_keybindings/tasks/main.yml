@@ -11,9 +11,8 @@
   loop_control:
     index_var: custom_index
 
-  # Включаются только перечисленные в keybindings привязки
+# Включаются только перечисленные в keybindings привязки
 - name: Включить назначенные кастомные клавиатурные привязки
   community.general.dconf:
     key: '{{ _dconf_key }}'
-    value: "{{ range(keybindings | length) | map('regex_replace', '^(.*)$', _dconf_key+'/custom\\1/') | to_json }}"
-
+    value: "{{ range(keybindings | length) | map('regex_replace', '^(.*)$', _dconf_key + '/custom\\1/') | to_json }}"

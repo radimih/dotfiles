@@ -1,0 +1,17 @@
+# Параметры конфигурации: https://ansible.readthedocs.io/projects/lint/configuring/#ansible-lint-configuration
+# Список всех правил: https://ansible.readthedocs.io/projects/lint/rules/
+---
+# По-умолчанию, в именах переменных могут использоваться только строчные буквы: ^[a-z_][a-z0-9_]*$
+# Расширить это правило: в именах переменных могут использоваться либо только строчные, либо только ЗАГЛАВНЫЕ буквы
+var_naming_pattern: (^[a-z_][a-z0-9_]*|^[A-Z_][A-Z0-9_]*)$
+
+enable_list:
+  - empty-string-compare
+  - no-log-password
+  - yaml
+
+skip_list:
+  # Разрешить использовать Jinja-шаблоны не только в конце строк в 'name:'
+  - name[template]
+  # Не реагировать на использование восьмеричных чисел в значениях (начинаются с 0: 010 будет интерпретироваться как 8)
+  - yaml[octal-values]

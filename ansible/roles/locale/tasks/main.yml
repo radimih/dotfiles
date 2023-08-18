@@ -16,7 +16,7 @@
 
 - name: Определить файл для хранения конфигурации локалей
   ansible.builtin.set_fact:
-    _locale_conf_file: '{{ _system_locale_file[ ansible_os_family | lower ] }}'
+    _locale_conf_file: '{{ _system_locale_file[ansible_os_family | lower] }}'
 
 - name: Настроить системные локали
   ansible.builtin.copy:

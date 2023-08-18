@@ -3,11 +3,11 @@
   hosts: 127.0.0.1
   connection: local
   gather_facts: true
-  gather_subset: min
+  gather_subset: [min]
 
   roles:
 
-    - { role: virtualbox, tags: [virtualbox] }
+    - {role: virtualbox, tags: [virtualbox]}
 
     - role: hashicorp
       vars:

@@ -9,7 +9,7 @@
   hosts: 127.0.0.1
   connection: local
   gather_facts: true
-  gather_subset: min
+  gather_subset: [min]
 
   pre_tasks:
 
@@ -90,6 +90,9 @@
         - laptop
 
     - name: Настроить параметры для ноутбука
+      when: r__computer_type.stdout in ('laptop')
+      tags:
+        - laptop
       block:
 
         - name: Увеличить размер шрифтов на ноутбуке
@@ -104,7 +107,7 @@
         - name: Настроить тачпад
           community.general.dconf:
             key: /org/gnome/desktop/peripherals/touchpad/{{ item.key }}
-            value: "{{ item.value }}"
+            value: '{{ item.value }}'
             state: present
           loop: '{{ options | dict2items }}'
           vars:
@@ -113,10 +116,6 @@
               speed: 0.5               # ускорить перемещение указателя
               tap-to-click: 'true'
               two-finger-scrolling-enabled: 'true'
-
-      when: r__computer_type.stdout in ('laptop')
-      tags:
-        - laptop
 
   roles:
 
@@ -143,12 +142,12 @@
         - terminal
 
     - name: Установить GNOME-расширение для автоматического переключения раскладки клавиатуры в Lock Screen
-      role: gnome_extension_LayoutLockScreen
+      role: gnome_extension_layoutlockscreen
       tags:
         - layout_extension
 
     - name: Установить GNOME-расширение для переключения раскладок клавиатуры с помощью программы gdbus
-      role: gnome_extension_LayoutSwitchAPI
+      role: gnome_extension_layoutswitchapi
       tags:
         - layout_extension
 
@@ -162,16 +161,26 @@
       vars:
         keybindings:
           - name: Layout English
-            binding: '<Primary><Shift><Super>F11'  # Ctrl+Shift+F11
-            command: gdbus call --session --dest org.gnome.Shell --object-path /org/gnome/Shell/LayoutSwitchAPI --method org.gnome.Shell.LayoutSwitchAPI.Switch us
+            binding: <Primary><Shift><Super>F11  # Ctrl+Shift+F11
+            command: >-
+              gdbus call
+              --session
+              --dest org.gnome.Shell
+              --object-path /org/gnome/Shell/LayoutSwitchAPI
+              --method org.gnome.Shell.LayoutSwitchAPI.Switch us
           - name: Layout Russian
-            binding: '<Primary><Shift><Super>F12'  # Ctrl+Shift+F12
-            command: gdbus call --session --dest org.gnome.Shell --object-path /org/gnome/Shell/LayoutSwitchAPI --method org.gnome.Shell.LayoutSwitchAPI.Switch ru
+            binding: <Primary><Shift><Super>F12  # Ctrl+Shift+F12
+            command: >-
+              gdbus call
+              --session
+              --dest org.gnome.Shell
+              --object-path /org/gnome/Shell/LayoutSwitchAPI
+              --method org.gnome.Shell.LayoutSwitchAPI.Switch ru
           - name: Terminal
-            binding: '<Super>t'
+            binding: <Super>t
             command: gnome-terminal
           - name: Screenshot by Flameshot
-            binding: 'Print'
+            binding: Print
             command: flameshot gui
       tags:
         - keybindings
@@ -192,45 +201,45 @@
     # Посмотреть текущие настройки GNOME-расширений:
     #   dconf dump /org/gnome/shell/extensions/
 
-    - block:
-
-      - name: Настроить GNOME-расширение Material Shell
-        community.general.dconf:
-          key: /org/gnome/shell/extensions/materialshell/theme/surface-opacity
-          value: 70
-          state: present
-        tags:
-          - material-shell
-
-      - name: Настроить GNOME-расширение Clipboard History
-        community.general.dconf:
-          key: /org/gnome/shell/extensions/clipboard-history/{{ item.key }}
-          value: '{{ item.value }}'
-          state: present
-        loop: '{{ options | dict2items }}'
-        vars:
-          options:
-            toggle-menu: "['<Control>F10']"
-            prev-entry: "['<Control>F11']"
-            next-entry: "['<Control>F12']"
-        tags:
-          - clipboard-history
-
+    - name: Настроить GNOME-расширения
       tags:
         - extensions
+      block:
 
-      # Сделать поиск в AppLauncher в GNOME-расширении Material Shell только по именам приложений
-      # и только по первым буквам слов в них:
-      #
-      # before:
-      #   const stringToSearch = `${button.app.get_name()}${button.app.get_id()}${button.app.get_description()}`;
-      #   const regex = new RegExp(this.inputContainer.get_text(), 'i');
-      #
-      #  after:
-      #   const stringToSearch = `${button.app.get_name()}`;  // Fix by Radimir
-      #   const regex = new RegExp('\\b' + this.inputContainer.get_text(), 'i');  // Fix by Radimir
-      #
-      # TODO: Создать соответствующий Pull Request (https://github.com/material-shell/material-shell)
+        - name: Настроить GNOME-расширение Material Shell
+          community.general.dconf:
+            key: /org/gnome/shell/extensions/materialshell/theme/surface-opacity
+            value: 70
+            state: present
+          tags:
+            - material-shell
+
+        - name: Настроить GNOME-расширение Clipboard History
+          community.general.dconf:
+            key: /org/gnome/shell/extensions/clipboard-history/{{ item.key }}
+            value: '{{ item.value }}'
+            state: present
+          loop: '{{ options | dict2items }}'
+          vars:
+            options:
+              toggle-menu: "['<Control>F10']"
+              prev-entry: "['<Control>F11']"
+              next-entry: "['<Control>F12']"
+          tags:
+            - clipboard-history
+
+    # Сделать поиск в AppLauncher в GNOME-расширении Material Shell только по именам приложений
+    # и только по первым буквам слов в них:
+    #
+    # before:
+    #   const stringToSearch = `${button.app.get_name()}${button.app.get_id()}${button.app.get_description()}`;
+    #   const regex = new RegExp(this.inputContainer.get_text(), 'i');
+    #
+    #  after:
+    #   const stringToSearch = `${button.app.get_name()}`;  // Fix by Radimir
+    #   const regex = new RegExp('\\b' + this.inputContainer.get_text(), 'i');  // Fix by Radimir
+    #
+    # TODO: Создать соответствующий Pull Request (https://github.com/material-shell/material-shell)
 
     - name: Пропатчить GNOME-расширение Material Shell
       ansible.builtin.lineinfile:
@@ -241,10 +250,10 @@
         regexp: '{{ item.search }}'
         line: '{{ item.replace }}'
       loop:
-        - search:  (.*\bstringToSearch = `\$\{button.app.get_name\(\)\})[^`]
+        - search: (.*\bstringToSearch = `\$\{button.app.get_name\(\)\})[^`]
           replace: \1`;  // Fix by Radimir
-        - search:  ^(.*) = new RegExp\(this.inputContainer.get_text\(\)(.*)$
-          replace:    \1 = new RegExp('\\\\b' + this.inputContainer.get_text()\2  // Fix by Radimir
+        - search: ^(.*) = new RegExp\(this.inputContainer.get_text\(\)(.*)$
+          replace: \1 = new RegExp('\\\\b' + this.inputContainer.get_text()\2  // Fix by Radimir
       tags:
         - extensions
         - material-shell
