@@ -34,4 +34,14 @@
       tags:
         - helmfile
 
+    # https://github.com/kubernetes-sigs/kind
+    - role: radimih.github_latest
+      vars:
+        user: kubernetes-sigs
+        repo: kind
+        asset_filename_ending: -linux-amd64
+        dest_binary: '{{ ansible_user_dir }}/.local/bin/kind'
+      tags:
+        - kind
+
     - {role: kubectl, tags: [kubectl]}
