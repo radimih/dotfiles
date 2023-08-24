@@ -45,3 +45,5 @@
         - kind
 
     - {role: kubectl, tags: [kubectl]}
+
+    - {role: yamllint, tags: [yamllint]}

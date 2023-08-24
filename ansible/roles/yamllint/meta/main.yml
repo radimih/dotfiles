@@ -1,0 +1,25 @@
+---
+galaxy_info:
+  author: Radimir Mikhailov
+  description: Install YAML Linter
+  license: MIT
+  role_name: yamllint
+
+  min_ansible_version: '2.7'
+
+  platforms:
+    - name: Debian
+      versions:
+        - all
+    - name: Fedora
+      versions:
+        - all  # на самом деле начиная с 35
+    - name: Ubuntu
+      versions:
+        - all
+
+  galaxy_tags: []
+
+dependencies: []
+
+argument_specs: {}

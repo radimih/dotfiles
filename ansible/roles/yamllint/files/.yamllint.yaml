@@ -1,0 +1,29 @@
+# yaml-language-server: $schema=https://json.schemastore.org/yamllint.json
+
+# https://yamllint.readthedocs.io/en/stable/configuration.html
+---
+extends: default
+
+yaml-files:
+  - '*.yaml'
+  - '*.yml'
+  - .yamllint
+  # Для поддержки Helm-файлов
+  - '*.yaml.gotmpl'
+  - '*.yml.gotmpl'
+
+# https://yamllint.readthedocs.io/en/stable/rules.html
+rules:
+  braces:
+    # Для поддержки Helm-файлов
+    ignore:
+      - '*.yaml.gotmpl'
+      - '*.yml.gotmpl'
+      - helmfile.yaml
+      - helmfile.yml
+  line-length:
+    max: 160
+  quoted-strings:
+    allow-quoted-quotes: true
+    quote-type: single
+    required: only-when-needed

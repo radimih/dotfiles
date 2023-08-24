@@ -1,0 +1,23 @@
+---
+- name: Получить недостающие факты о хосте
+  ansible.builtin.setup:
+    gather_subset: min
+  when: ansible_user_dir is not defined
+
+- name: Установить пакет yamllint
+  ansible.builtin.package:
+    name: yamllint
+    state: present
+  become: true
+
+- name: Создать каталог для конфигурационного файла
+  ansible.builtin.file:
+    path: '{{ ansible_user_dir }}/.config/yamllint'
+    state: directory
+    mode: 0750
+
+- name: Скопировать конфигурационный файл
+  ansible.builtin.copy:
+    src: files/.yamllint.yaml
+    dest: '{{ ansible_user_dir }}/.config/yamllint/config'
+    mode: 0640
