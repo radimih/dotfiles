@@ -11,6 +11,6 @@
   notify: Restart-vboxdrv
 
 - name: '{{ ansible_os_family }}: скомпилировать модули ядра vbox*, если необходимо'
-  ansible.builtin.command: akmods
+  ansible.builtin.command: akmods --force
   become: true
   changed_when: false

@@ -9,7 +9,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "vm-desktop"
 
   config.vm.box = distr
-  config.vm.box_url = "file://#{Dir.home()}/ws/virtual-machines/boxes/#{distr}.json"
+  config.vm.box_url = "file://#{Dir.home()}/1git/virtual-machines/boxes/#{distr}.json"
 
   config.vm.provider "virtualbox" do |v|
     v.name = "vm-for-dotfiles"
@@ -35,13 +35,13 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "gnome", type: "shell" do |shell|
     shell.env = {"ANSIBLE_BECOME_ASK_PASS" => "false"}
-    shell.inline = "cd dotfiles/ansible; ansible-playbook gnome.yml"
+    shell.inline = "cd dotfiles/ansible; ansible-playbook gnome.yml -t terminal"
     shell.privileged = false
   end
 
   config.vm.provision "apps", type: "shell" do |shell|
     shell.env = {"ANSIBLE_BECOME_ASK_PASS" => "false"}
-    shell.inline = "cd dotfiles/ansible; ansible-playbook apps.yml"
+    shell.inline = "cd dotfiles/ansible; ansible-playbook apps.yml -t ranger"
     shell.privileged = false
   end
 
