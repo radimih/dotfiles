@@ -1,0 +1,46 @@
+---
+- name: Проверить, установлен ли kubectl-krew
+  changed_when: false
+  ignore_errors: true
+  ansible.builtin.stat:
+    path: '{{ ansible_user_dir }}/{{ _krew_bin_file }}'
+  register: r__krew_bin_file
+
+- name: Установить kubectl-krew
+  when: not r__krew_bin_file.stat.exists
+  block:
+
+    - name: Создать временный каталог
+      ansible.builtin.tempfile:
+        state: directory
+      register: r__tempdir
+      changed_when: false
+
+    - name: Скачать и установить kubectl-krew
+      block:
+        - name: Вычислить имя бинарника kubectl-krew в релизе
+          vars:
+            _arch: "{{ (ansible_architecture == 'x86_64') | ternary('amd64', ansible_architecture) }}"
+          ansible.builtin.set_fact:
+            _krew_bin_filename: krew-{{ ansible_system | lower }}_{{ _arch }}
+
+        - name: Скачать и распаковать последний релиз kubectl-krew ({{ _krew_bin_filename }})
+          ansible.builtin.unarchive:
+            remote_src: true
+            src: https://github.com/kubernetes-sigs/krew/releases/latest/download/{{ _krew_bin_filename }}.tar.gz
+            dest: '{{ r__tempdir.path }}'
+            extra_opts:
+              - --no-same-owner  # игнорировать владельцев файлов из архива. Владельцем всех распакованных файлов будет текущий пользователь
+
+        # Скаченный бинарник устанавливает сам себя в качестве Krew-плагина
+        - name: Установить kubectl-krew
+          ansible.builtin.command:
+            cmd: '{{ r__tempdir.path }}/{{ _krew_bin_filename }} install krew'
+            creates: '{{ ansible_user_dir }}/{{ _krew_bin_file }}'
+
+      always:
+        - name: Удалить временный каталог
+          ansible.builtin.file:
+            path: '{{ r__tempdir.path }}'
+            state: absent
+          changed_when: false

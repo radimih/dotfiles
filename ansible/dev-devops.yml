@@ -44,6 +44,11 @@
       tags:
         - kind
 
-    - {role: kubectl, tags: [kubectl]}
+    - role: kubectl
+      vars:
+        krew_plugins:
+          - ctx
+      tags:
+        - kubectl
 
     - {role: yamllint, tags: [yamllint]}
