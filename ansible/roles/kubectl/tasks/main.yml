@@ -27,3 +27,6 @@
 
 - name: Установить менеджер плагинов krew
   ansible.builtin.import_tasks: install_krew.yml
+
+- name: Установить/обновить krew-плагины
+  ansible.builtin.import_tasks: install_krew_plugins.yml

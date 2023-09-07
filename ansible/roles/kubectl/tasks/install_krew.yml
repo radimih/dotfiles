@@ -1,10 +1,10 @@
 ---
 - name: Проверить, установлен ли kubectl-krew
-  changed_when: false
-  ignore_errors: true
   ansible.builtin.stat:
     path: '{{ ansible_user_dir }}/{{ _krew_bin_file }}'
   register: r__krew_bin_file
+  changed_when: false
+  ignore_errors: true
 
 - name: Установить kubectl-krew
   when: not r__krew_bin_file.stat.exists

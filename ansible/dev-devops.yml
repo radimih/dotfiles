@@ -47,7 +47,9 @@
     - role: kubectl
       vars:
         krew_plugins:
+          - cnpg
           - ctx
+          - ns
       tags:
         - kubectl
 
