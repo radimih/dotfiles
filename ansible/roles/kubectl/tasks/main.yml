@@ -25,5 +25,5 @@
     dest: '{{ ansible_env.ZSHRC_DIR }}'
     mode: 0644
 
-- name: Установить менеджер плагинов krew и его плагины
-  ansible.builtin.import_tasks: install_krew_plugins.yml
+- name: Установить менеджер плагинов krew
+  ansible.builtin.import_tasks: install_krew.yml
