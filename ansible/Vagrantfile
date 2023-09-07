@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.provider "virtualbox" do |v|
     v.name = "vm-for-dotfiles"
-    v.gui = true
+    v.gui = false
     v.memory = 4096
     v.customize ["setextradata", :id, "CustomVideoMode1", "1920x1080x32"]
     v.customize ["setextradata", :id, "GUI/Fullscreen", "on"]
@@ -47,7 +47,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "test", type: "shell" do |shell|
     shell.env = {"ANSIBLE_BECOME_ASK_PASS" => "false"}
-    shell.inline = "cd dotfiles/ansible; ansible-playbook dev-devops.yml"
+    shell.inline = "cd dotfiles/ansible; ansible-playbook dev-devops.yml -t kubectl"
     shell.privileged = false
   end
 

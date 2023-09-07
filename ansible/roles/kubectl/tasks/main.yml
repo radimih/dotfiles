@@ -19,8 +19,14 @@
     state: directory
     mode: 0750
 
-- name: Настроить в zsh алиас 'k' и автодополнение
+- name: Настроить zsh
   ansible.builtin.copy:
     src: 40-kubectl.zsh
     dest: '{{ ansible_env.ZSHRC_DIR }}'
     mode: 0644
+
+- name: Установить менеджер плагинов krew
+  ansible.builtin.import_tasks: install_krew.yml
+
+- name: Установить/обновить krew-плагины
+  ansible.builtin.import_tasks: install_krew_plugins.yml

@@ -1,0 +1,37 @@
+---
+- name: Обновить krew plugin index
+  ansible.builtin.command:
+    # Используется прямая ссылка на бинарник kubectl-krew, а не команда kubectl krew list,
+    # так как на момент запуска плейбука этого бинарника может ещё не быть в PATH
+    cmd: '{{ ansible_user_dir }}/{{ _krew_bin_file }} update'
+  changed_when: false
+
+- name: Получить список установленных krew-плагинов
+  ansible.builtin.command:
+    # В режиме перенаправления вывода команда kubectl krew list выводит только список установленных
+    # плагинов, без дополнительной информации, см. kubectl krew list --help
+    cmd: '{{ ansible_user_dir }}/{{ _krew_bin_file }} list'
+  register: r__installed_krew_plugins
+  changed_when: false
+
+# Так как krew сам является krew-плагином, его необходимо добавить в список плагинов к установке
+- name: Получить полный список krew-плагинов для установки
+  ansible.builtin.set_fact:
+    _full_krew_plugins: '{{ krew_plugins + ["krew"] }}'
+
+- name: Удалить krew-плагины
+  ansible.builtin.command:
+    cmd: '{{ ansible_user_dir }}/{{ _krew_bin_file }} uninstall {{ item }}'
+  loop: '{{ r__installed_krew_plugins.stdout_lines | difference(_full_krew_plugins) }}'
+  changed_when: true
+
+- name: Установить krew-плагины
+  ansible.builtin.command:
+    cmd: '{{ ansible_user_dir }}/{{ _krew_bin_file }} install {{ item }}'
+  loop: '{{ _full_krew_plugins | difference(r__installed_krew_plugins.stdout_lines) }}'
+  changed_when: true
+
+- name: Обновить krew-плагины
+  ansible.builtin.command:
+    cmd: '{{ ansible_user_dir }}/{{ _krew_bin_file }} upgrade'
+  changed_when: false

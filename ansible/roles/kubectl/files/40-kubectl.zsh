@@ -5,5 +5,7 @@
 
 alias k='kubectl'
 
+export PATH="$PATH:$HOME/.krew/bin"
+
 # FIXME: в zsh получаем ошибку "zsh: compdef: command not found..."
 # source <(kubectl completion zsh)
