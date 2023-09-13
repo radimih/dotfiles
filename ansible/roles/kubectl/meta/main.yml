@@ -25,4 +25,11 @@ galaxy_info:
 
 dependencies: []
 
-argument_specs: {}
+argument_specs:
+  main:
+    options:
+      krew_plugins:
+        description: Список устанавливаемых krew-плагинов
+        required: false
+        type: list
+        elements: str
