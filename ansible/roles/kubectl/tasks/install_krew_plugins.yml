@@ -31,6 +31,9 @@
   loop: '{{ _full_krew_plugins | difference(r__installed_krew_plugins.stdout_lines) }}'
   changed_when: true
 
+# Команда kubectl krew upgrade без аргументов автоматически обновляет только те плагины,
+# для которых существуют новые версии (информация об этом получена благодаря команде
+# kubectl krew update выше)
 - name: Обновить krew-плагины
   ansible.builtin.command:
     cmd: '{{ ansible_user_dir }}/{{ _krew_bin_file }} upgrade'
