@@ -5,14 +5,42 @@
   gather_facts: true
   gather_subset: [min]
 
-  roles:
+  tasks:
 
-    - {role: virtualbox, tags: [virtualbox]}
+    # https://docs.fedoraproject.org/en-US/quick-docs/virtualization-getting-started/
+    - name: Для RedHat/Fedora
+      when:
+        - ansible_os_family is defined
+        - ansible_os_family | lower == 'redhat'
+      block:
 
-    - role: hashicorp
-      vars:
-        packages:
-          - packer
-          - vagrant
-      tags:
-        - hashicorp
+        # dnf groupinfo virtualization
+        - name: Установить KVM, QEMU, libvirt, libvirt-manager, libvirt-viewer
+          ansible.builtin.dnf:
+            name: '@virtualization'
+            state: present
+          notify: Start libvirtd
+          become: true
+
+        # dnf groupinfo vagrant
+        - name: Установить Vagrant, Vagrant-libvirt
+          ansible.builtin.dnf:
+            name: '@vagrant'
+            state: present
+          become: true
+
+        - name: Добавить пользователя '{{ ansible_user_id }}' в группу 'libvirt'
+          ansible.builtin.user:
+            name: '{{ ansible_user_id }}'
+            groups: libvirt
+            append: true
+          become: true
+
+  handlers:
+
+    - name: Start libvirtd
+      ansible.builtin.systemd:
+        service: libvirtd
+        enabled: true
+        state: started
+      become: true
