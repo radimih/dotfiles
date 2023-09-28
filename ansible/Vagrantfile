@@ -2,22 +2,23 @@
 # vi: set ft=ruby :
 
 distr = "fedora-38-workstation"
-# distr = "ubuntu-22.04-desktop"
 
 Vagrant.configure("2") do |config|
+
+  # Отключить использование NFS для Synced Folders, так как это требует прав root
+  config.nfs.functional = false
 
   config.vm.define "vm-desktop"
 
   config.vm.box = distr
   config.vm.box_url = "file://#{Dir.home()}/1git/virtual-machines/boxes/#{distr}.json"
 
-  config.vm.provider "virtualbox" do |v|
-    v.name = "vm-for-dotfiles"
-    v.gui = false
-    v.memory = 4096
-    v.customize ["setextradata", :id, "CustomVideoMode1", "1920x1080x32"]
-    v.customize ["setextradata", :id, "GUI/Fullscreen", "on"]
-    v.customize ["setextradata", :id, "GUI/MiniToolBarAlignment", "top"]
+  # https://vagrant-libvirt.github.io/vagrant-libvirt/configuration.html
+
+  config.vm.provider :libvirt do |p|
+    p.cpus = 2
+    p.memory = 4096
+    p.video_type = 'qxl'
   end
 
   config.vm.synced_folder "../", "/home/vagrant/dotfiles"
@@ -45,10 +46,10 @@ Vagrant.configure("2") do |config|
     shell.privileged = false
   end
 
-  config.vm.provision "test", type: "shell" do |shell|
-    shell.env = {"ANSIBLE_BECOME_ASK_PASS" => "false"}
-    shell.inline = "cd dotfiles/ansible; ansible-playbook dev-devops.yml -t kubectl"
-    shell.privileged = false
-  end
+  # config.vm.provision "test", type: "shell" do |shell|
+  #   shell.env = {"ANSIBLE_BECOME_ASK_PASS" => "false"}
+  #   shell.inline = "cd dotfiles/ansible; ansible-playbook dev-devops.yml -t kubectl"
+  #   shell.privileged = false
+  # end
 
 end

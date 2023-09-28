@@ -8,10 +8,12 @@
   tasks:
 
     # https://docs.fedoraproject.org/en-US/quick-docs/virtualization-getting-started/
+    # https://developer.fedoraproject.org/tools/vagrant/vagrant-libvirt.html
     - name: Для RedHat/Fedora
       when:
         - ansible_os_family is defined
         - ansible_os_family | lower == 'redhat'
+      become: true
       block:
 
         # dnf groupinfo virtualization
@@ -19,28 +21,27 @@
           ansible.builtin.dnf:
             name: '@virtualization'
             state: present
-          notify: Start libvirtd
-          become: true
+
+        - name: Start libvirtd
+          ansible.builtin.systemd:
+            service: libvirtd
+            enabled: true
+            state: started
+
+        - name: Start virtnetworkd
+          ansible.builtin.systemd:
+            service: virtnetworkd
+            enabled: true
+            state: started
 
         # dnf groupinfo vagrant
         - name: Установить Vagrant, Vagrant-libvirt
           ansible.builtin.dnf:
             name: '@vagrant'
             state: present
-          become: true
 
         - name: Добавить пользователя '{{ ansible_user_id }}' в группу 'libvirt'
           ansible.builtin.user:
             name: '{{ ansible_user_id }}'
             groups: libvirt
             append: true
-          become: true
-
-  handlers:
-
-    - name: Start libvirtd
-      ansible.builtin.systemd:
-        service: libvirtd
-        enabled: true
-        state: started
-      become: true
