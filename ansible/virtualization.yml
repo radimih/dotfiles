@@ -45,5 +45,3 @@
             name: '{{ ansible_user_id }}'
             groups: libvirt
             append: true
-
-    # TODO: добавить shell-autocomplete из роли hashicorp
