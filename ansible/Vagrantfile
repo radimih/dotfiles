@@ -16,8 +16,12 @@ Vagrant.configure("2") do |config|
   # https://vagrant-libvirt.github.io/vagrant-libvirt/configuration.html
 
   config.vm.provider :libvirt do |p|
+    p.default_prefix = 'dotfiles-'  # имя ВМ = provider.default_prefix + config.vm.define
+
     p.cpus = 2
     p.memory = 4096
+
+    p.graphics_type = 'spice'
     p.video_type = 'qxl'
   end
 
