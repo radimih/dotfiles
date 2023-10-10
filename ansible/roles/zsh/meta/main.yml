@@ -27,6 +27,10 @@ dependencies: []
 argument_specs:
   main:
     options:
+      aliases:
+        description: Словарь алиасов
+        required: false
+        type: dict
       plugins:
         description: Список zsh-плагинов
         required: false

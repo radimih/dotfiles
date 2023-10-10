@@ -39,6 +39,30 @@ zsh-скрипты инициализации, ссылаясь на эту пе
 
 <td valign="top">
 
+`aliases`
+
+</td>
+<td valign="top">
+
+Словарь _обычных_ [алиасов](https://zsh.sourceforge.io/Doc/Release/Shell-Grammar.html#Aliasing), где:
+
+- **ключ** - алиас (слово)
+- **значение** - строка замены
+
+</td>
+
+<td valign="top">
+
+`{}`
+
+</td>
+
+</tr>
+
+<tr>
+
+<td valign="top">
+
 `plugins`
 
 </td>
@@ -89,6 +113,11 @@ zsh-скрипты инициализации, ссылаясь на эту пе
 ```yaml
 - role: zsh
   vars:
+    aliases:
+      df: df -h
+      du: du -h
+      e: $EDITOR
+      ping: ping -c4
     plugins:
       - name: zsh-users/zsh-autosuggestions
       - name: marlonrichert/zsh-autocomplete

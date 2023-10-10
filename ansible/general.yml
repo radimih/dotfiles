@@ -136,6 +136,14 @@
     - role: zsh
       vars:
         zsh_home_subdir: '{{ ZSH_HOME_SUBDIR }}'
+        aliases:
+          df: df -h
+          du: du -h
+          e: $EDITOR
+          la: ls -h -A --group-directories-first
+          ll: ls -h -AlF --group-directories-first
+          ping: ping -c4
+          se: sudoedit
         plugins:
           - name: zdharma/fast-syntax-highlighting
           - name: romkatv/powerlevel10k

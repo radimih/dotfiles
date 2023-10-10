@@ -19,13 +19,9 @@ stty intr ^Q      # вместо Ctrl+C сделать Ctrl+Q
 # Алиасы
 # ======
 
-alias ll='ls -h -AlF --group-directories-first'
-alias la='ls -h -A --group-directories-first'
-alias df='df -h'
-alias du='du -h'
-alias e='$EDITOR'
-alias se='sudoedit'
-alias ping='ping -c4'
+{% for key, value in aliases | dictsort -%}
+alias {{ key | e }}='{{ value | e }}'
+{% endfor %}
 
 # Глобальные алиасы (замена осуществляется
 # в любом месте командной строки)
