@@ -43,10 +43,10 @@
     dest: '{{ ansible_user_dir }}/.zshenv'
     mode: 0644
 
-- name: Скопировать файлы настроек zsh
-  ansible.builtin.copy:
-    src: files/{{ item }}
-    dest: '{{ ansible_user_dir }}/{{ zsh_home_subdir }}'
+- name: Сформировать файлы настроек zsh
+  ansible.builtin.template:
+    src: templates/{{ item }}.j2
+    dest: '{{ ansible_user_dir }}/{{ zsh_home_subdir }}/{{ item }}'
     owner: '{{ ansible_user_id }}'
     group: '{{ ansible_user_id }}'
     mode: 0644

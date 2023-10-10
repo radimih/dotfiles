@@ -19,22 +19,24 @@ stty intr ^Q      # вместо Ctrl+C сделать Ctrl+Q
 # Алиасы
 # ======
 
-alias ll='ls -h -AlF --group-directories-first'
-alias la='ls -h -A --group-directories-first'
-alias df='df -h'
-alias du='du -h'
-alias e='$EDITOR'
-alias se='sudoedit'
-alias ping='ping -c4'
+{% if aliases -%}
+# Обычные алиасы (осуществляется замена только
+# ПЕРВОГО СЛОВА командной строки)
 
-# Глобальные алиасы (замена осуществляется
+{% for key, value in aliases | dictsort -%}
+alias {{ key | e }}='{{ value | e }}'
+{% endfor %}
+
+{% endif -%}
+{% if aliases_global -%}
+# Глобальные алиасы (замена СЛОВА осуществляется
 # в любом месте командной строки)
 
-alias -g L='| less'
-alias -g G='| grep'
-alias -g H='| head'
-alias -g T='| tail'
+{% for key, value in aliases_global | dictsort -%}
+alias -g {{ key | e }}='{{ value | e }}'
+{% endfor %}
 
+{% endif -%}
 # История команд
 # ==============
 
