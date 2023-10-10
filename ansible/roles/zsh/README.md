@@ -89,6 +89,27 @@ zsh-скрипты инициализации, ссылаясь на эту пе
 
 <td valign="top">
 
+`default_editor`
+
+</td>
+<td valign="top">
+
+Текстовый редактор по-умолчанию (значение переменной окружения `EDITOR`)
+
+</td>
+
+<td valign="top">
+
+`vi`
+
+</td>
+
+</tr>
+
+<tr>
+
+<td valign="top">
+
 `plugins`
 
 </td>

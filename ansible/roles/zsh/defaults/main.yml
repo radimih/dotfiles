@@ -1,5 +1,6 @@
 ---
 aliases: {}
 aliases_global: {}
+default_editor: vi
 plugins: []
 zsh_home_subdir: .config/zsh

@@ -35,6 +35,10 @@ argument_specs:
         description: Словарь глобальных алиасов
         required: false
         type: dict
+      default_editor:
+        description: Редактор по-умолчанию
+        required: false
+        type: str
       plugins:
         description: Список zsh-плагинов
         required: false

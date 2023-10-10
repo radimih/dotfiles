@@ -149,6 +149,7 @@
           G: '| grep'
           H: '| head'
           T: '| tail'
+        default_editor: vim
         plugins:
           - name: zdharma/fast-syntax-highlighting
           - name: romkatv/powerlevel10k
