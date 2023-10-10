@@ -28,7 +28,11 @@ argument_specs:
   main:
     options:
       aliases:
-        description: Словарь алиасов
+        description: Словарь обычных алиасов
+        required: false
+        type: dict
+      aliases_global:
+        description: Словарь глобальных алиасов
         required: false
         type: dict
       plugins:

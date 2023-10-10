@@ -19,18 +19,24 @@ stty intr ^Q      # вместо Ctrl+C сделать Ctrl+Q
 # Алиасы
 # ======
 
+{% if aliases -%}
+# Обычные алиасы (осуществляется замена только
+# ПЕРВОГО СЛОВА командной строки)
+
 {% for key, value in aliases | dictsort -%}
 alias {{ key | e }}='{{ value | e }}'
 {% endfor %}
 
-# Глобальные алиасы (замена осуществляется
+{% endif -%}
+{% if aliases_global -%}
+# Глобальные алиасы (замена СЛОВА осуществляется
 # в любом месте командной строки)
 
-alias -g L='| less'
-alias -g G='| grep'
-alias -g H='| head'
-alias -g T='| tail'
+{% for key, value in aliases_global | dictsort -%}
+alias -g {{ key | e }}='{{ value | e }}'
+{% endfor %}
 
+{% endif -%}
 # История команд
 # ==============
 

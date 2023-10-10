@@ -44,7 +44,33 @@ zsh-скрипты инициализации, ссылаясь на эту пе
 </td>
 <td valign="top">
 
-Словарь _обычных_ [алиасов](https://zsh.sourceforge.io/Doc/Release/Shell-Grammar.html#Aliasing), где:
+Словарь _обычных_ [алиасов](https://zsh.sourceforge.io/Doc/Release/Shell-Grammar.html#Aliasing), когда
+заменяется только _первое_ слово в команде:
+
+- **ключ** - алиас (слово)
+- **значение** - строка замены
+
+</td>
+
+<td valign="top">
+
+`{}`
+
+</td>
+
+</tr>
+
+<tr>
+
+<td valign="top">
+
+`aliases_global`
+
+</td>
+<td valign="top">
+
+Словарь _глобальных_ [алиасов](https://zsh.sourceforge.io/Doc/Release/Shell-Grammar.html#Aliasing), когда
+слово заменяется в _любом_ месте команды:
 
 - **ключ** - алиас (слово)
 - **значение** - строка замены
@@ -118,6 +144,10 @@ zsh-скрипты инициализации, ссылаясь на эту пе
       du: du -h
       e: $EDITOR
       ping: ping -c4
+    aliases_global:
+      G: '| grep'
+      H: '| head'
+      T: '| tail'
     plugins:
       - name: zsh-users/zsh-autosuggestions
       - name: marlonrichert/zsh-autocomplete
