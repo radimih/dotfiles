@@ -4,4 +4,5 @@ _pm_home_subdir: .antidote
 _prompts:
   - default
   - p10k
+  - pure
 _zshrc_subdir: zshrc.d

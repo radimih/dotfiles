@@ -4,6 +4,6 @@
     that:
       - prompt in _prompts
 
-- name: Настроить промпт Powerlevel10k
+- name: Настроить/убрать промпт Powerlevel10k
   ansible.builtin.import_tasks: setup_prompt_p10k.yml
   # when: "'romkatv/powerlevel10k' in plugins | map(attribute='name')"

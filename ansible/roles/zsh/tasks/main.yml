@@ -16,7 +16,7 @@
 - name: Установить менеджер плагинов
   ansible.builtin.import_tasks: install_pm.yml
 
-- name: Настроить промпт, указанные в параметре prompt
+- name: Настроить промпт, указанный в параметре prompt
   ansible.builtin.import_tasks: setup_prompt.yml
 
 - name: Настроить плагины, указанные в параметре plugins
