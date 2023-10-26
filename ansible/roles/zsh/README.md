@@ -120,11 +120,40 @@ zsh-скрипты инициализации, ссылаясь на эту пе
 - `name:` имя плагина в виде `<repo>/<plugin>`
 - `path:` _(необязательно)_ подкаталог или файл внутри репозитория плагина
 
+ВНИМАНИЕ! Нет необходимости указывать в этом списке shell prompt-плагины.
+Они устанавливаются автоматически в зависимости от значения аргумента
+`prompt`.
+
 </td>
 
 <td valign="top">
 
 `[]`
+
+</td>
+
+</tr>
+
+<tr>
+
+<td valign="top">
+
+`prompt`
+
+</td>
+<td valign="top">
+
+Shell prompt. Возможные значения:
+
+- `default` — использовать стандартный shell prompt
+- `p10k` — [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
+- `pure` — [Pure](https://github.com/sindresorhus/pure)
+
+</td>
+
+<td valign="top">
+
+`default`
 
 </td>
 
@@ -169,19 +198,19 @@ zsh-скрипты инициализации, ссылаясь на эту пе
       G: '| grep'
       H: '| head'
       T: '| tail'
+    default_editor: vim
     plugins:
       - name: zsh-users/zsh-autosuggestions
       - name: marlonrichert/zsh-autocomplete
       - name: zdharma/fast-syntax-highlighting
-      - name: romkatv/powerlevel10k
       - name: belak/zsh-utils
         path: completion
+    prompt: p10k
 ```
 
-## Shell Prompt
+## Shell prompt [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
 
-В качестве shell prompt используется [Powerlevel10k](https://github.com/romkatv/powerlevel10k).
-Устанавливается как плагин. После существенного обновления плагина желательно заново формировать
+После существенного обновления этого prompt-плагина желательно заново формировать
 его конфигурационный файл `.p10k.zsh`:
 
 ```bash
