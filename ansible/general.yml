@@ -9,20 +9,6 @@
     # Подкаталог в домашнем каталоге пользователя для всех конфигурационных файлов оболочки zsh
     ZSH_HOME_SUBDIR: .config/zsh
 
-    prompt: p10k
-    _prompts:
-      default: ''
-      p10k: romkatv/powerlevel10k
-      pure: belak/zsh-utils
-    plugins:
-      - name: zdharma/fast-syntax-highlighting
-      - name: romkatv/powerlevel10k
-      - name: zsh-users/zsh-autosuggestions
-      - name: zsh-users/zsh-completions
-      - name: belak/zsh-utils
-        path: completion
-      - name: Aloxaf/fzf-tab  # всегда должен быть последним в списке плагинов
-
   environment:
     # Переменная окружения ZSHRC_DIR используется в ролях, устанавливающих свои zsh-скрипты
     # инициализации. Её значение устанавливается в роли zsh, но при первом запуске плейбука
@@ -125,33 +111,6 @@
       tags:
         - git
 
-    - name: Trial
-      ansible.builtin.debug:
-        msg: '{{ plugins | rejectattr("name", "eq", "romkatv/powerlevel10k") }}'
-      tags:
-        - trial
-
-    - name: Trial 2
-      ansible.builtin.set_fact:
-        _fff: '{{ _fff | rejectattr("name", "eq", item.value) }}'
-      vars:
-        _fff: '{{ plugins }}'
-      loop: '{{ _prompts | dict2items }}'
-      tags:
-        - trial2
-
-    - name: Trial 2 add
-      ansible.builtin.set_fact:
-        _fff: '{{ [{"name": _prompts[prompt]}] + _fff }}'
-      tags:
-        - trial2
-
-    - name: Trial 2 print
-      ansible.builtin.debug:
-        var: _fff
-      tags:
-        - trial2
-
   roles:
 
     - {role: cli_analogs, tags: [cli_analogs]}
@@ -193,11 +152,11 @@
         default_editor: vim
         plugins:
           - name: zdharma/fast-syntax-highlighting
-          - name: romkatv/powerlevel10k
           - name: zsh-users/zsh-autosuggestions
           - name: zsh-users/zsh-completions
           - name: belak/zsh-utils
             path: completion
           - name: Aloxaf/fzf-tab  # всегда должен быть последним в списке плагинов
+        prompt: p10k
       tags:
         - zsh

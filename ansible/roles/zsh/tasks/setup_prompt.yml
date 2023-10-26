@@ -1,9 +1,6 @@
 ---
-- name: Проверить на корректное значение параметра prompt
-  ansible.builtin.assert:
-    that:
-      - prompt in _prompts
-
 - name: Настроить/убрать промпт Powerlevel10k
   ansible.builtin.import_tasks: setup_prompt_p10k.yml
-  # when: "'romkatv/powerlevel10k' in plugins | map(attribute='name')"
+
+- name: Настроить/убрать промпт Pure
+  ansible.builtin.import_tasks: setup_prompt_pure.yml
