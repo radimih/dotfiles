@@ -5,7 +5,7 @@
 
 # Antidote plugin manager: https://getantidote.github.io/
 
-{% for plugin in plugins %}
+{% for plugin in _plugins %}
     {{- plugin.name }} {% if 'path' in plugin %} path:{{ plugin.path }}{% endif %}
 
 {% endfor %}

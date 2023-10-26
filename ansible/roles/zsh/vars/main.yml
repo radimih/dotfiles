@@ -1,4 +1,8 @@
 ---
 _pm_git_url: https://github.com/mattmc3/antidote
 _pm_home_subdir: .antidote
+_prompts:
+  default: ''
+  p10k: romkatv/powerlevel10k
+  pure: sindresorhus/pure
 _zshrc_subdir: zshrc.d

@@ -152,11 +152,11 @@
         default_editor: vim
         plugins:
           - name: zdharma/fast-syntax-highlighting
-          - name: romkatv/powerlevel10k
           - name: zsh-users/zsh-autosuggestions
           - name: zsh-users/zsh-completions
           - name: belak/zsh-utils
             path: completion
           - name: Aloxaf/fzf-tab  # всегда должен быть последним в списке плагинов
+        prompt: p10k
       tags:
         - zsh

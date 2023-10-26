@@ -53,6 +53,14 @@ argument_specs:
             description: подкаталог или файл внутри репозитория плагина
             required: false
             type: path
+      prompt:
+        description: Промпт (см. vars/main.yml, словарь _prompts)
+        required: false
+        type: str
+        choices:
+          - default
+          - p10k
+          - pure
       zsh_home_subdir:
         description: Подкаталог в домашнем каталоге пользователя для размещения конфигурационных файлов zsh
         required: false
