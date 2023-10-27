@@ -1,8 +1,0 @@
-# Менеджер плагинов Antidote: https://getantidote.github.io/
----
-- name: Сгенерировать .zsh_plugins.txt
-  ansible.builtin.template:
-    src: .zsh_plugins.txt.j2
-    dest: '{{ ansible_user_dir }}/{{ zsh_home_subdir }}/.zsh_plugins.txt'
-    mode: 0644
-  notify: clean_antidote

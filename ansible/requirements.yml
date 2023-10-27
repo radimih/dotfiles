@@ -8,3 +8,8 @@
   src: https://github.com/radimih/ansible-role-github-latest.git
   scm: git
   version: v1.0.0
+
+- name: radimih.zsh
+  src: https://github.com/radimih/ansible-role-zsh.git
+  scm: git
+  version: v1.0.0

@@ -1,7 +1,0 @@
----
-aliases: {}
-aliases_global: {}
-default_editor: vi
-plugins: []
-prompt: default
-zsh_home_subdir: .config/zsh

@@ -133,7 +133,7 @@
       tags:
         - locale
 
-    - role: zsh
+    - role: radimih.zsh
       vars:
         zsh_home_subdir: '{{ ZSH_HOME_SUBDIR }}'
         aliases:

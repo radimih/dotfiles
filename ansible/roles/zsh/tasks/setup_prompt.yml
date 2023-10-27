@@ -1,6 +1,0 @@
----
-- name: Настроить/убрать промпт Powerlevel10k
-  ansible.builtin.import_tasks: setup_prompt_p10k.yml
-
-- name: Настроить/убрать промпт Pure
-  ansible.builtin.import_tasks: setup_prompt_pure.yml
