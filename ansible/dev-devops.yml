@@ -46,6 +46,9 @@
 
     - role: kubectl
       vars:
+        # Версия клиента должна быть в пределах плюс-минус одной минорной версии кластера
+        # https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#before-you-begin
+        version: 1.28
         krew_plugins:
           - cnpg
           - ctx

@@ -140,6 +140,7 @@
           df: df -h
           du: du -h
           e: $EDITOR
+          k: kubectl
           la: ls -h -A --group-directories-first
           ll: ls -h -AlF --group-directories-first
           ping: ping -c4
