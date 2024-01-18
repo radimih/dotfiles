@@ -15,22 +15,26 @@
 
 ## Расширения
 
-### [Bitwarden](https://chrome.google.com/webstore/detail/bitwarden-free-password-m/nngceckbapebfimnlniiiahkandclblb)
+### [Bitwarden](https://chromewebstore.google.com/detail/bitwarden/nngceckbapebfimnlniiiahkandclblb)
 
 Менеджер паролей.
 
-### [Chromium Wheel Smooth Scroller](https://chrome.google.com/webstore/detail/chromium-wheel-smooth-scr/khpcanbeojalbkpgpmjpdkjnkfcgfkhb)
+### [Chromium Wheel Smooth Scroller](https://chromewebstore.google.com/detail/chromium-wheel-smooth-scr/khpcanbeojalbkpgpmjpdkjnkfcgfkhb)
 
 Мягкий скролинг страниц мышкой и клавиатурой.
 
-### [DragIt!](https://chrome.google.com/webstore/detail/dragit/bnmedfjfiggbacggokfddhocaignedbk)
+### [DeepL](https://chromewebstore.google.com/detail/deepl/cofdbpoegempjloogbagkncekinflcnj)
+
+Переводчик.
+
+### [DragIt!](https://chromewebstore.google.com/detail/dragit/bnmedfjfiggbacggokfddhocaignedbk)
 
 Открытие ссылок в другой закладке перетаскиванием:
 
 - вправо - с переходом на нее
 - влево - в фоне
 
-### [FreshStart](https://chrome.google.com/webstore/detail/freshstart-cross-browser/nmidkjogcjnnlfimjcedenagjfacpobb)
+### [FreshStart](https://chromewebstore.google.com/detail/freshstart-cross-browser/nmidkjogcjnnlfimjcedenagjfacpobb)
 
 Менеджер сессий (сессии доступны в том числе из закладок!).
 
@@ -39,7 +43,7 @@
 - `☑` Enable Crash Recovery с интервалом в `5` минут
 - Date format: `yyyy-mm-dd`
 
-### [GIF Scrubber](https://chrome.google.com/webstore/detail/gif-scrubber/gbdacbnhlfdlllckelpdkgeklfjfgcmp/)
+### [GIF Scrubber](https://chromewebstore.google.com/detail/gif-scrubber/gbdacbnhlfdlllckelpdkgeklfjfgcmp)
 
 Проигрыватель GIF-анимаций.
 
@@ -51,19 +55,27 @@
 - `☑` Mouse hover automatically scrubs
 - Player background: `Dark`
 
-### [QR Code Generator](https://chrome.google.com/webstore/detail/qr-code-generator/hoeiookpkijlnjdafhaclpdbfflelmci)
+### [Google Translate](https://chromewebstore.google.com/detail/google-translate/aapbdbdomjkkjkaonfhkkikfgjllcleb)
+
+Для поиска синонимов английских слов. По горячей клавише вводим слово, нажимаем Enter и выбираем
+`OPEN IN GOOGLE TRANSLATE`.
+
+#### Параметры
+
+- My primary language: `Russian`
+- `☑` Don't display icon or pop-up
+
+Настроить горячую клавищу в [Extensions / Keyboard shortcuts](chrome://extensions/shortcuts): `Alt + X`
+
+### [QR Code Generator](https://chromewebstore.google.com/detail/qr-code-generator/hoeiookpkijlnjdafhaclpdbfflelmci)
 
 Генератор и сканер QR-кодов (через Web-камеру).
 
-### [Search Bookmarks, History and Tabs](https://chrome.google.com/webstore/detail/search-bookmarks-history/cofpegcepiccpobikjoddpmmocficdjj)
+### [Search Bookmarks, History and Tabs](https://chromewebstore.google.com/detail/search-bookmarks-history/cofpegcepiccpobikjoddpmmocficdjj)
 
 Поиск по закладкам и истории просмотра.
 
-### [SmartAdblock](https://chrome.google.com/webstore/detail/smartadblock/fofomggefchbeiemhdhacdojbefmkhfb/)
-
-Блокировка рекламы. Потребляет еще меньше памяти и умеет обходить обнаружение блокировщика рекламы.
-
-### [Surfingkeys](https://chrome.google.com/webstore/detail/surfingkeys/gfbliohnnapiefjpjlpjnehglfpaknnc) ([GitHub](https://github.com/brookhong/Surfingkeys))
+### [Surfingkeys](https://chromewebstore.google.com/detail/surfingkeys/gfbliohnnapiefjpjlpjnehglfpaknnc) ([GitHub](https://github.com/brookhong/Surfingkeys))
 
 Управление браузером с помощью клавиш.
 
@@ -108,14 +120,14 @@
     api.map(']]', 'D');
     ```
 
-### [Tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
+### [Tampermonkey](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
 
 Userscript-менеджер.
 
 Для установки скрипта закадрового перевода видео [voice-over-translation](https://github.com/ilyhalight/voice-over-translation)
 необходимо после установки расширения пройти по этой [ссылке](https://raw.githubusercontent.com/ilyhalight/voice-over-translation/master/dist/vot.user.js) и нажать кнопку **Install**.
 
-### [Toby Mini](https://chrome.google.com/webstore/detail/toby-mini/gfdcgfhkelkdmglklfbndgopaihmoeci)
+### [Toby Mini](https://chromewebstore.google.com/detail/toby-mini/gfdcgfhkelkdmglklfbndgopaihmoeci)
 
 Менеджер сессий. В отличии от основного расширения (Toby) не заменяет стартовую страницу.
 
@@ -125,7 +137,23 @@ Userscript-менеджер.
 - `☑` Dark Theme
 - `☑` Remove duplicate tabs
 
+### [uBlock Origin Lite (uBOL)](https://chromewebstore.google.com/detail/ublock-origin-lite/ddkjiahejlhfcafbddmgiahcphecmpfh) ([GitHub](https://github.com/uBlockOrigin/uBOL-home))
+
+Блокировка рекламы на основе Manifest V3. Не потребляет ресурсов.
+
+#### Параметры
+
+- Default filtering mode: `Optimal`
+
+## Расширения — кандидаты на вылет
+
+### [SmartAdblock](https://chrome.google.com/webstore/detail/smartadblock/fofomggefchbeiemhdhacdojbefmkhfb/)
+
+Блокировка рекламы. Потребляет еще меньше памяти и умеет обходить обнаружение блокировщика рекламы.
+
 ### [XTranslate](https://chrome.google.com/webstore/detail/xtranslate/gfgpkepllngchpmcippidfhmbhlljhoo)
+
+Причина: нарушает политику Chrome Web Store
 
 Перевод слов, выделенных фраз и целых абзацев.
 
