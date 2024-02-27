@@ -26,7 +26,7 @@
 
 ### [DeepL](https://chromewebstore.google.com/detail/deepl/cofdbpoegempjloogbagkncekinflcnj)
 
-Переводчик.
+Переводчик. Удобен для перевода отдельных абзацев.
 
 ### [DragIt!](https://chromewebstore.google.com/detail/dragit/bnmedfjfiggbacggokfddhocaignedbk)
 
@@ -58,8 +58,11 @@
 
 ### [Google Translate](https://chromewebstore.google.com/detail/google-translate/aapbdbdomjkkjkaonfhkkikfgjllcleb)
 
-Для поиска синонимов английских слов. По горячей клавише вводим слово, нажимаем Enter и выбираем
-`OPEN IN GOOGLE TRANSLATE`.
+Переводчик. Удобен:
+
+- для _словарного_ перевода слова. Выделяем слово и нажимаем горячую клавишу (`Alt + X`)
+- для поиска синонимов английских слов. По горячей клавише (`Alt + X`) вводим слово, нажимаем `Enter` и выбираем
+`OPEN IN GOOGLE TRANSLATE`
 
 #### Параметры
 
@@ -67,6 +70,11 @@
 - `☑` Don't display icon or pop-up
 
 Настроить горячую клавищу в [Extensions / Keyboard shortcuts](chrome://extensions/shortcuts): `Alt + X`
+
+### [Immersive Translate](https://chromewebstore.google.com/detail/bpoadfkcbjbfhfodiogcnhhhpibjhbnh)
+
+Иммерсионный перевод (одновременное отображение оригинального абзаца и его перевода).
+Удобен для перевода страниц целиком и **PDF-документов**.
 
 ### [QR Code Generator](https://chromewebstore.google.com/detail/qr-code-generator/hoeiookpkijlnjdafhaclpdbfflelmci)
 
