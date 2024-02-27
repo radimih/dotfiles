@@ -26,7 +26,7 @@
 
 ### [DeepL](https://chromewebstore.google.com/detail/deepl/cofdbpoegempjloogbagkncekinflcnj)
 
-Переводчик. Удобен для перевода отдельных абзацев.
+Переводчик. Удобен для перевода отдельных абзацев. Очень качественный перевод технических текстов.
 
 ### [DragIt!](https://chromewebstore.google.com/detail/dragit/bnmedfjfiggbacggokfddhocaignedbk)
 
@@ -75,6 +75,10 @@
 
 Иммерсионный перевод (одновременное отображение оригинального абзаца и его перевода).
 Удобен для перевода страниц целиком и **PDF-документов**.
+
+#### Параметры
+
+TODO: описать настройку
 
 ### [QR Code Generator](https://chromewebstore.google.com/detail/qr-code-generator/hoeiookpkijlnjdafhaclpdbfflelmci)
 
