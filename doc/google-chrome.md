@@ -1,3 +1,4 @@
+<!-- markdownlint-configure-file { "no-duplicate-heading": { "siblings_only": true } } -->
 # Google Chrome
 
 ## Настройка
