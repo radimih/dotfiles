@@ -80,6 +80,42 @@
 
 TODO: описать настройку
 
+### [MarkDownload](https://chromewebstore.google.com/detail/markdownload-markdown-web/pcmpcfapbekmbjjkdalcgopdkipoggdi) ([GitHub](https://github.com/deathau/markdownload))
+
+Сохранение страниц в формате Markdown. Умеет встраивать картинки в сам md-файл через Base64-кодирование.
+
+#### Параметры
+
+- Folder inside `Downloads/` to store MarkDownload clips: `MarkDownload`
+
+    Необходимо создать символическую ссылку `~/Download/MarkDownload` на папку `_inbox` внутри Obsidian Vault:
+
+    ```bash
+    ln -s ~/1clouds/yandex/obsidian/internet/_inbox ~/Downloads/MarkDownload
+    ```
+
+- Front-matter template:
+
+    ```yaml
+    ---
+    created: {date:YYYY-MM-DD HH:mm}
+    source: {baseURI}
+    author: {byline}
+    tags: [{keywords}]
+    ---
+    # {title}
+
+    URL: {baseURI}
+
+    > **Краткая выдержка**
+    > {excerpt}
+    ---
+    ```
+
+- `⎅` Enable Context Menus
+- `☑` Download images alongside markdown files
+- `☑` Image Style / Base64 encoded
+
 ### [QR Code Generator](https://chromewebstore.google.com/detail/qr-code-generator/hoeiookpkijlnjdafhaclpdbfflelmci)
 
 Генератор и сканер QR-кодов (через Web-камеру).
