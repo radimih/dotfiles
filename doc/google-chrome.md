@@ -1,7 +1,7 @@
 <!-- markdownlint-configure-file { "no-duplicate-heading": { "siblings_only": true } } -->
 # Google Chrome
 
-## Настройка
+## Настройка (сохраняется в Google-аккаунте)
 
 - Settings (Настройки):
   - Appearance (Внешний вид):
@@ -19,6 +19,8 @@
 ### [Bitwarden](https://chromewebstore.google.com/detail/bitwarden/nngceckbapebfimnlniiiahkandclblb)
 
 Менеджер паролей.
+
+ВНИМАНИЕ! Требует залогиниться в **свой** аккаунт.
 
 ### [Chromium Wheel Smooth Scroller](https://chromewebstore.google.com/detail/chromium-wheel-smooth-scr/khpcanbeojalbkpgpmjpdkjnkfcgfkhb)
 
@@ -39,7 +41,7 @@
 
 Менеджер сессий (сессии доступны в том числе из закладок!).
 
-#### Параметры
+#### Параметры (ВНИМАНИЕ! Требуется ручная настройка)
 
 - `☑` Enable Crash Recovery с интервалом в `5` минут
 - Date format: `yyyy-mm-dd`
@@ -48,11 +50,11 @@
 
 Проигрыватель GIF-анимаций.
 
-#### Параметры
+#### Параметры (ВНИМАНИЕ! Требуется ручная настройка)
 
 - `☑` Open scrubber in new tab instead of new window
-- `⎅` Start playing as soon as image loads
-- `⎅` Loop animation
+- `☐` Start playing as soon as image loads
+- `☐` Loop animation
 - `☑` Mouse hover automatically scrubs
 - Player background: `Dark`
 
@@ -64,7 +66,7 @@
 - для поиска синонимов английских слов. По горячей клавише (`Alt + X`) вводим слово, нажимаем `Enter` и выбираем
 `OPEN IN GOOGLE TRANSLATE`
 
-#### Параметры
+#### Параметры (ВНИМАНИЕ! Требуется ручная настройка)
 
 - My primary language: `Russian`
 - `☑` Don't display icon or pop-up
@@ -84,7 +86,7 @@ TODO: описать настройку
 
 Сохранение страниц в формате Markdown. Умеет встраивать картинки в сам md-файл через Base64-кодирование.
 
-#### Параметры
+#### Параметры (сохраняются в Google-аккаунте)
 
 - Folder inside `Downloads/` to store MarkDownload clips: `MarkDownload`
 
@@ -112,7 +114,7 @@ TODO: описать настройку
     ---
     ```
 
-- `⎅` Enable Context Menus
+- `☐` Enable Context Menus
 - `☑` Download images alongside markdown files
 - `☑` Image Style / Base64 encoded
 
@@ -134,7 +136,7 @@ TODO: описать настройку
 - встроенный VIM-редактор для input-полей
 - более интуитивная навигация
 
-#### Параметры
+#### Параметры (сохраняются в Google-аккаунте)
 
 - Options / `☑` Advanced mode:
 
@@ -171,18 +173,20 @@ TODO: описать настройку
 
 ### [Tampermonkey](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
 
-Userscript-менеджер.
+Userscript-менеджер. Для установки скрипта закадрового перевода видео [voice-over-translation](https://github.com/ilyhalight/voice-over-translation).
 
-Для установки скрипта закадрового перевода видео [voice-over-translation](https://github.com/ilyhalight/voice-over-translation)
-необходимо после установки расширения пройти по этой [ссылке](https://raw.githubusercontent.com/ilyhalight/voice-over-translation/master/dist/vot.user.js) и нажать кнопку **Install**.
+ВНИМАНИЕ! После установки расширения необходимо пройти по этой [ссылке](https://raw.githubusercontent.com/ilyhalight/voice-over-translation/master/dist/vot.user.js)
+и нажать кнопку **Install**.
 
 ### [Toby Mini](https://chromewebstore.google.com/detail/toby-mini/gfdcgfhkelkdmglklfbndgopaihmoeci)
 
 Менеджер сессий. В отличии от основного расширения (Toby) не заменяет стартовую страницу.
 
-#### Параметры
+ВНИМАНИЕ! Требует залогиниться в **свой** аккаунт.
 
-- `⎅` Open cards on the same tab
+#### Параметры (сохраняются в Tobby-аккаунте)
+
+- `☐` Open cards on the same tab
 - `☑` Dark Theme
 - `☑` Remove duplicate tabs
 
@@ -190,7 +194,7 @@ Userscript-менеджер.
 
 Блокировка рекламы на основе Manifest V3. Не потребляет ресурсов.
 
-#### Параметры
+#### Параметры (ВНИМАНИЕ! Требуется ручная настройка)
 
 - Default filtering mode: `Optimal`
 
@@ -217,6 +221,6 @@ Userscript-менеджер.
 
 #### Параметры
 
-- `⎅` Display copy-translation icon
-- `⎅` Display detected language
-- `⎅` Display close-popup icon at the right corner
+- `☐` Display copy-translation icon
+- `☐` Display detected language
+- `☐` Display close-popup icon at the right corner
