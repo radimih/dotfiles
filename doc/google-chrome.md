@@ -13,6 +13,8 @@
 - More tools (Дополнительные инструменты) / Developer tools:
   - Settings (F1)
     - Theme: `Dark`
+- Experiments (chrome://flags/)
+  - `extensions-on-chrome-urls`: `Enabled`
 
 ## Расширения
 
@@ -126,6 +128,52 @@ TODO: описать настройку
 
 Поиск по закладкам и истории просмотра.
 
+### [Tampermonkey](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
+
+Userscript-менеджер. Для установки скрипта закадрового перевода видео [voice-over-translation](https://github.com/ilyhalight/voice-over-translation).
+
+ВНИМАНИЕ! После установки расширения необходимо пройти по этой [ссылке](https://raw.githubusercontent.com/ilyhalight/voice-over-translation/master/dist/vot.user.js)
+и нажать кнопку **Install**.
+
+### [Toby Mini](https://chromewebstore.google.com/detail/toby-mini/gfdcgfhkelkdmglklfbndgopaihmoeci)
+
+Менеджер сессий. В отличии от основного расширения (Toby) не заменяет стартовую страницу.
+
+ВНИМАНИЕ! Требует залогиниться в **свой** аккаунт.
+
+#### Параметры (сохраняются в Tobby-аккаунте)
+
+- `☐` Open cards on the same tab
+- `☑` Dark Theme
+- `☑` Remove duplicate tabs
+
+### [uBlock Origin Lite (uBOL)](https://chromewebstore.google.com/detail/ublock-origin-lite/ddkjiahejlhfcafbddmgiahcphecmpfh) ([GitHub](https://github.com/uBlockOrigin/uBOL-home))
+
+Блокировка рекламы на основе Manifest V3. Не потребляет ресурсов.
+
+#### Параметры (ВНИМАНИЕ! Требуется ручная настройка)
+
+- Default filtering mode: `Optimal`
+
+### [Vimium C](https://chromewebstore.google.com/detail/vimium-c-all-by-keyboard/hfjbmagddngcpeloejdejnfgbamkjaeg) ([GitHub](https://github.com/gdh1995/vimium-c))
+
+Управление браузером с помощью клавиш.
+
+Особенности:
+
+- не зависит от раскладки клавиатуры
+- работает в новой вкладке
+
+#### Параметры (сохраняются в Google-аккаунте)
+
+- Advanced Options:
+  - `☑` Allow in Incognito
+  - `☑` Search in bookmarks or add new items
+  - `☑` Run on chrome://*/* pages
+  - `☑` Run on Chrome's native New Tab Page
+
+## Расширения — кандидаты на вылет
+
 ### [Surfingkeys](https://chromewebstore.google.com/detail/surfingkeys/gfbliohnnapiefjpjlpjnehglfpaknnc) ([GitHub](https://github.com/brookhong/Surfingkeys))
 
 Управление браузером с помощью клавиш.
@@ -170,57 +218,3 @@ TODO: описать настройку
     api.map('[[', 'S');
     api.map(']]', 'D');
     ```
-
-### [Tampermonkey](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
-
-Userscript-менеджер. Для установки скрипта закадрового перевода видео [voice-over-translation](https://github.com/ilyhalight/voice-over-translation).
-
-ВНИМАНИЕ! После установки расширения необходимо пройти по этой [ссылке](https://raw.githubusercontent.com/ilyhalight/voice-over-translation/master/dist/vot.user.js)
-и нажать кнопку **Install**.
-
-### [Toby Mini](https://chromewebstore.google.com/detail/toby-mini/gfdcgfhkelkdmglklfbndgopaihmoeci)
-
-Менеджер сессий. В отличии от основного расширения (Toby) не заменяет стартовую страницу.
-
-ВНИМАНИЕ! Требует залогиниться в **свой** аккаунт.
-
-#### Параметры (сохраняются в Tobby-аккаунте)
-
-- `☐` Open cards on the same tab
-- `☑` Dark Theme
-- `☑` Remove duplicate tabs
-
-### [uBlock Origin Lite (uBOL)](https://chromewebstore.google.com/detail/ublock-origin-lite/ddkjiahejlhfcafbddmgiahcphecmpfh) ([GitHub](https://github.com/uBlockOrigin/uBOL-home))
-
-Блокировка рекламы на основе Manifest V3. Не потребляет ресурсов.
-
-#### Параметры (ВНИМАНИЕ! Требуется ручная настройка)
-
-- Default filtering mode: `Optimal`
-
-## Расширения — кандидаты на вылет
-
-### [SmartAdblock](https://chrome.google.com/webstore/detail/smartadblock/fofomggefchbeiemhdhacdojbefmkhfb/)
-
-Блокировка рекламы. Потребляет еще меньше памяти и умеет обходить обнаружение блокировщика рекламы.
-
-### [XTranslate](https://chrome.google.com/webstore/detail/xtranslate/gfgpkepllngchpmcippidfhmbhlljhoo)
-
-Причина: нарушает политику Chrome Web Store
-
-Перевод слов, выделенных фраз и целых абзацев.
-
-Особенности:
-
-- можно выбрать переводчик (Google, Yandex, Bing)
-- при выделении текста появляется иконка перевода
-- при двойном клике на абзац перевод появляется автоматически
-- при нажатии на иконку расширения на панели расширений
-  появляется диалог, в который можно ввести произвольную
-  фразу и перевести её (En 🠖 Ru, Ru 🠖 En)
-
-#### Параметры
-
-- `☐` Display copy-translation icon
-- `☐` Display detected language
-- `☐` Display close-popup icon at the right corner
