@@ -10,6 +10,8 @@
     - `☑` Russian
   - Downloads (Скаченные файлы):
     - `☑` Ask where to save each file before downloading
+- Extensions (Расширения) / Manage Extenstions:
+    - `☑` Developer mode - нужен для работы расширения Tampermokey/**Voice Over Translation**
 - More tools (Дополнительные инструменты) / Developer tools:
   - Settings (F1)
     - Theme: `Dark`
