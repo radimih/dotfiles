@@ -1,0 +1,35 @@
+;; Documentation: https://github.com/jtroo/kanata/blob/main/docs/config.adoc
+
+(defcfg
+  process-unmapped-keys yes
+)
+
+(defsrc
+  caps  a  s  d  f j  k  l  ;
+  lsft        spc        rsft
+)
+
+(defvar
+  tap-time 150
+  hold-time 200
+)
+
+(defalias
+  escctrl (tap-hold 200 200 esc lctl)
+  eng (tap-hold 200 200 C-S-M-f11 lsft)
+  rus (tap-hold 200 200 C-S-M-f12 rsft)
+  a (tap-hold $tap-time $hold-time a lmet)
+  s (tap-hold $tap-time $hold-time s lalt)
+  d (tap-hold $tap-time $hold-time d lsft)
+  f (tap-hold $tap-time $hold-time f lctl)
+  j (tap-hold $tap-time $hold-time j rctl)
+  k (tap-hold $tap-time $hold-time k rsft)
+  l (tap-hold $tap-time $hold-time l ralt)
+  ; (tap-hold $tap-time $hold-time ; rmet)
+  space (tap-hold $tap-time $hold-time spc lsft)
+)
+
+(deflayer base
+  @escctrl  @a  @s  @d  @f  @j  @k  @l  @;
+  @eng            @space              @rus
+)

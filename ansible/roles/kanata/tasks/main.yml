@@ -1,0 +1,44 @@
+---
+- name: Установить исполняемый файл
+  ansible.builtin.copy:
+    src: files/bin/kanata
+    dest: /usr/local/bin
+    mode: 0755
+  become: true
+
+- name: Скопировать конфигурационный файл
+  ansible.builtin.copy:
+    src: files/etc/kanata.kbd
+    dest: /etc/
+    mode: 0644
+  become: true
+  notify: Restart-kanata
+
+- name: Настроить systemd unit-файл демона
+  ansible.builtin.copy:
+    content: |
+      [Unit]
+      Description=Kanata key remapping daemon
+      Documentation=https://github.com/jtroo/kanata
+      Requires=local-fs.target
+      After=local-fs.target
+
+      [Service]
+      ExecStartPre=/usr/sbin/modprobe uinput
+      ExecStart=/usr/local/bin/kanata --cfg /etc/kanata.kbd
+      Restart=no
+      Type=exec
+
+      [Install]
+      WantedBy=sysinit.target
+    dest: /etc/systemd/system/kanata.service
+    mode: 0644
+  become: true
+
+- name: Настроить запуск демона через systemd
+  ansible.builtin.systemd:
+    service: kanata
+    enabled: true
+    state: started
+    daemon_reload: true
+  become: true

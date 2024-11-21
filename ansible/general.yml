@@ -124,7 +124,7 @@
       tags:
         - fzf
 
-    - {role: keyd, tags: [keyd]}
+    - {role: kanata, tags: [kanata]}
 
     - role: locale
       vars:

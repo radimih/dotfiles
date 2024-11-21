@@ -1,0 +1,6 @@
+---
+- name: Restart-kanata
+  ansible.builtin.systemd:
+    name: kanata
+    state: restarted
+  become: true
