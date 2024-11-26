@@ -6,7 +6,7 @@
 
 (defsrc
   caps  a  s  d  f j  k  l  ;
-  lsft        spc        rsft
+  lsft                   rsft
 )
 
 (defvar
@@ -26,10 +26,9 @@
   k (tap-hold $tap-time $hold-time k rsft)
   l (tap-hold $tap-time $hold-time l ralt)
   ; (tap-hold $tap-time $hold-time ; rmet)
-  space (tap-hold $tap-time $hold-time spc lsft)
 )
 
 (deflayer base
   @escctrl  @a  @s  @d  @f  @j  @k  @l  @;
-  @eng            @space              @rus
+  @eng                                @rus
 )
