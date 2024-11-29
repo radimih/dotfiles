@@ -12,16 +12,3 @@
     name: code
     state: present
   become: true
-
-# https://code.visualstudio.com/docs/sourcecontrol/overview#_vs-code-as-git-difftool-and-mergetool
-- name: Настроить git на использование VS Code
-  community.general.git_config:
-    name: '{{ item.key }}'
-    value: '{{ item.value }}'
-    state: present
-    scope: global
-  loop:
-    - {key: diff.tool, value: default-difftool}
-    - {key: difftool.default-difftool.cmd, value: code --wait --diff $LOCAL $REMOTE}
-    - {key: merge.tool, value: code}
-    - {key: mergetool.code.cmd, value: code --wait --merge $REMOTE $LOCAL $BASE $MERGED}
