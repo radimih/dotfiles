@@ -2,11 +2,11 @@
 
 Переопределение поведения некоторых клавиш с помощью [kanata](https://github.com/jtroo/kanata):
 
-| Клавиша       | Однократное нажатие         | На удержании
-|:-------------:|:---------------------------:|:------------:
-| `CapsLock`    | `ESC`                       | `Left Ctrl`
-| `Left Shift`  | `Ctrl + Shift + Meta + F11` | `Left Shift`
-| `Right Shift` | `Ctrl + Shift + Meta + F12` | `Right Shift`
+| Клавиша       | Однократное нажатие                | На удержании
+|:-------------:|:----------------------------------:|:------------:
+| `CapsLock`    | `Ctrl + Shift + Meta + F11`, `ESC` | `Left Ctrl`
+| `Left Shift`  | `Ctrl + Shift + Meta + F11`        | `Left Shift`
+| `Right Shift` | `Ctrl + Shift + Meta + F12`        | `Right Shift`
 
 Плюс, реализован режим [Home Row Mods](https://precondition.github.io/home-row-mods).
 

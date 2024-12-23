@@ -22,14 +22,18 @@
 ;; Клавиши для переключения раскладок клавиатуры
 
 (defalias
-  eng (tap-hold 200 200 C-S-M-f11 lsft)
-  rus (tap-hold 200 200 C-S-M-f12 rsft)
+  to-eng C-S-M-f11
+  to-rus C-S-M-f12
+)
+(defalias
+  eng (tap-hold 200 200 @to-eng lsft)
+  rus (tap-hold 200 200 @to-rus rsft)
 )
 
 ;; Клавиша CapsLock
 
 (defalias
-  escctrl (tap-hold 200 200 esc lctl)
+  escctrl (tap-hold 200 200 (macro esc @to-eng) lctl)
 )
 
 ;; Home Row Mode
