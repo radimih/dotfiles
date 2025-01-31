@@ -137,6 +137,7 @@
           - name: zdharma/fast-syntax-highlighting
           - name: zsh-users/zsh-autosuggestions
           - name: zsh-users/zsh-completions
+          - name: jeffreytse/zsh-vi-mode
           - name: belak/zsh-utils
             path: completion
           - name: Aloxaf/fzf-tab  # всегда должен быть последним в списке плагинов
