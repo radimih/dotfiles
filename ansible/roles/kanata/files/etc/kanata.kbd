@@ -1,4 +1,3 @@
-;; Project: https://github.com/jtroo/kanata
 ;; Documentation: https://jtroo.github.io/config.html
 ;; --------------------------------------------------
 
@@ -9,13 +8,13 @@
 ;; -----------------------------------------------
 
 (defsrc
-  caps  a  s  d  f j  k  l  ;
-  lsft                   rsft
+  caps            a   s   d   f   j   k   l   ;
+  lsft                                       rsft
 )
 
 (deflayer base
-  @escctrl  @a  @s  @d  @f  @j  @k  @l  @;
-  @eng                                @rus
+  @advanced-caps  @a  @s  @d  @f  @j  @k  @l  @;
+  @eng                                       @rus
 )
 
 ;; -----------------------------------------------
@@ -34,7 +33,14 @@
 ;; Клавиша CapsLock
 
 (defalias
-  escctrl (tap-hold 200 200 (macro esc @to-eng) lctl)
+  advanced-caps (tap-hold 200 200 (macro esc @to-eng) (layer-while-held nav))
+)
+
+(deflayermap (nav)
+  h left
+  j down
+  k up
+  l right
 )
 
 ;; Home Row Mode

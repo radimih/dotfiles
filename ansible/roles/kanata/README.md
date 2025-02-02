@@ -1,10 +1,11 @@
 # Ansible-роль `kanata`
 
-Переопределение поведения некоторых клавиш с помощью [kanata](https://github.com/jtroo/kanata):
+Переопределение поведения некоторых клавиш с помощью [kanata](https://github.com/jtroo/kanata)
+([Kanata Configuration Guide](https://jtroo.github.io/config.html)):
 
 | Клавиша       | Однократное нажатие                | На удержании
 |:-------------:|:----------------------------------:|:------------:
-| `CapsLock`    | `Ctrl + Shift + Meta + F11`, `ESC` | `Left Ctrl`
+| `CapsLock`    | `Ctrl + Shift + Meta + F11`, `ESC` | `h`, `j`, `k`, `l` - как в Vim
 | `Left Shift`  | `Ctrl + Shift + Meta + F11`        | `Left Shift`
 | `Right Shift` | `Ctrl + Shift + Meta + F12`        | `Right Shift`
 
