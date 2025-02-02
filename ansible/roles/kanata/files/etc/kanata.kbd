@@ -1,5 +1,6 @@
-;; Documentation: https://github.com/jtroo/kanata/blob/main/docs/config.adoc
-;; -------------------------------------------------------------------------
+;; Project: https://github.com/jtroo/kanata
+;; Documentation: https://jtroo.github.io/config.html
+;; --------------------------------------------------
 
 (defcfg
   process-unmapped-keys yes
