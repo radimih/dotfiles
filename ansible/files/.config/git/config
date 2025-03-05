@@ -30,6 +30,14 @@
 [includeIf "hasconfig:remote.*.url:https://git.it2g.ru/**"]
         path = it2g.ini
 
+# --- mos-team.ru
+
+[includeIf "hasconfig:remote.*.url:https://gitlab.mos-team.ru/**"]
+        path = mos-team.ini
+
+[includeIf "hasconfig:remote.*.url:https://*@gitlab.mos-team.ru/**"]
+        path = mos-team.ini
+
 # Использование VS Code
 #   - https://code.visualstudio.com/docs/sourcecontrol/overview#_vs-code-as-git-difftool-and-mergetool
 
