@@ -8,44 +8,44 @@
 #   - https://docs.gitlab.com/ee/user/project/repository/ssh_signed_commits/
 
 [commit]
-        gpgSign = true
+  gpgSign = true
 [gpg]
-        format = ssh
+  format = ssh
 [user]
-        signingKey = ~/.ssh/id_ed25519
+  signingKey = ~/.ssh/id_ed25519
 
 # user.email/name в зависимости от того, с каким удалённым репозиторием работаем
 
 # --- github.com
 
 [includeIf "hasconfig:remote.*.url:git@github.com:*/**"]
-        path = github.ini
+  path = github.ini
 [includeIf "hasconfig:remote.*.url:https://github.com/**"]
-        path = github.ini
+  path = github.ini
 
 # --- it2g.ru
 
 [includeIf "hasconfig:remote.*.url:git@git.it2g.ru:*/**"]
-        path = it2g.ini
+  path = it2g.ini
 [includeIf "hasconfig:remote.*.url:https://git.it2g.ru/**"]
-        path = it2g.ini
+  path = it2g.ini
 
 # --- mos-team.ru
 
 [includeIf "hasconfig:remote.*.url:https://gitlab.mos-team.ru/**"]
-        path = mos-team.ini
+  path = mos-team.ini
 
 [includeIf "hasconfig:remote.*.url:https://*@gitlab.mos-team.ru/**"]
-        path = mos-team.ini
+  path = mos-team.ini
 
 # Использование VS Code
 #   - https://code.visualstudio.com/docs/sourcecontrol/overview#_vs-code-as-git-difftool-and-mergetool
 
 [diff]
-        tool = default-difftool
+  tool = default-difftool
 [difftool "default-difftool"]
-        cmd = code --wait --diff $LOCAL $REMOTE
+  cmd = code --wait --diff $LOCAL $REMOTE
 [merge]
-        tool = code
+  tool = code
 [mergetool "code"]
-        cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
+  cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
