@@ -8,6 +8,7 @@
 | `CapsLock`    | `Ctrl + Shift + Meta + F11`, `ESC` | `h`, `j`, `k`, `l` - как в Vim
 | `Left Shift`  | `Ctrl + Shift + Meta + F11`        | `Left Shift`
 | `Right Shift` | `Ctrl + Shift + Meta + F12`        | `Right Shift`
+| `Space`       | `Space`                            | `Right Alt` (`AltGr`)
 
 Плюс, реализован режим [Home Row Mods](https://precondition.github.io/home-row-mods).
 
