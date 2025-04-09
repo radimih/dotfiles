@@ -57,8 +57,8 @@
 #### Параметры (ВНИМАНИЕ! Требуется ручная настройка)
 
 - `☑` Open scrubber in new tab instead of new window
-- `☐` Start playing as soon as image loads
-- `☐` Loop animation
+- `▢` Start playing as soon as image loads
+- `▢` Loop animation
 - `☑` Mouse hover automatically scrubs
 - Player background: `Dark`
 
@@ -118,7 +118,7 @@ TODO: описать настройку
     ---
     ```
 
-- `☐` Enable Context Menus
+- `▢` Enable Context Menus
 - `☑` Download images alongside markdown files
 - `☑` Image Style / Base64 encoded
 
@@ -145,7 +145,7 @@ Userscript-менеджер. Для установки скрипта закад
 
 #### Параметры (сохраняются в Tobby-аккаунте)
 
-- `☐` Open cards on the same tab
+- `▢` Open cards on the same tab
 - `☑` Dark Theme
 - `☑` Remove duplicate tabs
 
