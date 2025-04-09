@@ -173,6 +173,7 @@ Userscript-менеджер. Для установки скрипта закад
   - `☑` Search in bookmarks or add new items
   - `☑` Run on chrome://*/* pages
   - `☑` Run on Chrome's native New Tab Page
+  - `▢` Always ignore keyboard layout
 
 ## Расширения — кандидаты на вылет
 
