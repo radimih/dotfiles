@@ -11,12 +11,18 @@
 [init]
   defaultBranch = main
 
+[pull]
+  rebase = true
+
 [push]
   autoSetupRemote = true
 
+[rebase]
+  autoStash = true
+
 [rerere]
   enabled = true
-  autoupdate = true
+  autoUpdate = true
 
 # Подписывание всех коммитов SSH-ключом пользователя
 #   - https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key#telling-git-about-your-ssh-key
