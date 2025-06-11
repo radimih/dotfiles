@@ -90,6 +90,10 @@ TODO: описать настройку
 
 Сохранение страниц в формате Markdown. Умеет встраивать картинки в сам md-файл через Base64-кодирование.
 
+> TODO: Chrome больше не поддерживает данное расширение. Рассмотреть варианты:
+> - <https://github.com/jatinkrmalik/LLMFeeder>
+> - <https://github.com/ysm-dev/cpdown>
+
 #### Параметры (сохраняются в Google-аккаунте)
 
 - Folder inside `Downloads/` to store MarkDownload clips: `MarkDownload`
