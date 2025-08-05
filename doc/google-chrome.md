@@ -30,10 +30,6 @@
 
 Мягкий скролинг страниц мышкой и клавиатурой.
 
-### [DeepL](https://chromewebstore.google.com/detail/deepl/cofdbpoegempjloogbagkncekinflcnj)
-
-Переводчик. Удобен для перевода отдельных абзацев. Очень качественный перевод технических текстов.
-
 ### [DragIt!](https://chromewebstore.google.com/detail/dragit/bnmedfjfiggbacggokfddhocaignedbk)
 
 Открытие ссылок в другой закладке перетаскиванием:
