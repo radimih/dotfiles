@@ -6,7 +6,23 @@
 - Settings (Настройки):
   - Appearance (Внешний вид):
     - `☑` Show home button (Показывать кнопку "Главная страница")
-  - Languages / Spell check:
+  - Search engine → Manage search engines and site search / Site search → Add:
+    - ```yaml
+      Name: Nix Packages
+      Shortcut: np
+      URL: https://searchix.ovh/options/home-manager/search?query=%s
+      ```
+    - ```yaml
+      Name: NixOS Options
+      Shortcut: no
+      URL: https://search.nixos.org/options?channel=unstable&query=%s
+      ```
+    - ```yaml
+      Name: Nix Home Manger Options
+      Shortcut: nh
+      URL: https://searchix.ovh/options/home-manager/search?query=%s
+      ```
+  - Languages / Spell check / Use spell check for:
     - `☑` Russian
   - Downloads (Скаченные файлы):
     - `☑` Ask where to save each file before downloading
