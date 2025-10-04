@@ -18,7 +18,13 @@
       URL: https://search.nixos.org/options?channel=unstable&query=%s
       ```
     - ```yaml
-      Name: Nix Home Manger Options
+      Name: Nix Home Manager Options
+      Shortcut: nh
+      URL: https://home-manager-options.extranix.com/?release=master&query=%s
+      ```
+      или альтернатива (лучше вид, но странная сортировка результатов поиска):
+      ```yaml
+      Name: Nix Home Manager Options
       Shortcut: nh
       URL: https://searchix.ovh/options/home-manager/search?query=%s
       ```
