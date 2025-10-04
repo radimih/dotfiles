@@ -10,7 +10,7 @@
     - ```yaml
       Name: Nix Packages
       Shortcut: np
-      URL: https://searchix.ovh/options/home-manager/search?query=%s
+      URL: https://search.nixos.org/packages?channel=unstable&query=%s
       ```
     - ```yaml
       Name: NixOS Options
