@@ -142,14 +142,6 @@ TODO: описать настройку
 - `☑` Download images alongside markdown files
 - `☑` Image Style / Base64 encoded
 
-### [QR Code Generator](https://chromewebstore.google.com/detail/qr-code-generator/hoeiookpkijlnjdafhaclpdbfflelmci)
-
-Генератор и сканер QR-кодов (через Web-камеру).
-
-### [Search Bookmarks, History and Tabs](https://chromewebstore.google.com/detail/search-bookmarks-history/cofpegcepiccpobikjoddpmmocficdjj)
-
-Поиск по закладкам и истории просмотра.
-
 ### [Tampermonkey](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
 
 Userscript-менеджер. Для установки скрипта закадрового перевода видео [voice-over-translation](https://github.com/ilyhalight/voice-over-translation).
@@ -196,6 +188,14 @@ Userscript-менеджер. Для установки скрипта закад
   - `▢` Always ignore keyboard layout
 
 ## Расширения — кандидаты на вылет
+
+### [QR Code Generator](https://chromewebstore.google.com/detail/qr-code-generator/hoeiookpkijlnjdafhaclpdbfflelmci)
+
+Генератор и сканер QR-кодов (через Web-камеру).
+
+### [Search Bookmarks, History and Tabs](https://chromewebstore.google.com/detail/search-bookmarks-history/cofpegcepiccpobikjoddpmmocficdjj)
+
+Поиск по закладкам и истории просмотра.
 
 ### [Surfingkeys](https://chromewebstore.google.com/detail/surfingkeys/gfbliohnnapiefjpjlpjnehglfpaknnc) ([GitHub](https://github.com/brookhong/Surfingkeys))
 
