@@ -4,13 +4,12 @@
   "uuid": "layout-switch-api@radimir",
   "version": 1,
   "shell-version": [
-    "3.36",
-    "3.38",
-    "40",
-    "41",
-    "42",
-    "43",
-    "44"
+    "44",
+    "45",
+    "46",
+    "47",
+    "48",
+    "49"
   ],
   "url": "https://github.com/radimih/dotfiles/tree/master/ansible/roles/gnome_extension_LayoutSwitchAPI"
 }
