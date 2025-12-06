@@ -1,6 +1,9 @@
 # https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md
 ---
+# Line length
 MD013: false
+
+# Inline HTML
 MD033:
   allowed_elements:
     - br
