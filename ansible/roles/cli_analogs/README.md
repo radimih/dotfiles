@@ -3,7 +3,7 @@
 Установка и настройка CLI-утилит, альтернативных стандартным POSIX-утилитам:
 
 - [bat](https://github.com/sharkdp/bat) - аналог `cat`
-- [exa](https://github.com/ogham/exa) - аналог `ls`
+- [eza](https://github.com/eza-community/eza) - аналог `ls`
 - [fd](https://github.com/sharkdp/fd) - альтернатива `find`
 - [ripgrep/rg](https://github.com/BurntSushi/ripgrep) - альтернатива `grep`
 

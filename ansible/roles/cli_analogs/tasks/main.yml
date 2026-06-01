@@ -8,7 +8,7 @@
   ansible.builtin.package:
     name:
       - bat
-      - exa
+      - eza
       - fd-find
       - ripgrep
     state: present

@@ -4,7 +4,7 @@
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 alias cat='bat'
-alias ls='exa --icons --group-directories-first --time-style=long-iso'
+alias ls='eza --icons=auto --group-directories-first --no-quotes --time-style=long-iso'
 alias la='ls  --all'
 alias ll='ls  --all --oneline --long'
 alias rg='rg --hidden --glob="!.git/" --max-columns=150'
