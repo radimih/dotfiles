@@ -18,6 +18,9 @@
 
 1. Night Mode: `on`
 1. Settings:
+   - Notifications and Sounds:
+     - Global settings:
+       - Draw attention to the window: `off`
    - Chat Settings:
      - Themes: `Tinted`
      - Messages: `Send with Ctrl+Enter`
