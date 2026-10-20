@@ -142,13 +142,6 @@ TODO: описать настройку
 - `☑` Download images alongside markdown files
 - `☑` Image Style / Base64 encoded
 
-### [Tampermonkey](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
-
-Userscript-менеджер. Для установки скрипта закадрового перевода видео [voice-over-translation](https://github.com/ilyhalight/voice-over-translation).
-
-ВНИМАНИЕ! После установки расширения необходимо пройти по этой [ссылке](https://raw.githubusercontent.com/ilyhalight/voice-over-translation/master/dist/vot.user.js)
-и нажать кнопку **Install**.
-
 ### [Toby Mini](https://chromewebstore.google.com/detail/toby-mini/gfdcgfhkelkdmglklfbndgopaihmoeci)
 
 Менеджер сессий. В отличии от основного расширения (Toby) не заменяет стартовую страницу.
@@ -190,6 +183,10 @@ Userscript-менеджер. Для установки скрипта закад
   - `☑` Run on chrome://*/* pages
   - `☑` Run on Chrome's native New Tab Page
   - `▢` Always ignore keyboard layout
+
+### [Voice Over Translation (VOT)](https://chromewebstore.google.com/detail/vot-voice-over-translatio/dnioaagdjgpcokckfpokpndoblenmfcg) ([GitHub](https://github.com/ilyhalight/voice-over-translation))
+
+Закадровый перевод видео.
 
 ## Расширения — кандидаты на вылет
 
